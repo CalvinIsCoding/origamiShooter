@@ -11,7 +11,7 @@ public class playerController : MonoBehaviour
     private Vector2 currentVelocity;
     [SerializeField]
     private float movementSpeed = 12f;
-    private Rigidbody2D characterRigidBody;
+    public Rigidbody2D characterRigidBody;
 
     public int lifeCount;
     
@@ -25,6 +25,8 @@ public class playerController : MonoBehaviour
     public GameObject Player;
     public GameObject parryBox;
     public CapsuleCollider2D parryBoxCollider;
+    private float thrust = 1000f;
+
     public float currentTime;
     public float timePerBullet = 0.2f;
 
@@ -53,6 +55,7 @@ public class playerController : MonoBehaviour
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
         currentVelocity = characterRigidBody.velocity;
+        
 
 
         Vector3 mouseScreen = Input.mousePosition;
@@ -64,7 +67,8 @@ public class playerController : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             //parryBox =  Instantiate(parryBox, firePoint.position, firePoint.rotation,Player.transform);
-            parryBox.SetActive(true);    
+            parryBox.SetActive(true);
+            Boost();
             StartCoroutine(disableParryBox());
         }
 
@@ -87,20 +91,22 @@ public class playerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (moveHorizontal != 0 || moveVertical != 0 && !(moveHorizontal != 0 && moveVertical != 0))
-        {
-
-            characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed, moveVertical * movementSpeed);
-
-
-        }
-        else if (moveHorizontal != 0 && moveVertical != 0)
+      
+        // aCcounts for diagnoal movement. Makes it the same total velocity
+        if (moveHorizontal != 0 && moveVertical != 0)
         {
             
-            characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed * Mathf.Sin(Mathf.PI / 4), moveVertical * movementSpeed * Mathf.Sin(Mathf.PI / 4));
+            //characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed * 0.707f, moveVertical * movementSpeed * 0.707f);
+
+        }
+        
+        else
+        {
+           // characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed, moveVertical * movementSpeed);
+
         }
 
-        
+
 
     }
 
@@ -155,6 +161,11 @@ public class playerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         parryBox.SetActive(false);
+    }
+    private void Boost()
+    {
+        Debug.Log("boosting");
+        characterRigidBody.AddForce((Player.transform.position - firePoint.position) * 10f,ForceMode2D.Impulse);
     }
    
 }

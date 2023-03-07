@@ -69,7 +69,7 @@ public class RedEnemy : MonoBehaviour
         if ((myWall != null && (lastTime - Time.time < (-spawnDelayTime - 0.5))))
         {
 
-            Debug.Log("I'm touching a wall");
+            
             if (isParried)
             {
                 Instantiate(parryExplosion, bc.transform.position, bc.transform.rotation);

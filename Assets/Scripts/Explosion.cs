@@ -21,14 +21,14 @@ public class Explosion : MonoBehaviour
     {
 
         Enemy enemy = collision.GetComponent<Enemy>();
-        Debug.Log(collision.transform);
+       
        // Border border = collision.GetComponent<Border>();
         //Tilemap tilemap = GetComponent<Tilemap>();
 
         
        if (enemy != null)
         {
-            Debug.Log("I have confirmed damage");
+            
             enemy.Die();
             
 

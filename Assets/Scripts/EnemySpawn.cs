@@ -10,10 +10,10 @@ public class EnemySpawn : MonoBehaviour
     public GameObject[] enemy = new GameObject[5];
 
 
-    public int paperPlaneSpawnChance = 50;
-    public int redPlaneSpawnChance = 45;
+    public int paperPlaneSpawnChance = 90;
+    public int redPlaneSpawnChance = 5;
     public int redCircleSpawnChance = 5;
-    private int[] enemyTypeSpawnChances = new int[4];
+    private int[] enemyTypeSpawnChances = new int[3];
     
     private int typeSpawned;
 
@@ -51,15 +51,17 @@ public class EnemySpawn : MonoBehaviour
 
     void Start()
     {
-        enemyTypeSpawnChances[0] = 0;
-        enemyTypeSpawnChances[1] = paperPlaneSpawnChance;
-        enemyTypeSpawnChances[2] = redPlaneSpawnChance;
-        enemyTypeSpawnChances[3] = redCircleSpawnChance;
+        
+        enemyTypeSpawnChances[0] = paperPlaneSpawnChance;
+        enemyTypeSpawnChances[1] = redPlaneSpawnChance;
+        enemyTypeSpawnChances[2] = redCircleSpawnChance;
         SetSpawnChance();
         lastTime = 0f;
         timeStep = 2f;
         spawnMany_timeStep = 0.01f;
-        spawnMany_howOften = (int)timeStep * 20;
+
+        //Changes how often a "spawn many" event occurs. wherein a large group of enemies is spawned near the player. Lowering the multiplier decreases the time between spawn many events
+        spawnMany_howOften = (int)timeStep * 5;
 
 
        
@@ -133,8 +135,8 @@ void Update()
     void Spawn()
     {
         numberSpawned = Random.Range(1, 4);
-        typeSpawned = spawnTypeRandomizer[Random.Range(1, 101)];
-        Debug.Log(typeSpawned);
+        typeSpawned = spawnTypeRandomizer[Random.Range(1, 100)];
+        
 
         for (int i = 0; i < numberSpawned; i++)
         {
@@ -173,9 +175,10 @@ void Update()
             Vector2 spawnPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
 
             lastTime = Time.time;
+            typeSpawned = spawnTypeRandomizer[Random.Range(1, 100)];
             if (Mathf.Sqrt((Mathf.Pow((playerPosition.position.x - spawnPos.x), 2) + Mathf.Pow((playerPosition.position.y - spawnPos.y), 2))) > noSpawnRadius)
             {
-                Instantiate(enemy[1], spawnPos, Quaternion.identity);
+                Instantiate(enemy[typeSpawned], spawnPos, Quaternion.identity);
             }
 
             //Instantiate(enemy, new Vector3(_x, _y, 0), Quaternion.identity);
@@ -188,18 +191,22 @@ void Update()
     }
     void SetSpawnChance()
     {
-        for (int j = 1; j < 4; j++)
+        
+        int j = 0;
+        int counter = 0;
+       for (int i = 0; i < 100; i++)
         {
-            
-
-            for (int i = enemyTypeSpawnChances[j-1]; i < enemyTypeSpawnChances[j]; i++)
+            if(counter == enemyTypeSpawnChances[j])
             {
-
-                spawnTypeRandomizer[i] = j - 1;
-
+                counter = 0;
+                j++;
             }
-        }
 
+            spawnTypeRandomizer[i] = j;
+            counter++;
+           
+        }
+        
         
     }
     

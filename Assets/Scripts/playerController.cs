@@ -25,7 +25,8 @@ public class playerController : MonoBehaviour
     public GameObject Player;
     public GameObject parryBox;
     public CapsuleCollider2D parryBoxCollider;
-    private float thrust = 1000f;
+    private float movementThrust = 5f;
+    
 
     public float currentTime;
     public float timePerBullet = 0.2f;
@@ -95,15 +96,15 @@ public class playerController : MonoBehaviour
         // aCcounts for diagnoal movement. Makes it the same total velocity
         if (moveHorizontal != 0 && moveVertical != 0)
         {
-            
-            //characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed * 0.707f, moveVertical * movementSpeed * 0.707f);
 
+           // characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed * 0.707f, moveVertical * movementSpeed * 0.707f);
+            characterRigidBody.AddForce(new Vector2(movementThrust * moveHorizontal * movementSpeed * 0.707f, movementThrust * moveVertical * movementSpeed * 0.707f));
         }
         
         else
         {
-           // characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed, moveVertical * movementSpeed);
-
+            //characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed, moveVertical * movementSpeed);
+            characterRigidBody.AddForce(new Vector2(movementThrust * moveHorizontal * movementSpeed, movementThrust * moveVertical * movementSpeed));
         }
 
 

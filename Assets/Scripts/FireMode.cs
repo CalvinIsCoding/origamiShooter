@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireMode : MonoBehaviour
 {
-    private float timeTillFire;
+    public float timeTillFire;
     public float fireModeTime;
     public bool isFireMode;
 

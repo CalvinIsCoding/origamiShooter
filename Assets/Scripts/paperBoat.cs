@@ -22,7 +22,7 @@ public class paperBoat : MonoBehaviour
     private float speed;
     private float lastTime;
     private float spawnDelayTime = 0.8f;
-    private float boatMovementForce;
+    public float boatMovementForce;
     // private bool spriteToggle;
     //private int blinks = 6;
 
@@ -44,7 +44,7 @@ public class paperBoat : MonoBehaviour
 
         speed = 0f;
 
-        boatMovementForce = 0.8f;
+      //  boatMovementForce = 0.8f;
 
 
     }

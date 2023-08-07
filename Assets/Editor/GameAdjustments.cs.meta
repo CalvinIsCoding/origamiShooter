@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c67a74cf79ef1c14c94d5f416cdddd66
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - bullet: {fileID: 4723579007483652300, guid: 7b7a93f8463ce09489bcde970e625cf4, type: 3}
+  - player: {instanceID: 0}
+  - fireMode: {instanceID: 0}
+  - paperBoat: {fileID: 7270924437417043340, guid: 1fc83feddb2db0c4eaa315b11b16756d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

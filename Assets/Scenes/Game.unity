@@ -1082,7 +1082,7 @@ MonoBehaviour:
   parryBoxCollider: {fileID: 1223723857}
   rb: {fileID: 605639848}
   fanDirection: {x: 0, y: 0}
-  movementThrust: 0.6
+  movementThrust: 12.6
   overHeating: 0
   overHeatCounter: 0
   overheatBar: {fileID: 489665810}
@@ -2007,7 +2007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcf6703a75e21f4b9e970d244c3429f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireModeTime: 0
+  timeTillFire: 6.2
+  fireModeTime: 9.3
   isFireMode: 0
   enemySpawn: {fileID: 1390667149}
 --- !u!1 &1431735996

@@ -32,7 +32,7 @@ public class playerController : MonoBehaviour
     public CapsuleCollider2D parryBoxCollider;
     public Rigidbody2D rb;
     public Vector2 fanDirection;
-    public float movementThrust = 5f;
+    public float movementThrust;
     private float airPushBackForce = 0.12f;
 
     //Overheat variables

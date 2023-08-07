@@ -7,7 +7,7 @@ public class AirBullet: MonoBehaviour
     public GameObject airBullet;
 
     public Rigidbody2D rb;
-    public float speed = 30f;
+    public float speed;
     public GameObject bulletEnemy;
     public GameObject source;
     public int bulletDamage = 100;

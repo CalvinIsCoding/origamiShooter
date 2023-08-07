@@ -13,7 +13,7 @@ TagManager:
   - UI
   - terrain
   - 
-  - 
+  - Enemies
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: terrain
+    uniqueID: 486127873
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player?
+    uniqueID: 3491738549
     locked: 0

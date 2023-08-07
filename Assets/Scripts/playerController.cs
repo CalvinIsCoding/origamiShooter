@@ -13,29 +13,49 @@ public class playerController : MonoBehaviour
     private float movementSpeed = 12f;
     public Rigidbody2D characterRigidBody;
 
+    public float boostForce = 10f;
+    private bool isBoost;
+
+
     public int lifeCount;
-    
-    
+
+
 
 
 
     //Shooting Variables
-    public GameObject bulletPrefab;
+    public GameObject airBulletPrefab;
+    public GameObject misslePrefab;
     private GameObject bullet;
     public GameObject Player;
     public GameObject parryBox;
     public CapsuleCollider2D parryBoxCollider;
-    private float movementThrust = 5f;
-    
+    public Rigidbody2D rb;
+    public Vector2 fanDirection;
+    public float movementThrust = 5f;
+    private float airPushBackForce = 0.12f;
 
-    public float currentTime;
+    //Overheat variables
+    public bool overHeating = false;
+    public int overHeatCounter;
+    public OverheatBar overheatBar;
+    public float maxOverheat = 5f;
+
+
+    public float currentTimeBetweenBullets;
+    public float overHeatTime;
     public float timePerBullet = 0.2f;
 
 
     public Transform firePoint;
 
-    //reanimation variables
+    public DestroyMode _DestroyMode;
+    //Destruction Mode
+    /* public bool isDestroyMode;
+     private float timeSinceDestroy;
+     private float destroyModeTime = 10f;*/
 
+    public Animator animator;
 
 
 
@@ -45,66 +65,120 @@ public class playerController : MonoBehaviour
         parryBoxCollider = parryBox.GetComponent<CapsuleCollider2D>();
         parryBox.SetActive(false);
         lifeCount = 3;
-        currentTime = 0f;
-        
+        currentTimeBetweenBullets = 0f;
+        isBoost = false;
+
+        overHeatCounter = 0;
+        overHeatTime = 0;
+
+        overheatBar.SetMaxOverheat(maxOverheat);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //Movement
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
         currentVelocity = characterRigidBody.velocity;
+
+
+        //Aiming
+      
+
+
+        currentTimeBetweenBullets = currentTimeBetweenBullets + Time.deltaTime;
         
-
-
-        Vector3 mouseScreen = Input.mousePosition;
-        Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
-        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
-
-        currentTime = currentTime + Time.deltaTime;
         //parry
         if (Input.GetButtonDown("Fire2"))
         {
             //parryBox =  Instantiate(parryBox, firePoint.position, firePoint.rotation,Player.transform);
             parryBox.SetActive(true);
-            Boost();
             StartCoroutine(disableParryBox());
+
+            Boost();
+            isBoost = true;
+            StartCoroutine(boostIsActive());
         }
 
 
-        //shooting
-        if (Input.GetButton("Fire1") && (currentTime - timePerBullet) > 0)
+      
+        else if(Input.GetButtonDown("Fire1")  && _DestroyMode.isDestroyMode)
         {
 
-
-            bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            currentTime = 0;
-
-
-
+            bullet = Instantiate(misslePrefab, firePoint.position, firePoint.rotation);
+            currentTimeBetweenBullets = 0;
 
         }
+
+        //Overheating
+        if (Input.GetButton("Fire1") && !_DestroyMode.isDestroyMode && !overHeating)
+        {
+            overHeatTime = overHeatTime + Time.deltaTime;
+            
+        }
+        else if (!Input.GetButton("Fire1") && overHeatTime > 0 || overHeating)
+        {
+            overHeatTime = overHeatTime - Time.deltaTime;
+            //overHeatCounter = overHeatCounter - 1;
+
+        }
+
+
+        OverHeat(overHeatTime);
+        overheatBar.SetOverheat(overHeatTime);
+
+
+
 
 
     }
 
     private void FixedUpdate()
     {
-      
-        // aCcounts for diagnoal movement. Makes it the same total velocity
-        if (moveHorizontal != 0 && moveVertical != 0)
+        Vector3 mouseScreen = Input.mousePosition;
+        Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
+        firePoint.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
+
+        //Animating
+        animator.SetFloat("Horizontal", (mouse.x - transform.position.x));
+        animator.SetFloat("Vertical", (mouse.y - transform.position.y));
+
+
+
+        if (!isBoost)
         {
 
-           // characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed * 0.707f, moveVertical * movementSpeed * 0.707f);
-            characterRigidBody.AddForce(new Vector2(movementThrust * moveHorizontal * movementSpeed * 0.707f, movementThrust * moveVertical * movementSpeed * 0.707f));
+
+            // aCcounts for diagnoal movement. Makes it the same total velocity
+            if (moveHorizontal != 0 && moveVertical != 0)
+            {
+
+                // characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed * 0.707f, moveVertical * movementSpeed * 0.707f);
+                characterRigidBody.AddForce(new Vector2(movementThrust * moveHorizontal * movementSpeed * 0.707f, movementThrust * moveVertical * movementSpeed * 0.707f));
+            }
+
+            else
+            {
+                //characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed, moveVertical * movementSpeed);
+                characterRigidBody.AddForce(new Vector2(movementThrust * moveHorizontal * movementSpeed, movementThrust * moveVertical * movementSpeed));
+            }
+
         }
-        
-        else
+
+        //shooting
+        if (Input.GetButton("Fire1") && (currentTimeBetweenBullets - timePerBullet) > 0 && !_DestroyMode.isDestroyMode && !overHeating)
         {
-            //characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed, moveVertical * movementSpeed);
-            characterRigidBody.AddForce(new Vector2(movementThrust * moveHorizontal * movementSpeed, movementThrust * moveVertical * movementSpeed));
+
+            bullet = Instantiate(airBulletPrefab, firePoint.position, firePoint.rotation);
+            currentTimeBetweenBullets = 0;
+            PushBack(mouse);
+
+
+            // overHeatCounter = overHeatCounter + 1;
+
         }
 
 
@@ -113,14 +187,15 @@ public class playerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Wall myWall = collision.gameObject.GetComponent<Wall>();
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         EnemyProjectile enemyProjectile = collision.gameObject.GetComponent<EnemyProjectile>();
-         if (enemy != null)
+        if (enemy != null && !enemy.isBlink)
         {
             Destroy(enemy.gameObject);
-            
+
             PlayerDeath();
-            
+
         }
         if (enemyProjectile != null)
         {
@@ -129,31 +204,36 @@ public class playerController : MonoBehaviour
             PlayerDeath();
 
         }
+        /*if (myWall != null)
+        {
+           // Boost();
+            characterRigidBody.AddForce(new Vector2(),ForceMode2D.Impulse);
+        }*/
     }
 
-   /* void OnTriggerEnter2D(Collider2D collision)
-    {
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+    /* void OnTriggerEnter2D(Collider2D collision)
+     {
+         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
-        if (enemy != null)
-        {
-            Destroy(enemy.gameObject);
+         if (enemy != null)
+         {
+             Destroy(enemy.gameObject);
 
-            PlayerDeath();
+             PlayerDeath();
 
-        }
-    }*/
-    private void PlayerDeath()
+         }
+     }*/
+    public void PlayerDeath()
     {
         lifeCount--;
-        
-        
+
+
 
         if (lifeCount <= 0)
         {
             SceneManager.LoadScene("Menu");
-            
-            
+
+
         }
 
     }
@@ -165,8 +245,45 @@ public class playerController : MonoBehaviour
     }
     private void Boost()
     {
-        Debug.Log("boosting");
-        characterRigidBody.AddForce((Player.transform.position - firePoint.position) * 10f,ForceMode2D.Impulse);
+
+        characterRigidBody.AddForce((-Player.transform.position + firePoint.position) * boostForce, ForceMode2D.Impulse);
+
+
+    }
+    IEnumerator boostIsActive()
+    {
+        yield return new WaitForSeconds(0.25f);
+        isBoost = false;
     }
    
+    private void OverHeat(float overHeatCounter)
+    {
+        
+        
+        if (overHeatCounter >= maxOverheat)
+        {
+            StartCoroutine(CoolDown());
+            overHeating = true;
+
+        }
+        
+    }
+    
+    IEnumerator CoolDown()
+    {
+        yield return new WaitForSeconds(5f);
+        overHeating = false;
+
+    }
+    private void PushBack(Vector3 mouse)
+    {
+        mouse.z = 0;
+        fanDirection = new Vector2(mouse.x, mouse.y);
+        
+        characterRigidBody.AddForce( (-fanDirection + this.rb.position).normalized * airPushBackForce, ForceMode2D.Impulse);
+        Debug.Log((mouse));
+    }
+
+
+
 }

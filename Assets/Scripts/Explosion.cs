@@ -21,12 +21,12 @@ public class Explosion : MonoBehaviour
     {
 
         Enemy enemy = collision.GetComponent<Enemy>();
-       
-       // Border border = collision.GetComponent<Border>();
-        //Tilemap tilemap = GetComponent<Tilemap>();
 
-        
-       if (enemy != null)
+        // Border border = collision.GetComponent<Border>();
+        // Tilemap tilemap = GetComponent<Tilemap>();
+
+
+        if (enemy != null)
         {
             
             enemy.Die();

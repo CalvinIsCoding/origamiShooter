@@ -21,7 +21,7 @@ public class Bomb : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         
-        bulletBehavior projectile = collision.GetComponent<bulletBehavior>();
+        AirBullet projectile = collision.GetComponent<AirBullet>();
         if (projectile != null)
         {
             Instantiate(explosion, this.transform.position, this.transform.rotation);

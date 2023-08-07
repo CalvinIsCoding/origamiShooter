@@ -8,11 +8,13 @@ public class HUDController : MonoBehaviour
      public GameObject threeLives;
      public GameObject twoLives;
      public GameObject oneLife;
+
+     public GameObject countDownBar;
      public playerController player;
 
- 
 
-    
+
+   
     void Update()
     {
         if(player.lifeCount == 3)

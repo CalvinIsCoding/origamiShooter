@@ -105,6 +105,6 @@ public class RedEnemy : MonoBehaviour
         isParried = true;
         angle = reflectedDirection.eulerAngles.z;
 
-        speed = 1.5f;
+        speed = 3.5f;
     }
 }

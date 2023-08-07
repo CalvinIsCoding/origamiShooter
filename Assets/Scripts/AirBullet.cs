@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bulletBehavior: MonoBehaviour
+public class AirBullet: MonoBehaviour
 {
-    public GameObject bullet;
+    public GameObject airBullet;
+
     public Rigidbody2D rb;
     public float speed = 30f;
     public GameObject bulletEnemy;
+    public GameObject source;
     public int bulletDamage = 100;
+    public float knockBack = 10f;
 
+    public SpriteRenderer airBulletSprite;
     void Start()
     {
+
         rb.velocity = transform.right * speed;
-        Destroy(bullet, 2f);
+        Destroy(airBullet, 1.0f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -21,24 +26,27 @@ public class bulletBehavior: MonoBehaviour
         Wall myWall = collision.GetComponent<Wall>();
         Enemy enemy = collision.GetComponent<Enemy>();
         EnemyProjectile enemyProjectile = collision.GetComponent<EnemyProjectile>();
+        AirBullet collidedBullet = collision.GetComponent<AirBullet>();
 
         if (myWall != null)
         {
-            //Instantiate(bulletEnemy, bullet.transform.position, bullet.transform.rotation);
-            Destroy(bullet);
-
+            Instantiate(source, airBullet.transform.position, airBullet.transform.rotation);
+            //Destroy(bullet);
+            airBulletSprite.enabled = false;
         }
 
         
-        else if (enemy != null)
+        else if (enemy != null )
         {
-            enemy.TakeDamage(bulletDamage);
-            Destroy(bullet);
+            // 
+            enemy.Push(knockBack,rb,airBullet);
+            //Destroy(bullet);
 
         }
+        
         else if (enemyProjectile != null)
         {
-            Destroy(bullet);
+            Destroy(airBullet);
         }
 
         else

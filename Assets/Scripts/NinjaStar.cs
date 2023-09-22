@@ -82,7 +82,7 @@ public class NinjaStar : MonoBehaviour
         //var speed = lastFrameVelocity.magnitude;
         direction = Vector3.Reflect(direction.normalized, collisionNormal);
 
-        Debug.Log("Out Direction: " + direction);
+
         rb.AddForceAtPosition(direction.normalized * ninjaStarMovementForce, this.rb.position);
     }
 }

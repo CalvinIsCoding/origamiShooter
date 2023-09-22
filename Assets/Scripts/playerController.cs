@@ -40,8 +40,9 @@ public class playerController : MonoBehaviour
     public int overHeatCounter;
     public OverheatBar overheatBar;
     public float maxOverheat = 5f;
+    private float coolDownFactor = 2f;
 
-
+    //Bullet Variables
     public float currentTimeBetweenBullets;
     public float overHeatTime;
     public float timePerBullet = 0.2f;
@@ -121,7 +122,7 @@ public class playerController : MonoBehaviour
         }
         else if (!Input.GetButton("Fire1") && overHeatTime > 0 || overHeating)
         {
-            overHeatTime = overHeatTime - Time.deltaTime;
+            overHeatTime = overHeatTime - (Time.deltaTime * coolDownFactor);
             //overHeatCounter = overHeatCounter - 1;
 
         }
@@ -271,7 +272,7 @@ public class playerController : MonoBehaviour
     
     IEnumerator CoolDown()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(overHeatTime/coolDownFactor);
         overHeating = false;
 
     }
@@ -281,7 +282,7 @@ public class playerController : MonoBehaviour
         fanDirection = new Vector2(mouse.x, mouse.y);
         
         characterRigidBody.AddForce( (-fanDirection + this.rb.position).normalized * airPushBackForce, ForceMode2D.Impulse);
-        Debug.Log((mouse));
+        
     }
 
 

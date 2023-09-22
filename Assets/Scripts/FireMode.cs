@@ -7,6 +7,8 @@ public class FireMode : MonoBehaviour
     public float timeTillFire;
     public float fireModeTime;
     public bool isFireMode;
+    [SerializeField]
+    private playerController player;
 
     public EnemySpawn enemySpawn;
     void Start()
@@ -16,8 +18,8 @@ public class FireMode : MonoBehaviour
        
 
         //fireCollider.enabled = true;
-        timeTillFire = 10f;
-        fireModeTime = 3f;
+       /* timeTillFire;
+        fireModeTime;*/
         isFireMode = false;
         StartCoroutine(EnableFireMode());
     }
@@ -35,8 +37,9 @@ public class FireMode : MonoBehaviour
        
         isFireMode = true;
         
-        enemySpawn.timeStep = enemySpawn.timeStep - 0.1f;
+        //enemySpawn.timeStep = enemySpawn.timeStep - 0.1f;
         enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
+        player.lifeCount = player.lifeCount + 1;
 
 
 

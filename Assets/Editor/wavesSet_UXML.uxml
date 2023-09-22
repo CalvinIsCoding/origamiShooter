@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Label text="Label created in UI builder" display-tooltip-when-elided="true" name="Wave" />
+    <uie:PropertyField binding-path="wave" label="wave" />
+</ui:UXML>

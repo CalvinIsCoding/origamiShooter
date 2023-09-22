@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Wave : MonoBehaviour
 {
     public GameObject[] enemy = new GameObject[5];
@@ -9,6 +10,8 @@ public class Wave : MonoBehaviour
     public int[] spawnEventChances = new int[5];
     public int[] spawnTypeRandomizer = new int[100];
     public int[] spawnEventRandomizer = new int[100];
+
+    public float testNumber = 10f;
     void Start()
     {
         SetSpawnChance();

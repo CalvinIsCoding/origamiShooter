@@ -9,7 +9,7 @@ public class EnemySpawn : MonoBehaviour
 {
     // public GameObject[] enemy = new GameObject[5];
 
-    [SerializeField]
+    //[SerializeField]
     public Wave[] wave = new Wave[10];
     
     public int waveNumber;
@@ -54,7 +54,7 @@ public class EnemySpawn : MonoBehaviour
     private float noSpawn_yMin;
     private float noSpawn_yMax;
 
-
+    Shop shop;
 
     void Start()
     {
@@ -64,7 +64,7 @@ public class EnemySpawn : MonoBehaviour
         enemyTypeSpawnChances[2] = redCircleSpawnChance;*/
         //SetSpawnChance();
         lastTime = 0f;
-        timeStep = 2f;
+        timeStep = 1f;
         spawnEvent_timeStep = 0.01f;
 
         //Changes how often a spawn event occurs. wherein a large group of enemies is spawned near the player.
@@ -209,6 +209,12 @@ public class EnemySpawn : MonoBehaviour
         }
 
 
+    }
+
+    void Shop()
+    {
+        Vector2 shopSpawn = new Vector2(0f, 0f);
+        Instantiate(shop, shopSpawn, Quaternion.identity);
     }
     
     

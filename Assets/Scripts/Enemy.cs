@@ -29,15 +29,37 @@ public class Enemy : MonoBehaviour
 	public bool isBlown;
 	public Vector2 travelDirection;
 
+    
+	public EnemySpawn enemySpawn;
+	private int waveSpawned;
+	private bool isRed;
+
+	
 
 	void Start()
     {
+		enemySpawn = FindObjectOfType<EnemySpawn>();
+		isRed = false;
 		isBlown = false;
 		isBlink = true;
 		spriteToggle = false;
+		waveSpawned = enemySpawn.waveNumber;
+		
 		StartCoroutine(Blink());
 	}
-	public void TakeDamage(int damage)
+    private void Update()
+    {
+		
+        if (waveSpawned < enemySpawn.waveNumber && !isRed && !enemySpawn.fireMode.isFireMode)
+        {
+			Debug.Log("Turning Red");
+			
+			ColorTurn();
+			
+        }
+    }
+
+    public void TakeDamage(int damage)
 	{
 		health -= damage;
 
@@ -51,8 +73,11 @@ public class Enemy : MonoBehaviour
 	{
 		
 		Destroy(gameObject);
+		if (isRed)
+        {
+			Score.score = Score.score + 1;
 
-		Score.score = Score.score + 50;
+		}
 	}
 	public void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet)
     {
@@ -111,6 +136,13 @@ public class Enemy : MonoBehaviour
 		yield return new WaitForSeconds(blowTime);
 		isBlown = false;
 
+
+	}
+
+	void ColorTurn()
+    {
+		sprite.color = Color.red;
+		isRed = true;
 
 	}
 

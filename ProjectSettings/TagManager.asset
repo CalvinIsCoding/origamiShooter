@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - terrain
   - 
   - Enemies
-  - 
+  - bullets
   - 
   - 
   - 
@@ -40,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: terrain
     uniqueID: 486127873
+    locked: 0
+  - name: bullets
+    uniqueID: 27031553
     locked: 0
   - name: Default
     uniqueID: 0

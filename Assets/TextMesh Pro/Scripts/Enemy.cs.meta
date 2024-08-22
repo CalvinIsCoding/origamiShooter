@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 294331fce7839e0408c811e5fb7e68c4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemy: {instanceID: 0}
+  - deathEffect: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - sprite: {instanceID: 0}
+  - wetPaper: {instanceID: 0}
+  - enemySpawn: {instanceID: 0}
+  - playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

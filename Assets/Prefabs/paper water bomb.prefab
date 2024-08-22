@@ -171,3 +171,8 @@ MonoBehaviour:
   isBlink: 0
   isWet: 0
   wetPaper: {fileID: 6209430903084396874, guid: 0be927e4d181f5543b7d9ca4227a1383, type: 3}
+  isBlown: 0
+  travelDirection: {x: 0, y: 0}
+  enemySpawn: {fileID: 0}
+  wavesSaved: 0
+  playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}

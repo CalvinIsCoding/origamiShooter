@@ -1,0 +1,420 @@
+fileFormatVersion: 2
+guid: 5572c64d3a8e4914ca5da120d8d0d9f2
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Y-paper swim_24
+      rect:
+        serializedVersion: 2
+        x: 2179
+        y: 78
+        width: 150
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d62d12a0f81e00246ad83d5916bcb493
+      internalID: -1903088087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Y-paper swim_28
+      rect:
+        serializedVersion: 2
+        x: 1644
+        y: 87
+        width: 219
+        height: 354
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8385875aaa245524aacd4437cb0fe31a
+      internalID: 124884060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Y-paper swim_29
+      rect:
+        serializedVersion: 2
+        x: 2646
+        y: 84
+        width: 214
+        height: 357
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e78eb60956a52d429496a2890009592
+      internalID: -2122338495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Y-paper swim_31
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 79
+        width: 289
+        height: 353
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d232e15bd7857048aa2b32a7ba922c9
+      internalID: 1456675682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Y-paper swim_36
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 82
+        width: 332
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0295e398aaea24c8add9371374e13c
+      internalID: 1831081281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Y-paper swim_56
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 84
+        width: 338
+        height: 285
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cd44bd66a6ac9d4cbf69b31c96a41f0
+      internalID: -1127937785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Y-paper swim_49: 1822523903
+      Y-paper swim_93: 976052205
+      Y-paper swim_2: 1347660567
+      Y-paper swim_16: -433936814
+      Y-paper swim_82: -161622240
+      Y-paper swim_64: 1022292901
+      Y-paper swim_32: -952782444
+      Y-paper swim_36: 1831081281
+      Y-paper swim_89: -1953035874
+      Y-paper swim_97: 2082947881
+      Y-paper swim_13: -1952545269
+      Y-paper swim_41: -1782408970
+      Y-paper swim_48: 1478008169
+      Y-paper swim_12: 1355279442
+      Y-paper swim_96: 963477731
+      Y-paper swim_80: -491517781
+      Y-paper swim_103: -132464486
+      Y-paper swim_35: 675576159
+      Y-paper swim_1: 1167278178
+      Y-paper swim_4: -342604334
+      Y-paper swim_51: 568435215
+      Y-paper swim_59: 356261505
+      Y-paper swim_87: -48287764
+      Y-paper swim_14: 1263537266
+      Y-paper swim_26: 1318634606
+      Y-paper swim_84: -471779951
+      Y-paper swim_17: 195890345
+      Y-paper swim_43: -773248082
+      Y-paper swim_88: -1039252775
+      Y-paper swim_50: 1983097059
+      Y-paper swim_61: 1474197124
+      Y-paper swim_31: 1456675682
+      Y-paper swim_101: -563329318
+      Y-paper swim_109: -275914710
+      Y-paper swim_70: -578557594
+      Y-paper swim_54: 979488704
+      Y-paper swim_79: -754280052
+      Y-paper swim_91: -1481538735
+      Y-paper swim_5: -1786328506
+      Y-paper swim_33: -2034406708
+      Y-paper swim_23: 871380059
+      Y-paper swim_99: -1550081289
+      Y-paper swim_75: 2128132400
+      Y-paper swim_107: 435499466
+      Y-paper swim_78: -1385460832
+      Y-paper swim_108: 1990222124
+      Y-paper swim_69: -535780250
+      Y-paper swim_104: -435387134
+      Y-paper swim_8: 1495652210
+      Y-paper swim_25: 684933219
+      Y-paper swim_81: 760005500
+      Y-paper swim_86: -989636027
+      Y-paper swim_47: -1383841487
+      Y-paper swim_39: 879608633
+      Y-paper swim_68: -133127305
+      Y-paper swim_58: -871353777
+      Y-paper swim_85: 58950152
+      Y-paper swim_9: 377938421
+      Y-paper swim_90: 1578582443
+      Y-paper swim_74: 853628152
+      Y-paper swim_6: 1774163734
+      Y-paper swim_56: -1127937785
+      Y-paper swim_11: 2078214832
+      Y-paper swim_98: 1328140649
+      Y-paper swim_73: -1927042769
+      Y-paper swim_110: 919294165
+      Y-paper swim_15: -753842336
+      Y-paper swim_7: 439803598
+      Y-paper swim_71: 1166527554
+      Y-paper swim_77: -690303937
+      Y-paper swim_63: 312652202
+      Y-paper swim_67: -1444551135
+      Y-paper swim_38: 715293088
+      Y-paper swim_19: -1833899456
+      Y-paper swim_100: 608481408
+      Y-paper swim_10: -877315604
+      Y-paper swim_0: 1761633494
+      Y-paper swim_34: 875443813
+      Y-paper swim_28: 124884060
+      Y-paper swim_40: 375287810
+      Y-paper swim_21: 1515316698
+      Y-paper swim_42: 1577693753
+      Y-paper swim_20: 1510969273
+      Y-paper swim_52: -766136120
+      Y-paper swim_18: -134797479
+      Y-paper swim_29: -2122338495
+      Y-paper swim_105: 146892239
+      Y-paper swim_30: 871957609
+      Y-paper swim_44: -2108931920
+      Y-paper swim_46: -1906273783
+      Y-paper swim_22: 1821268917
+      Y-paper swim_106: 1010958795
+      Y-paper swim_72: -1218913805
+      Y-paper swim_83: 1938549725
+      Y-paper swim_27: 1382279549
+      Y-paper swim_94: 71252242
+      Y-paper swim_53: 578796097
+      Y-paper swim_37: -324091777
+      Y-paper swim_76: 2119505137
+      Y-paper swim_45: 1119447567
+      Y-paper swim_24: -1903088087
+      Y-paper swim_3: 1512827189
+      Y-paper swim_55: -1470145024
+      Y-paper swim_66: -1981183388
+      Y-paper swim_102: 859150646
+      Y-paper swim_57: 1294453479
+      Y-paper swim_60: 1413626577
+      Y-paper swim_92: 920565298
+      Y-paper swim_95: -844296922
+      Y-paper swim_62: -1167223745
+      Y-paper swim_65: -624434283
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

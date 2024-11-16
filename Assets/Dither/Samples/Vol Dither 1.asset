@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4875953380953873917
+--- !u!114 &-1105734410145929681
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,13 +15,13 @@ MonoBehaviour:
   active: 1
   m_Impact:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.061
   m_Power:
     m_OverrideState: 1
-    m_Value: 0.174
+    m_Value: 1
   m_Scale:
     m_OverrideState: 1
-    m_Value: 0.568
+    m_Value: 0.001
   m_Pixelate:
     m_OverrideState: 1
     m_Value: 0
@@ -29,11 +29,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   m_Palette:
-    m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: e04c0347fe1c4ec4ba8b4facf62db314, type: 3}
-  m_Pattern:
     m_OverrideState: 0
-    m_Value: {fileID: 2800000, guid: a7ad2a875f5fcf442a267169bae8f2bb, type: 3}
+    m_Value: {fileID: 2800000, guid: 11f01ea7a09ab4247bfc2c48b1fbfa3a, type: 3}
+  m_Pattern:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: d2562c86660217f49bab2988e6c868e2, type: 3}
   m_Mode:
     m_OverrideState: 1
     m_Value: 0
@@ -50,4 +50,4 @@ MonoBehaviour:
   m_Name: Vol Dither 1
   m_EditorClassIdentifier: 
   components:
-  - {fileID: -4875953380953873917}
+  - {fileID: -1105734410145929681}

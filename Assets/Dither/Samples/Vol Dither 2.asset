@@ -38,12 +38,12 @@ MonoBehaviour:
     m_Value: 0.434
   m_Pixelate:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   m_Fps:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 7
   m_Palette:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {fileID: 2800000, guid: 292b700d95da9794ca16ed2fe2bff43b, type: 3}
   m_Pattern:
     m_OverrideState: 1

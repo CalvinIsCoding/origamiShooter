@@ -15,8 +15,8 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopButtonGameObject;
     public Button[] buttons;
 
-    
-    
+    public GameObject ShopMenu;
+
     void Start()
     {
         //playerInventory.coins = 0;
@@ -27,6 +27,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < shopItemSO.Length; i++)
         {
             shopButtonGameObject[i].SetActive(true);
+            shopItemSO[i].numberPurchased = 0;
 
         }
         LoadPanels();
@@ -35,6 +36,7 @@ public class ShopManager : MonoBehaviour
 
     private void OnEnable()
     {
+        coinUI.text = "Coins: " + playerInventory.coins.ToString();
         CheckPurchaseable();
     }
     
@@ -55,7 +57,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < (shopItemSO.Length); i++)
         { 
              shopButton[i].TitleText.text = shopItemSO[i].title;
-             shopButton[i].PriceText.text = shopItemSO[i].cost.ToString();
+            // shopButton[i].PriceText.text = shopItemSO[i].cost.ToString();
             
 
         }
@@ -70,6 +72,7 @@ public class ShopManager : MonoBehaviour
             playerInventory.coins = playerInventory.coins - shopItemSO[btnNo].cost;
             coinUI.text = "Coins: " + playerInventory.coins.ToString();
             CheckPurchaseable();
+            shopItemSO[btnNo].numberPurchased++;
         }
     }
 
@@ -87,7 +90,13 @@ public class ShopManager : MonoBehaviour
             }
 
           }
+
     }
-    
+    public void ExitShop()
+    {
+        Time.timeScale = 1;
+        ShopMenu.SetActive(false);
+    }
+
 
 }

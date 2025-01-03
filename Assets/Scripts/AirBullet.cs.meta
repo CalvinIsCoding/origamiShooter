@@ -3,7 +3,13 @@ guid: 55abd07faf108f447bc242f7fb477764
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - airBullet: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - bulletEnemy: {instanceID: 0}
+  - source: {instanceID: 0}
+  - fanBlades: {fileID: 11400000, guid: 7825b05b361429a4e825842fac74a069, type: 2}
+  - airBulletSprite: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

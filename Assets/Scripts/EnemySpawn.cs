@@ -37,6 +37,7 @@ public class EnemySpawn : MonoBehaviour
   
     private float numberSpawned;
     private int spawnEvent_howOften;
+    private bool spawningComplete;
 
     private int spawnRedTrigger;
     private float spawnRed_howOften;
@@ -56,7 +57,8 @@ public class EnemySpawn : MonoBehaviour
 
     private GameObject fireActivator;
 
-    Shop shop;
+    public GameObject shop;
+    private bool shopSpawned;
 
     void Start()
     {
@@ -65,6 +67,7 @@ public class EnemySpawn : MonoBehaviour
         enemyTypeSpawnChances[1] = redPlaneSpawnChance;
         enemyTypeSpawnChances[2] = redCircleSpawnChance;*/
         //SetSpawnChance();
+        
         lastTime = 0f;
         timeStep = 1f;
         spawnEvent_timeStep = 0.01f;
@@ -79,7 +82,9 @@ public class EnemySpawn : MonoBehaviour
         yMin = -0.85f;
         yMax = 0.85f;
 
+        spawningComplete = false;
 
+        shopSpawned = false;
 
     }
 
@@ -101,24 +106,25 @@ public class EnemySpawn : MonoBehaviour
         if (!fireMode.isFireMode)
         {
 
-
-            if (lastTime - Time.time < -timeStep)
+            if (wave[waveNumber].specialWave == true && spawningComplete == false)
             {
 
+                SpawnEventSelector(wave[waveNumber].spawnEventRandomizer[5]);
 
+                spawningComplete = true;
+            }
+            else if (lastTime - Time.time < -timeStep && wave[waveNumber].specialWave == false)
+            {
                 Spawn();
-
                 lastTime = Time.time;
-
                 spawnEventTrigger = Random.Range(0, spawnEvent_howOften);
-
-
-
                 //timeStep = timeStep - 0.01f;
             }
 
+            // I want "spawn events" to trigger randomly every so often. These are supposed to be more interesting things like a large group spawning 
+            // right around the player, or enemies spawning around all 
 
-            if (spawnEventTrigger == (Mathf.Round(spawnEvent_howOften / 2f)))
+            if (spawnEventTrigger == (Mathf.Round(spawnEvent_howOften / 5f)) && wave[waveNumber].specialWave == false)
             {
                 eventSelect = wave[waveNumber].spawnEventRandomizer[Random.Range(1, 100)];
                 SpawnEventSelector(eventSelect);
@@ -129,12 +135,15 @@ public class EnemySpawn : MonoBehaviour
             }
 
         }
-       
-        
-
-        
-
-
+        if(waveNumber % 5 == 0 && !shopSpawned && waveNumber != 0)
+        {
+            SpawnShop();
+        }
+        if(waveNumber % 5 != 0)
+        {
+            shopSpawned = false;
+        }
+   
 
     }
 
@@ -143,6 +152,7 @@ public class EnemySpawn : MonoBehaviour
     // 
     void Spawn()
     {
+
         numberSpawned = Random.Range(1, 4);
         typeSpawned = wave[waveNumber].spawnTypeRandomizer[Random.Range(1, 100)];
         
@@ -152,20 +162,22 @@ public class EnemySpawn : MonoBehaviour
             Vector2 spawnPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
            // Debug.Log("xMax:" + xMax);
            // Debug.Log("yMax:" + yMax);
-            //Debug.Log("xMin:" + xMin);
+           // Debug.Log("xMin:" + xMin);
            // Debug.Log("yMin:" + yMin);
 
-            //Checks if a randomly selected coordinate is within a certain radius of the player
+            // Checks if a randomly selected coordinate is within a certain radius of the player
             isNearPlayer = Mathf.Sqrt((Mathf.Pow((playerPosition.position.x - spawnPos.x), 2) + Mathf.Pow((playerPosition.position.y - spawnPos.y), 2))) < noSpawnRadius;
 
             
             if (!isNearPlayer)
             {
+                //okay to spawn normally if far enough from player
                 Instantiate(wave[waveNumber].enemy[typeSpawned], spawnPos, Quaternion.identity * wave[waveNumber].enemy[typeSpawned].transform.localRotation);
             }
             else if (isNearPlayer)
             {
                 //check sign of each coordinate, and change the location by the value of radius
+                //This is done to make enemies spawn a minimum distance away from the player
                
                 spawnPos.x = spawnPos.x + ( (spawnPos.x / Mathf.Abs(spawnPos.x)) * -noSpawnRadius);
                 spawnPos.y = spawnPos.y + ( (spawnPos.y / Mathf.Abs(spawnPos.y)) * -noSpawnRadius);
@@ -189,6 +201,18 @@ public class EnemySpawn : MonoBehaviour
             case  1:
 
                 StartCoroutine(SpawnMany());
+                break;
+
+            case 2:
+                Vector2 originCoordinates = new Vector2(0, 0);
+                Instantiate(wave[waveNumber].enemy[0], originCoordinates, Quaternion.identity);
+                break;
+            case 3:
+                int i;
+                for (i = 0; i<2; i++)
+                {
+                    Spawn();
+                }
                 break;
         }
     }
@@ -225,10 +249,11 @@ public class EnemySpawn : MonoBehaviour
 
     }
 
-    void Shop()
+    void SpawnShop()
     {
         Vector2 shopSpawn = new Vector2(0f, 0f);
         Instantiate(shop, shopSpawn, Quaternion.identity);
+        shopSpawned = true;
     }
    
     

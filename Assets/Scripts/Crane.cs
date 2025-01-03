@@ -39,7 +39,7 @@ public class Crane : MonoBehaviour
 
         speed = 0f;
 
-        craneMovementForce = 60f;
+        craneMovementForce = 10f;
         animator.SetBool("isBlinking", true);
         animator.SetBool("Dragging", false);
 
@@ -80,15 +80,15 @@ public class Crane : MonoBehaviour
         {
             //Orient();
             animator.SetBool("Dragging", false);
-            rb.drag = 4;
+            rb.drag = 2;
             rb.freezeRotation = true;
            rb.AddForceAtPosition(direction.normalized * craneMovementForce, rb.position);
 
         }
-        if(Time.time - lastTime > 1.2f)
+        if(Time.time - lastTime > 1.5f)
         {
             rb.freezeRotation = false;
-            rb.drag = 20;
+            rb.drag = 10;
             windingUp = false;
             animator.SetBool("Dragging", true);
             //Orient();
@@ -104,7 +104,7 @@ public class Crane : MonoBehaviour
     {
         direction = playerRb.position - rb.position;
         angle = Mathf.Atan2(direction.y, direction.x);
-        Debug.Log(angle);
+       
         rb.MoveRotation( angle * (180f/Mathf.PI) + 90f);
     }
 }

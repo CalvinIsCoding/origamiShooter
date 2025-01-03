@@ -8,4 +8,5 @@ public class ShopItemSO : ScriptableObject
     public string title;
     public string description;
     public int cost;
+    public int numberPurchased;
 }

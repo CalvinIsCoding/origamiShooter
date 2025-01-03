@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    public GameObject ShopMenu;
+    public GameObject shopMenu;
+    public GameObject shopKeeper;
+    public HUDController HUDManager;
+    
     void Start()
     {
+       
+        HUDManager = FindAnyObjectByType<HUDController>();
+        HUDManager.shopTouched = false;
+
         
     }
     
@@ -23,24 +30,13 @@ public class Shop : MonoBehaviour
 
         if (player != null)
         {
-            LaunchShop();
+            HUDManager.shopTouched = true;
+            Destroy(this.gameObject);
         }
 
     }
 
-    void LaunchShop()
-    {
-       
-        Time.timeScale = 0;
-        ShopMenu.SetActive(true);
-
-
-
-    }
-    public void ExitShop()
-    {
-        Time.timeScale = 1;
-        ShopMenu.SetActive(false);
-    }
+   
+    
 
 }

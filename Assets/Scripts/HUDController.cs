@@ -13,11 +13,15 @@ public class HUDController : MonoBehaviour
      public GameObject countDownBar;
      public PlayerController player;
     public GameObject pauseMenu;
+    public GameObject shopMenu;
+    public bool shopTouched;
 
     public static float lives;
     public Text liveText;
     public AudioSource gameplayMusic;
     public AudioSource pauseMusic;
+
+    
     private void Start()
     {
         lives = player.lifeCount;
@@ -55,6 +59,12 @@ public class HUDController : MonoBehaviour
         {
             Pause();
         }
+        if(shopTouched)
+        {
+            LaunchShop();
+            shopTouched = false;
+        }
+       
 
     }
     public void Pause()
@@ -65,7 +75,17 @@ public class HUDController : MonoBehaviour
         Time.timeScale = 0;
         
     }
-    
+    void LaunchShop()
+    {
+
+        Time.timeScale = 0;
+        
+        shopMenu.SetActive(true);
+
+
+
+    }
+
 
 
 }

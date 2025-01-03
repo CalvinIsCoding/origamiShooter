@@ -40,6 +40,12 @@ public class Enemy : MonoBehaviour
 	//public ShopManager shopManager;
 	public PlayerInventory playerInventory;
 
+	//Audio handling
+	public AudioSource source;
+	public AudioClip closedHiHat;
+	public AudioClip snare;
+	public AudioClip bassDrum;
+
 	
 	private int growthFrames = 30;
 	private float currentScale;
@@ -82,7 +88,7 @@ public class Enemy : MonoBehaviour
 
 	public void Die()
 	{
-		playerInventory.coins = playerInventory.coins + wavesSaved;
+		playerInventory.coins = playerInventory.coins + wavesSaved + 1;
 		Destroy(gameObject);
 		
        
@@ -180,6 +186,26 @@ public class Enemy : MonoBehaviour
 		isBlink = false;
 		
 	}
+	/*private void OnCollisionEnter2D(Collision2D collision)
+    {
+		Wall myWall = collision.gameObject.GetComponent<Wall>();
+
+		Debug.Log("collision velocity: " + collision.relativeVelocity.magnitude);
+		
+        if (myWall != null &&  collision.relativeVelocity.magnitude > 4)
+        {
+			source.PlayOneShot(snare);
+        }
+        else if (myWall != null && collision.relativeVelocity.magnitude < 4 && collision.relativeVelocity.magnitude > 2)
+        {
+			source.PlayOneShot(bassDrum);
+        }
+		else if(myWall != null && collision.relativeVelocity.magnitude < 2)
+        {
+			source.PlayOneShot(closedHiHat);
+		}
+		
+    }*/
 
 
 }

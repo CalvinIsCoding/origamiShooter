@@ -30,7 +30,7 @@ public class cEnemy : MonoBehaviour
         rb.rotation = 180 + (angleToFacePlayerRadians * (180 / Mathf.PI));
         torqueDirection = -1f;
         Instantiate(backHitBox, this.transform);
-        baseTorqueForce = 0.10f * rb.mass * Vector3.Magnitude(cEnemyObject.transform.localScale);
+        baseTorqueForce = 0.10f * rb.mass * Vector3.one.magnitude * 0.06f;
         cMovementForce = 0.1f * rb.mass * rb.drag;
     }
 
@@ -84,14 +84,18 @@ public class cEnemy : MonoBehaviour
     }
     public void grow()
     {
-        Debug.Log("I'm growing");
+        
         Vector3 scaleChange = new Vector2(0.005f,0.005f);
         cEnemyObject.transform.localScale += scaleChange;
 
-        if(rb.drag > 2f)
+        if(rb.drag > 7f)
         {
-            rb.drag -= 3f;
+            rb.drag -= 5f;
 
+        }
+        else if (rb.drag > 2f && rb.drag < 7f)
+        {
+            rb.drag = 2f;
         }
         
 

@@ -10,8 +10,10 @@ public class Wave : MonoBehaviour
     public int[] spawnEventChances = new int[5];
     public int[] spawnTypeRandomizer = new int[100];
     public int[] spawnEventRandomizer = new int[100];
+    public bool specialWave;
 
     public float testNumber = 10f;
+
     void Start()
     {
         SetSpawnChance();
@@ -52,14 +54,22 @@ public class Wave : MonoBehaviour
         for (int i = 0; i < 100; i++)
         {
             //This works identically to the above for loop but now with spawn events.
+            
             if (counter == spawnEventChances[j])
             {
                 counter = 0;
                 j++;
             }
-
-            spawnEventRandomizer[i] = j;
-            counter++;
+            if (spawnEventChances[j] > 0)
+            {
+                spawnEventRandomizer[i] = j;
+                counter++;
+            }
+            else
+            {
+                i--;
+            }
+                
 
         }
 

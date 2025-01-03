@@ -11,14 +11,27 @@ public class AirBullet: MonoBehaviour
     public GameObject bulletEnemy;
     public GameObject source;
     public int bulletDamage = 100;
-    public float knockBack = 10f;
+    public float knockBack = 0.8f;
+    public ShopItemSO fanBlades;
 
     public SpriteRenderer airBulletSprite;
+    private int shrinkFrames = 30;
+    private float currentScale;
+    private float shrinkTime;
     void Start()
     {
 
         rb.velocity = transform.right * speed;
         Destroy(airBullet, 1.0f);
+        knockBack = 0.8f;
+        shrinkTime = 0.5f;
+        
+        currentScale = 0.4f;
+        StartCoroutine(ShrinkBullets());
+    }
+    private void Update()
+    {
+        knockBack = 0.8f + (fanBlades.numberPurchased * 0.4f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -54,6 +67,18 @@ public class AirBullet: MonoBehaviour
             //Destroy(bullet);
         }
 
+
+    }
+     IEnumerator ShrinkBullets()
+    {
+        for (int i = 1; i < shrinkFrames; i++)
+        {
+            currentScale -= ((0.07f * (1f/i)));
+           
+            airBullet.transform.localScale = Vector2.one * currentScale;
+            yield return new WaitForSeconds(shrinkTime / shrinkFrames);
+        }
+        
 
     }
 }

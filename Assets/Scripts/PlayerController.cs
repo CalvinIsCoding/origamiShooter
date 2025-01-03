@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
 
     public int lifeCount;
-
+  
 
 
 
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Vector2 fanDirection;
     public float movementThrust;
+    public AudioSource FanNoise;
 
     [SerializeField]
     private float airPushBackForce = 0.12f;
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour
     public OverheatBar overheatBar;
     public float maxOverheat = 5f;
     private float coolDownFactor = 2f;
+    bool isRed;
+   
 
     //Bullet Variables
     public float currentTimeBetweenBullets;
@@ -82,11 +85,13 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        playerInventory.coins = 0;
+        playerInventory.resetToDefaults();
+        Time.timeScale = 1f;
+
         characterRigidBody = GetComponent<Rigidbody2D>();
         parryBoxCollider = parryBox.GetComponent<CapsuleCollider2D>();
         parryBox.SetActive(false);
-        lifeCount = 30;
+        lifeCount = playerInventory.lives;
         currentTimeBetweenBullets = 0f;
         isBoost = false;
 
@@ -95,7 +100,9 @@ public class PlayerController : MonoBehaviour
 
         overheatBar.SetMaxOverheat(maxOverheat);
         hitTime = 0.1f;
-       timeSlowDown = 0.30f;
+        timeSlowDown = 0.30f;
+        isRed = false;
+
 
 
 
@@ -154,6 +161,7 @@ public class PlayerController : MonoBehaviour
 
         OverHeat(overHeatTime);
         overheatBar.SetOverheat(overHeatTime);
+        StartCoroutine(SetOverheatSpriteColor(overHeatTime));
 
 
 
@@ -201,7 +209,11 @@ public class PlayerController : MonoBehaviour
             currentTimeBetweenBullets = 0;
             PushBack(mouse);
             animator.SetBool("isBlowing", true);
+            if (!FanNoise.isPlaying)
+            {
+                FanNoise.Play();
 
+            }
 
             // overHeatCounter = overHeatCounter + 1;
 
@@ -210,6 +222,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("isBlowing", false);
+            FanNoise.Pause();
         }
 
 
@@ -355,9 +368,24 @@ public class PlayerController : MonoBehaviour
     {
         fanSprite.color = Color.red;
         Time.timeScale = timeSlowDown;
+        isRed = true;
         yield return new WaitForSeconds(hitTime * timeSlowDown);
         Time.timeScale = 1f;
-        fanSprite.color = Color.white;
+        isRed = false;
+        //fanSprite.color = Color.white;
+    }
+    IEnumerator SetOverheatSpriteColor(float overHeat)
+    {
+        float colorValue = 1.3f - ((overHeat / maxOverheat));
+        Color fanHue = new Color(1, colorValue, colorValue);
+        Debug.Log(fanHue);
+        if (!isRed)
+        {
+            fanSprite.color = fanHue;
+        }
+        
+        
+        yield return new WaitForEndOfFrame();
     }
 
 

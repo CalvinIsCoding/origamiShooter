@@ -29,7 +29,7 @@ public class NinjaStar : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         playerRb = player.GetComponent<Rigidbody2D>();
-        ninjaStarMovementForce = 0.2f;
+        ninjaStarMovementForce = 0.1f;
         direction = playerRb.position - rb.position;
         //angle = Mathf.Atan2(direction.y, direction.x);
         rb.AddForceAtPosition(direction.normalized  * ninjaStarMovementForce, this.rb.position);
@@ -53,7 +53,7 @@ public class NinjaStar : MonoBehaviour
         if (!enemy.isBlown)
         {
 
-
+            direction = playerRb.position - rb.position;
 
             rb.AddForceAtPosition(direction.normalized * ninjaStarMovementForce, this.rb.position);
         }
@@ -83,7 +83,7 @@ public class NinjaStar : MonoBehaviour
         direction = Vector3.Reflect(direction.normalized, collisionNormal);
 
 
-        rb.AddForceAtPosition(direction.normalized * ninjaStarMovementForce, this.rb.position);
+        //rb.AddForceAtPosition(direction.normalized * ninjaStarMovementForce, this.rb.position);
     }
 }
 

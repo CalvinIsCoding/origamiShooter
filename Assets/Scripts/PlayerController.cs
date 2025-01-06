@@ -173,7 +173,9 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 mouseScreen = Input.mousePosition;
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
-        firePoint.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg);
+        float angleOfShooting = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x);
+        firePoint.transform.rotation = Quaternion.Euler(0, 0, angleOfShooting * Mathf.Rad2Deg);
+        firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfShooting) * 0.18f, Mathf.Sin(angleOfShooting) * 0.18f);
 
         //Animating
         animator.SetFloat("Horizontal", (mouse.x - transform.position.x));

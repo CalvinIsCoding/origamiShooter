@@ -25,6 +25,9 @@ public class FireMode : MonoBehaviour
     {
         isFireMode = false;
         requiredActivators = 3;
+        //Live activators is set to 3 here so that they don't spawn right away on the first wave. if live activators was 0 the fire activator switches would spawn immeidately upon game load.
+        liveActivators = 3;
+        StartCoroutine(ActivatorWaitTime());
 
 
     //fireCollider.enabled = true;

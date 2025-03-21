@@ -17,7 +17,7 @@ TagManager:
   - 
   - Enemies
   - bullets
-  - 
+  - FirePlace
   - 
   - 
   - 
@@ -51,4 +51,7 @@ TagManager:
     locked: 0
   - name: Player?
     uniqueID: 3491738549
+    locked: 0
+  - name: FirePlace
+    uniqueID: 1260091209
     locked: 0

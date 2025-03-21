@@ -30,7 +30,7 @@ public class EnemySpawn : MonoBehaviour
     
     public float x, y, _x, _y;
     private float lastTime;
-    public float timeStep;
+    public float timeBetweenSpawns;
 
     private float spawnEvent_timeStep;
     private int spawnEventTrigger;
@@ -69,12 +69,12 @@ public class EnemySpawn : MonoBehaviour
         //SetSpawnChance();
         
         lastTime = 0f;
-        timeStep = 1f;
+        timeBetweenSpawns = 1f;
         spawnEvent_timeStep = 0.01f;
 
         //Changes how often a spawn event occurs. wherein a large group of enemies is spawned near the player.
         //Lowering the multiplier decreases the time between spawn events.
-        spawnEvent_howOften = (int)timeStep * 5;
+        spawnEvent_howOften = (int)timeBetweenSpawns * 5;
 
         waveNumber = 0;
         xMin = -1.6f;
@@ -103,22 +103,24 @@ public class EnemySpawn : MonoBehaviour
 
     void Update()
     {
+        if (wave[waveNumber].specialWave == true && spawningComplete == false)
+        {
+            //any number would be fine as the index to spawnEventRandomizer. 5 was just chosen randomly.
+            SpawnEventSelector(wave[waveNumber].spawnEventRandomizer[5]);
+
+            spawningComplete = true;
+        }
+
         if (!fireMode.isFireMode)
         {
 
-            if (wave[waveNumber].specialWave == true && spawningComplete == false)
-            {
-
-                SpawnEventSelector(wave[waveNumber].spawnEventRandomizer[5]);
-
-                spawningComplete = true;
-            }
-            else if (lastTime - Time.time < -timeStep && wave[waveNumber].specialWave == false)
+            
+            if (lastTime - Time.time < -timeBetweenSpawns && wave[waveNumber].specialWave == false)
             {
                 Spawn();
                 lastTime = Time.time;
                 spawnEventTrigger = Random.Range(0, spawnEvent_howOften);
-                //timeStep = timeStep - 0.01f;
+                //timeBetweenSpawns = timeBetweenSpawns - 0.01f;
             }
 
             // I want "spawn events" to trigger randomly every so often. These are supposed to be more interesting things like a large group spawning 
@@ -150,10 +152,17 @@ public class EnemySpawn : MonoBehaviour
 
     // This is regular random spawn. Enemies spawn some distance away from the player at any coordinate in the arena. 
     // 
-    void Spawn()
+    void Spawn(string spawnMode = "default")
     {
-
-        numberSpawned = Random.Range(1, 4);
+        if (spawnMode == "spawnFixed")
+        {
+            numberSpawned = 1;
+        }
+        else
+        {
+            numberSpawned = Random.Range(1, 4);
+        }
+        
         typeSpawned = wave[waveNumber].spawnTypeRandomizer[Random.Range(1, 100)];
         
 
@@ -190,28 +199,31 @@ public class EnemySpawn : MonoBehaviour
     }
 
     //The Spawn Event Selector takes in an int and will activate 1 function of a spawn event.
+    //This is a way to have regular spawns but also special spawns occasionally.
     void SpawnEventSelector(int spawnEventID)
     {
         switch (spawnEventID)
-        {
+        {   
+            //nothing
             case  0:
 
                 break;
-
+            //spawn many
             case  1:
 
                 StartCoroutine(SpawnMany());
                 break;
-
+            //Boss wave
             case 2:
                 Vector2 originCoordinates = new Vector2(0, 0);
                 Instantiate(wave[waveNumber].enemy[0], originCoordinates, Quaternion.identity);
                 break;
+            //3 enemies
             case 3:
                 int i;
                 for (i = 0; i<2; i++)
                 {
-                    Spawn();
+                    Spawn("spawnFixed");
                 }
                 break;
         }

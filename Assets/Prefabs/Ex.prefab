@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.274, y: -0.424, z: 0}
-  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -121,9 +121,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06640819, y: 0.05285071}
+  m_Offset: {x: 0.05380474, y: 0.052850693}
   serializedVersion: 2
-  m_Radius: 0.12604012
+  m_Radius: 0.64909345
 --- !u!50 &2789697411693779185
 Rigidbody2D:
   serializedVersion: 4
@@ -169,8 +169,8 @@ MonoBehaviour:
   rb: {fileID: 2789697411693779185}
   angle: 0
   ninjaStarMovementForce: 0
-  initialVelocity: {x: 1, y: 1, z: 0}
-  minVelocity: 1
+  initialVelocity: {x: 0, y: 0, z: 0}
+  minVelocity: 34
 --- !u!114 &2789697411693779191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294331fce7839e0408c811e5fb7e68c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 10
   enemy: {fileID: 2789697411693779188}
   deathEffect: {fileID: 0}
   rb: {fileID: 2789697411693779185}
@@ -196,6 +196,10 @@ MonoBehaviour:
   enemySpawn: {fileID: 0}
   wavesSaved: 0
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
+  source: {fileID: 0}
+  closedHiHat: {fileID: 0}
+  snare: {fileID: 0}
+  bassDrum: {fileID: 0}
 --- !u!95 &3768618109727446638
 Animator:
   serializedVersion: 5

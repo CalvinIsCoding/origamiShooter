@@ -17,58 +17,70 @@ public class FireMode : MonoBehaviour
     [SerializeField] private FireActivator fireActivator;
     public int requiredActivators;
 
+    public float moneyMultiplierTimer;
+    public float moneyMultiplierTimeElapsed;
+    public float activatorWaitTime;
+    public bool activatorsSpawned;
+    public float moneyMultiplier;
+    public MoneyMultiplierBar moneyMultiplierBar;
+    public float lastMoneyMultiplier;
 
+    public PlayerInventory playerInventory;
 
-
+    private bool isSpecialWave;
 
     void Start()
     {
+        moneyMultiplier = 0;
+        activatorWaitTime = 3f;
+        moneyMultiplierTimer = 10f;
+        moneyMultiplierTimeElapsed = 0f;
         isFireMode = false;
         requiredActivators = 3;
-        //Live activators is set to 3 here so that they don't spawn right away on the first wave. if live activators was 0 the fire activator switches would spawn immeidately upon game load.
+        //Live activators is set to 3 here so that they don't spawn right away on the first wave. if live activators was 0 the fire activator switches would spawn immediately upon game load.
         liveActivators = 3;
-        StartCoroutine(ActivatorWaitTime());
-
+        activatorsSpawned = false;
+        StartCoroutine(DelayActivatorSpawn());
+        moneyMultiplierBar.SetMaxMoneyMultiplier(Mathf.Pow(moneyMultiplierTimer,2f));
+        
+        lastMoneyMultiplier = 0;
+        isSpecialWave = false;
 
     //fireCollider.enabled = true;
-    /* timeTillFire;
-     fireModeTime;*/
+        /* timeTillFire;
+         fireModeTime;*/
 
-    //StartCoroutine(EnableFireMode());
-}
+        //StartCoroutine(EnableFireMode());
+    }
 
     // Update is called once per frame
+    void Update()
+    {
+
+        SetMoneyMultiplier();  
+       
+    }
     void FixedUpdate()
     {
-        if (activatorCounter >= requiredActivators)
+        isSpecialWave = enemySpawn.wave[enemySpawn.waveNumber].specialWave;
+        if (isSpecialWave == true)
         {
-            //Enable fire mode
-            StartCoroutine(DisableFireMode());
             isFireMode = true;
+        }
+        
+        if (activatorCounter >= requiredActivators && isSpecialWave == false)
+        {
             
-
-            //enemySpawn.timeStep = enemySpawn.timeStep - 0.1f;
-            enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
-            player.lifeCount = player.lifeCount + 1;
-            activatorCounter = 0;
-            
+            StartFireAndEndWave();
 
         }
-        if (liveActivators == 0 )
+        if (liveActivators == 0 && isSpecialWave == false)
         {
-            for (int i = 0; i < requiredActivators; i++)
-            {
-                Vector2 activatorSpawnPosition = new Vector2(Random.Range(enemySpawn.xMin, enemySpawn.xMax), Random.Range(enemySpawn.yMin, enemySpawn.yMax));
-                // Debug.Log(activatorSpawnPosition);
-                Instantiate(fireActivator, activatorSpawnPosition, Quaternion.identity);
-                liveActivators++;
-            }
-            
-            
+            SpawnFireActivators();
         }
 
     }
-    IEnumerator EnableFireMode()
+   /* IEnumerator EnableFireMode()
     {
         yield return new WaitForSeconds(timeTillFire);
         StartCoroutine(DisableFireMode());
@@ -84,20 +96,66 @@ public class FireMode : MonoBehaviour
 
 
     }
+   */
     IEnumerator DisableFireMode()
     {
         yield return new WaitForSeconds(fireModeTime);
         // StartCoroutine(EnableFireMode());
         //fireCollider.enabled = false;
-        StartCoroutine(ActivatorWaitTime());
+        StartCoroutine(DelayActivatorSpawn());
         isFireMode = false;
 
 
     }
-    IEnumerator ActivatorWaitTime()
+    IEnumerator DelayActivatorSpawn()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(activatorWaitTime);
         liveActivators = 0;
+    }
+    void StartFireAndEndWave()
+    {
+        StartCoroutine(DisableFireMode());
+        isFireMode = true;
+
+
+        //enemySpawn.timeStep = enemySpawn.timeStep - 0.1f;
+        enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
+        player.lifeCount = player.lifeCount + 1;
+        activatorCounter = 0;
+        playerInventory.coins = playerInventory.coins + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
+        playerInventory.coinsBeforeMultiplier = 0;
+        activatorsSpawned = false;
+    }
+    void SetMoneyMultiplier()
+    {
+        if (moneyMultiplierTimeElapsed <= moneyMultiplierTimer && activatorsSpawned == true && isFireMode == false)
+        {
+
+            moneyMultiplierTimeElapsed = moneyMultiplierTimeElapsed + Time.deltaTime;
+            moneyMultiplier = Mathf.Pow((moneyMultiplierTimer - moneyMultiplierTimeElapsed), 3f) / 10f;
+            moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier);
+        }
+        else if (isFireMode == true)
+        {
+
+            playerInventory.multiplier = moneyMultiplier;
+            moneyMultiplierTimeElapsed = 0f;
+
+        }
+    }
+    void SpawnFireActivators()
+    {
+
+        for (int i = 0; i < requiredActivators; i++)
+        {
+            Vector2 activatorSpawnPosition = new Vector2(Random.Range(enemySpawn.xMin, enemySpawn.xMax), Random.Range(enemySpawn.yMin, enemySpawn.yMax));
+            // Debug.Log(activatorSpawnPosition);
+            Instantiate(fireActivator, activatorSpawnPosition, Quaternion.identity);
+            liveActivators++;
+        }
+
+        activatorsSpawned = true;
+
     }
 
 }

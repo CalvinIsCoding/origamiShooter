@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     //Overheat variables
     public bool overHeating = false;
     public int overHeatCounter;
-    public OverheatBar overheatBar;
+    //public OverheatBar overheatBar;
     public float maxOverheat = 5f;
     private float coolDownFactor = 2f;
     bool isRed;
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         overHeatCounter = 0;
         overHeatTime = 0;
 
-        overheatBar.SetMaxOverheat(maxOverheat);
+        //overheatBar.SetMaxOverheat(maxOverheat);
         hitTime = 0.1f;
         timeSlowDown = 0.30f;
         isRed = false;
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
 
 
         OverHeat(overHeatTime);
-        overheatBar.SetOverheat(overHeatTime);
+        //overheatBar.SetOverheat(overHeatTime);
         StartCoroutine(SetOverheatSpriteColor(overHeatTime));
 
 
@@ -208,6 +208,7 @@ public class PlayerController : MonoBehaviour
         {
 
             bullet = Instantiate(airBulletPrefab, firePoint.position, firePoint.rotation);
+           
             currentTimeBetweenBullets = 0;
             PushBack(mouse);
             animator.SetBool("isBlowing", true);
@@ -292,7 +293,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Boost(Collider2D _collision)
     {
-        Debug.Log("boost");
+       
         characterRigidBody.AddForce((-Player.transform.position + _collision.transform.position) * boostForce, ForceMode2D.Impulse);
 
 
@@ -346,13 +347,13 @@ public class PlayerController : MonoBehaviour
 
 
 
-        rb.AddForce(((bullet.velocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack, ForceMode2D.Impulse);
+        rb.AddForce(((bullet.velocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack, ForceMode2D.Force);
 
-        if (isBlown == false)
+       /* if (isBlown == false)
         {
             isBlown = true;
             StartCoroutine(Blowing());
-        }
+        }*/
 
 
     }
@@ -380,7 +381,7 @@ public class PlayerController : MonoBehaviour
     {
         float colorValue = 1.3f - ((overHeat / maxOverheat));
         Color fanHue = new Color(1, colorValue, colorValue);
-        Debug.Log(fanHue);
+        //Debug.Log(fanHue);
         if (!isRed)
         {
             fanSprite.color = fanHue;

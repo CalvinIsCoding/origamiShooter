@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294331fce7839e0408c811e5fb7e68c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 10
   enemy: {fileID: 5143190256192597114}
   deathEffect: {fileID: 0}
   rb: {fileID: 5143190256192597118}
@@ -195,6 +195,10 @@ MonoBehaviour:
   enemySpawn: {fileID: 0}
   wavesSaved: 0
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
+  source: {fileID: 0}
+  closedHiHat: {fileID: 0}
+  snare: {fileID: 0}
+  bassDrum: {fileID: 0}
 --- !u!114 &-5761270367902954751
 MonoBehaviour:
   m_ObjectHideFlags: 0

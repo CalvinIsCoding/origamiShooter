@@ -7,12 +7,12 @@ public class OverheatBar : MonoBehaviour
 {
     public Slider slider;
     
-    public void SetMaxOverheat(float MaxOverheat)
+    public void SetMaxMoneyMultiplier(float MaxOverheat)
     {
         slider.maxValue = MaxOverheat;
         //slider.value = overheat;
     }
-    public void SetOverheat(float overHeat)
+    public void SetMoneyMultiplierBar(float overHeat)
     {
         slider.value = overHeat;
     }

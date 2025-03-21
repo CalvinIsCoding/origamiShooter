@@ -15,6 +15,8 @@ public class AirBullet: MonoBehaviour
     public ShopItemSO fanBlades;
 
     public SpriteRenderer airBulletSprite;
+
+    //shrink bullets
     private int shrinkFrames = 30;
     private float currentScale;
     private float shrinkTime;
@@ -23,7 +25,7 @@ public class AirBullet: MonoBehaviour
 
         rb.velocity = transform.right * speed;
         Destroy(airBullet, 1.0f);
-        knockBack = 0.8f;
+        knockBack = 15f;
         shrinkTime = 0.5f;
         
         currentScale = 0.4f;
@@ -31,20 +33,21 @@ public class AirBullet: MonoBehaviour
     }
     private void Update()
     {
-        knockBack = 0.8f + (fanBlades.numberPurchased * 0.4f);
+        knockBack = 15f + (fanBlades.numberPurchased * 7.5f);
     }
-
+    
     void OnTriggerEnter2D(Collider2D collision)
     {
         Wall myWall = collision.GetComponent<Wall>();
         Enemy enemy = collision.GetComponent<Enemy>();
         EnemyProjectile enemyProjectile = collision.GetComponent<EnemyProjectile>();
         AirBullet collidedBullet = collision.GetComponent<AirBullet>();
+        Boss boss = collision.GetComponent<Boss>();
 
         if (myWall != null)
         {
             Instantiate(source, airBullet.transform.position, airBullet.transform.rotation);
-            //Destroy(bullet);
+            Destroy(collidedBullet);
             airBulletSprite.enabled = false;
         }
 
@@ -52,9 +55,13 @@ public class AirBullet: MonoBehaviour
         else if (enemy != null )
         {
             // 
-            enemy.Push(knockBack,rb,airBullet);
+            enemy.Push(knockBack/2f,rb,airBullet,rb.velocity);
             //Destroy(airBullet);
 
+        }
+        if ( boss != null)
+        {
+            boss.Push(knockBack/2f, rb, airBullet);
         }
         
         if (enemyProjectile != null)
@@ -69,7 +76,48 @@ public class AirBullet: MonoBehaviour
 
 
     }
-     IEnumerator ShrinkBullets()
+    
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        Wall myWall = collision.GetComponent<Wall>();
+        Enemy enemy = collision.GetComponent<Enemy>();
+        EnemyProjectile enemyProjectile = collision.GetComponent<EnemyProjectile>();
+        AirBullet collidedBullet = collision.GetComponent<AirBullet>();
+        Boss boss = collision.GetComponent<Boss>();
+
+        if (myWall != null)
+        {
+            Instantiate(source, airBullet.transform.position, airBullet.transform.rotation);
+            //Destroy(bullet);
+            airBulletSprite.enabled = false;
+        }
+
+
+        else if (enemy != null)
+        {
+            // 
+            enemy.Push(knockBack/2f, rb, airBullet, rb.velocity);
+            //Destroy(airBullet);
+
+        }
+        if (boss != null)
+        {
+            boss.Push(knockBack/2f, rb, airBullet);
+        }
+
+        if (enemyProjectile != null)
+        {
+            Destroy(airBullet);
+        }
+
+        else
+        {
+            //Destroy(bullet);
+        }
+
+
+    }
+    IEnumerator ShrinkBullets()
     {
         for (int i = 1; i < shrinkFrames; i++)
         {

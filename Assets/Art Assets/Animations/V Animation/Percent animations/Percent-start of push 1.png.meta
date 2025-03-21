@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 201fa614f8975ff47a6b2dcdb43810b1
+guid: 1da34783d7fdd3541bc1cf198fb724fd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,91 +116,118 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Percent-Circle Idle 1_0
+      name: Percent-start of push 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 500
         height: 500
-      alignment: 9
-      pivot: {x: 0.6844072, y: 0.3622783}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45ce17cb6efbd7a41a4394f0d0f16cd8
-      internalID: 1366172498
+      spriteID: 3f5e9a1a21c93b24db3372b714407d5c
+      internalID: -1008488883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Percent-Circle Idle 1_1
+      name: Percent-start of push 1_1
       rect:
         serializedVersion: 2
         x: 500
         y: 0
         width: 500
         height: 500
-      alignment: 9
-      pivot: {x: 0.6820729, y: 0.34360418}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a2ab6634c4cce14fb6b2f70ea269859
-      internalID: -836116586
+      spriteID: ba52f41e1583a0b4bb8b58928e392c33
+      internalID: 1296741457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Percent-Circle Idle 1_2
+      name: Percent-start of push 1_2
       rect:
         serializedVersion: 2
         x: 1000
         y: 0
         width: 500
         height: 500
-      alignment: 9
-      pivot: {x: 0.6890757, y: 0.35294124}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 008a5f04751c53b4fb60a65cba28d65b
-      internalID: 187242991
+      spriteID: 280d37f442e4973478c6514d2823749e
+      internalID: -888373585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Percent-Circle Idle 1_3
+      name: Percent-start of push 1_3
       rect:
         serializedVersion: 2
         x: 1500
         y: 0
         width: 500
         height: 500
-      alignment: 9
-      pivot: {x: 0.68440723, y: 0.34360418}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edefa8a74bb07e74cbb1a3fffbfc836f
-      internalID: -1981621311
+      spriteID: b7cbee0c894f9f64eae3833497dc93f5
+      internalID: 1967045416
       vertices: []
       indices: 
       edges: []
@@ -211,13 +243,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Percent-Circle Idle 1_0: 1366172498
-      Percent-Circle Idle 1_2: 187242991
-      Percent-Circle Idle 1_1: -836116586
-      Percent-Circle Idle 1_3: -1981621311
-  spritePackingTag: 
+      Percent-start of push 1_0: -1008488883
+      Percent-start of push 1_1: 1296741457
+      Percent-start of push 1_2: -888373585
+      Percent-start of push 1_3: 1967045416
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -29,7 +29,7 @@ public class NinjaStar : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         playerRb = player.GetComponent<Rigidbody2D>();
-        ninjaStarMovementForce = 0.1f;
+        ninjaStarMovementForce = 0.2f;
         direction = playerRb.position - rb.position;
         //angle = Mathf.Atan2(direction.y, direction.x);
         rb.AddForceAtPosition(direction.normalized  * ninjaStarMovementForce, this.rb.position);

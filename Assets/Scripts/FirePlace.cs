@@ -52,6 +52,8 @@ public class FirePlace : MonoBehaviour
 
         Enemy enemy = collision.GetComponent<Enemy>();
         PlayerController player = collision.GetComponent<PlayerController>();
+        BoxFan boxfan = collision.GetComponent<BoxFan>();
+        Boss boss = collision.GetComponent<Boss>();
 
         // Border border = collision.GetComponent<Border>();
         // Tilemap tilemap = GetComponent<Tilemap>();
@@ -67,11 +69,23 @@ public class FirePlace : MonoBehaviour
 
 
         }
-        if(player!= null)
+        if(boss != null && boss.isInvulnerable == false )
         {
-            //player.PlayerDeath();
+
+            boss.TakeDamage(10);
+            StartCoroutine(boss.bossBecomesVulnerable());
+            if (boss.health > 0)
+            {
+                StartCoroutine(boxfan.TurnSpriteRed());
+            }
+            
+        }
+        if(player!= null && fireMode.isFireMode)
+        {
+            player.PlayerDeath();
             player.Boost(collision);
         }
+       
 
         /*if (border != null)
         {
@@ -80,19 +94,25 @@ public class FirePlace : MonoBehaviour
 
 
     }
+    
 
 
-    private void OnTriggerStay2D(Collider2D collision)
+   /* private void OnTriggerStay2D(Collider2D collision)
     {
 
         Enemy enemy = collision.GetComponent<Enemy>();
+        BoxFan boxfan = collision.GetComponent<BoxFan>();
         if (enemy != null && fireMode.isFireMode)
         {
 
-            enemy.Die();
+            //enemy.TakeDamage(10);
 
 
         }
-    }
-    
+        if ( boxfan != null)
+        {
+            //StartCoroutine(boxfan.TurnSpriteRed());
+        }
+    }*/
+
 }

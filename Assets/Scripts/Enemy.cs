@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-	public int health = 100;
+	public int health = 10;
 
 	public GameObject enemy;
 	public GameObject deathEffect;
@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
 	
 	private int growthFrames = 30;
 	private float currentScale;
+	private float maxScale;
 	void Start()
     {
 		enemySpawn = FindObjectOfType<EnemySpawn>();
@@ -62,6 +63,7 @@ public class Enemy : MonoBehaviour
 
 		//StartCoroutine(Blink());
 		currentScale = 0;
+		maxScale = this.transform.localScale.x;
 		StartCoroutine(GrowIntoExistance());
 	}
     private void Update()
@@ -88,20 +90,16 @@ public class Enemy : MonoBehaviour
 
 	public void Die()
 	{
-		playerInventory.coins = playerInventory.coins + wavesSaved + 1;
+		playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
 		Destroy(gameObject);
 		
-       
-		
-
-		
 	}
-	public void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet)
+	public void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet, Vector2 airBulletVelocity)
     {
 		positionVector = new Vector2(_bullet.transform.position.x - enemy.transform.position.x, _bullet.transform.position.y - enemy.transform.position.y);
 		positionMagnitude = Mathf.Sqrt(Mathf.Pow(positionVector.x, 2) + Mathf.Pow(positionVector.y, 2));
 
-		velocityMagnitude = Mathf.Sqrt(Mathf.Pow(bullet.velocity.x, 2) + Mathf.Pow(bullet.velocity.y, 2));
+		velocityMagnitude = Mathf.Sqrt(Mathf.Pow(airBulletVelocity.x, 2) + Mathf.Pow(airBulletVelocity.y, 2));
 		if (velocityMagnitude == 0)
         {
 			velocityMagnitude = 1;
@@ -111,7 +109,10 @@ public class Enemy : MonoBehaviour
 
           
 
-		rb.AddForce(((bullet.velocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude) ) * knockBack , ForceMode2D.Impulse);
+		rb.AddForce(((airBulletVelocity / (2 * velocityMagnitude)) ) * knockBack , ForceMode2D.Force);
+		Debug.Log("Position Vetcor: " + positionVector/positionMagnitude);
+		Debug.Log("Velocity Vetcor: " + airBulletVelocity/ (2 * velocityMagnitude));
+		Debug.Log("Total Force: " + ((bullet.velocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack);
 
 		if (isBlown == false)
 		{
@@ -162,7 +163,7 @@ public class Enemy : MonoBehaviour
 		{
 			case (1):
 				sprite.color = Color.red;
-				Debug.Log("turning red");
+				
 				break;
 
 			case (2):
@@ -179,7 +180,7 @@ public class Enemy : MonoBehaviour
     {
 		for (int i = 0; i < growthFrames; i++)
 		{
-			currentScale += (0.06f / growthFrames);
+			currentScale += (maxScale / growthFrames);
 			sprite.transform.localScale = Vector2.one * currentScale;
 			yield return new WaitForSeconds(spawnDelayTime / growthFrames);
 		}

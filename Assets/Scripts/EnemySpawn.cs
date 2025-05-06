@@ -137,11 +137,11 @@ public class EnemySpawn : MonoBehaviour
             }
 
         }
-        if(waveNumber % 5 == 0 && !shopSpawned && waveNumber != 0)
+        if(waveNumber % 4 == 0 && !shopSpawned && waveNumber != 0)
         {
             SpawnShop();
         }
-        if(waveNumber % 5 != 0)
+        if(waveNumber % 4 != 0)
         {
             shopSpawned = false;
         }

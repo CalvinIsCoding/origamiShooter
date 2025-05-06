@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ff8dc3f1f0c9704e908e333efcaec18, type: 3}
-  m_Name: Battery
+  m_Name: Health
   m_EditorClassIdentifier: 
-  title: Battery
-  description: Recharges Your Meter
-  cost: 5
+  title: Health
+  description: gives the player 2 HP
+  cost: 25
+  numberPurchased: 0

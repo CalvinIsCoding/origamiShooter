@@ -46,7 +46,7 @@ public class PauseMenuController : MonoBehaviour
     }
     public void QuitButton()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Title Screen");
     }
     public void SettingsButton()
     {

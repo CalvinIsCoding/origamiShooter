@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameManager
   - Shop Menu
+  - Canvas
   layers:
   - Default
   - TransparentFX

@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject MainMenu;
-  
 
 
 
-   
+    public void Start()
+    {
+        
+    }
+
 
     public void Play()
     {

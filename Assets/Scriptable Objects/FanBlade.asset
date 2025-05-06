@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Fan Blade
   description: Adds Additional Air
-  cost: 10
+  cost: 50
   numberPurchased: 0

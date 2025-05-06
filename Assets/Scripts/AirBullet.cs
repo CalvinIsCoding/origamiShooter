@@ -13,27 +13,32 @@ public class AirBullet: MonoBehaviour
     public int bulletDamage = 100;
     public float knockBack = 0.8f;
     public ShopItemSO fanBlades;
+    public ShopItemSO biggerAir;
 
     public SpriteRenderer airBulletSprite;
 
     //shrink bullets
     private int shrinkFrames = 30;
-    private float currentScale;
+    private float DefaultAirBulletScale;
+    private float currentAirBulletScale;
     private float shrinkTime;
-    void Start()
+    void OnEnable()
     {
 
         rb.velocity = transform.right * speed;
-        Destroy(airBullet, 1.0f);
-        knockBack = 15f;
-        shrinkTime = 0.5f;
+        //Destroy(airBullet, 1.0f);
+        //Object Pooling
         
-        currentScale = 0.4f;
+        knockBack = 15f + (fanBlades.numberPurchased * 7.5f);
+        shrinkTime = 0.5f;
+        DefaultAirBulletScale = 0.4f + (biggerAir.numberPurchased * 0.1f);
+        currentAirBulletScale = DefaultAirBulletScale;
         StartCoroutine(ShrinkBullets());
+        //StartCoroutine(DeactivateBullets());
     }
     private void Update()
     {
-        knockBack = 15f + (fanBlades.numberPurchased * 7.5f);
+        
     }
     
     void OnTriggerEnter2D(Collider2D collision)
@@ -47,8 +52,10 @@ public class AirBullet: MonoBehaviour
         if (myWall != null)
         {
             Instantiate(source, airBullet.transform.position, airBullet.transform.rotation);
-            Destroy(collidedBullet);
-            airBulletSprite.enabled = false;
+            //Destroy(collidedBullet);
+            //Object pooling bullet. Send back to cache
+            airBullet.SetActive(false);
+            //airBulletSprite.enabled = false;
         }
 
         
@@ -56,7 +63,8 @@ public class AirBullet: MonoBehaviour
         {
             // 
             enemy.Push(knockBack/2f,rb,airBullet,rb.velocity);
-            //Destroy(airBullet);
+            //airBullet.SetActive(false);
+            // Destroy(airBullet);
 
         }
         if ( boss != null)
@@ -66,7 +74,8 @@ public class AirBullet: MonoBehaviour
         
         if (enemyProjectile != null)
         {
-            Destroy(airBullet);
+            //Destroy(airBullet);
+            airBullet.SetActive(false);
         }
 
         else
@@ -89,6 +98,7 @@ public class AirBullet: MonoBehaviour
         {
             Instantiate(source, airBullet.transform.position, airBullet.transform.rotation);
             //Destroy(bullet);
+            airBullet.SetActive(false);
             airBulletSprite.enabled = false;
         }
 
@@ -107,7 +117,8 @@ public class AirBullet: MonoBehaviour
 
         if (enemyProjectile != null)
         {
-            Destroy(airBullet);
+            //Destroy(airBullet);
+            airBullet.SetActive(false);
         }
 
         else
@@ -119,14 +130,22 @@ public class AirBullet: MonoBehaviour
     }
     IEnumerator ShrinkBullets()
     {
+        
         for (int i = 1; i < shrinkFrames; i++)
         {
-            currentScale -= ((0.07f * (1f/i)));
+            currentAirBulletScale -= ((DefaultAirBulletScale/5.7f * (1f/i)));
            
-            airBullet.transform.localScale = Vector2.one * currentScale;
+            airBullet.transform.localScale = Vector2.one * currentAirBulletScale;
             yield return new WaitForSeconds(shrinkTime / shrinkFrames);
         }
         
 
+    }
+    IEnumerator DeactivateBullets()
+    {
+        //Want the bullets to deactivate no matter what after a certain amount of time to limit range etc. SetActive
+        //Doesn't have a method for this.
+        yield return new WaitForSeconds(1.0f);
+        airBullet.SetActive(false);
     }
 }

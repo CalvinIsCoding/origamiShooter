@@ -11,7 +11,7 @@ public class HUDController : MonoBehaviour
      public GameObject oneLife;
 
      public GameObject countDownBar;
-     public PlayerController player;
+     public PlayerInventory player;
     public GameObject pauseMenu;
     public GameObject shopMenu;
     public bool shopTouched;
@@ -24,14 +24,14 @@ public class HUDController : MonoBehaviour
     
     private void Start()
     {
-        lives = player.lifeCount;
+        lives = player.lives;
       //  gameplayMusic.Play();
       //  gameplayMusic.loop = true;
     }
 
     void Update()
     {
-        lives = player.lifeCount;
+        lives = player.lives;
         liveText.text = lives.ToString() + " Lives";
         /* if(player.lifeCount == 3)
          {
@@ -78,11 +78,11 @@ public class HUDController : MonoBehaviour
     void LaunchShop()
     {
 
-        Time.timeScale = 0;
+        
         
         shopMenu.SetActive(true);
 
-
+        Time.timeScale = 0;
 
     }
 

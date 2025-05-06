@@ -82,8 +82,8 @@ public class FirePlace : MonoBehaviour
         }
         if(player!= null && fireMode.isFireMode)
         {
-            player.PlayerDeath();
-            player.Boost(collision);
+            //player.PlayerDeath();
+           // player.Boost(collision);
         }
        
 

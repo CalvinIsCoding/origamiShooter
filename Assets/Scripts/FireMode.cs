@@ -41,7 +41,7 @@ public class FireMode : MonoBehaviour
         liveActivators = 3;
         activatorsSpawned = false;
         StartCoroutine(DelayActivatorSpawn());
-        moneyMultiplierBar.SetMaxMoneyMultiplier(Mathf.Pow(moneyMultiplierTimer,2f));
+        moneyMultiplierBar.SetMaxMoneyMultiplier(10f);
         
         lastMoneyMultiplier = 0;
         isSpecialWave = false;
@@ -104,7 +104,7 @@ public class FireMode : MonoBehaviour
         //fireCollider.enabled = false;
         StartCoroutine(DelayActivatorSpawn());
         isFireMode = false;
-
+        playerInventory.coins = playerInventory.coins + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
 
     }
     IEnumerator DelayActivatorSpawn()
@@ -122,7 +122,7 @@ public class FireMode : MonoBehaviour
         enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
         player.lifeCount = player.lifeCount + 1;
         activatorCounter = 0;
-        playerInventory.coins = playerInventory.coins + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
+        //playerInventory.coins = playerInventory.coins + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
         playerInventory.coinsBeforeMultiplier = 0;
         activatorsSpawned = false;
     }
@@ -132,7 +132,7 @@ public class FireMode : MonoBehaviour
         {
 
             moneyMultiplierTimeElapsed = moneyMultiplierTimeElapsed + Time.deltaTime;
-            moneyMultiplier = Mathf.Pow((moneyMultiplierTimer - moneyMultiplierTimeElapsed), 3f) / 10f;
+            moneyMultiplier = Mathf.Pow((moneyMultiplierTimer - moneyMultiplierTimeElapsed), 1f) / (moneyMultiplierTimer /10f);
             moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier);
         }
         else if (isFireMode == true)
@@ -145,17 +145,43 @@ public class FireMode : MonoBehaviour
     }
     void SpawnFireActivators()
     {
+        Vector2[] activatorSpawnPositions = new Vector2[3];
+
 
         for (int i = 0; i < requiredActivators; i++)
         {
-            Vector2 activatorSpawnPosition = new Vector2(Random.Range(enemySpawn.xMin, enemySpawn.xMax), Random.Range(enemySpawn.yMin, enemySpawn.yMax));
-            // Debug.Log(activatorSpawnPosition);
-            Instantiate(fireActivator, activatorSpawnPosition, Quaternion.identity);
+            activatorSpawnPositions[i] = new Vector2(Random.Range(enemySpawn.xMin, enemySpawn.xMax), Random.Range(enemySpawn.yMin, enemySpawn.yMax));
+
+            if (i > 0 && (Mathf.Abs(activatorSpawnPositions[i].x - activatorSpawnPositions[i - 1].x) < 0.2 || Mathf.Abs(activatorSpawnPositions[i].y - activatorSpawnPositions[i - 1].y) < 0.1))
+            {
+                activatorSpawnPositions[i].x = activatorSpawnPositions[i-1].x * -1;
+                activatorSpawnPositions[i].y = activatorSpawnPositions[i-1].y * -1;
+            }
+            
             liveActivators++;
         }
+        for (int i = 0; i < requiredActivators; i++)
+        {
+            Instantiate(fireActivator, activatorSpawnPositions[i], Quaternion.identity);
+        }
+
 
         activatorsSpawned = true;
 
     }
 
+    //zones... in an effort to ensure that the fire activators are spaced out... I think it's too complicated.
+   /*
+    void generateZones(float xMin, float xMax, float yMin, float Ymax,int numberOfZones)
+    {
+        float[,,] zoneList = new float[4,numberOfZones,3];
+        //[xmin of zone,zone number,zone set number] 
+        //zone 1 horizontal
+        zoneList[0,0,0] = xMin;
+        zoneList[1, 0, 0] = xMin / numberOfZones;
+        zoneList[2, 0, 0] = xMin;
+        zoneList[3, 0, 0] = xMin;
+
+    }
+   */
 }

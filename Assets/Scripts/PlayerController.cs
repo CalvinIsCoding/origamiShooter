@@ -36,8 +36,9 @@ public class PlayerController : MonoBehaviour
     public float movementThrust;
     public AudioSource FanNoise;
 
-    [SerializeField]
-    private float airPushBackForce = 0.12f;
+    
+    public float airPushBackForce;
+    private float airPushBackForceDefault;
 
     //Overheat variables
     public bool overHeating = false;
@@ -66,6 +67,11 @@ public class PlayerController : MonoBehaviour
 
     public PlayerInventory playerInventory;
 
+    public ShopItemSO speedFromAir;
+    public ShopItemSO health;
+    public ShopItemSO fanBlade;
+    public ShopItemSO biggerAir;
+
     //Push() function purely for bosses or other fan enemies to push the player around.
     Vector2 positionVector;
     private float velocityMagnitude;
@@ -86,6 +92,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerInventory.resetToDefaults();
+        health.resetToDefaults();
+        fanBlade.resetToDefaults();
+        biggerAir.resetToDefaults();
+        speedFromAir.resetToDefaults();
+
         Time.timeScale = 1f;
 
         characterRigidBody = GetComponent<Rigidbody2D>();
@@ -94,7 +105,8 @@ public class PlayerController : MonoBehaviour
         lifeCount = playerInventory.lives;
         currentTimeBetweenBullets = 0f;
         isBoost = false;
-
+        airPushBackForceDefault = 0.11f;
+        airPushBackForce = airPushBackForceDefault;
         overHeatCounter = 0;
         overHeatTime = 0;
 
@@ -111,6 +123,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        airPushBackForce = airPushBackForceDefault + (speedFromAir.numberPurchased * 0.2f);
+
         //Movement
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
@@ -207,8 +222,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Fire1") && (currentTimeBetweenBullets - timePerBullet) > 0 && !_DestroyMode.isDestroyMode && !overHeating)
         {
 
-            bullet = Instantiate(airBulletPrefab, firePoint.position, firePoint.rotation);
-           
+            //bullet = Instantiate(airBulletPrefab, firePoint.position, firePoint.rotation);
+            bullet = ObjectPool.SharedInstance.GetPooledObject();
+            if (bullet != null)
+            {
+                bullet.transform.position = firePoint.transform.position;
+                bullet.transform.rotation = firePoint.transform.rotation;
+                bullet.SetActive(true);
+            }
+
+
+
             currentTimeBetweenBullets = 0;
             PushBack(mouse);
             animator.SetBool("isBlowing", true);
@@ -272,14 +296,14 @@ public class PlayerController : MonoBehaviour
      }*/
     public void PlayerDeath()
     {
-        lifeCount--;
+        playerInventory.lives--;
         StartCoroutine(TurnSpriteRed());
 
 
 
-        if (lifeCount <= 0)
+        if (playerInventory.lives <= 0)
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("Title Screen");
 
 
         }

@@ -12,7 +12,7 @@ public class PlayerInventory : ScriptableObject
     public float multiplier;
 
     [SerializeField] private int defaultCoins = 0;
-    [SerializeField] private int defaultLives = 10;
+    [SerializeField] private int defaultLives;
 
     public void resetToDefaults()
     {

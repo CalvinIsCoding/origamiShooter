@@ -14,6 +14,7 @@ public class ShopManager : MonoBehaviour
     public ShopButton[] shopButton;
     public GameObject[] shopButtonGameObject;
     public Button[] buttons;
+    public Image[] images;
 
     public GameObject ShopMenu;
 
@@ -22,7 +23,7 @@ public class ShopManager : MonoBehaviour
         //playerInventory.coins = 0;
         //coinUI.text = "Coins: " + coins.ToString();
         coinUI.text = "Coins: " + playerInventory.coins.ToString();
-
+        
 
         for (int i = 0; i < shopItemSO.Length; i++)
         {
@@ -57,6 +58,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < (shopItemSO.Length); i++)
         { 
              shopButton[i].TitleText.text = shopItemSO[i].title;
+            //shopButton[i].ShopImage = images[i];
             // shopButton[i].PriceText.text = shopItemSO[i].cost.ToString();
             
 
@@ -73,6 +75,11 @@ public class ShopManager : MonoBehaviour
             coinUI.text = "Coins: " + playerInventory.coins.ToString();
             CheckPurchaseable();
             shopItemSO[btnNo].numberPurchased++;
+        }
+        if (shopItemSO[btnNo].title == "Health")
+        {
+            Debug.Log("item type: " + shopItemSO[btnNo].title);
+            playerInventory.lives++;
         }
     }
 

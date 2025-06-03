@@ -133,11 +133,11 @@ public class FireMode : MonoBehaviour
 
             moneyMultiplierTimeElapsed = moneyMultiplierTimeElapsed + Time.deltaTime;
             moneyMultiplier = Mathf.Pow((moneyMultiplierTimer - moneyMultiplierTimeElapsed), 1f) / (moneyMultiplierTimer /10f);
-            moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier);
+            moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier,isFireMode);
         }
         else if (isFireMode == true)
         {
-
+            moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier,isFireMode);
             playerInventory.multiplier = moneyMultiplier;
             moneyMultiplierTimeElapsed = 0f;
 

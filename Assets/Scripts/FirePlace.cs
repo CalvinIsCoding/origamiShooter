@@ -66,7 +66,7 @@ public class FirePlace : MonoBehaviour
 
             //For Now just for testing purposes
             enemy.TakeDamage(10);
-
+            //Debug.Log("enemy touching fireplace");
 
         }
         if(boss != null && boss.isInvulnerable == false )

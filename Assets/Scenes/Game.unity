@@ -854,7 +854,7 @@ RectTransform:
   m_Father: {fileID: 1712130264}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000091552734, y: -9.9410095}
   m_SizeDelta: {x: 32.036, y: 56.715}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3721,11 +3721,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 489665811}
   moneyMultiplierText: {fileID: 1700158926}
-  enemiesKilledText: {fileID: 0}
+  enemiesKilledText: {fileID: 2085174456}
   animator: {fileID: 329452731}
   multiplierInteger: 0
   enemiesKilled: 0
   numberOfEnemiesSpawned: 0
+  gameStats: {fileID: 11400000, guid: 176c2fbf11a28a540b2689361b73a3c9, type: 2}
+  sliderFill: {fileID: 1750847679}
 --- !u!1 &492258830
 GameObject:
   m_ObjectHideFlags: 0
@@ -9022,6 +9024,8 @@ MonoBehaviour:
   multiplierInteger: 0
   enemiesKilled: 0
   numberOfEnemiesSpawned: 0
+  gameStats: {fileID: 0}
+  sliderFill: {fileID: 0}
 --- !u!114 &1239356283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9794,6 +9798,7 @@ MonoBehaviour:
   yMax: 0.8
   playerPosition: {fileID: 605639851}
   shop: {fileID: 1947870743713967000, guid: 11c81f95291e82e498105835386fe5da, type: 3}
+  gameStats: {fileID: 11400000, guid: 176c2fbf11a28a540b2689361b73a3c9, type: 2}
 --- !u!4 &1390667150
 Transform:
   m_ObjectHideFlags: 0
@@ -9890,6 +9895,7 @@ MonoBehaviour:
   moneyMultiplierBar: {fileID: 489665814}
   lastMoneyMultiplier: 0
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
+  gameStats: {fileID: 11400000, guid: 176c2fbf11a28a540b2689361b73a3c9, type: 2}
 --- !u!114 &1390667155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10012,8 +10018,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 133705569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.477, y: 0}
+  m_AnchorMax: {x: 0.477, y: 1}
   m_AnchoredPosition: {x: -0.000061035156, y: 27.360962}
   m_SizeDelta: {x: 22.8973, y: -54.722}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10563,7 +10569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1444070924
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14657,7 +14663,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 118.73173, w: -31.829084}
+  m_margin: {x: 0, y: 0, z: -0.5775299, w: -31.829084}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -26,6 +26,7 @@ public class FireMode : MonoBehaviour
     public float lastMoneyMultiplier;
 
     public PlayerInventory playerInventory;
+    public GameStatsScript gameStats;
 
     private bool isSpecialWave;
 
@@ -45,6 +46,7 @@ public class FireMode : MonoBehaviour
         
         lastMoneyMultiplier = 0;
         isSpecialWave = false;
+        gameStats.ResetEnemyCounters();
 
     //fireCollider.enabled = true;
         /* timeTillFire;
@@ -105,6 +107,8 @@ public class FireMode : MonoBehaviour
         StartCoroutine(DelayActivatorSpawn());
         isFireMode = false;
         playerInventory.coins = playerInventory.coins + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
+        gameStats.EndOfWave(enemySpawn.waveNumber);
+        enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
 
     }
     IEnumerator DelayActivatorSpawn()
@@ -119,7 +123,7 @@ public class FireMode : MonoBehaviour
 
 
         //enemySpawn.timeStep = enemySpawn.timeStep - 0.1f;
-        enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
+        
         player.lifeCount = player.lifeCount + 1;
         activatorCounter = 0;
         //playerInventory.coins = playerInventory.coins + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);

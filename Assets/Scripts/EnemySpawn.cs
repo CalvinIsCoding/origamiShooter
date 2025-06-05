@@ -35,7 +35,7 @@ public class EnemySpawn : MonoBehaviour
     private float spawnEvent_timeStep;
     private int spawnEventTrigger;
   
-    private float numberSpawned;
+    private int numberSpawned;
     private int spawnEvent_howOften;
     private bool spawningComplete;
 
@@ -59,6 +59,9 @@ public class EnemySpawn : MonoBehaviour
 
     public GameObject shop;
     private bool shopSpawned;
+
+    public GameStatsScript gameStats;
+  
 
     void Start()
     {
@@ -85,6 +88,7 @@ public class EnemySpawn : MonoBehaviour
         spawningComplete = false;
 
         shopSpawned = false;
+        
 
     }
 
@@ -194,7 +198,10 @@ public class EnemySpawn : MonoBehaviour
                 Instantiate(wave[waveNumber].enemy[typeSpawned], spawnPos, Quaternion.identity * wave[waveNumber].enemy[typeSpawned].transform.localRotation);
             }
             
+            
         }
+        gameStats.enemiesSpawnedThisWave = gameStats.enemiesSpawnedThisWave + numberSpawned;
+        gameStats.totalEnemiesSpawned = gameStats.totalEnemiesSpawned + numberSpawned;
 
     }
 

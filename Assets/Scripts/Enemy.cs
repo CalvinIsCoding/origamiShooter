@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
 	public int wavesSaved;
 	//public ShopManager shopManager;
 	public PlayerInventory playerInventory;
+	public GameStatsScript gameStats;
 
 	//Audio handling
 	public AudioSource source;
@@ -91,6 +92,7 @@ public class Enemy : MonoBehaviour
 	public void Die()
 	{
 		playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
+		gameStats.enemiesKilledThisWave++;
 		Destroy(gameObject);
 		
 	}
@@ -110,9 +112,9 @@ public class Enemy : MonoBehaviour
           
 
 		rb.AddForce(((airBulletVelocity / (2 * velocityMagnitude)) ) * knockBack , ForceMode2D.Force);
-		Debug.Log("Position Vetcor: " + positionVector/positionMagnitude);
-		Debug.Log("Velocity Vetcor: " + airBulletVelocity/ (2 * velocityMagnitude));
-		Debug.Log("Total Force: " + ((bullet.velocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack);
+		//Debug.Log("Position Vetcor: " + positionVector/positionMagnitude);
+		//Debug.Log("Velocity Vetcor: " + airBulletVelocity/ (2 * velocityMagnitude));
+		//Debug.Log("Total Force: " + ((bullet.velocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack);
 
 		if (isBlown == false)
 		{

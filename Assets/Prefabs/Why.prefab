@@ -115,6 +115,7 @@ MonoBehaviour:
   enemySpawn: {fileID: 0}
   wavesSaved: 0
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
+  gameStats: {fileID: 11400000, guid: 176c2fbf11a28a540b2689361b73a3c9, type: 2}
   source: {fileID: 7304284125625985692}
   closedHiHat: {fileID: 8300000, guid: 28ea569996d25fd4db9006d8fd3bf8fd, type: 3}
   snare: {fileID: 8300000, guid: 951a6c7cd789a694ea2f01b1335e6242, type: 3}

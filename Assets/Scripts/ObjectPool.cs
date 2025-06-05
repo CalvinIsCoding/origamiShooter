@@ -30,12 +30,12 @@ public class ObjectPool : MonoBehaviour
         {
             if (!pooledObjects[i].activeInHierarchy)
             {
-                Debug.Log("returning object");
+                
                 return pooledObjects[i];
                 
             }
         }
-        Debug.Log("returning nothing");
+        
         return null;
     }
 

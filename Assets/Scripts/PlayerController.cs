@@ -263,7 +263,7 @@ public class PlayerController : MonoBehaviour
         EnemyProjectile enemyProjectile = collision.gameObject.GetComponent<EnemyProjectile>();
         if (enemy != null && !enemy.isBlink)
         {
-            Destroy(enemy.gameObject);
+            enemy.TakeDamage(100);
 
             PlayerDeath();
 

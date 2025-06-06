@@ -28,12 +28,14 @@ public class MoneyMultiplierBar : MonoBehaviour
         if (!isFireMode)
         {
             sliderFill.color = Color.red;
+            slider.maxValue = 10f;
             slider.value = multiplier;
+
             moneyMultiplierText.text = multiplier.ToString();
             multiplierInteger = (int)multiplier;
             animator.SetInteger("Multiplier", multiplierInteger);
             enemiesKilledText.text = gameStats.enemiesKilledThisWave.ToString();
-            Debug.Log("enemies Killed " + gameStats.enemiesKilledThisWave);
+           // Debug.Log("max multiplier" + );
         }
         if (isFireMode)
         {

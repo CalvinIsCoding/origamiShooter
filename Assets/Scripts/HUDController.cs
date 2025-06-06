@@ -21,16 +21,20 @@ public class HUDController : MonoBehaviour
     public AudioSource gameplayMusic;
     public AudioSource pauseMusic;
 
+    public Slider livesSlider;
+
     
     private void Start()
     {
         lives = player.lives;
+        livesSlider.maxValue = player.lives;
       //  gameplayMusic.Play();
       //  gameplayMusic.loop = true;
     }
 
     void Update()
     {
+        livesSlider.value = player.lives;
         lives = player.lives;
         liveText.text = lives.ToString() + " Lives";
         /* if(player.lifeCount == 3)

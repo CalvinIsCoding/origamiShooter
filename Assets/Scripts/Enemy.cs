@@ -93,6 +93,7 @@ public class Enemy : MonoBehaviour
 	{
 		playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
 		gameStats.enemiesKilledThisWave++;
+		gameStats.totalEnemiesKilled++;
 		Destroy(gameObject);
 		
 	}

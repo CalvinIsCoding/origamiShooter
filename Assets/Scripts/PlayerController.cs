@@ -34,9 +34,14 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Vector2 fanDirection;
     public float movementThrust;
-    public AudioSource FanNoise;
 
-    
+    public AudioSource FanNoise;
+    public AudioSource MovementNoise;
+
+    public AudioClip fanSlidingNoise;
+    public AudioClip fanBlowingNoise;
+
+
     public float airPushBackForce;
     private float airPushBackForceDefault;
 
@@ -115,10 +120,11 @@ public class PlayerController : MonoBehaviour
         timeSlowDown = 0.30f;
         isRed = false;
 
+        //MovementNoise.clip = fanSlidingNoise;
+        MovementNoise.Play();
 
 
-
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -132,8 +138,10 @@ public class PlayerController : MonoBehaviour
         currentVelocity = characterRigidBody.velocity;
 
 
+        MovementNoise.volume = Mathf.Min(currentVelocity.magnitude,1f);
+        
         //Aiming
-      
+
 
 
         currentTimeBetweenBullets = currentTimeBetweenBullets + Time.deltaTime;
@@ -196,7 +204,18 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Horizontal", (mouse.x - transform.position.x));
         animator.SetFloat("Vertical", (mouse.y - transform.position.y));
 
-
+        Debug.Log("current Vleocity" + currentVelocity.magnitude);
+        //MovementNoise.volume = currentVelocity.magnitude;
+        /*
+        if (currentVelocity.magnitude > 0 && !MovementNoise.isPlaying)
+        {
+            MovementNoise.Play();
+        }
+        else
+        {
+            MovementNoise.Pause();
+        }
+        */
 
         if (!isBoost)
         {
@@ -303,7 +322,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerInventory.lives <= 0)
         {
-            SceneManager.LoadScene("Title Screen");
+            SceneManager.LoadScene("Game End Screen");
 
 
         }

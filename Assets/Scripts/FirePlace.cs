@@ -15,9 +15,15 @@ public class FirePlace : MonoBehaviour
 
     public EnemySpawn enemySpawn;
     public GameObject flameAnimations;
-    
-    
-   // public PlayerInventory playerInventory;
+
+    public AudioSource flameAudio;
+    public AudioClip[] flameErupt = new AudioClip[4];
+    private int soundSelect;
+    private float timeSinceLastSound;
+    private float soundWaitTime;
+
+
+    // public PlayerInventory playerInventory;
 
     void Start()
     {
@@ -25,6 +31,7 @@ public class FirePlace : MonoBehaviour
         //Border.instance.DestroyBorder(transform.position, radius);
         fireCollider.enabled = true;
         flameAnimations.SetActive(false);
+        soundWaitTime = 0.01f;
 
 
         //StartCoroutine(EnableFireMode());
@@ -41,9 +48,9 @@ public class FirePlace : MonoBehaviour
             //fireHitBox.color = Color.clear;
             flameAnimations.SetActive(false);
         }
-        
 
-        
+        timeSinceLastSound = timeSinceLastSound + Time.deltaTime;
+
     }
 
 
@@ -65,8 +72,26 @@ public class FirePlace : MonoBehaviour
             //enemy.Die();
 
             //For Now just for testing purposes
-            enemy.TakeDamage(10);
+           
+            soundSelect = Random.Range(0, 3);
+
+            if (timeSinceLastSound >= soundWaitTime)
+            {
+
+
+                Debug.Log("sound Select" + soundSelect);
+                    flameAudio.PlayOneShot(flameErupt[soundSelect]);
+                  
+                  
+                    flameAudio.pitch = Random.Range(0.75f, 1.25f);
+                Debug.Log("pitch" + flameAudio.pitch);
+
+
+                timeSinceLastSound = 0f;
+
+            }
             //Debug.Log("enemy touching fireplace");
+            enemy.TakeDamage(10);
 
         }
         if(boss != null && boss.isInvulnerable == false )

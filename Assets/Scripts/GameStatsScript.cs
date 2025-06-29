@@ -9,6 +9,8 @@ public class GameStatsScript : ScriptableObject
     public int totalEnemiesKilled;
     public int enemiesSpawnedThisWave;
     public int totalEnemiesSpawned;
+    public int totalMoneyEarned;
+    public int wavesSurvived;
     public int[] enemiesKilledEachWave = new int[100];
 
     public void ResetEnemyCounters()
@@ -17,6 +19,8 @@ public class GameStatsScript : ScriptableObject
         totalEnemiesKilled = 0;
         totalEnemiesSpawned = 0;
         enemiesSpawnedThisWave = 0;
+        totalMoneyEarned = 0;
+        wavesSurvived = 0;
         for (int i = 0; i < 99; i++)
         {
             enemiesKilledEachWave[i] = 0;

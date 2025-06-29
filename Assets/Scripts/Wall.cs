@@ -7,7 +7,7 @@ public class Wall : MonoBehaviour
     // Start is called before the first frame update
 
     public AudioSource wallAudio;
-    public AudioClip snare;
+    public AudioClip[] pageFlip = new AudioClip[7];
     public AudioClip bassDrum;
     public AudioClip closedHiHat;
 
@@ -18,11 +18,12 @@ public class Wall : MonoBehaviour
     private float soundWaitTime;
 
     private int collisionCount;
+    private int soundSelect;
 
 
     void Start()
     {
-        soundWaitTime = 0.05f;
+        soundWaitTime = 0.01f;
         collisionCount = 2;
     }
 
@@ -55,30 +56,19 @@ public class Wall : MonoBehaviour
             timeSinceLastHiHat = 0f;
         }
         */
-
+        soundSelect = Random.Range(0, 6);
         if (timeSinceLastSound >= soundWaitTime)
         {
 
             if (enemy != null )
             {
-                wallAudio.PlayOneShot(closedHiHat);
+                wallAudio.PlayOneShot(pageFlip[soundSelect]);
                 timeSinceLastSnare = 0f;
                 collisionCount++;
+                wallAudio.pitch = Random.Range(0.75f, 1.25f);
 
             }
-           /* else if (enemy != null && collisionCount % 4 == 0)
-            {
-                wallAudio.PlayOneShot(bassDrum);
-                timeSinceLastBassDrum = 0f;
-                collisionCount++;
-            }
-            else if (enemy != null && (collisionCount % 4 == 1 || collisionCount % 4 == 3))
-            {
-                wallAudio.PlayOneShot(closedHiHat);
-                timeSinceLastHiHat = 0f;
-                collisionCount++;
-            }
-           */
+       
             timeSinceLastSound = 0f;
            
         }

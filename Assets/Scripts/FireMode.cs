@@ -107,8 +107,10 @@ public class FireMode : MonoBehaviour
         StartCoroutine(DelayActivatorSpawn());
         isFireMode = false;
         playerInventory.coins = playerInventory.coins + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
+        gameStats.totalMoneyEarned = gameStats.totalMoneyEarned + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
         gameStats.EndOfWave(enemySpawn.waveNumber);
         enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
+        gameStats.wavesSurvived++;
 
     }
     IEnumerator DelayActivatorSpawn()

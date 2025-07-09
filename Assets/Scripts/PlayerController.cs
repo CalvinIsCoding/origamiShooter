@@ -36,10 +36,11 @@ public class PlayerController : MonoBehaviour
     public float movementThrust;
 
     public AudioSource FanNoise;
-    public AudioSource MovementNoise;
+    public AudioSource FanSoundFX;
 
     public AudioClip fanSlidingNoise;
     public AudioClip fanBlowingNoise;
+    public AudioClip injuryNoise;
 
 
     public float airPushBackForce;
@@ -120,8 +121,8 @@ public class PlayerController : MonoBehaviour
         timeSlowDown = 0.30f;
         isRed = false;
 
-        //MovementNoise.clip = fanSlidingNoise;
-        MovementNoise.Play();
+        //FanSoundFX.clip = fanSlidingNoise;
+        //FanSoundFX.Play();
 
 
     }
@@ -138,7 +139,7 @@ public class PlayerController : MonoBehaviour
         currentVelocity = characterRigidBody.velocity;
 
 
-        MovementNoise.volume = Mathf.Min(currentVelocity.magnitude,1f);
+        //FanSoundFX.volume = Mathf.Min(Mathf.Pow(currentVelocity.magnitude,3),0.5f);
         
         //Aiming
 
@@ -204,16 +205,16 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Horizontal", (mouse.x - transform.position.x));
         animator.SetFloat("Vertical", (mouse.y - transform.position.y));
 
-        Debug.Log("current Vleocity" + currentVelocity.magnitude);
-        //MovementNoise.volume = currentVelocity.magnitude;
+       // Debug.Log("current Vleocity" + currentVelocity.magnitude);
+        //FanSoundFX.volume = currentVelocity.magnitude;
         /*
-        if (currentVelocity.magnitude > 0 && !MovementNoise.isPlaying)
+        if (currentVelocity.magnitude > 0 && !FanSoundFX.isPlaying)
         {
-            MovementNoise.Play();
+            FanSoundFX.Play();
         }
         else
         {
-            MovementNoise.Pause();
+            FanSoundFX.Pause();
         }
         */
 
@@ -415,6 +416,8 @@ public class PlayerController : MonoBehaviour
         fanSprite.color = Color.red;
         Time.timeScale = timeSlowDown;
         isRed = true;
+        FanSoundFX.pitch = Random.Range(0.80f, 1.20f);
+        FanSoundFX.PlayOneShot(injuryNoise);
         yield return new WaitForSeconds(hitTime * timeSlowDown);
         Time.timeScale = 1f;
         isRed = false;

@@ -101,9 +101,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireMode: {fileID: 0}
-  collision: {fileID: 4756198345167344552}
+  outsideCollider: {fileID: 0}
   animator: {fileID: -8785700098513055167}
-  SwitchSounds: {fileID: -6282433029633754365}
+  SwitchSound: {fileID: -6282433029633754365}
+  switchClicks:
+  - {fileID: 8300000, guid: a86c62611c4568c4e83bda76b48b6f00, type: 3}
+  - {fileID: 8300000, guid: b629edf33aac87f458e8390d14b2186c, type: 3}
+  - {fileID: 8300000, guid: 9e0db7d18cb8159428cd2b66bc653894, type: 3}
+  gameStats: {fileID: 11400000, guid: 176c2fbf11a28a540b2689361b73a3c9, type: 2}
   fireActivatorCollider: {fileID: 4756198345167344552}
 --- !u!58 &4756198345167344552
 CircleCollider2D:

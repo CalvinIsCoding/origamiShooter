@@ -21,6 +21,7 @@ public class FirePlace : MonoBehaviour
     private int soundSelect;
     private float timeSinceLastSound;
     private float soundWaitTime;
+    public GameStatsScript gameStats;
 
 
     // public PlayerInventory playerInventory;
@@ -83,7 +84,7 @@ public class FirePlace : MonoBehaviour
                     flameAudio.PlayOneShot(flameErupt[soundSelect]);
                   
                   
-                    flameAudio.pitch = Random.Range(0.75f, 1.25f);
+                    flameAudio.pitch = (float)gameStats.enemiesKilledThisWave/(float)gameStats.enemiesSpawnedThisWave + 0.2f;
                 Debug.Log("pitch" + flameAudio.pitch);
 
 

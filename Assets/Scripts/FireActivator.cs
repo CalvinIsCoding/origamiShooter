@@ -7,12 +7,16 @@ public class FireActivator : MonoBehaviour
     public FireMode fireMode;
     public Collider2D outsideCollider;
     public Animator animator;
-    public AudioSource SwitchSounds;
+    public AudioSource SwitchSound;
+    public AudioClip[] switchClicks = new AudioClip[3];
+    public GameStatsScript gameStats;
+
     public CircleCollider2D fireActivatorCollider;
     //public FireActivator fireActivator;
     void Start()
     {
         fireMode = FindObjectOfType<FireMode>();
+       
     }
 
     // Update is called once per frame
@@ -27,7 +31,12 @@ public class FireActivator : MonoBehaviour
             fireMode.activatorCounter++;
             animator.SetBool("SwitchActivated", true);
             fireActivatorCollider.enabled = false;
-            SwitchSounds.Play();
+
+            SwitchSound = player.FanSoundFX;
+            SwitchSound.pitch = 0.9f + (0.05f * gameStats.wavesSurvived);
+            SwitchSound.PlayOneShot(switchClicks[fireMode.activatorCounter - 1]);
+
+
             Destroy(gameObject,0.550f);
 
            

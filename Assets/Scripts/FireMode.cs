@@ -28,6 +28,9 @@ public class FireMode : MonoBehaviour
     public PlayerInventory playerInventory;
     public GameStatsScript gameStats;
 
+    public AudioSource globalAudio;
+    public AudioClip fireStarting;
+    public AudioClip fireEnding;
     private bool isSpecialWave;
 
     void Start()
@@ -74,6 +77,8 @@ public class FireMode : MonoBehaviour
         {
             
             StartFireAndEndWave();
+            
+           
 
         }
         if (liveActivators == 0 && isSpecialWave == false)
@@ -111,6 +116,7 @@ public class FireMode : MonoBehaviour
         gameStats.EndOfWave(enemySpawn.waveNumber);
         enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
         gameStats.wavesSurvived++;
+        globalAudio.PlayOneShot(fireEnding);
 
     }
     IEnumerator DelayActivatorSpawn()
@@ -131,6 +137,7 @@ public class FireMode : MonoBehaviour
         //playerInventory.coins = playerInventory.coins + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
         playerInventory.coinsBeforeMultiplier = 0;
         activatorsSpawned = false;
+        globalAudio.PlayOneShot(fireStarting);
     }
     void SetMoneyMultiplier()
     {
@@ -140,6 +147,7 @@ public class FireMode : MonoBehaviour
             moneyMultiplierTimeElapsed = moneyMultiplierTimeElapsed + Time.deltaTime;
             moneyMultiplier = Mathf.Pow((moneyMultiplierTimer - moneyMultiplierTimeElapsed), 1f) / (moneyMultiplierTimer /10f);
             moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier,isFireMode);
+
         }
         else if (isFireMode == true)
         {

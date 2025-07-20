@@ -17,11 +17,12 @@ public class PauseMenuController : MonoBehaviour
     public GameObject SettingsMenu;
     public AudioSource GameplayMusic;
     public AudioSource PauseMusic;
+    public AudioSource ShopMusic;
     void OnEnable()
     {
-        GameplayMusic.Stop();
-        PauseMusic.Play();
-        PauseMusic.loop = true;
+        
+        
+        
 
     }
 
@@ -35,9 +36,6 @@ public class PauseMenuController : MonoBehaviour
         ResumeButtonAnimator.SetBool("mouse hovering", false);
 
        
-        PauseMusic.Stop();
-        GameplayMusic.Play();
-        GameplayMusic.loop = true;
 
         hovering = false;
         pauseMenu.SetActive(false);

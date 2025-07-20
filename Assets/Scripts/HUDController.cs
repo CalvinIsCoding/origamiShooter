@@ -18,8 +18,12 @@ public class HUDController : MonoBehaviour
 
     public static float lives;
     public Text liveText;
-    public AudioSource gameplayMusic;
-    public AudioSource pauseMusic;
+    public AudioSource GameMusic;
+    public AudioClip gameplayMusic;
+    public AudioClip pauseMusic;
+    public AudioClip shopMusic;
+
+    float playbackProgress;
 
     public Slider livesSlider;
 
@@ -28,6 +32,8 @@ public class HUDController : MonoBehaviour
     {
         lives = player.lives;
         livesSlider.maxValue = player.lives;
+        GameMusic.clip = gameplayMusic;
+        GameMusic.Play();
       //  gameplayMusic.Play();
       //  gameplayMusic.loop = true;
     }
@@ -68,8 +74,39 @@ public class HUDController : MonoBehaviour
             LaunchShop();
             shopTouched = false;
         }
-       
 
+        
+
+        if (pauseMenu.activeInHierarchy == true)
+        {
+            GameMusic.clip = pauseMusic;
+           
+        }
+        else if (shopMenu.activeInHierarchy == true)
+        {
+            GameMusic.clip = shopMusic;
+            
+        }
+        else
+        {
+            
+            GameMusic.clip = gameplayMusic;
+            
+        }
+        //yikes this is ugly but it works
+        if(GameMusic.isPlaying == false)
+        {
+            if(GameMusic.clip == gameplayMusic)
+            {
+                GameMusic.time = playbackProgress;
+            }
+            GameMusic.Play();
+        }
+
+       if (GameMusic.clip == gameplayMusic)
+        {
+            playbackProgress = GameMusic.time;
+        }
     }
     public void Pause()
     {

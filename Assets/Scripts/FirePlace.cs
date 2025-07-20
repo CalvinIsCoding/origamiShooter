@@ -74,17 +74,18 @@ public class FirePlace : MonoBehaviour
 
             //For Now just for testing purposes
            
-            soundSelect = Random.Range(0, 3);
+            
+            soundSelect = Random.Range(0, flameErupt.Length - 1);
 
             if (timeSinceLastSound >= soundWaitTime)
             {
 
-
+                flameAudio.volume = 3f;
                 Debug.Log("sound Select" + soundSelect);
                     flameAudio.PlayOneShot(flameErupt[soundSelect]);
                   
                   
-                    flameAudio.pitch = (float)gameStats.enemiesKilledThisWave/(float)gameStats.enemiesSpawnedThisWave + 0.2f;
+                    flameAudio.pitch = ((float)gameStats.enemiesKilledThisWave/(float)gameStats.enemiesSpawnedThisWave) + 0.5f;
                 Debug.Log("pitch" + flameAudio.pitch);
 
 

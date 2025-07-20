@@ -15,8 +15,10 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopButtonGameObject;
     public Button[] buttons;
     public Image[] images;
+   
 
     public GameObject ShopMenu;
+   
 
     void Start()
     {
@@ -37,6 +39,8 @@ public class ShopManager : MonoBehaviour
 
     private void OnEnable()
     {
+      
+
         coinUI.text = "Coins: " + playerInventory.coins.ToString();
         CheckPurchaseable();
     }

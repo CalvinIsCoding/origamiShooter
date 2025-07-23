@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 4152795769166717473}
   rb: {fileID: -3668706162075731217}
-  knockBack: 0.1
+  knockBack: 1
 --- !u!50 &-3668706162075731217
 Rigidbody2D:
   serializedVersion: 4

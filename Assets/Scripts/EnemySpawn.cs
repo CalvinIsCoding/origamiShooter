@@ -13,6 +13,7 @@ public class EnemySpawn : MonoBehaviour
     public Wave[] wave = new Wave[10];
     
     public int waveNumber;
+    public int lastWave;
 
     public FireMode fireMode;
   /*  public int paperPlaneSpawnChance = 90;
@@ -31,6 +32,7 @@ public class EnemySpawn : MonoBehaviour
     public float x, y, _x, _y;
     private float lastTime;
     public float timeBetweenSpawns;
+    public int maxSimultaneouslySpawned;
 
     private float spawnEvent_timeStep;
     private int spawnEventTrigger;
@@ -72,14 +74,18 @@ public class EnemySpawn : MonoBehaviour
         //SetSpawnChance();
         
         lastTime = 0f;
-        timeBetweenSpawns = 1f;
+        timeBetweenSpawns = 1.5f;
         spawnEvent_timeStep = 0.01f;
 
         //Changes how often a spawn event occurs. wherein a large group of enemies is spawned near the player.
         //Lowering the multiplier decreases the time between spawn events.
         spawnEvent_howOften = (int)timeBetweenSpawns * 5;
 
+
         waveNumber = 0;
+        lastWave = 0;
+
+        //These are the bounds of the arena (approximately) I should figure out how to do this programmatically maybe
         xMin = -1.6f;
         xMax = 1.6f;
         yMin = -0.85f;
@@ -88,7 +94,7 @@ public class EnemySpawn : MonoBehaviour
         spawningComplete = false;
 
         shopSpawned = false;
-        
+        maxSimultaneouslySpawned = 3;
 
     }
 
@@ -132,6 +138,7 @@ public class EnemySpawn : MonoBehaviour
 
             if (spawnEventTrigger == (Mathf.Round(spawnEvent_howOften / 5f)) && wave[waveNumber].specialWave == false)
             {
+                //spawn events are put into an array of 100 to determine the chance that a spawn event happens.
                 eventSelect = wave[waveNumber].spawnEventRandomizer[Random.Range(1, 100)];
                 SpawnEventSelector(eventSelect);
                 //StartCoroutine(SpawnMany());
@@ -144,12 +151,20 @@ public class EnemySpawn : MonoBehaviour
         if(waveNumber % 4 == 0 && !shopSpawned && waveNumber != 0)
         {
             SpawnShop();
+            maxSimultaneouslySpawned++;
         }
         if(waveNumber % 4 != 0)
         {
             shopSpawned = false;
         }
-   
+        
+        if(lastWave < waveNumber -1 )
+        {
+            timeBetweenSpawns = timeBetweenSpawns - 0.1f;
+            Debug.Log(timeBetweenSpawns);
+            lastWave = waveNumber;
+        }
+
 
     }
 
@@ -164,7 +179,7 @@ public class EnemySpawn : MonoBehaviour
         }
         else
         {
-            numberSpawned = Random.Range(1, 4);
+            numberSpawned = Random.Range(1, maxSimultaneouslySpawned);
         }
         
         typeSpawned = wave[waveNumber].spawnTypeRandomizer[Random.Range(1, 100)];

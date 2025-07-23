@@ -34,7 +34,7 @@ public class AirBullet: MonoBehaviour
         DefaultAirBulletScale = 0.4f + (biggerAir.numberPurchased * 0.1f);
         currentAirBulletScale = DefaultAirBulletScale;
         StartCoroutine(ShrinkBullets());
-        //StartCoroutine(DeactivateBullets());
+        StartCoroutine(DeactivateBullets());
     }
     private void Update()
     {
@@ -51,10 +51,10 @@ public class AirBullet: MonoBehaviour
 
         if (myWall != null)
         {
-            Instantiate(source, airBullet.transform.position, airBullet.transform.rotation);
+            //Instantiate(source, airBullet.transform.position, airBullet.transform.rotation);
             //Destroy(collidedBullet);
             //Object pooling bullet. Send back to cache
-            airBullet.SetActive(false);
+            //airBullet.SetActive(false);
             //airBulletSprite.enabled = false;
         }
 
@@ -96,10 +96,10 @@ public class AirBullet: MonoBehaviour
 
         if (myWall != null)
         {
-            Instantiate(source, airBullet.transform.position, airBullet.transform.rotation);
+            //Instantiate(source, airBullet.transform.position, airBullet.transform.rotation);
             //Destroy(bullet);
-            airBullet.SetActive(false);
-            airBulletSprite.enabled = false;
+            //airBullet.SetActive(false);
+            //airBulletSprite.enabled = false;
         }
 
 
@@ -145,7 +145,7 @@ public class AirBullet: MonoBehaviour
     {
         //Want the bullets to deactivate no matter what after a certain amount of time to limit range etc. SetActive
         //Doesn't have a method for this.
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.8f);
         airBullet.SetActive(false);
     }
 }

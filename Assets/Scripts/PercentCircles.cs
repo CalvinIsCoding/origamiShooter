@@ -51,11 +51,11 @@ public class PercentCircles : MonoBehaviour
 
         speed = 1f;
 
-        percentDotMovementForce = 0.4f;
+        percentDotMovementForce = 0.8f;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
 
@@ -70,7 +70,7 @@ public class PercentCircles : MonoBehaviour
             }
                 
         }
-        timer += Time.deltaTime;
+        timer += Time.fixedDeltaTime;
     }
 
 }

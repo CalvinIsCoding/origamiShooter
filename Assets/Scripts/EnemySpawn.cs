@@ -63,16 +63,17 @@ public class EnemySpawn : MonoBehaviour
     private bool shopSpawned;
 
     public GameStatsScript gameStats;
-  
+
+    public float bossWaitTime;
 
     void Start()
     {
-        
-      /*  enemyTypeSpawnChances[0] = paperPlaneSpawnChance;
-        enemyTypeSpawnChances[1] = redPlaneSpawnChance;
-        enemyTypeSpawnChances[2] = redCircleSpawnChance;*/
+        bossWaitTime = 5f;
+        /*  enemyTypeSpawnChances[0] = paperPlaneSpawnChance;
+          enemyTypeSpawnChances[1] = redPlaneSpawnChance;
+          enemyTypeSpawnChances[2] = redCircleSpawnChance;*/
         //SetSpawnChance();
-        
+
         lastTime = 0f;
         timeBetweenSpawns = 1.5f;
         spawnEvent_timeStep = 0.01f;
@@ -161,7 +162,7 @@ public class EnemySpawn : MonoBehaviour
         if(lastWave < waveNumber -1 )
         {
             timeBetweenSpawns = timeBetweenSpawns - 0.1f;
-            Debug.Log(timeBetweenSpawns);
+            Debug.Log("time between Spawns" + timeBetweenSpawns);
             lastWave = waveNumber;
         }
 
@@ -237,8 +238,9 @@ public class EnemySpawn : MonoBehaviour
                 break;
             //Boss wave
             case 2:
-                Vector2 originCoordinates = new Vector2(0, 0);
-                Instantiate(wave[waveNumber].enemy[0], originCoordinates, Quaternion.identity);
+                
+                StartCoroutine(SpawnBoss());
+                
                 break;
             //3 enemies
             case 3:
@@ -281,6 +283,12 @@ public class EnemySpawn : MonoBehaviour
         }
 
 
+    }
+    IEnumerator SpawnBoss()
+    {
+        Vector2 originCoordinates = new Vector2(0, 0); //center of playing field
+        yield return new WaitForSeconds(bossWaitTime);
+        Instantiate(wave[waveNumber].enemy[0], originCoordinates, Quaternion.identity);
     }
 
     void SpawnShop()

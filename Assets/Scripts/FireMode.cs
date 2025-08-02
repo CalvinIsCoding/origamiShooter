@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FireMode : MonoBehaviour
 {
@@ -31,10 +32,17 @@ public class FireMode : MonoBehaviour
     public AudioSource globalAudio;
     public AudioClip fireStarting;
     public AudioClip fireEnding;
-    private bool isSpecialWave;
+    public AudioClip victoryTune;
+    public bool isBossWave;
+    public bool waveHasStarted;
+    public bool bossIsDead;
+    public bool gameComplete;
+    
 
     void Start()
     {
+        waveHasStarted = false;
+        
         moneyMultiplier = 0;
         activatorWaitTime = 3f;
         moneyMultiplierTimer = 10f;
@@ -48,7 +56,7 @@ public class FireMode : MonoBehaviour
         moneyMultiplierBar.SetMaxMoneyMultiplier(10f);
         
         lastMoneyMultiplier = 0;
-        isSpecialWave = false;
+        isBossWave = false;
         gameStats.ResetEnemyCounters();
 
     //fireCollider.enabled = true;
@@ -67,23 +75,29 @@ public class FireMode : MonoBehaviour
     }
     void FixedUpdate()
     {
-        isSpecialWave = enemySpawn.wave[enemySpawn.waveNumber].specialWave;
-        if (isSpecialWave == true)
+        isBossWave = enemySpawn.wave[enemySpawn.waveNumber].bossWave;
+        Debug.Log("isBosswave" + isBossWave);
+        Debug.Log("wave started" + waveHasStarted);
+        if (isBossWave == true && waveHasStarted == false)
         {
-            isFireMode = true;
+            StartCoroutine(BeginBossWave());
+            
         }
         
-        if (activatorCounter >= requiredActivators && isSpecialWave == false)
+        if (activatorCounter >= requiredActivators && isBossWave == false)
         {
             
             StartFireAndEndWave();
-            
-           
 
         }
-        if (liveActivators == 0 && isSpecialWave == false)
+        if (liveActivators == 0 && isBossWave == false)
         {
             SpawnFireActivators();
+        }
+        if(isBossWave && bossIsDead)
+        {
+           
+            StartCoroutine(GameCompletion());
         }
 
     }
@@ -104,6 +118,7 @@ public class FireMode : MonoBehaviour
 
     }
    */
+  
     IEnumerator DisableFireMode()
     {
         yield return new WaitForSeconds(fireModeTime);
@@ -183,19 +198,33 @@ public class FireMode : MonoBehaviour
         activatorsSpawned = true;
 
     }
-
-    //zones... in an effort to ensure that the fire activators are spaced out... I think it's too complicated.
-   /*
-    void generateZones(float xMin, float xMax, float yMin, float Ymax,int numberOfZones)
+    IEnumerator BeginBossWave()
     {
-        float[,,] zoneList = new float[4,numberOfZones,3];
-        //[xmin of zone,zone number,zone set number] 
-        //zone 1 horizontal
-        zoneList[0,0,0] = xMin;
-        zoneList[1, 0, 0] = xMin / numberOfZones;
-        zoneList[2, 0, 0] = xMin;
-        zoneList[3, 0, 0] = xMin;
+        waveHasStarted = true;
+        Debug.Log("begin boss wave");
+        yield return new WaitForSeconds(enemySpawn.bossWaitTime - 2f);
+        isFireMode = true;
+    }
+    IEnumerator GameCompletion()
+    {
+        globalAudio.PlayOneShot(victoryTune);
+        yield return new WaitForSeconds(victoryTune.length);
+        SceneManager.LoadScene("Game End Screen");
 
     }
-   */
+
+    //zones... in an effort to ensure that the fire activators are spaced out... I think it's too complicated.
+    /*
+     void generateZones(float xMin, float xMax, float yMin, float Ymax,int numberOfZones)
+     {
+         float[,,] zoneList = new float[4,numberOfZones,3];
+         //[xmin of zone,zone number,zone set number] 
+         //zone 1 horizontal
+         zoneList[0,0,0] = xMin;
+         zoneList[1, 0, 0] = xMin / numberOfZones;
+         zoneList[2, 0, 0] = xMin;
+         zoneList[3, 0, 0] = xMin;
+
+     }
+    */
 }

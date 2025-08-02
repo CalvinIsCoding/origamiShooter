@@ -15,6 +15,7 @@ public class HUDController : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject shopMenu;
     public bool shopTouched;
+    public EnemySpawn enemySpawn;
 
     public static float lives;
     public Text liveText;
@@ -22,10 +23,12 @@ public class HUDController : MonoBehaviour
     public AudioClip gameplayMusic;
     public AudioClip pauseMusic;
     public AudioClip shopMusic;
+    public AudioClip bossMusic;
 
     float playbackProgress;
 
     public Slider livesSlider;
+    public bool isBossWave;
 
     
     private void Start()
@@ -41,6 +44,7 @@ public class HUDController : MonoBehaviour
 
     void Update()
     {
+        isBossWave = enemySpawn.wave[enemySpawn.waveNumber].bossWave;
         livesSlider.value = player.lives;
         lives = player.lives;
         liveText.text = lives.ToString() + " Lives";
@@ -87,6 +91,10 @@ public class HUDController : MonoBehaviour
         {
             GameMusic.clip = shopMusic;
             
+        }
+        else if (isBossWave)
+        {
+            GameMusic.clip = bossMusic;
         }
         else
         {

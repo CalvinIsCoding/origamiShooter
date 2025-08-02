@@ -10,6 +10,7 @@ public class Wave : MonoBehaviour
     public int[] spawnEventChances = new int[5];
     public int[] spawnTypeRandomizer = new int[100];
     public int[] spawnEventRandomizer = new int[100];
+    public bool bossWave;
     public bool specialWave;
     public bool endCriteria;
 

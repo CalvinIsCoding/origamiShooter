@@ -49,8 +49,12 @@ public class Boss : MonoBehaviour
 	public AudioClip snare;
 	public AudioClip bassDrum;
 
+	public AudioSource otherSoundBoxFanAudioSource;
+    public AudioClip injuryBoxFanAudio;
 
-	private int growthFrames = 30;
+
+
+    private int growthFrames = 30;
 	private float currentScale;
 	private float maxScale;
 	void Start()
@@ -85,8 +89,9 @@ public class Boss : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 		health -= damage;
+        otherSoundBoxFanAudioSource.PlayOneShot(injuryBoxFanAudio);
 
-		if (health <= 0)
+        if (health <= 0)
 		{
 			Die();
 		}

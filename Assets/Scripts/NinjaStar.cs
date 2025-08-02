@@ -11,6 +11,7 @@ public class NinjaStar : MonoBehaviour
     public float angle;
     public float ninjaStarMovementForce;
     private Vector2 direction;
+    private Vector2 initialDirectionOfTravel;
 
     [SerializeField]
     [Tooltip("Just for debugging, adds some velocity during OnEnable")]
@@ -26,11 +27,12 @@ public class NinjaStar : MonoBehaviour
     //public Wall wall;
     void Start()
     {
+        initialDirectionOfTravel = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         player = GameObject.FindWithTag("Player");
 
         playerRb = player.GetComponent<Rigidbody2D>();
         ninjaStarMovementForce = 0.2f;
-        direction = playerRb.position - rb.position;
+        direction = initialDirectionOfTravel;
         //angle = Mathf.Atan2(direction.y, direction.x);
         rb.AddForceAtPosition(direction.normalized  * ninjaStarMovementForce, this.rb.position);
         //rb.velocity = initialVelocity;
@@ -48,12 +50,12 @@ public class NinjaStar : MonoBehaviour
         rb.velocity = initialVelocity;
     }*/
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!enemy.isBlown)
         {
 
-            direction = playerRb.position - rb.position;
+            //direction = playerRb.position - rb.position;
 
             rb.AddForceAtPosition(direction.normalized * ninjaStarMovementForce, this.rb.position);
         }

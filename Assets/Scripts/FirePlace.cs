@@ -22,6 +22,7 @@ public class FirePlace : MonoBehaviour
     private float timeSinceLastSound;
     private float soundWaitTime;
     public GameStatsScript gameStats;
+    SpriteRenderer[] flameAnimationSprites;
 
 
     // public PlayerInventory playerInventory;
@@ -33,7 +34,7 @@ public class FirePlace : MonoBehaviour
         fireCollider.enabled = true;
         flameAnimations.SetActive(false);
         soundWaitTime = 0.01f;
-
+        flameAnimationSprites = flameAnimations.GetComponentsInChildren<SpriteRenderer>(true);
 
         //StartCoroutine(EnableFireMode());
     }
@@ -48,6 +49,17 @@ public class FirePlace : MonoBehaviour
         {
             //fireHitBox.color = Color.clear;
             flameAnimations.SetActive(false);
+        }
+        if (enemySpawn.wave[enemySpawn.waveNumber].bossWave == true)
+        {
+            int i = 0;
+            foreach (SpriteRenderer child in flameAnimationSprites)
+            {
+                
+                flameAnimationSprites[i].color = new Color(0f, 0.9f, 0.9f,1f);
+                i++;
+            }
+            
         }
 
         timeSinceLastSound = timeSinceLastSound + Time.deltaTime;
@@ -73,26 +85,10 @@ public class FirePlace : MonoBehaviour
             //enemy.Die();
 
             //For Now just for testing purposes
-           
-            
-            soundSelect = Random.Range(0, flameErupt.Length - 1);
-
-            if (timeSinceLastSound >= soundWaitTime)
-            {
-
-                flameAudio.volume = 3f;
-                Debug.Log("sound Select" + soundSelect);
-                    flameAudio.PlayOneShot(flameErupt[soundSelect]);
-                  
-                  
-                    flameAudio.pitch = ((float)gameStats.enemiesKilledThisWave/(float)gameStats.enemiesSpawnedThisWave) + 0.5f;
-                Debug.Log("pitch" + flameAudio.pitch);
 
 
-                timeSinceLastSound = 0f;
-
-            }
             //Debug.Log("enemy touching fireplace");
+            processSound();
             enemy.TakeDamage(10);
 
         }
@@ -109,7 +105,7 @@ public class FirePlace : MonoBehaviour
         }
         if(player!= null && fireMode.isFireMode)
         {
-            //player.PlayerDeath();
+            player.PlayerDeath();
            // player.Boost(collision);
         }
        
@@ -124,15 +120,15 @@ public class FirePlace : MonoBehaviour
     
 
 
-   /* private void OnTriggerStay2D(Collider2D collision)
+   private void OnTriggerStay2D(Collider2D collision)
     {
 
         Enemy enemy = collision.GetComponent<Enemy>();
         BoxFan boxfan = collision.GetComponent<BoxFan>();
         if (enemy != null && fireMode.isFireMode)
         {
-
-            //enemy.TakeDamage(10);
+            processSound();
+            enemy.TakeDamage(10);
 
 
         }
@@ -140,6 +136,27 @@ public class FirePlace : MonoBehaviour
         {
             //StartCoroutine(boxfan.TurnSpriteRed());
         }
-    }*/
+    }
+    private void processSound()
+    {
+
+        soundSelect = Random.Range(0, flameErupt.Length - 1);
+
+        if (timeSinceLastSound >= soundWaitTime)
+        {
+
+            flameAudio.volume = 3f;
+            
+            flameAudio.PlayOneShot(flameErupt[soundSelect]);
+
+
+            flameAudio.pitch = ((float)gameStats.enemiesKilledThisWave / (float)gameStats.enemiesSpawnedThisWave) + 0.5f;
+            
+
+
+            timeSinceLastSound = 0f;
+
+        }
+    }
 
 }

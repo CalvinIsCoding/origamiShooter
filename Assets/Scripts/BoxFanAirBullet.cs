@@ -21,10 +21,10 @@ public class BoxFanAirBullet: MonoBehaviour
     private float shrinkTime;
     void Start()
     {
-        knockBack = 25f;
+        knockBack = 10f;
         rb.velocity = transform.right * speed;
         Destroy(boxFanAirBullet, 1.0f);
-        shrinkTime = 0.5f;
+        shrinkTime = 1.5f;
         currentScale = 0.2f;
         StartCoroutine(ShrinkBullets());
     }
@@ -83,7 +83,7 @@ public class BoxFanAirBullet: MonoBehaviour
         {
             currentScale -= ((scaleAtStart * (1f / shrinkFrames)));
             //Knock back needs to drop off more slowly at the beginning so that a reasonable knockback value can be set
-            knockBack = 25f - (3f * Mathf.Pow((shrinkTime * i/shrinkFrames),2));
+           // knockBack = knockBackAtStart - (3f * Mathf.Pow((shrinkTime * i/shrinkFrames),2));
             boxFanAirBullet.transform.localScale = Vector2.one * currentScale;
             yield return new WaitForSeconds(shrinkTime / shrinkFrames);
         }

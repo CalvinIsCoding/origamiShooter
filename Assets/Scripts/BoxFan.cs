@@ -75,6 +75,11 @@ public class BoxFan : MonoBehaviour
     //Animation
     public Animator animator;
 
+    public AudioSource airBlowingBoxFanAudioSource;
+    public AudioSource otherSoundBoxFanAudioSource;
+    public AudioClip OverHeatBoxFanAudio;
+    public AudioClip AirBoxFanAudio;
+
 
     void Start()
     {
@@ -86,7 +91,7 @@ public class BoxFan : MonoBehaviour
         boxFan.health = 50;
 
         timePerBullet = 0.05f;
-        airPushBackForce = 1.3f;
+        airPushBackForce = 1.1f;
 
         //Setting Overheat variables
         maxOverheat = 5f;
@@ -100,7 +105,7 @@ public class BoxFan : MonoBehaviour
         hitTime = 0.15f;
         timeSlowDown = 0.90f;
 
-        minimumDistanceFromFire = 0.6f;
+        minimumDistanceFromFire = 0.65f;
         defaultLayer = 0;
         angryFromHit = false;
 
@@ -124,12 +129,12 @@ private void FixedUpdate()
         //Overheating
         if (!overHeating)
         {
-            overHeatTime = overHeatTime + Time.deltaTime;
+            overHeatTime = overHeatTime + Time.fixedDeltaTime;
 
         }
         else if (overHeating)
         {
-            overHeatTime = overHeatTime - (Time.deltaTime * coolDownFactor);
+            overHeatTime = overHeatTime - (Time.fixedDeltaTime * coolDownFactor);
             //overHeatCounter = overHeatCounter - 1;
 
         }
@@ -165,14 +170,29 @@ private void FixedUpdate()
 
         if ((currentTimeBetweenBullets - timePerBullet) > 0 )
         {
-            animator.SetBool("IsBlowing", true);
-            bullet = Instantiate(airBulletPrefab, firePoint.position, firePoint.rotation);
-            //Movement gets erratic if fan still pushes itself back when this happens.
-            currentTimeBetweenBullets = 0;
-            if (angryFromHit == false)
+            
+            if (overHeating == false)
             {
-               PushBack();
+                animator.SetBool("IsBlowing", true);
+                bullet = Instantiate(airBulletPrefab, firePoint.position, firePoint.rotation);
+                
+                currentTimeBetweenBullets = 0;
+                if (angryFromHit == false)
+                {
+                    PushBack();
+                }
+                if (airBlowingBoxFanAudioSource.isPlaying == false)
+                {
+                    airBlowingBoxFanAudioSource.Play();
+                }
             }
+            else
+            {
+                animator.SetBool("IsBlowing", false);
+            }
+           
+            //Movement gets erratic if fan still pushes itself back when this happens.
+            
            
 
 
@@ -200,6 +220,7 @@ private void FixedUpdate()
     {
         if (overHeatCounter >= maxOverheat)
         {
+            otherSoundBoxFanAudioSource.PlayOneShot(OverHeatBoxFanAudio);
             StartCoroutine(CoolDown());
             overHeating = true;
 
@@ -218,7 +239,7 @@ private void FixedUpdate()
         boxFanSprite.color = Color.red;
         Time.timeScale = timeSlowDown;
         isRed = true;
-        angryFromHit = true;
+        //angryFromHit = true;
         yield return new WaitForSeconds(hitTime * timeSlowDown);
         Time.timeScale = 1f;
         isRed = false;

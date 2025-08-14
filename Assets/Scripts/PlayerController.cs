@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        airPushBackForce = airPushBackForceDefault + (speedFromAir.numberPurchased * 0.2f);
+        airPushBackForce = airPushBackForceDefault + (speedFromAir.numberPurchased * speedFromAir.modifier);
 
         //Movement
         moveHorizontal = Input.GetAxis("Horizontal");

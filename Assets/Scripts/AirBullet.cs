@@ -28,10 +28,10 @@ public class AirBullet: MonoBehaviour
         rb.velocity = transform.right * speed;
         //Destroy(airBullet, 1.0f);
         //Object Pooling
-        
-        knockBack = 15f + (fanBlades.numberPurchased * 7.5f);
+
+        knockBack = 15f + (fanBlades.numberPurchased * fanBlades.modifier);
         shrinkTime = 0.5f;
-        DefaultAirBulletScale = 0.4f + (biggerAir.numberPurchased * 0.1f);
+        DefaultAirBulletScale = 0.4f + (biggerAir.numberPurchased * biggerAir.modifier);
         currentAirBulletScale = DefaultAirBulletScale;
         StartCoroutine(ShrinkBullets());
         StartCoroutine(DeactivateBullets());

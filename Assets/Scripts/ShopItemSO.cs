@@ -9,6 +9,7 @@ public class ShopItemSO : ScriptableObject
     public string description;
     public int cost;
     public int numberPurchased;
+    public float modifier;
     public void resetToDefaults()
     {
         numberPurchased = 0;

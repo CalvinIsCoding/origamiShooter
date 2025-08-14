@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -42,6 +43,7 @@ public class Boss : MonoBehaviour
 	public int wavesSaved;
 	//public ShopManager shopManager;
 	public PlayerInventory playerInventory;
+	public BossObject BossObject;
 
 	//Audio handling
 	public AudioSource source;
@@ -60,6 +62,7 @@ public class Boss : MonoBehaviour
 	void Start()
 	{
 		enemySpawn = FindObjectOfType<EnemySpawn>();
+		BossObject.bossIsDead = false;
 		//shopManager = FindObjectOfType<ShopManager>();
 		isRed = false;
 		isBlown = false;
@@ -93,13 +96,15 @@ public class Boss : MonoBehaviour
 
         if (health <= 0)
 		{
+			
 			Die();
 		}
 	}
 
 	public void Die()
 	{
-		playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
+		BossObject.bossIsDead = true;
+        playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
 		Destroy(gameObject);
 
 	}

@@ -35,12 +35,14 @@ public class FireMode : MonoBehaviour
     public AudioClip victoryTune;
     public bool isBossWave;
     public bool waveHasStarted;
-    public bool bossIsDead;
+    public BossObject bossObject;
     public bool gameComplete;
     
 
     void Start()
     {
+        //resetting the boss defaults here to prevent a bug where bossIsDead is true at the very start of a boss wave before the boss spawns
+        bossObject.resetToDefaults();
         waveHasStarted = false;
         
         moneyMultiplier = 0;
@@ -76,8 +78,8 @@ public class FireMode : MonoBehaviour
     void FixedUpdate()
     {
         isBossWave = enemySpawn.wave[enemySpawn.waveNumber].bossWave;
-        Debug.Log("isBosswave" + isBossWave);
-        Debug.Log("wave started" + waveHasStarted);
+        //Debug.Log("isBosswave" + isBossWave);
+       // Debug.Log("wave started" + waveHasStarted);
         if (isBossWave == true && waveHasStarted == false)
         {
             StartCoroutine(BeginBossWave());
@@ -94,7 +96,7 @@ public class FireMode : MonoBehaviour
         {
             SpawnFireActivators();
         }
-        if(isBossWave && bossIsDead)
+        if(isBossWave && bossObject.bossIsDead)
         {
            
             StartCoroutine(GameCompletion());
@@ -207,6 +209,7 @@ public class FireMode : MonoBehaviour
     }
     IEnumerator GameCompletion()
     {
+        Debug.Log("game Ending");
         globalAudio.PlayOneShot(victoryTune);
         yield return new WaitForSeconds(victoryTune.length);
         SceneManager.LoadScene("Game End Screen");

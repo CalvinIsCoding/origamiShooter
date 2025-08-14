@@ -16,3 +16,4 @@ MonoBehaviour:
   description: gives the player 2 HP
   cost: 25
   numberPurchased: 0
+  modifier: 2

@@ -80,7 +80,7 @@ public class HUDController : MonoBehaviour
             shopTouched = false;
         }
 
-        
+      
 
         if (pauseMenu.activeInHierarchy == true)
         {
@@ -112,7 +112,7 @@ public class HUDController : MonoBehaviour
             GameMusic.Play();
         }
 
-       if (GameMusic.clip == gameplayMusic)
+        if (GameMusic.clip == gameplayMusic)
         {
             playbackProgress = GameMusic.time;
         }

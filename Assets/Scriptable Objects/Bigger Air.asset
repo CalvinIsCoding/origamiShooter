@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Makes air stream bigger
   cost: 50
   numberPurchased: 0
+  modifier: 0.05

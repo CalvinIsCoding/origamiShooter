@@ -15,4 +15,5 @@ MonoBehaviour:
   title: Speed
   description: Player becomes faster from knockback and fanless movement
   cost: 75
-  numberPurchased: 0
+  numberPurchased: 1
+  modifier: 0.02

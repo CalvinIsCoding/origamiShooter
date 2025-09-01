@@ -30,6 +30,8 @@ public class HUDController : MonoBehaviour
     public Slider livesSlider;
     public bool isBossWave;
 
+    public GameSettings gameSettings;
+
     
     private void Start()
     {
@@ -48,6 +50,7 @@ public class HUDController : MonoBehaviour
         livesSlider.value = player.lives;
         lives = player.lives;
         liveText.text = lives.ToString() + " Lives";
+        GameMusic.volume = gameSettings.musicVolume;
         /* if(player.lifeCount == 3)
          {
              threeLives.SetActive(true);

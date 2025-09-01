@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         airPushBackForce = airPushBackForceDefault + (speedFromAir.numberPurchased * speedFromAir.modifier);
 
         //Movement

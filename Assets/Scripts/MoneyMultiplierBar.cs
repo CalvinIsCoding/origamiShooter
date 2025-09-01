@@ -8,9 +8,8 @@ using UnityEngine.UI;
 public class MoneyMultiplierBar : MonoBehaviour
 {
     public Slider slider;
-    public Text moneyMultiplierText;
     public TMP_Text enemiesKilledText;
-    public Animator animator;
+    public TMP_Text moneyMultiplierText;
     public int multiplierInteger;
     public int enemiesKilled;
     public int numberOfEnemiesSpawned;
@@ -31,9 +30,9 @@ public class MoneyMultiplierBar : MonoBehaviour
             slider.maxValue = 10f;
             slider.value = multiplier;
 
-            moneyMultiplierText.text = multiplier.ToString();
+            moneyMultiplierText.SetText(MathF.Round(multiplier, 0).ToString()); 
             multiplierInteger = (int)multiplier;
-            animator.SetInteger("Multiplier", multiplierInteger);
+            //animator.SetInteger("Multiplier", multiplierInteger);
             enemiesKilledText.text = gameStats.enemiesKilledThisWave.ToString();
            // Debug.Log("max multiplier" + );
         }

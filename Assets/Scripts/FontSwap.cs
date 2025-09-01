@@ -30,7 +30,7 @@ public class FontSwap : MonoBehaviour
     {
         for (int i = 0; i < tMP_FontAssets.Length; i++)
         {
-            Debug.Log("changing font" + testFontSwap.font.name);
+            //Debug.Log("changing font" + testFontSwap.font.name);
             testFontSwap.font = tMP_FontAssets[i];
             yield return new WaitForSeconds(0.1f);
         }

@@ -37,7 +37,9 @@ public class FireMode : MonoBehaviour
     public bool waveHasStarted;
     public BossObject bossObject;
     public bool gameComplete;
-    
+
+    public int moneyEarnedThisRound;
+    public moneyEarnedThisRoundProcesser roundMoney;
 
     void Start()
     {
@@ -128,8 +130,9 @@ public class FireMode : MonoBehaviour
         //fireCollider.enabled = false;
         StartCoroutine(DelayActivatorSpawn());
         isFireMode = false;
-        playerInventory.coins = playerInventory.coins + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
-        gameStats.totalMoneyEarned = gameStats.totalMoneyEarned + (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
+        moneyEarnedThisRound = (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
+        StartCoroutine(roundMoney.setMoneyEarnedThisRound(moneyEarnedThisRound));
+        
         gameStats.EndOfWave(enemySpawn.waveNumber);
         enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
         gameStats.wavesSurvived++;

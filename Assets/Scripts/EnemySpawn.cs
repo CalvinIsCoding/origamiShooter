@@ -90,7 +90,7 @@ public class EnemySpawn : MonoBehaviour
         xMin = -1.6f;
         xMax = 1.6f;
         yMin = -0.85f;
-        yMax = 0.85f;
+        yMax = 0.6f;
 
         spawningComplete = false;
 

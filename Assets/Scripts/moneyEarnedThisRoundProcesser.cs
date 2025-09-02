@@ -41,6 +41,7 @@ public class moneyEarnedThisRoundProcesser : MonoBehaviour
         }
         StartCoroutine(totalMoneyProcessor_.addToTotal(moneyEarned));
         currentScale = 0;
-        moneyEarnedObject.SetActive(false);
+        moneyEarnedTransform.localScale = Vector2.one * currentScale;
+        // moneyEarnedObject.SetActive(false);
     }
 }

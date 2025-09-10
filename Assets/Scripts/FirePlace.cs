@@ -24,6 +24,8 @@ public class FirePlace : MonoBehaviour
     public GameStatsScript gameStats;
     SpriteRenderer[] flameAnimationSprites;
 
+    public GameSettings gameSettings;
+
 
     // public PlayerInventory playerInventory;
 
@@ -63,6 +65,8 @@ public class FirePlace : MonoBehaviour
         }
 
         timeSinceLastSound = timeSinceLastSound + Time.deltaTime;
+
+        flameAudio.volume = gameSettings.sfxVolume;
 
     }
 

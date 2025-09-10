@@ -14,7 +14,7 @@ public class SfxSliderChange : MonoBehaviour
     }
 
 
-    public void setMusicVolume()
+    public void setSFXVolume()
     {
         settings.sfxVolume = sfxSlider.value;
     }

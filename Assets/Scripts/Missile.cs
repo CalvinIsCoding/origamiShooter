@@ -40,7 +40,7 @@ public class Missile : MonoBehaviour
         {
             // 
             Destroy(missile);
-            enemy.Die();
+            enemy.Die(false);
             Instantiate(smallExplosion, missile.transform.position, missile.transform.rotation);
 
             //Destroy(bullet);

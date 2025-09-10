@@ -40,6 +40,12 @@ public class FireMode : MonoBehaviour
 
     public int moneyEarnedThisRound;
     public moneyEarnedThisRoundProcesser roundMoney;
+    public SlamNumbersTogether numberSlammer;
+
+    private bool isNearPlayer;
+
+    public Timers timers;
+    public GameSettings gameSettings;
 
     void Start()
     {
@@ -48,7 +54,7 @@ public class FireMode : MonoBehaviour
         waveHasStarted = false;
         
         moneyMultiplier = 0;
-        activatorWaitTime = 3f;
+        activatorWaitTime = timers.lullAfterFireModeEndsButWaveHasntBegun;
         moneyMultiplierTimer = 10f;
         moneyMultiplierTimeElapsed = 0f;
         isFireMode = false;
@@ -74,7 +80,8 @@ public class FireMode : MonoBehaviour
     void Update()
     {
 
-        SetMoneyMultiplier();  
+        SetMoneyMultiplier();
+        globalAudio.volume = gameSettings.sfxVolume;
        
     }
     void FixedUpdate()
@@ -128,12 +135,16 @@ public class FireMode : MonoBehaviour
         yield return new WaitForSeconds(fireModeTime);
         // StartCoroutine(EnableFireMode());
         //fireCollider.enabled = false;
+        StartCoroutine(numberSlammer.CrunchNumbers());
         StartCoroutine(DelayActivatorSpawn());
         isFireMode = false;
-        moneyEarnedThisRound = (int)(playerInventory.coinsBeforeMultiplier * playerInventory.multiplier);
+        moneyEarnedThisRound = (int)(playerInventory.coinsBeforeMultiplier * Mathf.Ceil(playerInventory.multiplier));
+        Debug.Log("coins before multiplier" + playerInventory.coinsBeforeMultiplier);
+        Debug.Log("multiplier" + Mathf.Ceil(playerInventory.multiplier));
         StartCoroutine(roundMoney.setMoneyEarnedThisRound(moneyEarnedThisRound));
         
         gameStats.EndOfWave(enemySpawn.waveNumber);
+        playerInventory.EndOfWave();
         enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
         gameStats.wavesSurvived++;
         globalAudio.PlayOneShot(fireEnding);
@@ -184,6 +195,18 @@ public class FireMode : MonoBehaviour
 
         for (int i = 0; i < requiredActivators; i++)
         {
+
+
+            
+            // Debug.Log("xMax:" + xMax);
+            // Debug.Log("yMax:" + yMax);
+            // Debug.Log("xMin:" + xMin);
+            // Debug.Log("yMin:" + yMin);
+
+            // Checks if a randomly selected coordinate is within a certain radius of the player
+            
+
+
             activatorSpawnPositions[i] = new Vector2(Random.Range(enemySpawn.xMin, enemySpawn.xMax), Random.Range(enemySpawn.yMin, enemySpawn.yMax));
 
             if (i > 0 && (Mathf.Abs(activatorSpawnPositions[i].x - activatorSpawnPositions[i - 1].x) < 0.2 || Mathf.Abs(activatorSpawnPositions[i].y - activatorSpawnPositions[i - 1].y) < 0.1))
@@ -191,9 +214,31 @@ public class FireMode : MonoBehaviour
                 activatorSpawnPositions[i].x = activatorSpawnPositions[i-1].x * -1;
                 activatorSpawnPositions[i].y = activatorSpawnPositions[i-1].y * -1;
             }
-            
+
+            isNearPlayer = Mathf.Sqrt((Mathf.Pow((player.transform.position.x - activatorSpawnPositions[i].x), 2) + Mathf.Pow((player.transform.position.y - activatorSpawnPositions[i].y), 2))) < enemySpawn.noSpawnRadius;
+
+
+            if (!isNearPlayer)
+            {
+                //okay to spawn normally if far enough from player
+
+            }
+            else if (isNearPlayer)
+            {
+                //check sign of each coordinate, and change the location by the value of radius
+                //This is done to make enemies spawn a minimum distance away from the player
+
+                activatorSpawnPositions[i].x = activatorSpawnPositions[i].x + ((activatorSpawnPositions[i].x / Mathf.Abs(activatorSpawnPositions[i].x)) * -enemySpawn.noSpawnRadius);
+                activatorSpawnPositions[i].y = activatorSpawnPositions[i].y + ((activatorSpawnPositions[i].y / Mathf.Abs(activatorSpawnPositions[i].y)) * -enemySpawn.noSpawnRadius);
+
+               
+            }
+
+
             liveActivators++;
         }
+
+        
         for (int i = 0; i < requiredActivators; i++)
         {
             Instantiate(fireActivator, activatorSpawnPositions[i], Quaternion.identity);
@@ -213,7 +258,8 @@ public class FireMode : MonoBehaviour
     IEnumerator GameCompletion()
     {
         Debug.Log("game Ending");
-        globalAudio.PlayOneShot(victoryTune);
+        //globalAudio.volume = 0.2f;
+        globalAudio.PlayOneShot(victoryTune,0.2f);
         yield return new WaitForSeconds(victoryTune.length);
         SceneManager.LoadScene("Game End Screen");
 

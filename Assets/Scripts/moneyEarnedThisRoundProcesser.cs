@@ -13,6 +13,8 @@ public class moneyEarnedThisRoundProcesser : MonoBehaviour
     public float maxScale;
     public float currentScale;
     public GameObject moneyEarnedObject;
+    public Transform multiplierTransform;
+    public Timers timers;
     void Start()
     {
         currentScale = 0;
@@ -23,7 +25,7 @@ public class moneyEarnedThisRoundProcesser : MonoBehaviour
    
     void Update()
     {
-        
+        moneyEarnedTransform.position = multiplierTransform.position;
     }
     public IEnumerator setMoneyEarnedThisRound(int moneyEarned)
     {
@@ -37,11 +39,18 @@ public class moneyEarnedThisRoundProcesser : MonoBehaviour
             currentScale += (maxScale / moneyEarned);
             moneyEarnedTransform.localScale = Vector2.one * currentScale;
                   
-            yield return new WaitForSeconds(1f/moneyEarned);
+            yield return new WaitForSeconds(timers.roundMoneyAddingTime/moneyEarned);
         }
         StartCoroutine(totalMoneyProcessor_.addToTotal(moneyEarned));
+        StartCoroutine(ResetMoneySize());
+       
+       
+    }
+    public IEnumerator ResetMoneySize()
+    {
+        
+        yield return new WaitForSeconds(timers.lullAfterFireModeEndsButWaveHasntBegun - timers.roundMoneyAddingTime);
         currentScale = 0;
         moneyEarnedTransform.localScale = Vector2.one * currentScale;
-        // moneyEarnedObject.SetActive(false);
     }
 }

@@ -24,7 +24,7 @@ public class totalMoneyProcessor : MonoBehaviour
        
         moneyBeforeRoundMoneyIsAdded = playerInventory.coins;
         int i = moneyBeforeRoundMoneyIsAdded;
-        for (i = moneyBeforeRoundMoneyIsAdded; i < moneyBeforeRoundMoneyIsAdded + moneyEarned; i = i + 1)
+        for (i = moneyBeforeRoundMoneyIsAdded; i < moneyBeforeRoundMoneyIsAdded + moneyEarned + 1; i = i + 1)
         {
             totalMoneyText.SetText(i.ToString());
             yield return new WaitForSeconds(0.5f / moneyEarned);

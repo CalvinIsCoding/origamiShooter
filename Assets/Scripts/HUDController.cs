@@ -38,7 +38,7 @@ public class HUDController : MonoBehaviour
         lives = player.lives;
         livesSlider.maxValue = player.lives;
         GameMusic.clip = gameplayMusic;
-        GameMusic.volume = 0.5f;
+        //GameMusic.volume = 0.5f;
         GameMusic.Play();
       //  gameplayMusic.Play();
       //  gameplayMusic.loop = true;

@@ -18,6 +18,7 @@ public class ShopManager : MonoBehaviour
    
 
     public GameObject ShopMenu;
+    public TMP_Text totalMoney;
    
 
     void Start()
@@ -63,7 +64,7 @@ public class ShopManager : MonoBehaviour
         { 
              shopButton[i].TitleText.text = shopItemSO[i].title;
             //shopButton[i].ShopImage = images[i];
-            // shopButton[i].PriceText.text = shopItemSO[i].cost.ToString();
+             shopButton[i].PriceText.text = shopItemSO[i].cost.ToString();
             
 
         }
@@ -85,6 +86,7 @@ public class ShopManager : MonoBehaviour
             Debug.Log("item type: " + shopItemSO[btnNo].title);
             playerInventory.lives++;
         }
+        totalMoney.SetText(playerInventory.coins.ToString());
     }
 
     public void CheckPurchaseable()

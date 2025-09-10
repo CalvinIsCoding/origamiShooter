@@ -14,6 +14,7 @@ public class MoneyMultiplierBar : MonoBehaviour
     public int enemiesKilled;
     public int numberOfEnemiesSpawned;
     public GameStatsScript gameStats;
+    public PlayerInventory playerInventory;
     public Image sliderFill;
     
     public void SetMaxMoneyMultiplier(float maxMultiplier)
@@ -30,10 +31,10 @@ public class MoneyMultiplierBar : MonoBehaviour
             slider.maxValue = 10f;
             slider.value = multiplier;
 
-            moneyMultiplierText.SetText(MathF.Round(multiplier, 0).ToString()); 
-            multiplierInteger = (int)multiplier;
+            moneyMultiplierText.SetText(MathF.Ceiling(multiplier).ToString()); 
+            multiplierInteger = (int)MathF.Ceiling(multiplier);
             //animator.SetInteger("Multiplier", multiplierInteger);
-            enemiesKilledText.text = gameStats.enemiesKilledThisWave.ToString();
+            enemiesKilledText.text = playerInventory.coinsBeforeMultiplier.ToString();
            // Debug.Log("max multiplier" + );
         }
         if (isFireMode)
@@ -41,8 +42,9 @@ public class MoneyMultiplierBar : MonoBehaviour
             //when fire mode I want to reuse the same slider object in order to reduce UI clutter. The bar will fill from bottom to top when it switches to indicate the number of enemies killed.
             sliderFill.color = Color.blue;
             slider.maxValue = gameStats.enemiesSpawnedThisWave;
-            slider.value = gameStats.enemiesKilledThisWave;
-            enemiesKilledText.text = gameStats.enemiesKilledThisWave.ToString();
+            slider.value = playerInventory.coinsBeforeMultiplier;
+
+            enemiesKilledText.text = playerInventory.coinsBeforeMultiplier.ToString();
             //moneyMultiplierText.text = multiplier.ToString();
             //multiplierInteger = (int)multiplier;
             //animator.SetInteger("Multiplier", multiplierInteger);

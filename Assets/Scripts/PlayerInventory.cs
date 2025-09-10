@@ -21,5 +21,10 @@ public class PlayerInventory : ScriptableObject
         coinsBeforeMultiplier = 0;
         multiplier = 0f;
     }
+    public void EndOfWave()
+    {
+        coinsBeforeMultiplier = 0;
+    }
+
 }
 

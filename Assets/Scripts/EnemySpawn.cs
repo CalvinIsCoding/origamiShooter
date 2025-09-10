@@ -50,7 +50,7 @@ public class EnemySpawn : MonoBehaviour
     [HideInInspector] public float yMax;
 
     public Transform playerPosition;
-    private float noSpawnRadius = 0.35f;
+    public float noSpawnRadius = 0.35f;
     private bool isNearPlayer = false;
     private float noSpawn_xMin;
     private float noSpawn_xMax;

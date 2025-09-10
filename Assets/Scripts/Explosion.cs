@@ -29,7 +29,7 @@ public class Explosion : MonoBehaviour
         if (enemy != null)
         {
             
-            enemy.Die();
+            enemy.Die(false);
             
 
         }

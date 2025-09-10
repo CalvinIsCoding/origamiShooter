@@ -94,6 +94,8 @@ public class PlayerController : MonoBehaviour
     public float hitTime = 0.01f;
     public float timeSlowDown = 0.90f;
 
+    public GameSettings gameSettings;
+
 
     void Start()
     {
@@ -187,8 +189,10 @@ public class PlayerController : MonoBehaviour
         //overheatBar.SetOverheat(overHeatTime);
         StartCoroutine(SetOverheatSpriteColor(overHeatTime));
 
-        
 
+        FanNoise.volume = gameSettings.sfxVolume;
+        FanSoundFX.volume = gameSettings.sfxVolume;
+        
 
 
     }
@@ -259,6 +263,7 @@ public class PlayerController : MonoBehaviour
             if (!FanNoise.isPlaying)
             {
                 FanNoise.Play();
+                Debug.Log("playing fan sound");
 
             }
 
@@ -283,7 +288,7 @@ public class PlayerController : MonoBehaviour
         EnemyProjectile enemyProjectile = collision.gameObject.GetComponent<EnemyProjectile>();
         if (enemy != null && !enemy.isBlink)
         {
-            enemy.TakeDamage(100);
+            enemy.Die(true);
 
             PlayerDeath();
 

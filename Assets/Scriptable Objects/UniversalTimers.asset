@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440a5aa2e06d4ea4891d5456febd64fb, type: 3}
-  m_Name: GameSettings
+  m_Script: {fileID: 11500000, guid: 1cce449bee5d8eb4e8c671a9315828fc, type: 3}
+  m_Name: UniversalTimers
   m_EditorClassIdentifier: 
-  sfxVolume: 1
-  musicVolume: 1
-  brightness: 0
+  fireModeTime: 4
+  lullAfterFireModeEndsButWaveHasntBegun: 2
+  timeShopSticksAround: 10
+  timeForRoundMoneyToCountUp: 0

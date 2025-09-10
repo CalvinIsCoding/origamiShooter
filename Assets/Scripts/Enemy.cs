@@ -51,11 +51,14 @@ public class Enemy : MonoBehaviour
 	private int growthFrames = 30;
 	private float currentScale;
 	private float maxScale;
+
+	public FireMode fireMode;
 	void Start()
     {
 		enemySpawn = FindObjectOfType<EnemySpawn>();
-		//shopManager = FindObjectOfType<ShopManager>();
-		isRed = false;
+		fireMode = FindObjectOfType<FireMode>();
+        //shopManager = FindObjectOfType<ShopManager>();
+        isRed = false;
 		isBlown = false;
 		isBlink = true;
 		spriteToggle = false;
@@ -85,16 +88,24 @@ public class Enemy : MonoBehaviour
 
 		if (health <= 0)
 		{
-			Die();
+			Die(false);
 		}
 	}
 
-	public void Die()
+	public void Die(bool diedByTouchingPlayer)
 	{
-		playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
-		gameStats.enemiesKilledThisWave++;
-		gameStats.totalEnemiesKilled++;
-		Destroy(gameObject);
+		if (diedByTouchingPlayer == false)
+		{
+            playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
+            gameStats.enemiesKilledThisWave++;
+            gameStats.totalEnemiesKilled++;
+        }
+		else
+		{
+			gameStats.totalEnemiesThatDiedByTouchingPlayer++;
+		}
+
+			Destroy(gameObject);
 		
 	}
 	public void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet, Vector2 airBulletVelocity)

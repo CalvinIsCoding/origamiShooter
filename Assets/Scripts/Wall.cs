@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
@@ -19,6 +20,7 @@ public class Wall : MonoBehaviour
 
     private int collisionCount;
     private int soundSelect;
+   
 
 
     void Start()
@@ -72,6 +74,8 @@ public class Wall : MonoBehaviour
             timeSinceLastSound = 0f;
            
         }
+        
 
     }
+        
 }

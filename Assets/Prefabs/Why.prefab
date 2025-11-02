@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7414918018862233218}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.7623055, y: -0.33197635, z: 0}
   m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_ConstrainProportionsScale: 1
@@ -120,6 +120,8 @@ MonoBehaviour:
   closedHiHat: {fileID: 8300000, guid: 28ea569996d25fd4db9006d8fd3bf8fd, type: 3}
   snare: {fileID: 8300000, guid: 951a6c7cd789a694ea2f01b1335e6242, type: 3}
   bassDrum: {fileID: 8300000, guid: 1b7ff182f4614cb48a554a5fb8c2b0f3, type: 3}
+  fireMode: {fileID: 0}
+  isTitleLetter: 0
 --- !u!61 &7414918018862233219
 BoxCollider2D:
   m_ObjectHideFlags: 0

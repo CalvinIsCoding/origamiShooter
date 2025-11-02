@@ -97,6 +97,10 @@ public class PlayerController : MonoBehaviour
     public GameSettings gameSettings;
 
 
+    public bool insideArenaBound;
+    public bool enteredPlayingArea;
+
+
     void Start()
     {
         playerInventory.resetToDefaults();
@@ -122,6 +126,7 @@ public class PlayerController : MonoBehaviour
         hitTime = 0.1f;
         timeSlowDown = 0.30f;
         isRed = false;
+        enteredPlayingArea = false;
 
         //FanSoundFX.clip = fanSlidingNoise;
         //FanSoundFX.Play();
@@ -163,16 +168,16 @@ public class PlayerController : MonoBehaviour
 
 
       
-        else if(Input.GetButtonDown("Fire1")  && _DestroyMode.isDestroyMode)
+       /* else if(Input.GetButtonDown("Fire1")  && _DestroyMode.isDestroyMode)
         {
 
             bullet = Instantiate(misslePrefab, firePoint.position, firePoint.rotation);
             currentTimeBetweenBullets = 0;
 
-        }
+        }*/
 
         //Overheating
-        if (Input.GetButton("Fire1") && !_DestroyMode.isDestroyMode && !overHeating)
+        if (Input.GetButton("Fire1") && !overHeating)
         {
             overHeatTime = overHeatTime + Time.deltaTime;
             
@@ -192,7 +197,20 @@ public class PlayerController : MonoBehaviour
 
         FanNoise.volume = gameSettings.sfxVolume;
         FanSoundFX.volume = gameSettings.sfxVolume;
-        
+
+       if ( SceneManager.GetActiveScene().name == "Title Screen Refined")
+        {
+            if (insideArenaBound == false)
+            {
+                overHeating = true;
+            }
+            else if (enteredPlayingArea == false)
+            {
+                overHeating = false;
+                enteredPlayingArea = true;
+            }
+        }
+     
 
 
     }
@@ -200,8 +218,13 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 mouseScreen = Input.mousePosition;
+       // Debug.Log("Mouse Position" + Input.mousePosition);
+        //I set this to 10 manually becuse if it's set to 0 or not set at all, the screen to world point function just returns the camera position for some stuipd reason
+        mouseScreen.z = 10;
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
-        float angleOfShooting = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x);
+        
+       // Debug.Log("MouseScreen" +  mouse);
+        float angleOfShooting = Mathf.Atan2(mouse.y - this.transform.position.y, mouse.x - this.transform.position.x);
         firePoint.transform.rotation = Quaternion.Euler(0, 0, angleOfShooting * Mathf.Rad2Deg);
         firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfShooting) * 0.18f, Mathf.Sin(angleOfShooting) * 0.18f);
 
@@ -243,7 +266,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //shooting
-        if (Input.GetButton("Fire1") && (currentTimeBetweenBullets - timePerBullet) > 0 && !_DestroyMode.isDestroyMode && !overHeating)
+        if (Input.GetButton("Fire1") && (currentTimeBetweenBullets - timePerBullet) > 0  && !overHeating)
         {
 
             //bullet = Instantiate(airBulletPrefab, firePoint.position, firePoint.rotation);
@@ -286,7 +309,7 @@ public class PlayerController : MonoBehaviour
         Wall myWall = collision.gameObject.GetComponent<Wall>();
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         EnemyProjectile enemyProjectile = collision.gameObject.GetComponent<EnemyProjectile>();
-        if (enemy != null && !enemy.isBlink)
+        if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter)
         {
             enemy.Die(true);
 

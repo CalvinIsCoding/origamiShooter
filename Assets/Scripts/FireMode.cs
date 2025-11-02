@@ -211,8 +211,8 @@ public class FireMode : MonoBehaviour
 
             if (i > 0 && (Mathf.Abs(activatorSpawnPositions[i].x - activatorSpawnPositions[i - 1].x) < 0.2 || Mathf.Abs(activatorSpawnPositions[i].y - activatorSpawnPositions[i - 1].y) < 0.1))
             {
-                activatorSpawnPositions[i].x = activatorSpawnPositions[i-1].x * -1;
-                activatorSpawnPositions[i].y = activatorSpawnPositions[i-1].y * -1;
+                activatorSpawnPositions[i].x = activatorSpawnPositions[i-1].x + ((activatorSpawnPositions[i-1].x / Mathf.Abs(activatorSpawnPositions[i-1].x)) * -enemySpawn.noSpawnRadius);
+                activatorSpawnPositions[i].y = activatorSpawnPositions[i-1].y + ((activatorSpawnPositions[i-1].y / Mathf.Abs(activatorSpawnPositions[i-1].y)) * -enemySpawn.noSpawnRadius);
             }
 
             isNearPlayer = Mathf.Sqrt((Mathf.Pow((player.transform.position.x - activatorSpawnPositions[i].x), 2) + Mathf.Pow((player.transform.position.y - activatorSpawnPositions[i].y), 2))) < enemySpawn.noSpawnRadius;
@@ -227,6 +227,8 @@ public class FireMode : MonoBehaviour
             {
                 //check sign of each coordinate, and change the location by the value of radius
                 //This is done to make enemies spawn a minimum distance away from the player
+
+                //I divide activatorSpawmPosition by it's absolute value in order to ensure that the position adjusts away from the border, thus preventing activators from spawning outside the arena
 
                 activatorSpawnPositions[i].x = activatorSpawnPositions[i].x + ((activatorSpawnPositions[i].x / Mathf.Abs(activatorSpawnPositions[i].x)) * -enemySpawn.noSpawnRadius);
                 activatorSpawnPositions[i].y = activatorSpawnPositions[i].y + ((activatorSpawnPositions[i].y / Mathf.Abs(activatorSpawnPositions[i].y)) * -enemySpawn.noSpawnRadius);

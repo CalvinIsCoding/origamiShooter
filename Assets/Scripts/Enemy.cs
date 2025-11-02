@@ -17,10 +17,11 @@ public class Enemy : MonoBehaviour
 	private float blowTime = 0.50f;
 	public bool isBlown;
 	public Vector2 travelDirection;
+	private Vector3 crossProductOfVelocityAndPosition;
 
-	//private float speed;
-	//private float lastTime;
-	private float spawnDelayTime = 0.8f;
+    //private float speed;
+    //private float lastTime;
+    private float spawnDelayTime = 0.8f;
 	private bool spriteToggle;
 	private int blinks = 6;
 	public SpriteRenderer sprite;
@@ -53,6 +54,8 @@ public class Enemy : MonoBehaviour
 	private float maxScale;
 
 	public FireMode fireMode;
+
+	public bool isTitleLetter;
 	void Start()
     {
 		enemySpawn = FindObjectOfType<EnemySpawn>();
@@ -72,14 +75,18 @@ public class Enemy : MonoBehaviour
 	}
     private void Update()
     {
-		
-        if (wavesSaved < (enemySpawn.waveNumber - waveSpawned) && !enemySpawn.fireMode.isFireMode)
-        {
-			
-			wavesSaved = wavesSaved + 1;
-			ColorTurn();
-			
-        }
+		if (isTitleLetter == false)
+		{
+
+
+			if (wavesSaved < (enemySpawn.waveNumber - waveSpawned) && !enemySpawn.fireMode.isFireMode)
+			{
+
+				wavesSaved = wavesSaved + 1;
+				ColorTurn();
+
+			}
+		}
     }
 
     public void TakeDamage(int damage)
@@ -110,6 +117,10 @@ public class Enemy : MonoBehaviour
 	}
 	public void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet, Vector2 airBulletVelocity)
     {
+		
+		Vector2 perpendicularToVelocity;
+		Vector2 positionComponentOfForce;
+		//Vector3 clampedCrossProduct;
 		positionVector = new Vector2(_bullet.transform.position.x - enemy.transform.position.x, _bullet.transform.position.y - enemy.transform.position.y);
 		positionMagnitude = Mathf.Sqrt(Mathf.Pow(positionVector.x, 2) + Mathf.Pow(positionVector.y, 2));
 
@@ -118,12 +129,20 @@ public class Enemy : MonoBehaviour
         {
 			velocityMagnitude = 1;
         }
+       // crossProductOfVelocityAndPosition = new Vector3(1f, 1f, 1f);
+
+        crossProductOfVelocityAndPosition = Vector3.Cross(positionVector, airBulletVelocity);
+
+        //clampedCrossProduct = Vector3.ClampMagnitude(crossProductOfVelocityAndPosition,knockBack);
+		
+		Debug.Log("magnitude of position" + crossProductOfVelocityAndPosition.z);
+        perpendicularToVelocity = Vector2.Perpendicular(airBulletVelocity);
+		positionComponentOfForce = perpendicularToVelocity.normalized * crossProductOfVelocityAndPosition.z;
+		
 
 
-
-          
-
-		rb.AddForce(((airBulletVelocity / (2 * velocityMagnitude)) ) * knockBack , ForceMode2D.Force);
+        rb.AddForce((airBulletVelocity / (2 * velocityMagnitude))  * knockBack  , ForceMode2D.Force);
+		rb.AddForce(positionComponentOfForce, ForceMode2D.Force);
 		//Debug.Log("Position Vetcor: " + positionVector/positionMagnitude);
 		//Debug.Log("Velocity Vetcor: " + airBulletVelocity/ (2 * velocityMagnitude));
 		//Debug.Log("Total Force: " + ((bullet.velocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack);

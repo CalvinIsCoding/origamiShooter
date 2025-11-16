@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class TitlescreenSceneManager : MonoBehaviour
 {
     public GameObject[] titleScreenLetters = new GameObject[3];
+    public Animator sceneTransitionAnimator;
+    public float sceneTransitionTime = 1.0f;
     void Start()
     {
       
@@ -21,6 +23,14 @@ public class TitlescreenSceneManager : MonoBehaviour
     }
     void startGame()
     {
+        StartCoroutine(loadSceneDelay());
+    }
+    IEnumerator loadSceneDelay()
+    {
+        sceneTransitionAnimator.SetBool("Fade Out", true);
+        
+        yield return new WaitForSeconds(sceneTransitionTime);
+        sceneTransitionAnimator.SetBool("Fade Out", false);
         SceneManager.LoadScene("Game");
     }
 }

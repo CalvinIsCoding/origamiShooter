@@ -186,6 +186,7 @@ MonoBehaviour:
   enemy: {fileID: 686413535923707921}
   deathEffect: {fileID: 0}
   rb: {fileID: 504178718868795750}
+  enemyCollider: {fileID: 3828411337505689693}
   isBlown: 0
   travelDirection: {x: 0, y: 0}
   sprite: {fileID: 4662499671884723856}
@@ -202,3 +203,4 @@ MonoBehaviour:
   bassDrum: {fileID: 0}
   fireMode: {fileID: 0}
   isTitleLetter: 1
+  enemyAnimator: {fileID: 0}

@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 	public GameObject enemy;
 	public GameObject deathEffect;
 	public Rigidbody2D rb;
+	public Collider2D enemyCollider;
 
 	//Push() variables
 	Vector2 positionVector;
@@ -56,7 +57,13 @@ public class Enemy : MonoBehaviour
 	public FireMode fireMode;
 
 	public bool isTitleLetter;
-	void Start()
+
+	public Animator enemyAnimator;
+	AnimatorClipInfo[] CurrentClipInfo;
+    float CurrentClipLength;
+	string ClipName;
+
+    void Start()
     {
 		enemySpawn = FindObjectOfType<EnemySpawn>();
 		fireMode = FindObjectOfType<FireMode>();
@@ -111,8 +118,18 @@ public class Enemy : MonoBehaviour
 		{
 			gameStats.totalEnemiesThatDiedByTouchingPlayer++;
 		}
+        enemyAnimator.SetTrigger("Death");
+        CurrentClipInfo = enemyAnimator.GetCurrentAnimatorClipInfo(0);
+		CurrentClipLength = CurrentClipInfo[0].clip.length;
+		ClipName = CurrentClipInfo[0].clip.name;
+        
 
-			Destroy(gameObject);
+        Debug.Log("Clip Name" + ClipName +  "Clip Length" + CurrentClipLength);
+		//Instantiate(deathAnimation, this.transform);
+		this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+		this.enemyCollider.enabled = false;
+		
+		Destroy(gameObject, CurrentClipLength);
 		
 	}
 	public void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet, Vector2 airBulletVelocity)
@@ -135,7 +152,7 @@ public class Enemy : MonoBehaviour
 
         //clampedCrossProduct = Vector3.ClampMagnitude(crossProductOfVelocityAndPosition,knockBack);
 		
-		Debug.Log("magnitude of position" + crossProductOfVelocityAndPosition.z);
+		//Debug.Log("magnitude of position" + crossProductOfVelocityAndPosition.z);
         perpendicularToVelocity = Vector2.Perpendicular(airBulletVelocity);
 		positionComponentOfForce = perpendicularToVelocity.normalized * crossProductOfVelocityAndPosition.z;
 		

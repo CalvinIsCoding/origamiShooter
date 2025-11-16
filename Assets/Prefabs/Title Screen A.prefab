@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6478247840261943135}
   - component: {fileID: 8102500436797920815}
   - component: {fileID: 301003593471364385}
+  - component: {fileID: 5254290259215676972}
   m_Layer: 0
   m_Name: Title Screen A
   m_TagString: Untagged
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe127ff107b0a0547b4cb000b07a6307, type: 3}
+  m_Sprite: {fileID: -624780225, guid: 48c440fb9a5600b4db2ea4dafba707ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
   enemy: {fileID: 8928072845331200465}
   deathEffect: {fileID: 0}
   rb: {fileID: 6478247840261943135}
+  enemyCollider: {fileID: 8736282938984405740}
   isBlown: 0
   travelDirection: {x: 0, y: 0}
   sprite: {fileID: 6330840466959813255}
@@ -182,6 +184,7 @@ MonoBehaviour:
   bassDrum: {fileID: 0}
   fireMode: {fileID: 0}
   isTitleLetter: 1
+  enemyAnimator: {fileID: 5254290259215676972}
 --- !u!114 &301003593471364385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,3 +205,24 @@ MonoBehaviour:
   ninjaStarMovementForce: 0
   initialVelocity: {x: 0, y: 0, z: 0}
   minVelocity: 2
+--- !u!95 &5254290259215676972
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928072845331200465}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6678dee0d88118747be1821d70647713, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

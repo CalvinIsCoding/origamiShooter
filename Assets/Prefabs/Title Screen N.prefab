@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4711422113708590422}
   - component: {fileID: 7008598426302637038}
   - component: {fileID: 7366606908531943312}
+  - component: {fileID: 2676517970847094816}
   m_Layer: 0
   m_Name: Title Screen N
   m_TagString: Untagged
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 962c3007b34819d41995cb8774c3b45d, type: 3}
+  m_Sprite: {fileID: 1795095448, guid: 5ea94dd81d6890c419601bbf86bed41b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,6 +187,7 @@ MonoBehaviour:
   enemy: {fileID: 5945978539125757838}
   deathEffect: {fileID: 0}
   rb: {fileID: 4711422113708590422}
+  enemyCollider: {fileID: 8050636814830531110}
   isBlown: 0
   travelDirection: {x: 0, y: 0}
   sprite: {fileID: 3260858900739998821}
@@ -202,3 +204,25 @@ MonoBehaviour:
   bassDrum: {fileID: 0}
   fireMode: {fileID: 0}
   isTitleLetter: 1
+  enemyAnimator: {fileID: 2676517970847094816}
+--- !u!95 &2676517970847094816
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945978539125757838}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d82a595738d28a478786b75b327b450, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

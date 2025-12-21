@@ -210,6 +210,15 @@ public class PlayerController : MonoBehaviour
                 enteredPlayingArea = true;
             }
         }
+
+       if(overHeating ==true)
+        {
+            animator.SetBool("Overheating", true);
+        }
+        else
+        {
+            animator.SetBool("Overheating", false);
+        }
      
 
 

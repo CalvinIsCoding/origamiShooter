@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Enemy : MonoBehaviour
 {
@@ -60,8 +62,12 @@ public class Enemy : MonoBehaviour
 
 	public Animator enemyAnimator;
 	AnimatorClipInfo[] CurrentClipInfo;
+	AnimatorStateInfo NextStateInfo;
     float CurrentClipLength;
 	string ClipName;
+	float NextStateLength;
+
+	AnimationUtility animationUtility;
 
     void Start()
     {
@@ -79,7 +85,10 @@ public class Enemy : MonoBehaviour
 		currentScale = 0;
 		maxScale = this.transform.localScale.x;
 		StartCoroutine(GrowIntoExistance());
-	}
+      
+
+
+    }
     private void Update()
     {
 		if (isTitleLetter == false)
@@ -108,7 +117,10 @@ public class Enemy : MonoBehaviour
 
 	public void Die(bool diedByTouchingPlayer)
 	{
-		if (diedByTouchingPlayer == false)
+      //  NextStateInfo = enemyAnimator.GetNextAnimatorStateInfo(0);
+       // NextStateLength = NextStateInfo.length;
+        //Debug.Log("Next Clip length " + NextStateLength + "Current Clip Length: " + CurrentClipLength);
+        if (diedByTouchingPlayer == false)
 		{
             playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
             gameStats.enemiesKilledThisWave++;
@@ -118,18 +130,23 @@ public class Enemy : MonoBehaviour
 		{
 			gameStats.totalEnemiesThatDiedByTouchingPlayer++;
 		}
-        enemyAnimator.SetTrigger("Death");
-        CurrentClipInfo = enemyAnimator.GetCurrentAnimatorClipInfo(0);
-		CurrentClipLength = CurrentClipInfo[0].clip.length;
-		ClipName = CurrentClipInfo[0].clip.name;
+       enemyAnimator.SetTrigger("Death");
+        //CurrentClipInfo = enemyAnimator.GetCurrentAnimatorClipInfo(0);
+       // CurrentClipInfo = enemyAnimator.GetCurrentAnimatorClipInfo(0);
+		
+		//CurrentClipLength = CurrentClipInfo[0].clip.length;
+		//ClipName = CurrentClipInfo[0].clip.name;
         
 
-        Debug.Log("Clip Name" + ClipName +  "Clip Length" + CurrentClipLength);
-		//Instantiate(deathAnimation, this.transform);
-		this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-		this.enemyCollider.enabled = false;
+      //  Debug.Log("Clip Name" + ClipName +  "Clip Length" + CurrentClipLength);
+
 		
-		Destroy(gameObject, CurrentClipLength);
+
+        //Instantiate(deathAnimation, this.transform);
+        this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+		this.enemyCollider.enabled = false;
+		//Instantiate(deathEffect);
+		Destroy(gameObject,0.5f);
 		
 	}
 	public void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet, Vector2 airBulletVelocity)

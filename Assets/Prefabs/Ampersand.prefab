@@ -141,6 +141,7 @@ MonoBehaviour:
   enemy: {fileID: 2852395986926089972}
   deathEffect: {fileID: 0}
   rb: {fileID: 2852395986926089973}
+  enemyCollider: {fileID: 0}
   isBlown: 0
   travelDirection: {x: 0, y: 0}
   sprite: {fileID: 2852395986926089977}
@@ -155,6 +156,9 @@ MonoBehaviour:
   closedHiHat: {fileID: 0}
   snare: {fileID: 0}
   bassDrum: {fileID: 0}
+  fireMode: {fileID: 0}
+  isTitleLetter: 0
+  enemyAnimator: {fileID: 3514091169807547124}
 --- !u!114 &2852395986926089974
 MonoBehaviour:
   m_ObjectHideFlags: 0

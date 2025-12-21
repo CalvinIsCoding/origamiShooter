@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 504178718868795750}
   - component: {fileID: 2134456899065851627}
   - component: {fileID: 6209639087412395323}
+  - component: {fileID: 8893052710484957501}
   m_Layer: 0
   m_Name: Title Screen F
   m_TagString: Untagged
@@ -184,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   enemy: {fileID: 686413535923707921}
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 7400000, guid: 575e9adb6a331c84d94f183f204c9c4c, type: 2}
   rb: {fileID: 504178718868795750}
   enemyCollider: {fileID: 3828411337505689693}
   isBlown: 0
@@ -204,3 +205,33 @@ MonoBehaviour:
   fireMode: {fileID: 0}
   isTitleLetter: 1
   enemyAnimator: {fileID: 0}
+--- !u!114 &8893052710484957501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686413535923707921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 01b9f91c01789c0100000000b5b31fd049771b4b
+  m_ShapePath:
+  - {x: -2.5000002, y: -2.5, z: 0}
+  - {x: -2.5000002, y: 2.5, z: 0}
+  - {x: 2.5, y: 2.5, z: 0}
+  - {x: 2.5, y: -2.5, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -25738
+  m_LocalBounds:
+    m_Center: {x: -0.00000023841858, y: 0, z: 0}
+    m_Extent: {x: 2.5, y: 2.5, z: 0}

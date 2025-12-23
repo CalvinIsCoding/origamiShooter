@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,9 +168,9 @@ MonoBehaviour:
   playerRb: {fileID: 0}
   rb: {fileID: 2789697411693779185}
   angle: 0
-  ninjaStarMovementForce: 0
-  initialVelocity: {x: 0, y: 0, z: 0}
-  minVelocity: 34
+  ninjaStarMovementForce: 0.5
+  initialVelocity: {x: 0.25, y: 0.5, z: 0}
+  minVelocity: 1
 --- !u!114 &2789697411693779191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +187,7 @@ MonoBehaviour:
   enemy: {fileID: 2789697411693779188}
   deathEffect: {fileID: 0}
   rb: {fileID: 2789697411693779185}
+  enemyCollider: {fileID: 2789697411693779184}
   isBlown: 0
   travelDirection: {x: 0, y: 0}
   sprite: {fileID: 2789697411693779187}
@@ -201,6 +202,9 @@ MonoBehaviour:
   closedHiHat: {fileID: 0}
   snare: {fileID: 0}
   bassDrum: {fileID: 0}
+  fireMode: {fileID: 0}
+  isTitleLetter: 0
+  enemyAnimator: {fileID: 3768618109727446638}
 --- !u!95 &3768618109727446638
 Animator:
   serializedVersion: 5

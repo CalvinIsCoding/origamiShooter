@@ -89,8 +89,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.54200006, y: 2.6208498, z: 0}
-    m_Extent: {x: 3.1845, y: 7.88325, z: 0}
+    m_Center: {x: 1.1631, y: 2.6209, z: 0}
+    m_Extent: {x: 3.8056, y: 7.8833, z: 0}
   m_PointLightInnerAngle: 359.99997
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 0
@@ -107,10 +107,10 @@ MonoBehaviour:
   - {x: 0.7698759, y: -4.2637777, z: 0}
   - {x: 2.0733483, y: -2.644231, z: -0.002670626}
   - {x: 2.5668628, y: -0.85629165, z: -0.0000007329237}
-  - {x: 2.7196403, y: 3.5478237, z: -0.02082143}
-  - {x: 2.7263446, y: 6.895735, z: -0.05494334}
+  - {x: 3.96922, y: 4.160673, z: -0.02082143}
+  - {x: 2.8733535, y: 7.140823, z: -0.05494334}
   - {x: 1.3356873, y: 9.504579, z: -0.052859765}
-  - {x: -0.58146596, y: 6.678463, z: -0.04058094}
+  - {x: -1.6105361, y: 6.719163, z: -0.040580943}
 --- !u!212 &4600028539877016056
 SpriteRenderer:
   m_ObjectHideFlags: 0

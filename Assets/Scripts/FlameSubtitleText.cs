@@ -33,10 +33,16 @@ public class FlameSubtitleText : MonoBehaviour
             subtitleLighting.intensity = 0.9f;
             subtitleLighting.falloffIntensity = 0.585f;
             subtitleLighting.color = new Color(217f/255f, 197f / 255f, 150f / 255f);
+            FlickerFlame();
         }
         else
         { 
                 
         }
+    }
+
+    void FlickerFlame()
+    {
+
     }
 }

@@ -21,7 +21,7 @@ public class Boss : MonoBehaviour
 
 	//private float speed;
 	//private float lastTime;
-	private float spawnDelayTime = 0.8f;
+	private float spawnDelayTime = 0.6f;
 	private bool spriteToggle;
 	private int blinks = 6;
 	public SpriteRenderer sprite;
@@ -56,7 +56,7 @@ public class Boss : MonoBehaviour
 
 
 
-    private int growthFrames = 30;
+    private int growthFrames = 15;
 	private float currentScale;
 	private float maxScale;
 	void Start()

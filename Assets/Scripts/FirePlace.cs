@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FirePlace : MonoBehaviour
@@ -23,6 +24,8 @@ public class FirePlace : MonoBehaviour
     private float soundWaitTime;
     public GameStatsScript gameStats;
     SpriteRenderer[] flameAnimationSprites;
+    GameObject[] flameAnimationObjects;
+    public bool flameLighting;
 
     public GameSettings gameSettings;
 
@@ -34,24 +37,35 @@ public class FirePlace : MonoBehaviour
         //Destroy(firePlace, explosionTime);
         //Border.instance.DestroyBorder(transform.position, radius);
         fireCollider.enabled = true;
-        flameAnimations.SetActive(false);
+        flameAnimations.SetActive(true);
         soundWaitTime = 0.01f;
         flameAnimationSprites = flameAnimations.GetComponentsInChildren<SpriteRenderer>(true);
+        //flameAnimationObjects = flameAnimations.GetComponentsInChildren<Transform>(true);
+        flameLighting = false;
+
+        foreach (SpriteRenderer flameAnimation in flameAnimationSprites)
+        {
+            flameAnimation.gameObject.SetActive(false);
+            
+        }
 
         //StartCoroutine(EnableFireMode());
     }
     private void Update()
     {
-        if(fireMode.isFireMode)
+        if(fireMode.isFireMode == true && flameLighting == false)
         {
             //fireHitBox.color = Color.red;
-            flameAnimations.SetActive(true);
+            //flameAnimations.SetActive(true);
+            StartCoroutine(LightFlames());
+            flameLighting = true;
         }
-        else
+        else if (fireMode.isFireMode == false && flameLighting == true)
         {
-            //fireHitBox.color = Color.clear;
-            flameAnimations.SetActive(false);
+            StartCoroutine(UnlightFlames());
+            flameLighting = false;
         }
+       
         if (enemySpawn.wave[enemySpawn.waveNumber].bossWave == true)
         {
             int i = 0;
@@ -162,5 +176,22 @@ public class FirePlace : MonoBehaviour
 
         }
     }
+    public IEnumerator LightFlames()
+    {
+        foreach(SpriteRenderer flameAnimation in flameAnimationSprites)
+        {
+            flameAnimation.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.015f);
+        }
+    }
+    public IEnumerator UnlightFlames()
+    {
+        foreach (SpriteRenderer flameAnimation in flameAnimationSprites)
+        {
+            flameAnimation.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.015f);
+        }
+    }
+
 
 }

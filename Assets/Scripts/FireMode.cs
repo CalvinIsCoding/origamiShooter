@@ -157,6 +157,7 @@ public class FireMode : MonoBehaviour
     }
     void StartFireAndEndWave()
     {
+        //StartCoroutine(LightFlames());
         StartCoroutine(DisableFireMode());
         isFireMode = true;
 

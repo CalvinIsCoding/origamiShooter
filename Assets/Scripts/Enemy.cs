@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
 
     //private float speed;
     //private float lastTime;
-    private float spawnDelayTime = 0.8f;
+    private float spawnDelayTime = 0.6f;
 	private bool spriteToggle;
 	private int blinks = 6;
 	public SpriteRenderer sprite;
@@ -221,7 +221,7 @@ public class Enemy : MonoBehaviour
 		yield return new WaitForSeconds(blowTime);
 		isBlown = false;
 
-
+	
 	}
 
 	void ColorTurn()

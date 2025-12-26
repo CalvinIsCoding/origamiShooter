@@ -24,7 +24,7 @@ public class Why : MonoBehaviour
     private float speed;
     private float lastTime;
     private float timer;
-    private float spawnDelayTime = 0.8f;
+    private float spawnDelayTime = 0.5f;
     private float planeMovementForce;
    // private bool spriteToggle;
     //private int blinks = 6;

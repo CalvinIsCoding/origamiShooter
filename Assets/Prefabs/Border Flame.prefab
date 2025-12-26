@@ -78,7 +78,7 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 01b9f91c01789c0100000000b5b31fd049771b4b
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
+  m_LightOrder: 1
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 1
   m_NormalMapDistance: 3
@@ -89,8 +89,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 1.1631, y: 2.6209, z: 0}
-    m_Extent: {x: 3.8056, y: 7.8833, z: 0}
+    m_Center: {x: 0.91910005, y: 2.84485, z: 0}
+    m_Extent: {x: 5.1989, y: 6.94815, z: 0}
   m_PointLightInnerAngle: 359.99997
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 0
@@ -98,19 +98,20 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 1
+  m_ShapeLightFalloffSize: 3
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -1.5789618, y: -0.07334777, z: 0.03729287}
-  - {x: -1.6432015, y: -2.0607185, z: -0.0032060826}
-  - {x: -1.0372392, y: -3.667407, z: 0.022315055}
-  - {x: 0.7698759, y: -4.2637777, z: 0}
-  - {x: 2.0733483, y: -2.644231, z: -0.002670626}
-  - {x: 2.5668628, y: -0.85629165, z: -0.0000007329237}
-  - {x: 3.96922, y: 4.160673, z: -0.02082143}
-  - {x: 2.8733535, y: 7.140823, z: -0.05494334}
-  - {x: 1.3356873, y: 9.504579, z: -0.052859765}
-  - {x: -1.6105361, y: 6.719163, z: -0.040580943}
+  - {x: -0.45358074, y: 0.34894896, z: 0.03393014}
+  - {x: 0.05618204, y: -0.96346605, z: -0.011943087}
+  - {x: 0.48958582, y: -0.80518824, z: -0.0004843659}
+  - {x: 1.1352553, y: -1.1056213, z: -0.025156353}
+  - {x: 1.4572948, y: -0.71403235, z: -0.018045511}
+  - {x: 2.3751373, y: 0.17002833, z: 0.000008332312}
+  - {x: 2.8897183, y: 3.2247078, z: -0.01336423}
+  - {x: 3.119567, y: 5.236935, z: -0.041721635}
+  - {x: 1.88978, y: 6.7937913, z: -0.05217839}
+  - {x: -0.07669753, y: 6.7525926, z: -0.030934412}
+  - {x: -1.2801291, y: 4.513252, z: -0.023006812}
 --- !u!212 &4600028539877016056
 SpriteRenderer:
   m_ObjectHideFlags: 0

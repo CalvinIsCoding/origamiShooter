@@ -52,19 +52,22 @@ public class NinjaStar : MonoBehaviour
 
     private void FixedUpdate()
     {
+       
         if (!enemy.isBlown)
         {
-
+            rb.AddForceAtPosition(direction.normalized * ninjaStarMovementForce, this.rb.position);
             //direction = playerRb.position - rb.position;
 
-            rb.AddForceAtPosition(direction.normalized * ninjaStarMovementForce, this.rb.position);
+
         }
         else
         {
             direction = rb.velocity;
         }
-
         
+        
+
+        Debug.Log("ex is blown" + enemy.isBlown);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -78,7 +81,19 @@ public class NinjaStar : MonoBehaviour
             }
        // }
     }
+    
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        Wall wall = collision.gameObject.GetComponent<Wall>();
+        if (wall != null && this.rb.velocity.magnitude < 0.8f * minVelocity)
+        {
+           
+                BumpBackTowardsCenter();
 
+            
+        }
+    }
+    
     private void Bounce(Vector3 collisionNormal)
     {
         //var speed = lastFrameVelocity.magnitude;
@@ -86,6 +101,12 @@ public class NinjaStar : MonoBehaviour
 
 
         //rb.AddForceAtPosition(direction.normalized * ninjaStarMovementForce, this.rb.position);
+    }
+    private void BumpBackTowardsCenter()
+    {
+        
+        Vector2 directionOfBump = new Vector2(-this.rb.position.x, -this.rb.position.y);
+        rb.AddForceAtPosition(directionOfBump.normalized,this.rb.position);
     }
 }
 

@@ -339,6 +339,32 @@ public class PlayerController : MonoBehaviour
         }*/
     }
 
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        Wall myWall = collision.gameObject.GetComponent<Wall>();
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        EnemyProjectile enemyProjectile = collision.gameObject.GetComponent<EnemyProjectile>();
+        if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter)
+        {
+            enemy.Die(true);
+
+            PlayerDeath();
+
+        }
+        if (enemyProjectile != null)
+        {
+            Destroy(enemyProjectile.gameObject);
+
+            PlayerDeath();
+
+        }
+        /*if (myWall != null)
+        {
+           // Boost();
+            characterRigidBody.AddForce(new Vector2(),ForceMode2D.Impulse);
+        }*/
+    }
+
     /* void OnTriggerEnter2D(Collider2D collision)
      {
          Enemy enemy = collision.gameObject.GetComponent<Enemy>();

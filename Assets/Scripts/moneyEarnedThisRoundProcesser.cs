@@ -49,7 +49,7 @@ public class moneyEarnedThisRoundProcesser : MonoBehaviour
     public IEnumerator ResetMoneySize()
     {
         
-        yield return new WaitForSeconds(timers.lullAfterFireModeEndsButWaveHasntBegun - timers.roundMoneyAddingTime);
+        yield return new WaitForSeconds(timers.lullAfterFireModeEndsButWaveHasntBegun - timers.roundMoneyAddingTime - 0.5f); //for some reason the number hangs around for a split second longer than it should hence the 0.25f
         currentScale = 0;
         moneyEarnedTransform.localScale = Vector2.one * currentScale;
     }

@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
 	string ClipName;
 	float NextStateLength;
 
-	AnimationUtility animationUtility;
+	//AnimationUtility animationUtility;
 
     void Start()
     {

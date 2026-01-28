@@ -7,19 +7,35 @@ public class RopeForPlayer : MonoBehaviour
     public LineRenderer lineRenderer;
     public GameObject anchor;
     public GameObject player;
-    Vector2[] linePoints = new Vector2[15]; 
+    public PlayerController playerController;
+    Vector2[] linePoints = new Vector2[15];
+    Gradient gradient = new Gradient();
+    GradientColorKey[] colorKeys = new GradientColorKey[1];
+    public Vector3 vectorBetweenPlayerAndAnchor;
+    Color ropeColor = Color.blue;
+    float lineSize;
+  
     void Start()
     {
-        lineRenderer.positionCount = 15;
+        colorKeys[0] = new GradientColorKey(ropeColor,1.0f);
+        lineRenderer.positionCount = 2;
+        CalculateColorGradient();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
+        
         lineRenderer.SetPosition(0, anchor.transform.position);
         lineRenderer.SetPosition(1, player.transform.position);
-        */
+
+        ropeColor = playerController.fanSprite.color;
+        colorKeys[0].color = ropeColor;
+        CalculateColorGradient();
+
+
+
+        /*
         linePoints[0] = anchor.transform.position;
         linePoints[^1] = player.transform.position;
 
@@ -39,6 +55,32 @@ public class RopeForPlayer : MonoBehaviour
         {
             lineRenderer.SetPosition(i, linePoints[i]);
         }
+        */
+        lineSize = Mathf.Clamp(0.1f - vectorBetweenPlayerAndAnchor.magnitude * 0.05f,0.03f,0.1f);
+        lineRenderer.startWidth = lineSize;
+        lineRenderer.endWidth = lineSize;
+
+        if (playerController.overHeating)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+    private void FixedUpdate()
+    {
+        vectorBetweenPlayerAndAnchor = anchor.transform.position - player.transform.position;
+
+        if (vectorBetweenPlayerAndAnchor.magnitude > 0.2f)
+        {
+            playerController.rb.AddForce(vectorBetweenPlayerAndAnchor * (vectorBetweenPlayerAndAnchor.magnitude) * 4f);
+        }
+    }
+    void CalculateColorGradient()
+    {
+        gradient.SetKeys(colorKeys,
+         new GradientAlphaKey[] { new GradientAlphaKey(1.0F, 1.0f) }
+     );
+
+        lineRenderer.colorGradient = gradient;
     }
 
 }

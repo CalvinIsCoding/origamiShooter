@@ -55,8 +55,9 @@ public class Enemy : MonoBehaviour
 	private int growthFrames = 30;
 	private float currentScale;
 	private float maxScale;
+    private float minScale;
 
-	public FireMode fireMode;
+    public FireMode fireMode;
 
 	public bool isTitleLetter;
 
@@ -82,9 +83,23 @@ public class Enemy : MonoBehaviour
 		wavesSaved = 0;
 
 		//StartCoroutine(Blink());
-		currentScale = 0;
-		maxScale = this.transform.localScale.x;
-		StartCoroutine(GrowIntoExistance());
+		
+
+		if (isTitleLetter)
+		{
+            minScale = this.transform.localScale.x;
+            currentScale = 1;
+            
+            StartCoroutine(SlamIntoExistance());
+        }
+		else
+		{
+            maxScale = this.transform.localScale.x;
+            currentScale = 0;
+            
+            StartCoroutine(GrowIntoExistance());
+		}
+
       
 
 
@@ -243,17 +258,31 @@ public class Enemy : MonoBehaviour
 		}
 
 	}
-	IEnumerator GrowIntoExistance()
+	IEnumerator SlamIntoExistance()
     {
-		for (int i = 0; i < growthFrames; i++)
+        maxScale = currentScale;
+		enemyCollider.enabled = false;
+		
+        for (int i = 0; i < growthFrames; i++)
 		{
-			currentScale += (maxScale / growthFrames);
+			
+			currentScale -= (maxScale - minScale) / growthFrames;
 			sprite.transform.localScale = Vector2.one * currentScale;
 			yield return new WaitForSeconds(spawnDelayTime / growthFrames);
 		}
 		isBlink = false;
-		
+		enemyCollider.enabled = true;
 	}
+	IEnumerator GrowIntoExistance()
+	{
+        for (int i = 0; i < growthFrames; i++)
+        {
+            currentScale += (maxScale / growthFrames);
+            sprite.transform.localScale = Vector2.one * currentScale;
+            yield return new WaitForSeconds(spawnDelayTime / growthFrames);
+        }
+        isBlink = false;
+    }
 	/*private void OnCollisionEnter2D(Collision2D collision)
     {
 		Wall myWall = collision.gameObject.GetComponent<Wall>();

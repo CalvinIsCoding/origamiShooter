@@ -67,7 +67,7 @@ public class NinjaStar : MonoBehaviour
         
         
 
-        Debug.Log("ex is blown" + enemy.isBlown);
+       // Debug.Log("ex is blown" + enemy.isBlown);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

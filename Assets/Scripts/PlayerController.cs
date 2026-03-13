@@ -100,6 +100,8 @@ public class PlayerController : MonoBehaviour
     public bool insideArenaBound;
     public bool enteredPlayingArea;
 
+    public bool playerDead;
+
 
     void Start()
     {
@@ -121,6 +123,7 @@ public class PlayerController : MonoBehaviour
         airPushBackForce = airPushBackForceDefault;
         overHeatCounter = 0;
         overHeatTime = 0;
+        playerDead = false;
 
         //overheatBar.SetMaxOverheat(maxOverheat);
         hitTime = 0.1f;
@@ -295,7 +298,7 @@ public class PlayerController : MonoBehaviour
             if (!FanNoise.isPlaying)
             {
                 FanNoise.Play();
-                Debug.Log("playing fan sound");
+               // Debug.Log("playing fan sound");
 
             }
 
@@ -386,9 +389,12 @@ public class PlayerController : MonoBehaviour
 
         if (playerInventory.lives <= 0)
         {
-            SceneManager.LoadScene("Game End Screen");
+            //SceneManager.LoadScene("Game End Screen");
 
+            //play death animation
 
+            //set some value to true that causes the camera to zoom and tilt to the sticky note
+            playerDead = true;
         }
 
     }

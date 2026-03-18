@@ -15,10 +15,21 @@ public class TitleScreenManager : MonoBehaviour
     public GameObject[] titleScreenElements = new GameObject[4];
     public GameObject subtitle;
     public GameObject WASDKeys;
+    public GameObject RopeObject;
+    public float activatorWaitTime;
+    public float overheatTimeAfterRopeBreak;
     void Start()
     {
         titleCutSceneBegan = false;
         WASDKeys.SetActive(false);
+        activatorWaitTime = 12f;
+        overheatTimeAfterRopeBreak = 10f;
+        if (PlayerPrefs.HasKey("TitleScreenWithoutRope"))
+        {
+            RopeObject.SetActive(false);
+            activatorWaitTime = 1f;
+            overheatTimeAfterRopeBreak = 0f;
+        }
     }
 
     // Update is called once per frame
@@ -32,26 +43,33 @@ public class TitleScreenManager : MonoBehaviour
             playerController.enabled = false;
             StartCoroutine(SpawnLetters());
         }
-       /* if (titleCutSceneEnded && WASDKeys.activeInHierarchy == false)
-        {
-            
-        }*/
+       
     }
     IEnumerator SpawnLetters()
     {
         for (int i = 0; i < titleScreenElements.Length; i++)
         {
             titleScreenElements[i].SetActive(true);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             
         }
        // subtitle.SetActive(true);
         playerController.enabled = true;
-        StartCoroutine(ShowWASD());
-        StartCoroutine(MoveFireActivator());
+        if (!PlayerPrefs.HasKey("TitleScreenWithoutRope"))
+        {
+            StartCoroutine(ShowWASD());
+            StartCoroutine(MoveFireActivator());
+        }
+        else
+        {
+            Destroy(fireActivator);
+        }
+        
+        
         //Setting overheat time here so that player experiences overheating fan for a few seconds after title sequence and use WASD to move around.
-        playerController.overHeatTime = 10f;
+        playerController.overHeatTime = overheatTimeAfterRopeBreak;
         virtualCamera.Follow = playerController.gameObject.transform;
+        PlayerPrefs.SetInt("TitleScreenWithoutRope", 1);
 
     }
     IEnumerator ShowWASD()
@@ -63,7 +81,7 @@ public class TitleScreenManager : MonoBehaviour
     }
     IEnumerator MoveFireActivator()
     {
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(activatorWaitTime);
         fireActivator.transform.position = new Vector3(1.6f, -0.8f, 0f);
     }
     

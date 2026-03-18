@@ -3510,7 +3510,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 9
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
+  m_LookAt: {fileID: 738133307}
   m_Follow: {fileID: 738133307}
   m_Lens:
     FieldOfView: 2.3890092
@@ -3539,7 +3539,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490169465}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0030019195, y: 0.0045029433, z: -0.000013517671, w: 0.9999854}
+  m_LocalRotation: {x: 0.0039615803, y: 0.0037950312, z: -0.000015034545, w: 0.999985}
   m_LocalPosition: {x: 1.079, y: -0.091, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3793,11 +3793,11 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 0
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 1.92
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -4441,7 +4441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.001, y: 0.001, z: -0.105}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.4, y: 46.9}
+  m_AnchoredPosition: {x: -17.4, y: 69}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &597654257
@@ -4459,6 +4459,15 @@ MonoBehaviour:
   moneyEarnedText: {fileID: 451553458}
   enemiesKilledText: {fileID: 901514887}
   wavesSurvivedText: {fileID: 1664514192}
+  moneyEarnedTitle: {fileID: 1935460258}
+  enemiesKilledTitle: {fileID: 684878482}
+  wavesSurvivedTitle: {fileID: 1984086671}
+  endScreenTexts:
+  - {fileID: 1984086671}
+  - {fileID: 684878482}
+  - {fileID: 1935460258}
+  quitButton: {fileID: 599884137}
+  restartButton: {fileID: 2087361994}
   gameStats: {fileID: 11400000, guid: 176c2fbf11a28a540b2689361b73a3c9, type: 2}
 --- !u!114 &597654258
 MonoBehaviour:
@@ -6683,7 +6692,6 @@ GameObject:
   m_Component:
   - component: {fileID: 758893065}
   - component: {fileID: 758893064}
-  - component: {fileID: 758893066}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -6723,7 +6731,7 @@ MonoBehaviour:
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
-    m_BlendHint: 3
+    m_BlendHint: 0
     m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:
@@ -6746,28 +6754,6 @@ Transform:
   - {fileID: 329611050}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &758893066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 758893063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d873f385538f4941ad49080059ea344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Cinemachine: {fileID: 758893064}
-  dutchAngle: 0
-  StickyNote: {fileID: 738133305}
-  gameIsOver: 0
-  PlayerController: {fileID: 605639849}
-  frames: 100
-  gameoverMenu: {fileID: 597654255}
-  cameraInPlace: 0
-  stickyNoteCamera: {fileID: 490169466}
-  enemySpawner: {fileID: 1390667148}
 --- !u!4 &768473380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -10292,6 +10278,7 @@ GameObject:
   - component: {fileID: 1390667154}
   - component: {fileID: 1390667155}
   - component: {fileID: 1390667156}
+  - component: {fileID: 1390667157}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -10572,6 +10559,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1390667157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390667148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d873f385538f4941ad49080059ea344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cinemachine: {fileID: 758893064}
+  dutchAngle: 0
+  StickyNote: {fileID: 738133305}
+  gameIsOver: 0
+  PlayerController: {fileID: 605639849}
+  frames: 0
+  gameoverMenu: {fileID: 597654255}
+  cameraInPlace: 0
+  stickyNoteCamera: {fileID: 490169466}
+  enemySpawner: {fileID: 1390667149}
+  HUD: {fileID: 572631785}
 --- !u!1 &1419854316
 GameObject:
   m_ObjectHideFlags: 0
@@ -14194,17 +14204,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
   m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
+  m_LookaheadSmoothing: 0.5
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
+  m_HorizontalDamping: 1.3
   m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
+  m_ScreenX: 0.39
+  m_ScreenY: 0.31
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
-  m_BiasX: 0
+  m_BiasX: -0.004
   m_BiasY: 0
   m_CenterOnActivate: 1
 --- !u!114 &1818120931

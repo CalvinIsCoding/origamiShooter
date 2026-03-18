@@ -395,6 +395,11 @@ public class PlayerController : MonoBehaviour
 
             //set some value to true that causes the camera to zoom and tilt to the sticky note
             playerDead = true;
+
+            this.fanSprite.enabled = false;
+            this.enabled = false;
+           
+           // this.gameObject.SetActive(false);
         }
 
     }

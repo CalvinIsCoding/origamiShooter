@@ -14,7 +14,8 @@ public class EndScreenTilt : MonoBehaviour
     public GameObject gameoverMenu;
     public bool cameraInPlace;
     public CinemachineVirtualCamera stickyNoteCamera;
-    public GameObject enemySpawner;
+    public EnemySpawn enemySpawner;
+    public GameObject HUD;
 
     void Start()
     {
@@ -35,7 +36,9 @@ public class EndScreenTilt : MonoBehaviour
             // Cinemachine.m_Lens.FieldOfView = 2;
             stickyNoteCamera.Priority = 20;
              cameraInPlace = true;
-            enemySpawner.SetActive(false);
+            enemySpawner.enabled = false;
+            HUD.SetActive(false);
+            
             StartCoroutine(waitForMenuToAppear());
 
         }
@@ -53,7 +56,7 @@ public class EndScreenTilt : MonoBehaviour
     }
     IEnumerator waitForMenuToAppear()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         gameoverMenu.SetActive(true);
     }
 }

@@ -29,6 +29,7 @@ public class TitleScreenManager : MonoBehaviour
             RopeObject.SetActive(false);
             activatorWaitTime = 1f;
             overheatTimeAfterRopeBreak = 0f;
+            Destroy(fireActivator);
         }
     }
 
@@ -60,10 +61,7 @@ public class TitleScreenManager : MonoBehaviour
             StartCoroutine(ShowWASD());
             StartCoroutine(MoveFireActivator());
         }
-        else
-        {
-            Destroy(fireActivator);
-        }
+       
         
         
         //Setting overheat time here so that player experiences overheating fan for a few seconds after title sequence and use WASD to move around.

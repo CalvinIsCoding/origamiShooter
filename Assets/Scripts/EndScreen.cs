@@ -43,6 +43,10 @@ public class EndScreen : MonoBehaviour
     {
         SceneManager.LoadScene("Title Screen");
     }
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
     public IEnumerator WaitForCameraToMove()
     {
         yield return new WaitForSeconds(2f);

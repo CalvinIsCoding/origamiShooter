@@ -43,6 +43,8 @@ public class FirePlace : MonoBehaviour
         //flameAnimationObjects = flameAnimations.GetComponentsInChildren<Transform>(true);
         flameLighting = false;
 
+        //fireCollider = GetComponentsInChildren<CapsuleCollider2D>();
+
         foreach (SpriteRenderer flameAnimation in flameAnimationSprites)
         {
             flameAnimation.gameObject.SetActive(false);
@@ -181,7 +183,7 @@ public class FirePlace : MonoBehaviour
         foreach(SpriteRenderer flameAnimation in flameAnimationSprites)
         {
             flameAnimation.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.015f);
+            yield return new WaitForSeconds(0.045f);
         }
     }
     public IEnumerator UnlightFlames()
@@ -189,7 +191,7 @@ public class FirePlace : MonoBehaviour
         foreach (SpriteRenderer flameAnimation in flameAnimationSprites)
         {
             flameAnimation.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.015f);
+            yield return new WaitForSeconds(0.045f);
         }
     }
 

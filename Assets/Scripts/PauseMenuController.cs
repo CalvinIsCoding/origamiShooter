@@ -56,6 +56,10 @@ public class PauseMenuController : MonoBehaviour
         PauseMenu.SetActive(true);
         SettingsMenu.SetActive(false);
     }
+    public void ExitGameButton()
+    {
+        Application.Quit();
+    }
 
     //Hovering Functions. These are separate functions for each button, and are used in teh 
     public void HoverOverResume()

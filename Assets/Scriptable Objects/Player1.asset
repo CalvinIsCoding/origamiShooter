@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Player1
   m_EditorClassIdentifier: 
   title: Player 1
-  coins: 0
-  lives: 1
+  coins: 36
+  lives: 20
   coinsBeforeMultiplier: 0
-  multiplier: 0
+  multiplier: 4.0007844
   defaultCoins: 0
-  defaultLives: 1
+  defaultLives: 25

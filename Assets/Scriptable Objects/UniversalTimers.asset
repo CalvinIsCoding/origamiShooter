@@ -16,3 +16,6 @@ MonoBehaviour:
   lullAfterFireModeEndsButWaveHasntBegun: 2
   timeShopSticksAround: 10
   timeForRoundMoneyToCountUp: 0
+  numbersSlammingTogetherTime: 0.75
+  roundMoneyAddingTime: 1
+  activatorWaitTime: 3

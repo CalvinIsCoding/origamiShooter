@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class BoxFan : MonoBehaviour
 {
@@ -243,7 +244,16 @@ private void FixedUpdate()
         yield return new WaitForSeconds(hitTime * timeSlowDown);
         Time.timeScale = 1f;
         isRed = false;
-        boxFanSprite.color = Color.white;
+        if (boxFanSprite == null)
+        {
+            //do nothing
+        }
+        else
+        {
+            boxFanSprite.color = Color.white;
+        }
+        
+        
     }
     public IEnumerator GettingLessAngry()
     {

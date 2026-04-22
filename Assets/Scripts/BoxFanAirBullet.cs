@@ -22,7 +22,7 @@ public class BoxFanAirBullet: MonoBehaviour
     void Start()
     {
         knockBack = 10f;
-        rb.velocity = transform.right * speed;
+        rb.linearVelocity = transform.right * speed;
         Destroy(boxFanAirBullet, 1.0f);
         shrinkTime = 1.5f;
         currentScale = 0.2f;
@@ -53,7 +53,7 @@ public class BoxFanAirBullet: MonoBehaviour
         else if (enemy != null && boxFan == null)
         {
             // 
-            enemy.Push(knockBack / 2f,rb,boxFanAirBullet, rb.velocity);
+            enemy.Push(knockBack / 2f,rb,boxFanAirBullet, rb.linearVelocity);
             Destroy(boxFanAirBullet);
 
         }

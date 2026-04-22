@@ -80,7 +80,7 @@ public class Crane : MonoBehaviour
         {
             //Orient();
             animator.SetBool("Dragging", false);
-            rb.drag = 2;
+            rb.linearDamping = 2;
             rb.freezeRotation = true;
            rb.AddForceAtPosition(direction.normalized * craneMovementForce, rb.position);
 
@@ -88,7 +88,7 @@ public class Crane : MonoBehaviour
         if(Time.time - lastTime > 1.5f)
         {
             rb.freezeRotation = false;
-            rb.drag = 10;
+            rb.linearDamping = 10;
             windingUp = false;
             animator.SetBool("Dragging", true);
             //Orient();

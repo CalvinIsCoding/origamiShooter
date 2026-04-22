@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
         //Movement
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
-        currentVelocity = characterRigidBody.velocity;
+        currentVelocity = characterRigidBody.linearVelocity;
 
 
         //FanSoundFX.volume = Mathf.Min(Mathf.Pow(currentVelocity.magnitude,3),0.5f);
@@ -455,7 +455,7 @@ public class PlayerController : MonoBehaviour
         positionVector = new Vector2(_bullet.transform.position.x - Player.transform.position.x, _bullet.transform.position.y - Player.transform.position.y);
         positionMagnitude = Mathf.Sqrt(Mathf.Pow(positionVector.x, 2) + Mathf.Pow(positionVector.y, 2));
 
-        velocityMagnitude = Mathf.Sqrt(Mathf.Pow(bullet.velocity.x, 2) + Mathf.Pow(bullet.velocity.y, 2));
+        velocityMagnitude = Mathf.Sqrt(Mathf.Pow(bullet.linearVelocity.x, 2) + Mathf.Pow(bullet.linearVelocity.y, 2));
         if (velocityMagnitude == 0)
         {
             velocityMagnitude = 1;
@@ -465,7 +465,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        rb.AddForce(((bullet.velocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack, ForceMode2D.Force);
+        rb.AddForce(((bullet.linearVelocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack, ForceMode2D.Force);
 
        /* if (isBlown == false)
         {
@@ -491,7 +491,8 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = timeSlowDown;
         isRed = true;
         FanSoundFX.pitch = Random.Range(0.80f, 1.20f);
-        FanSoundFX.PlayOneShot(injuryNoise);
+        
+        FanSoundFX.PlayOneShot(injuryNoise,0.5f);
         yield return new WaitForSeconds(hitTime * timeSlowDown);
         Time.timeScale = 1f;
         isRed = false;

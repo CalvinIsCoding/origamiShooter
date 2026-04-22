@@ -34,7 +34,7 @@ public class Source : MonoBehaviour
         if (enemy != null)
         {
             // 
-            enemy.Push(knockBack, rb, source, rb.velocity);
+            enemy.Push(knockBack, rb, source, rb.linearVelocity);
             //Destroy(bullet);
 
         }

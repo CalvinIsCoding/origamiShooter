@@ -72,8 +72,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-		enemySpawn = FindObjectOfType<EnemySpawn>();
-		fireMode = FindObjectOfType<FireMode>();
+		enemySpawn = FindAnyObjectByType<EnemySpawn>();
+		fireMode = FindAnyObjectByType<FireMode>();
         //shopManager = FindObjectOfType<ShopManager>();
         isRed = false;
 		isBlown = false;

@@ -116,7 +116,7 @@ public class LeadSegment : MonoBehaviour
             sPosition = rb.position;
            
         }
-        rb.rotation = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * (180 / Mathf.PI);
+        rb.rotation = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * (180 / Mathf.PI);
         direction = playerRb.position - sPosition;
         // _invisibleS = invisibleS.GetComponent<InvisibleS>();
         // direction = _invisibleS.direction;

@@ -16,6 +16,7 @@ public class TitleScreenManager : MonoBehaviour
     public GameObject subtitle;
     public GameObject WASDKeys;
     public GameObject RopeObject;
+    public AudioSource titleScreenAudioSource;
     public float activatorWaitTime;
     public float overheatTimeAfterRopeBreak;
     void Start()
@@ -24,12 +25,15 @@ public class TitleScreenManager : MonoBehaviour
         WASDKeys.SetActive(false);
         activatorWaitTime = 12f;
         overheatTimeAfterRopeBreak = 10f;
+        titleScreenAudioSource.pitch = 0.2f;
+        
         if (PlayerPrefs.HasKey("TitleScreenWithoutRope"))
         {
             RopeObject.SetActive(false);
             activatorWaitTime = 1f;
             overheatTimeAfterRopeBreak = 0f;
             Destroy(fireActivator);
+            
         }
     }
 
@@ -44,30 +48,44 @@ public class TitleScreenManager : MonoBehaviour
             playerController.enabled = false;
             StartCoroutine(SpawnLetters());
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerPrefs.DeleteKey("TitleScreenWithoutRope");
+        }
+
+        
        
     }
     IEnumerator SpawnLetters()
     {
-        for (int i = 0; i < titleScreenElements.Length; i++)
+        for (int i = 0; i < titleScreenElements.Length - 1; i++)
         {
             titleScreenElements[i].SetActive(true);
             yield return new WaitForSeconds(1f);
             
+
         }
        // subtitle.SetActive(true);
         playerController.enabled = true;
+        titleScreenAudioSource.Stop();
+        titleScreenAudioSource.pitch = 1.0f;
+        
         if (!PlayerPrefs.HasKey("TitleScreenWithoutRope"))
         {
             StartCoroutine(ShowWASD());
             StartCoroutine(MoveFireActivator());
+            titleScreenAudioSource.pitch = 0.5f;
         }
-       
+        
+        titleScreenAudioSource.Play();
+        titleScreenElements[3].SetActive(true);
         
         
         //Setting overheat time here so that player experiences overheating fan for a few seconds after title sequence and use WASD to move around.
         playerController.overHeatTime = overheatTimeAfterRopeBreak;
         virtualCamera.Follow = playerController.gameObject.transform;
         PlayerPrefs.SetInt("TitleScreenWithoutRope", 1);
+        
 
     }
     IEnumerator ShowWASD()

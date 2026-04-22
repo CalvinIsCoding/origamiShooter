@@ -61,7 +61,7 @@ public class Boss : MonoBehaviour
 	private float maxScale;
 	void Start()
 	{
-		enemySpawn = FindObjectOfType<EnemySpawn>();
+		enemySpawn = FindAnyObjectByType<EnemySpawn>();
 		BossObject.bossIsDead = false;
 		//shopManager = FindObjectOfType<ShopManager>();
 		isRed = false;
@@ -113,7 +113,7 @@ public class Boss : MonoBehaviour
 		positionVector = new Vector2(_bullet.transform.position.x - boss.transform.position.x, _bullet.transform.position.y - boss.transform.position.y);
 		positionMagnitude = Mathf.Sqrt(Mathf.Pow(positionVector.x, 2) + Mathf.Pow(positionVector.y, 2));
 
-		velocityMagnitude = Mathf.Sqrt(Mathf.Pow(bullet.velocity.x, 2) + Mathf.Pow(bullet.velocity.y, 2));
+		velocityMagnitude = Mathf.Sqrt(Mathf.Pow(bullet.linearVelocity.x, 2) + Mathf.Pow(bullet.linearVelocity.y, 2));
 		if (velocityMagnitude == 0)
 		{
 			velocityMagnitude = 1;
@@ -123,7 +123,7 @@ public class Boss : MonoBehaviour
 
 
 
-		rb.AddForce(((bullet.velocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack, ForceMode2D.Force);
+		rb.AddForce(((bullet.linearVelocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack, ForceMode2D.Force);
 
 		if (isBlown == false)
 		{

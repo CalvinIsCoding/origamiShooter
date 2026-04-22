@@ -10,6 +10,7 @@ public class FlameSubtitleText : MonoBehaviour
     public bool switchFlipped;
     public Animator animator;
     public Light2D subtitleLighting;
+    public AudioSource titlescreenMusicAudio;
     
 
     void Start()
@@ -46,6 +47,7 @@ public class FlameSubtitleText : MonoBehaviour
             subtitleLighting.intensity = 0.9f;
             subtitleLighting.falloffIntensity = 0.585f;
             subtitleLighting.color = new Color(217f/255f, 197f / 255f, 150f / 255f);
+            titlescreenMusicAudio.pitch = 1f;
             FlickerFlame();
         }
         else

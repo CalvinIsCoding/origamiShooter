@@ -12,7 +12,7 @@ public class FingerNailProjectile : MonoBehaviour
 
     void Start()
     {
-        rb.velocity = transform.right * speed;
+        rb.linearVelocity = transform.right * speed;
         Destroy(bullet, 1f);
     }
 

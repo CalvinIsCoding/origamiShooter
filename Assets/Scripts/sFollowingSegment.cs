@@ -25,7 +25,7 @@ public class sFollowingSegment : MonoBehaviour
     {
         desiredPosition = nextSegmentRb.position;
         directionDesiredPosition = rb.position - desiredPosition;
-        force = directionDesiredPosition * springConstant - rb.velocity * damping;
+        force = directionDesiredPosition * springConstant - rb.linearVelocity * damping;
         rb.AddForce(force);
         //rb.rotation = Quaternion.LookRotation(rb.velocity);
 

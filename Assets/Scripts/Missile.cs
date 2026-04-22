@@ -16,7 +16,7 @@ public class Missile : MonoBehaviour
     void Start()
     {
 
-        rb.velocity = transform.right * speed;
+        rb.linearVelocity = transform.right * speed;
         Destroy(missile, 1.0f);
     }
 

@@ -62,7 +62,7 @@ public class NinjaStar : MonoBehaviour
         }
         else
         {
-            direction = rb.velocity;
+            direction = rb.linearVelocity;
         }
         
         
@@ -85,7 +85,7 @@ public class NinjaStar : MonoBehaviour
     public void OnCollisionStay2D(Collision2D collision)
     {
         Wall wall = collision.gameObject.GetComponent<Wall>();
-        if (wall != null && this.rb.velocity.magnitude < 0.8f * minVelocity)
+        if (wall != null && this.rb.linearVelocity.magnitude < 0.8f * minVelocity)
         {
            
                 BumpBackTowardsCenter();

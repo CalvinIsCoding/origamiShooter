@@ -62,7 +62,7 @@ public class percent : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.mass = 1f;
-        rb.angularDrag = 0.15f;
+        rb.angularDamping = 0.15f;
 
         
         done = false;

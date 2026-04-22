@@ -37,6 +37,7 @@ public class FireMode : MonoBehaviour
     public bool waveHasStarted;
     public BossObject bossObject;
     public bool gameComplete;
+    public bool currentlyDisablingFireMode;
 
     public int moneyEarnedThisRound;
     public moneyEarnedThisRoundProcesser roundMoney;
@@ -47,14 +48,19 @@ public class FireMode : MonoBehaviour
     public Timers timers;
     public GameSettings gameSettings;
 
+    public bool waveCanStart; //used in enemy spawn to add a delay after fire mode ends
+    public Wave currentWave;
+
+    public Enemy[] enemies;
+
     void Start()
     {
         //resetting the boss defaults here to prevent a bug where bossIsDead is true at the very start of a boss wave before the boss spawns
-        bossObject.resetToDefaults();
+        //bossObject.resetToDefaults();
         waveHasStarted = false;
-        
+        currentlyDisablingFireMode = false;
         moneyMultiplier = 0;
-        activatorWaitTime = timers.lullAfterFireModeEndsButWaveHasntBegun;
+        activatorWaitTime = timers.activatorWaitTime;
         moneyMultiplierTimer = 10f;
         moneyMultiplierTimeElapsed = 0f;
         isFireMode = false;
@@ -68,7 +74,8 @@ public class FireMode : MonoBehaviour
         lastMoneyMultiplier = 0;
         isBossWave = false;
         gameStats.ResetEnemyCounters();
-
+        waveCanStart = true;
+        currentWave = enemySpawn.wave[0];
     //fireCollider.enabled = true;
         /* timeTillFire;
          fireModeTime;*/
@@ -91,8 +98,15 @@ public class FireMode : MonoBehaviour
        // Debug.Log("wave started" + waveHasStarted);
         if (isBossWave == true && waveHasStarted == false)
         {
+            bossObject = currentWave.bossObject;
+            bossObject.resetToDefaults();
+            Debug.Log(bossObject.name);
+            waveHasStarted = true;
+            Debug.Log("begin boss wave");
+           // StartCoroutine(BeginBossWave());
             StartCoroutine(BeginBossWave());
-            
+            currentlyDisablingFireMode = false;
+
         }
         
         if (activatorCounter >= requiredActivators && isBossWave == false)
@@ -101,14 +115,16 @@ public class FireMode : MonoBehaviour
             StartFireAndEndWave();
 
         }
-        if (liveActivators == 0 && isBossWave == false)
+        if (liveActivators <= 0 && isBossWave == false)
         {
             SpawnFireActivators();
+            
         }
-        if(isBossWave && bossObject.bossIsDead)
+        if(isBossWave && bossObject.bossIsDead && !currentlyDisablingFireMode)
         {
            
-            StartCoroutine(GameCompletion());
+            EndBossWave();
+            currentlyDisablingFireMode = true;
         }
 
     }
@@ -147,7 +163,11 @@ public class FireMode : MonoBehaviour
         playerInventory.EndOfWave();
         enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
         gameStats.wavesSurvived++;
+        currentWave = enemySpawn.wave[enemySpawn.waveNumber];
         globalAudio.PlayOneShot(fireEnding);
+        waveHasStarted = false;
+        StartCoroutine(WaitToStartWave());
+        //currentlyDisablingFireMode = false;
 
     }
     IEnumerator DelayActivatorSpawn()
@@ -160,6 +180,7 @@ public class FireMode : MonoBehaviour
         //StartCoroutine(LightFlames());
         StartCoroutine(DisableFireMode());
         isFireMode = true;
+        waveCanStart = false;
 
 
         //enemySpawn.timeStep = enemySpawn.timeStep - 0.1f;
@@ -191,71 +212,100 @@ public class FireMode : MonoBehaviour
     }
     void SpawnFireActivators()
     {
-        Vector2[] activatorSpawnPositions = new Vector2[3];
-
-
-        for (int i = 0; i < requiredActivators; i++)
-        {
-
-
-            
-            // Debug.Log("xMax:" + xMax);
-            // Debug.Log("yMax:" + yMax);
-            // Debug.Log("xMin:" + xMin);
-            // Debug.Log("yMin:" + yMin);
-
-            // Checks if a randomly selected coordinate is within a certain radius of the player
-            
-
-
-            activatorSpawnPositions[i] = new Vector2(Random.Range(enemySpawn.xMin, enemySpawn.xMax), Random.Range(enemySpawn.yMin, enemySpawn.yMax));
-
-            if (i > 0 && (Mathf.Abs(activatorSpawnPositions[i].x - activatorSpawnPositions[i - 1].x) < 0.2 || Mathf.Abs(activatorSpawnPositions[i].y - activatorSpawnPositions[i - 1].y) < 0.1))
-            {
-                activatorSpawnPositions[i].x = activatorSpawnPositions[i-1].x + ((activatorSpawnPositions[i-1].x / Mathf.Abs(activatorSpawnPositions[i-1].x)) * -enemySpawn.noSpawnRadius);
-                activatorSpawnPositions[i].y = activatorSpawnPositions[i-1].y + ((activatorSpawnPositions[i-1].y / Mathf.Abs(activatorSpawnPositions[i-1].y)) * -enemySpawn.noSpawnRadius);
-            }
-
-            isNearPlayer = Mathf.Sqrt((Mathf.Pow((player.transform.position.x - activatorSpawnPositions[i].x), 2) + Mathf.Pow((player.transform.position.y - activatorSpawnPositions[i].y), 2))) < enemySpawn.noSpawnRadius;
-
-
-            if (!isNearPlayer)
-            {
-                //okay to spawn normally if far enough from player
-
-            }
-            else if (isNearPlayer)
-            {
-                //check sign of each coordinate, and change the location by the value of radius
-                //This is done to make enemies spawn a minimum distance away from the player
-
-                //I divide activatorSpawmPosition by it's absolute value in order to ensure that the position adjusts away from the border, thus preventing activators from spawning outside the arena
-
-                activatorSpawnPositions[i].x = activatorSpawnPositions[i].x + ((activatorSpawnPositions[i].x / Mathf.Abs(activatorSpawnPositions[i].x)) * -enemySpawn.noSpawnRadius);
-                activatorSpawnPositions[i].y = activatorSpawnPositions[i].y + ((activatorSpawnPositions[i].y / Mathf.Abs(activatorSpawnPositions[i].y)) * -enemySpawn.noSpawnRadius);
-
-               
-            }
-
-
-            liveActivators++;
-        }
-
         
-        for (int i = 0; i < requiredActivators; i++)
+        if (currentWave.hasCustomSpawnActivatorFormation)
         {
-            Instantiate(fireActivator, activatorSpawnPositions[i], Quaternion.identity);
+            Instantiate(currentWave.activatorSpawnFormation, currentWave.activatorFormationLocation,Quaternion.identity);
+            requiredActivators = 0;
+            foreach (var GameObject in currentWave.activatorSpawnFormation.transform)
+            {
+                liveActivators++;
+                requiredActivators++;
+            }
         }
+        else
+        {
 
+            requiredActivators = 3;
+
+
+            Vector2[] activatorSpawnPositions = new Vector2[3];
+
+
+            for (int i = 0; i < requiredActivators; i++)
+            {
+
+
+
+                // Debug.Log("xMax:" + xMax);
+                // Debug.Log("yMax:" + yMax);
+                // Debug.Log("xMin:" + xMin);
+                // Debug.Log("yMin:" + yMin);
+
+                // Checks if a randomly selected coordinate is within a certain radius of the player
+
+
+
+                activatorSpawnPositions[i] = new Vector2(Random.Range(enemySpawn.xMin, enemySpawn.xMax), Random.Range(enemySpawn.yMin, enemySpawn.yMax));
+
+                if (i > 0 && (Mathf.Abs(activatorSpawnPositions[i].x - activatorSpawnPositions[i - 1].x) < 0.2 || Mathf.Abs(activatorSpawnPositions[i].y - activatorSpawnPositions[i - 1].y) < 0.1))
+                {
+                    activatorSpawnPositions[i].x = activatorSpawnPositions[i - 1].x + ((activatorSpawnPositions[i - 1].x / Mathf.Abs(activatorSpawnPositions[i - 1].x)) * -enemySpawn.noSpawnRadius);
+                    activatorSpawnPositions[i].y = activatorSpawnPositions[i - 1].y + ((activatorSpawnPositions[i - 1].y / Mathf.Abs(activatorSpawnPositions[i - 1].y)) * -enemySpawn.noSpawnRadius);
+                }
+
+                isNearPlayer = Mathf.Sqrt((Mathf.Pow((player.transform.position.x - activatorSpawnPositions[i].x), 2) + Mathf.Pow((player.transform.position.y - activatorSpawnPositions[i].y), 2))) < enemySpawn.noSpawnRadius;
+
+
+                if (!isNearPlayer)
+                {
+                    //okay to spawn normally if far enough from player
+
+                }
+                else if (isNearPlayer)
+                {
+                    //check sign of each coordinate, and change the location by the value of radius
+                    //This is done to make enemies spawn a minimum distance away from the player
+
+                    //I divide activatorSpawmPosition by it's absolute value in order to ensure that the position adjusts away from the border, thus preventing activators from spawning outside the arena
+
+                    activatorSpawnPositions[i].x = activatorSpawnPositions[i].x + ((activatorSpawnPositions[i].x / Mathf.Abs(activatorSpawnPositions[i].x)) * -enemySpawn.noSpawnRadius);
+                    activatorSpawnPositions[i].y = activatorSpawnPositions[i].y + ((activatorSpawnPositions[i].y / Mathf.Abs(activatorSpawnPositions[i].y)) * -enemySpawn.noSpawnRadius);
+
+
+                }
+
+
+
+            }
+
+
+            for (int i = 0; i < requiredActivators; i++)
+            {
+                Instantiate(fireActivator, activatorSpawnPositions[i], Quaternion.identity);
+                liveActivators++;
+            }
+        }
+      
 
         activatorsSpawned = true;
 
     }
     IEnumerator BeginBossWave()
     {
-        waveHasStarted = true;
-        Debug.Log("begin boss wave");
+        
+        
+        
+        
+
         yield return new WaitForSeconds(enemySpawn.bossWaitTime - 2f);
+        enemies = FindObjectsByType<Enemy>();
+        foreach (Enemy enemy in enemies)
+        {
+            Debug.Log("destroying enemies");
+            enemy.Die(false);
+        }
+        Debug.Log("is Fire Mode is true");
         isFireMode = true;
     }
     IEnumerator GameCompletion()
@@ -266,6 +316,24 @@ public class FireMode : MonoBehaviour
         yield return new WaitForSeconds(victoryTune.length);
         SceneManager.LoadScene("Game End Screen");
 
+    }
+    void EndBossWave()
+    {
+        Debug.Log("Boss Wave Ending");
+        liveActivators = 3; //This is dumb, but this gets set to a nonzero number to prevent an extra set of fire activators from spawning
+         //restting this so that new boss waves begin properluy
+        Debug.Log("Wave Has Started" + waveHasStarted);
+        StartCoroutine(DisableFireMode());
+
+
+       
+       
+
+    }
+    IEnumerator WaitToStartWave()
+    {
+        yield return new WaitForSeconds(timers.lullAfterFireModeEndsButWaveHasntBegun);
+        waveCanStart = true;
     }
 
     //zones... in an effort to ensure that the fire activators are spaced out... I think it's too complicated.

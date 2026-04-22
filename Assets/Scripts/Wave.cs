@@ -13,6 +13,12 @@ public class Wave : MonoBehaviour
     public bool bossWave;
     public bool specialWave;
     public bool endCriteria;
+    public BossObject bossObject;
+    public float spawnRate;
+    public bool hasCustomSpawnActivatorFormation;
+    public GameObject activatorSpawnFormation;
+    public Vector2 activatorFormationLocation;
+    public int requiredActivators;
 
     public float testNumber = 10f;
 

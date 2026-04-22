@@ -25,7 +25,7 @@ public class AirBullet: MonoBehaviour
     void OnEnable()
     {
 
-        rb.velocity = transform.right * speed;
+        rb.linearVelocity = transform.right * speed;
         //Destroy(airBullet, 1.0f);
         //Object Pooling
 
@@ -62,7 +62,7 @@ public class AirBullet: MonoBehaviour
         else if (enemy != null )
         {
             // 
-            enemy.Push(knockBack/2f,rb,airBullet,rb.velocity);
+            enemy.Push(knockBack/2f,rb,airBullet,rb.linearVelocity);
             //airBullet.SetActive(false);
             // Destroy(airBullet);
 
@@ -106,7 +106,7 @@ public class AirBullet: MonoBehaviour
         else if (enemy != null)
         {
             // 
-            enemy.Push(knockBack/2f, rb, airBullet, rb.velocity);
+            enemy.Push(knockBack/2f, rb, airBullet, rb.linearVelocity);
             //Destroy(airBullet);
 
         }

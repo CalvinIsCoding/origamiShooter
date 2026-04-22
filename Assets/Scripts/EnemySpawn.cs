@@ -4,16 +4,21 @@ using UnityEngine;
 //using Random = System.Random;
 //using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 public class EnemySpawn : MonoBehaviour
 {
     // public GameObject[] enemy = new GameObject[5];
 
     //[SerializeField]
-    public Wave[] wave = new Wave[10];
+    public Wave[] wave = new Wave[81];
+    public GameObject waveSet;
+    //public GameObject waveSet;
+    
     
     public int waveNumber;
     public int lastWave;
+   
 
     public FireMode fireMode;
   /*  public int paperPlaneSpawnChance = 90;
@@ -39,7 +44,7 @@ public class EnemySpawn : MonoBehaviour
   
     private int numberSpawned;
     private int spawnEvent_howOften;
-    private bool spawningComplete;
+    public bool spawningComplete;
 
     private int spawnRedTrigger;
     private float spawnRed_howOften;
@@ -65,6 +70,7 @@ public class EnemySpawn : MonoBehaviour
     public GameStatsScript gameStats;
 
     public float bossWaitTime;
+    public int bossWaveNumber;
 
     void Start()
     {
@@ -97,6 +103,9 @@ public class EnemySpawn : MonoBehaviour
         shopSpawned = false;
         maxSimultaneouslySpawned = 3;
 
+        wave = waveSet.GetComponentsInChildren<Wave>();
+        timeBetweenSpawns = wave[0].spawnRate;
+       
     }
 
     void FixedUpdate()
@@ -120,9 +129,14 @@ public class EnemySpawn : MonoBehaviour
             SpawnEventSelector(wave[waveNumber].spawnEventRandomizer[5]);
 
             spawningComplete = true;
+            bossWaveNumber = waveNumber;
+        }
+        else if(bossWaveNumber != waveNumber)
+        {
+            spawningComplete = false; //resetting this so that the next boss can spawn properly in the next wave
         }
 
-        if (!fireMode.isFireMode)
+        if (!fireMode.isFireMode && fireMode.waveCanStart == true)
         {
 
             
@@ -161,7 +175,7 @@ public class EnemySpawn : MonoBehaviour
         
         if(lastWave < waveNumber -1 )
         {
-            timeBetweenSpawns = timeBetweenSpawns - 0.1f;
+            timeBetweenSpawns = wave[waveNumber].spawnRate;
             Debug.Log("time between Spawns" + timeBetweenSpawns);
             lastWave = waveNumber;
         }
@@ -287,8 +301,9 @@ public class EnemySpawn : MonoBehaviour
     IEnumerator SpawnBoss()
     {
         Vector2 originCoordinates = new Vector2(0, 0); //center of playing field
-        yield return new WaitForSeconds(bossWaitTime);
         Instantiate(wave[waveNumber].enemy[0], originCoordinates, Quaternion.identity);
+        yield return new WaitForSeconds(bossWaitTime);
+        
     }
 
     void SpawnShop()
@@ -297,6 +312,7 @@ public class EnemySpawn : MonoBehaviour
         Instantiate(shop, shopSpawn, Quaternion.identity);
         shopSpawned = true;
     }
+    
    
     
     

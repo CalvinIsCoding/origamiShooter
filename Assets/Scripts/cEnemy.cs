@@ -31,7 +31,7 @@ public class cEnemy : MonoBehaviour
         torqueDirection = -1f;
         Instantiate(backHitBox, this.transform);
         baseTorqueForce = 0.10f * rb.mass * Vector3.one.magnitude * 0.06f;
-        cMovementForce = 0.1f * rb.mass * rb.drag;
+        cMovementForce = 0.1f * rb.mass * rb.linearDamping;
     }
 
     // Update is called once per frame
@@ -88,19 +88,19 @@ public class cEnemy : MonoBehaviour
         Vector3 scaleChange = new Vector2(0.005f,0.005f);
         cEnemyObject.transform.localScale += scaleChange;
 
-        if(rb.drag > 7f)
+        if(rb.linearDamping > 7f)
         {
-            rb.drag -= 5f;
+            rb.linearDamping -= 5f;
 
         }
-        else if (rb.drag > 2f && rb.drag < 7f)
+        else if (rb.linearDamping > 2f && rb.linearDamping < 7f)
         {
-            rb.drag = 2f;
+            rb.linearDamping = 2f;
         }
         
 
         baseTorqueForce = 0.10f * rb.mass * Vector3.Magnitude(cEnemyObject.transform.localScale);
-        cMovementForce = 0.3f * rb.mass * rb.drag;
+        cMovementForce = 0.3f * rb.mass * rb.linearDamping;
 
     }
     

@@ -8,7 +8,7 @@ public class FireActivator : MonoBehaviour
     public Collider2D outsideCollider;
     public Animator animator;
     public AudioSource SwitchSound;
-    public AudioClip[] switchClicks = new AudioClip[3];
+    public AudioClip[] switchClicks = new AudioClip[4];
     public GameStatsScript gameStats;
 
     public CircleCollider2D fireActivatorCollider;

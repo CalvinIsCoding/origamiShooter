@@ -123,7 +123,7 @@ public class EnemySpawn : MonoBehaviour
 
     void Update()
     {
-        if (wave[waveNumber].specialWave == true && spawningComplete == false)
+        if (wave[waveNumber].randomSpawnDisabled == true && spawningComplete == false)
         {
             //any number would be fine as the index to spawnEventRandomizer. 5 was just chosen randomly.
             SpawnEventSelector(wave[waveNumber].spawnEventRandomizer[5]);
@@ -140,7 +140,7 @@ public class EnemySpawn : MonoBehaviour
         {
 
             
-            if (lastTime - Time.time < -timeBetweenSpawns && wave[waveNumber].specialWave == false)
+            if (lastTime - Time.time < -timeBetweenSpawns && wave[waveNumber].randomSpawnDisabled == false)
             {
                 Spawn();
                 lastTime = Time.time;
@@ -151,7 +151,7 @@ public class EnemySpawn : MonoBehaviour
             // I want "spawn events" to trigger randomly every so often. These are supposed to be more interesting things like a large group spawning 
             // right around the player, or enemies spawning around all 
 
-            if (spawnEventTrigger == (Mathf.Round(spawnEvent_howOften / 5f)) && wave[waveNumber].specialWave == false)
+            if (spawnEventTrigger == (Mathf.Round(spawnEvent_howOften / 5f)) && wave[waveNumber].randomSpawnDisabled == false)
             {
                 //spawn events are put into an array of 100 to determine the chance that a spawn event happens.
                 eventSelect = wave[waveNumber].spawnEventRandomizer[Random.Range(1, 100)];
@@ -264,6 +264,9 @@ public class EnemySpawn : MonoBehaviour
                     Spawn("spawnFixed");
                 }
                 break;
+            case 4:
+                StartCoroutine(SpawnCoordinated());
+                break;
         }
     }
 
@@ -304,6 +307,15 @@ public class EnemySpawn : MonoBehaviour
         Instantiate(wave[waveNumber].enemy[0], originCoordinates, Quaternion.identity);
         yield return new WaitForSeconds(bossWaitTime);
         
+    }
+    IEnumerator SpawnCoordinated()
+    {
+        for(int i = 0; i < wave[waveNumber].enemyGroups.Count; i++) 
+        {
+            yield return new WaitForSeconds(wave[waveNumber].enemyGroupSpawnTiming[i]);
+            Instantiate(wave[waveNumber].enemyGroups[i], wave[waveNumber].enemyGroupSpawnLocation[i], Quaternion.identity);
+        }
+
     }
 
     void SpawnShop()

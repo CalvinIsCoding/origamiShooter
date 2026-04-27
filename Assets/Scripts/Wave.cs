@@ -11,7 +11,7 @@ public class Wave : MonoBehaviour
     public int[] spawnTypeRandomizer = new int[100];
     public int[] spawnEventRandomizer = new int[100];
     public bool bossWave;
-    public bool specialWave;
+    public bool randomSpawnDisabled;
     public bool endCriteria;
     public BossObject bossObject;
     public float spawnRate;
@@ -19,6 +19,10 @@ public class Wave : MonoBehaviour
     public GameObject activatorSpawnFormation;
     public Vector2 activatorFormationLocation;
     public int requiredActivators;
+    public List<GameObject> enemyGroups = new List<GameObject>(5);
+    public List<Vector2> enemyGroupSpawnLocation = new List<Vector2>(5);
+    public List<float> enemyGroupSpawnTiming = new List<float>(5);
+   // public bool randomSpawnDisabled;
 
     public float testNumber = 10f;
 

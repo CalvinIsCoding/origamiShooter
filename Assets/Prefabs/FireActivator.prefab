@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4756198345167344552}
   - component: {fileID: -8785700098513055167}
   - component: {fileID: -6282433029633754365}
+  - component: {fileID: 6731231026288482076}
   m_Layer: 0
   m_Name: FireActivator
   m_TagString: Untagged
@@ -117,7 +118,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9e0db7d18cb8159428cd2b66bc653894, type: 3}
   - {fileID: 8300000, guid: 9e0db7d18cb8159428cd2b66bc653894, type: 3}
   gameStats: {fileID: 11400000, guid: 176c2fbf11a28a540b2689361b73a3c9, type: 2}
+  player: {fileID: 0}
+  rb: {fileID: 6731231026288482076}
+  directionTowardsPlayer: {x: 0, y: 0}
+  activatorForce: 0
+  airBurst: {fileID: 4152795769166717473, guid: 66b44d84ca88836449c1b462d03f0c4f, type: 3}
   fireActivatorCollider: {fileID: 4756198345167344552}
+  fireSwitchMagnet: {fileID: 11400000, guid: f977f0d3232caae42b9112208f18481b, type: 2}
+  fireSwitchMover: {fileID: 11400000, guid: 7f9ecd8ca7b339e47b2cb18cc2a100b8, type: 2}
+  fireSwitchAirBurst: {fileID: 11400000, guid: f21d5f60b3ebe884f9298586fd0f01bb, type: 2}
 --- !u!58 &4756198345167344552
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -273,3 +282,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &6731231026288482076
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6124478022723763214}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0.4
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

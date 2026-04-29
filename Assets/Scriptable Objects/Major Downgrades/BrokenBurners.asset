@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ff8dc3f1f0c9704e908e333efcaec18, type: 3}
-  m_Name: FanBlade
-  m_EditorClassIdentifier: 
-  title: Fan Blade
-  description: Adds Additional Air
-  cost: 50
+  m_Name: BrokenBurners
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemSO
+  title: Broken Burners
+  description: Some of the flames may not light when you flick every fire switch
+  cost: 0
   numberPurchased: 0
-  modifier: 1
+  modifier: 0

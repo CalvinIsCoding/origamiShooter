@@ -14,6 +14,9 @@ public class PlayerInventory : ScriptableObject
     [SerializeField] private int defaultCoins = 0;
     [SerializeField] private int defaultLives;
 
+ 
+
+
     public void resetToDefaults()
     {
         lives = defaultLives;

@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     //Shooting Variables
     public Transform firePoint;
+    public Transform firePointBack;
     public GameObject airBulletPrefab;
     public GameObject misslePrefab;
     private GameObject bullet;
@@ -73,10 +74,27 @@ public class PlayerController : MonoBehaviour
 
     public PlayerInventory playerInventory;
 
+    //minor items
     public ShopItemSO speedFromAir;
     public ShopItemSO health;
     public ShopItemSO fanBlade;
     public ShopItemSO biggerAir;
+
+    //major items
+    public ShopItemSO airBurst;
+    public ShopItemSO activatorMagnet;
+    public ShopItemSO activatorAirBurst;
+    public ShopItemSO backStream;
+    public ShopItemSO flameThrower;
+
+    //major downgrades
+    public ShopItemSO loseBaseMovement;
+    public ShopItemSO brokenBurners;
+    public ShopItemSO furniture;
+    public ShopItemSO shortRange;
+    public ShopItemSO avoidantActivators;
+
+   
 
     //Push() function purely for bosses or other fan enemies to push the player around.
     Vector2 positionVector;
@@ -103,6 +121,9 @@ public class PlayerController : MonoBehaviour
     public bool playerDead;
 
 
+
+
+
     void Start()
     {
         playerInventory.resetToDefaults();
@@ -110,6 +131,16 @@ public class PlayerController : MonoBehaviour
         fanBlade.resetToDefaults();
         biggerAir.resetToDefaults();
         speedFromAir.resetToDefaults();
+        airBurst.resetToDefaults();
+        activatorAirBurst.resetToDefaults();
+        backStream.resetToDefaults();
+        flameThrower.resetToDefaults();
+        activatorMagnet.resetToDefaults();
+        loseBaseMovement.resetToDefaults();
+        brokenBurners.resetToDefaults();
+        furniture.resetToDefaults();
+        shortRange.resetToDefaults();
+        avoidantActivators.resetToDefaults();
 
         Time.timeScale = 1f;
 
@@ -240,6 +271,10 @@ public class PlayerController : MonoBehaviour
         firePoint.transform.rotation = Quaternion.Euler(0, 0, angleOfShooting * Mathf.Rad2Deg);
         firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfShooting) * 0.18f, Mathf.Sin(angleOfShooting) * 0.18f);
 
+        //backfire point for major upgrade backstream
+        firePointBack.transform.rotation = Quaternion.Euler(0, 0, (angleOfShooting + Mathf.PI) * Mathf.Rad2Deg);
+        firePointBack.transform.localPosition = new Vector2(Mathf.Cos(angleOfShooting + Mathf.PI) * 0.18f, Mathf.Sin(angleOfShooting + Mathf.PI) * 0.18f);
+
         //Animating
         animator.SetFloat("Horizontal", (mouse.x - transform.position.x));
         animator.SetFloat("Vertical", (mouse.y - transform.position.y));
@@ -289,8 +324,19 @@ public class PlayerController : MonoBehaviour
                 bullet.transform.rotation = firePoint.transform.rotation;
                 bullet.SetActive(true);
             }
+            
+            if (backStream.numberPurchased > 0)
+            {
 
-
+                bullet = ObjectPool.SharedInstance.GetPooledObject();
+                if (bullet != null)
+                {
+                    bullet.transform.position = firePointBack.transform.position;
+                    bullet.transform.rotation = firePointBack.transform.rotation;
+                    bullet.SetActive(true);
+                }
+            }
+            
 
             currentTimeBetweenBullets = 0;
             PushBack(mouse);

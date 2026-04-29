@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ff8dc3f1f0c9704e908e333efcaec18, type: 3}
-  m_Name: Bigger Air
-  m_EditorClassIdentifier: 
-  title: Bigger Air
-  description: Makes air stream bigger
-  cost: 50
+  m_Name: LoseBaseMovement
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemSO
+  title: Lose Base Movement
+  description: lose ability to use WASD for movement
+  cost: 0
   numberPurchased: 0
-  modifier: 0.05
+  modifier: 0

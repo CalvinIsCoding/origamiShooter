@@ -194,7 +194,7 @@ public class Enemy : MonoBehaviour
 		rb.AddForce(positionComponentOfForce, ForceMode2D.Force);
 		//Debug.Log("Position Vetcor: " + positionVector/positionMagnitude);
 		//Debug.Log("Velocity Vetcor: " + airBulletVelocity/ (2 * velocityMagnitude));
-		//Debug.Log("Total Force: " + ((bullet.velocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack);
+		Debug.Log("Total Force: " + ((bullet.linearVelocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack);
 
 		if (isBlown == false)
 		{

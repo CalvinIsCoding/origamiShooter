@@ -15,5 +15,5 @@ MonoBehaviour:
   title: Back Stream
   description: Add an additional air stream that shoots behind you
   cost: 150
-  numberPurchased: 1
+  numberPurchased: 0
   modifier: 0

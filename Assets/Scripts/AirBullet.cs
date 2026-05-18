@@ -22,6 +22,7 @@ public class AirBullet: MonoBehaviour
     private float DefaultAirBulletScale;
     private float currentAirBulletScale;
     private float shrinkTime;
+   
     void OnEnable()
     {
 
@@ -59,7 +60,7 @@ public class AirBullet: MonoBehaviour
         }
 
         
-        else if (enemy != null )
+        else if (enemy != null  )
         {
             // 
             enemy.Push(knockBack/2f,rb,airBullet,rb.linearVelocity);
@@ -67,7 +68,7 @@ public class AirBullet: MonoBehaviour
             // Destroy(airBullet);
 
         }
-        if ( boss != null)
+        if ( boss != null )
         {
             boss.Push(knockBack/2f, rb, airBullet);
         }

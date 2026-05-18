@@ -15,5 +15,5 @@ MonoBehaviour:
   title: Fire Switch Air Burst
   description: Collecting fire switches let's out a burst of air
   cost: 125
-  numberPurchased: 1
+  numberPurchased: 0
   modifier: 1

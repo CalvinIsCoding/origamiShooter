@@ -15,5 +15,5 @@ MonoBehaviour:
   title: Fire Switch Magnet
   description: Fire Switches gravitate towards the player
   cost: 125
-  numberPurchased: 1
+  numberPurchased: 0
   modifier: 0

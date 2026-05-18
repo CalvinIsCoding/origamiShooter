@@ -13,7 +13,7 @@ public class ShopButton : MonoBehaviour
     public Image ShopImage;
     public Animator ShopButtonAnimator;
 
-    
+   
     void Update()
     {
         

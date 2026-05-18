@@ -50,7 +50,9 @@ public class Why : MonoBehaviour
 
         speed = 0f;
 
-        planeMovementForce = 0.75f;
+        planeMovementForce = 0f;
+
+        bc.enabled = false;
        
 
     }
@@ -60,11 +62,13 @@ public class Why : MonoBehaviour
 
     void Update()
     {
-        if(lastTime - Time.time < -spawnDelayTime && !(speed == 0.5f))
+        if(!_enemy.isBlink && !(speed == 0.5f))
         {
             
-            //bc.enabled = true;
+            bc.enabled = true;
             speed = 0.5f;
+            planeMovementForce = 0.75f;
+            timer = 0.51f;
         }
 
 

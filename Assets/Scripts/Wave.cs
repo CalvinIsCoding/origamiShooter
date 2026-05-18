@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -25,16 +26,34 @@ public class Wave : MonoBehaviour
    // public bool randomSpawnDisabled;
 
     public float testNumber = 10f;
-
+    public int maxEnemiesSpawnedRandomly = 999;
+    public int enemiesSpawnedThisWave = 0;
+    private void Awake()
+    {
+        if (spawnRate <= 0)
+        {
+            spawnRate = 1;
+        }
+    }
     void Start()
     {
-        SetSpawnChance();
+        
+        if (enemyTypeSpawnChances.Sum() < 100)
+        {
+            enemyTypeSpawnChances = new int[1];
+            enemyTypeSpawnChances[0] = 100;
+        }
+        
+            SetSpawnChance();
+        
+        
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     void SetSpawnChance()

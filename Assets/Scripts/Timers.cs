@@ -12,6 +12,7 @@ public class Timers : ScriptableObject
     public float numbersSlammingTogetherTime = 0.75f;
     public float roundMoneyAddingTime = 1f;
     public float activatorWaitTime = 3f;
+    public float enemyStunTime = 2f;
 
 
 

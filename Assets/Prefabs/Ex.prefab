@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.274, y: -0.424, z: 0}
-  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -195,9 +195,11 @@ MonoBehaviour:
   health: 10
   enemy: {fileID: 2789697411693779188}
   deathEffect: {fileID: 0}
+  spawnEffect: {fileID: 4670229829609038548, guid: 6babb3651b4881c4aba2f64f247d3bb8, type: 3}
   rb: {fileID: 2789697411693779185}
   enemyCollider: {fileID: 2789697411693779184}
   isBlown: 0
+  isStunned: 0
   travelDirection: {x: 0, y: 0}
   sprite: {fileID: 2789697411693779187}
   isBlink: 0
@@ -207,6 +209,7 @@ MonoBehaviour:
   wavesSaved: 0
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   gameStats: {fileID: 11400000, guid: 176c2fbf11a28a540b2689361b73a3c9, type: 2}
+  gameTimers: {fileID: 11400000, guid: 29301e4bdc700f549b1e953891ab0a16, type: 2}
   source: {fileID: 0}
   closedHiHat: {fileID: 0}
   snare: {fileID: 0}

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 5e3e485b5ee84834d9dbc5cf38b570a5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - airBullet: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - bulletEnemy: {instanceID: 0}
+  - source: {instanceID: 0}
+  - fanBlades: {fileID: 11400000, guid: 7825b05b361429a4e825842fac74a069, type: 2}
+  - airBulletSprite: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

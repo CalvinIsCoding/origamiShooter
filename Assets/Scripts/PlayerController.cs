@@ -120,8 +120,11 @@ public class PlayerController : MonoBehaviour
 
     public bool playerDead;
 
+    public GameObject airBurstObject;
 
-
+    //object pools
+    public ObjectPool airBulletPool;
+    public ObjectPool fireBulletPool;
 
 
     void Start()
@@ -187,28 +190,30 @@ public class PlayerController : MonoBehaviour
 
 
         currentTimeBetweenBullets = currentTimeBetweenBullets + Time.deltaTime;
-        
+
+
+
+
+
+        /* else if(Input.GetButtonDown("Fire1")  && _DestroyMode.isDestroyMode)
+         {
+
+             bullet = Instantiate(misslePrefab, firePoint.position, firePoint.rotation);
+             currentTimeBetweenBullets = 0;
+
+         }*/
         //parry
         if (Input.GetButtonDown("Fire2"))
         {
             //parryBox =  Instantiate(parryBox, firePoint.position, firePoint.rotation,Player.transform);
-            parryBox.SetActive(true);
-            StartCoroutine(disableParryBox());
-
+            //parryBox.SetActive(true);
+            //StartCoroutine(disableParryBox());
+            Debug.Log("shift is down");
+            Instantiate(airBurstObject, this.transform.position, Quaternion.identity);
             //Boost(parryBoxCollider);
             //isBoost = true;
             //StartCoroutine(boostIsActive());
         }
-
-
-      
-       /* else if(Input.GetButtonDown("Fire1")  && _DestroyMode.isDestroyMode)
-        {
-
-            bullet = Instantiate(misslePrefab, firePoint.position, firePoint.rotation);
-            currentTimeBetweenBullets = 0;
-
-        }*/
 
         //Overheating
         if (Input.GetButton("Fire1") && !overHeating)
@@ -315,27 +320,10 @@ public class PlayerController : MonoBehaviour
         //shooting
         if (Input.GetButton("Fire1") && (currentTimeBetweenBullets - timePerBullet) > 0  && !overHeating)
         {
-
-            //bullet = Instantiate(airBulletPrefab, firePoint.position, firePoint.rotation);
-            bullet = ObjectPool.SharedInstance.GetPooledObject();
-            if (bullet != null)
-            {
-                bullet.transform.position = firePoint.transform.position;
-                bullet.transform.rotation = firePoint.transform.rotation;
-                bullet.SetActive(true);
-            }
             
-            if (backStream.numberPurchased > 0)
-            {
-
-                bullet = ObjectPool.SharedInstance.GetPooledObject();
-                if (bullet != null)
-                {
-                    bullet.transform.position = firePointBack.transform.position;
-                    bullet.transform.rotation = firePointBack.transform.rotation;
-                    bullet.SetActive(true);
-                }
-            }
+            
+                ShootAirBullet();
+            
             
 
             currentTimeBetweenBullets = 0;
@@ -358,6 +346,8 @@ public class PlayerController : MonoBehaviour
             FanNoise.Pause();
         }
 
+        
+
 
 
     }
@@ -367,10 +357,10 @@ public class PlayerController : MonoBehaviour
         Wall myWall = collision.gameObject.GetComponent<Wall>();
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         EnemyProjectile enemyProjectile = collision.gameObject.GetComponent<EnemyProjectile>();
-        if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter)
+        if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter && !enemy.isStunned)
         {
-            enemy.Die(true);
-
+            // enemy.Die(true);
+            StartCoroutine(enemy.Stun());
             PlayerDeath();
 
         }
@@ -393,10 +383,10 @@ public class PlayerController : MonoBehaviour
         Wall myWall = collision.gameObject.GetComponent<Wall>();
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         EnemyProjectile enemyProjectile = collision.gameObject.GetComponent<EnemyProjectile>();
-        if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter)
+        if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter && !enemy.isStunned)
         {
-            enemy.Die(true);
-
+            //enemy.Die(true);
+            StartCoroutine(enemy.Stun());
             PlayerDeath();
 
         }
@@ -557,7 +547,36 @@ public class PlayerController : MonoBehaviour
         
         yield return new WaitForEndOfFrame();
     }
+    public void ShootAirBullet()
+    {
+        if (flameThrower.numberPurchased > 0)
+        {
+            bullet = fireBulletPool.GetPooledObject();
+        }
+        else
+        {
+            bullet = airBulletPool.GetPooledObject();
+        }
+        
+        if (bullet != null)
+        {
+            bullet.transform.position = firePoint.transform.position;
+            bullet.transform.rotation = firePoint.transform.rotation;
+            bullet.SetActive(true);
+        }
 
+        if (backStream.numberPurchased > 0)
+        {
+
+           // bullet = airBulletPool.GetPooledObject();
+            if (bullet != null)
+            {
+                bullet.transform.position = firePointBack.transform.position;
+                bullet.transform.rotation = firePointBack.transform.rotation;
+                bullet.SetActive(true);
+            }
+        }
+    }
 
 
 }

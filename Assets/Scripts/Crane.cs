@@ -49,26 +49,33 @@ public class Crane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        
-        
-       /* if (lastTime - Time.time < -spawnDelayTime && !(speed == 0.5f))
+        if (!enemy.isBlink && !(craneMovementForce == 10f))
         {
-            
 
+            bc.enabled = true;
             speed = 0.5f;
-            //rb.velocity = direction.normalized * 2f;
-        }*/
+            craneMovementForce = 10f;
+            lastTime = Time.time;
+        }
+
+
+        /* if (lastTime - Time.time < -spawnDelayTime && !(speed == 0.5f))
+         {
+
+
+             speed = 0.5f;
+             //rb.velocity = direction.normalized * 2f;
+         }*/
     }
     private void FixedUpdate()
     {
-        if (Time.time - lastTime <= 0.7f)
+        if (Time.time - lastTime <= 0.7f && !enemy.isBlink)
         {
 
             Orient();
 
         }
-        else if (!windingUp)
+        else if (!windingUp && !enemy.isBlink)
         {
             lastTime = Time.time;
             animator.SetTrigger("WindingUp");
@@ -76,7 +83,7 @@ public class Crane : MonoBehaviour
 
         }
 
-        if (!enemy.isBlink && (Time.time - lastTime > 0.7f))
+        if (!enemy.isBlink && (Time.time - lastTime > 0.7f) && !enemy.isBlink)
         {
             //Orient();
             animator.SetBool("Dragging", false);
@@ -85,7 +92,7 @@ public class Crane : MonoBehaviour
            rb.AddForceAtPosition(direction.normalized * craneMovementForce, rb.position);
 
         }
-        if(Time.time - lastTime > 1.5f)
+        if(Time.time - lastTime > 1.5f && !enemy.isBlink)
         {
             rb.freezeRotation = false;
             rb.linearDamping = 10;

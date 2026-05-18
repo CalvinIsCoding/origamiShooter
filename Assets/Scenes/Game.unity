@@ -473,6 +473,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &39644316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -603,10 +605,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
   - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-  enemyTypeSpawnChances: 190000004b000000
-  spawnEventChances: 640000000000000000000000
+  enemyTypeSpawnChances: 64000000
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
@@ -618,10 +619,21 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
+  - {fileID: 2500203242445162627, guid: 4ba33f27539d26940b42a0142037a00b, type: 3}
+  - {fileID: 2500203242445162627, guid: 4ba33f27539d26940b42a0142037a00b, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 0, y: 0}
+  - {x: -1.4, y: 0.2}
+  - {x: 1.4, y: -0.8}
+  enemyGroupSpawnTiming:
+  - 1
+  - 2
+  - 3
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 5
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &77954019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -837,6 +849,160 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+--- !u!1 &119453127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 119453128}
+  - component: {fileID: 119453132}
+  - component: {fileID: 119453131}
+  - component: {fileID: 119453130}
+  - component: {fileID: 119453129}
+  m_Layer: 0
+  m_Name: Major Upgrade Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &119453128
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119453127}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 826563090}
+  - {fileID: 639239348}
+  - {fileID: 394372034}
+  m_Father: {fileID: 1586880586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 468, y: 482}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &119453129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119453127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07783f3a4bddabe499cd989f65df0e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopButton
+  ItemID: 0
+  PriceText: {fileID: 394372035}
+  TitleText: {fileID: 639239349}
+  ShopManager: {fileID: 1586880585}
+  ShopImage: {fileID: 0}
+  ShopButtonAnimator: {fileID: 0}
+--- !u!114 &119453130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119453127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 0.5220535, b: 0.5058824, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 119453131}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1586880587}
+        m_TargetAssemblyTypeName: UpDownShopManager, Assembly-CSharp
+        m_MethodName: PurchaseItem
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &119453131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119453127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &119453132
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119453127}
+  m_CullTransparentMesh: 1
 --- !u!4 &120210767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -1006,6 +1172,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &138832761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,6 +1237,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &145872180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1303,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &156734550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,15 +1349,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6107a3cad87474f802fc19608092f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 2155321135584268295, guid: 24303a611678f454da0e04159dc203dc, type: 3}
-  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  enemyTypeSpawnChances: 4b00000019000000
-  spawnEventChances: 6400000000000000
+  enemy: []
+  enemyTypeSpawnChances: 
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
-  randomSpawnDisabled: 0
+  randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 0}
   spawnRate: 0
@@ -1193,10 +1363,21 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 476945087272630913, guid: 80726764fa0fd0e4eada82fd00f7f100, type: 3}
+  - {fileID: 840330640923057777, guid: bf1e402a8a2cba14e9a8fd95a9b6b2d6, type: 3}
+  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: -1, y: 0}
+  - {x: 0, y: -0.6}
+  - {x: 1.6, y: 0.2}
+  enemyGroupSpawnTiming:
+  - 0.5
+  - 1
+  - 1.5
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!4 &160660712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -1207,6 +1388,160 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1322598160282421113, guid: cc483a25983515944b171c440ab1c83f, type: 3}
   m_PrefabInstance: {fileID: 350290295}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &177686587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177686588}
+  - component: {fileID: 177686592}
+  - component: {fileID: 177686591}
+  - component: {fileID: 177686590}
+  - component: {fileID: 177686589}
+  m_Layer: 0
+  m_Name: Minor Upgrade Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &177686588
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177686587}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2018863740}
+  - {fileID: 1808937411}
+  - {fileID: 488345935}
+  m_Father: {fileID: 1586880586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 278, y: 480.99997}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &177686589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177686587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07783f3a4bddabe499cd989f65df0e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopButton
+  ItemID: 0
+  PriceText: {fileID: 488345936}
+  TitleText: {fileID: 1808937412}
+  ShopManager: {fileID: 1586880585}
+  ShopImage: {fileID: 0}
+  ShopButtonAnimator: {fileID: 0}
+--- !u!114 &177686590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177686587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 177686591}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1586880587}
+        m_TargetAssemblyTypeName: UpDownShopManager, Assembly-CSharp
+        m_MethodName: PurchaseItem
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &177686591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177686587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &177686592
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177686587}
+  m_CullTransparentMesh: 1
 --- !u!1 &181006269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1606,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &214142290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,6 +1671,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &217389669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1780,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1610,6 +1949,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!4 &231374974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -1679,6 +2020,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &248548570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,11 +2067,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
   - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-  enemyTypeSpawnChances: 0a0000003200000028000000
-  spawnEventChances: 6400000000000000000000000000000000000000
+  enemyTypeSpawnChances: 64000000
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
@@ -1740,10 +2081,15 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 5856640048182131042, guid: 3ca7705da43a9c74aaa06427879f8337, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 0, y: 0}
+  enemyGroupSpawnTiming:
+  - 0
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 15
+  enemiesSpawnedThisWave: 0
 --- !u!1 &250313423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,6 +2155,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &257222935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1943,15 +2291,14 @@ MonoBehaviour:
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
   enemyGroups:
-  - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-  - {fileID: 5143190256192597114, guid: 2060c991e213f6a448143074a433b2fc, type: 3}
+  - {fileID: 5479986906931242212, guid: 50b04bad3f534f94f9848069612562a7, type: 3}
   enemyGroupSpawnLocation:
-  - {x: 1, y: 0.5}
-  - {x: -1, y: -0.5}
+  - {x: 0, y: 0}
   enemyGroupSpawnTiming:
   - 0
-  - 5
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &271437801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,6 +2362,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &282552414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,6 +2631,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &286375022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,6 +3029,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &329452729
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,8 +3274,8 @@ MonoBehaviour:
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 0.441
+  m_SoftZoneHeight: 0.51
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -3128,6 +3481,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &350290295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3344,6 +3699,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2773493578597147067, guid: cc483a25983515944b171c440ab1c83f, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 2987183314073647554, guid: cc483a25983515944b171c440ab1c83f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -3485,6 +3844,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &366631074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3877,6 +4238,143 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &394372033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 394372034}
+  - component: {fileID: 394372036}
+  - component: {fileID: 394372035}
+  m_Layer: 0
+  m_Name: Item Price
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &394372034
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394372033}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 119453128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 26, y: -77}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &394372035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394372033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &394372036
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394372033}
+  m_CullTransparentMesh: 1
 --- !u!4 &396774024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -3999,7 +4497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415000856}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4021,11 +4519,11 @@ MonoBehaviour:
   enemy:
   - {fileID: 7273940842674895035, guid: 5c937243ac8da904390931a85d7ee2bc, type: 3}
   enemyTypeSpawnChances: 64000000
-  spawnEventChances: 000000000000000064000000
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 1
-  randomSpawnDisabled: 0
+  randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 11400000, guid: 38e427fb5d60a464a9d3e482e4da33b7, type: 2}
   spawnRate: 0
@@ -4033,10 +4531,15 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 7273940842674895035, guid: 5c937243ac8da904390931a85d7ee2bc, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 0, y: 0}
+  enemyGroupSpawnTiming:
+  - 5
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &417400927
 GameObject:
   m_ObjectHideFlags: 0
@@ -4424,6 +4927,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2773493578597147067, guid: cc483a25983515944b171c440ab1c83f, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 2987183314073647554, guid: cc483a25983515944b171c440ab1c83f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -4640,6 +5147,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &451553456
 GameObject:
   m_ObjectHideFlags: 0
@@ -4818,6 +5327,143 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 257222935}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &463045949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 463045950}
+  - component: {fileID: 463045952}
+  - component: {fileID: 463045951}
+  m_Layer: 5
+  m_Name: Money (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &463045950
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463045949}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1586880586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 819, y: 656}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &463045951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463045949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Money: ***'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &463045952
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463045949}
+  m_CullTransparentMesh: 1
 --- !u!1 &474297353
 GameObject:
   m_ObjectHideFlags: 0
@@ -4881,6 +5527,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &479164312
 GameObject:
   m_ObjectHideFlags: 0
@@ -4993,6 +5641,143 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 641653171}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &488345934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 488345935}
+  - component: {fileID: 488345937}
+  - component: {fileID: 488345936}
+  m_Layer: 0
+  m_Name: Item Price
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &488345935
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488345934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 177686588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 26, y: -77}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &488345936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488345934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &488345937
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488345934}
+  m_CullTransparentMesh: 1
 --- !u!1 &489665808
 GameObject:
   m_ObjectHideFlags: 0
@@ -5251,7 +6036,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -5372,73 +6157,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &509246152
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 509246153}
-  - component: {fileID: 509246154}
-  m_Layer: 0
-  m_Name: Wave 20
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &509246153
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509246152}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1913252121}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &509246154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509246152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b6107a3cad87474f802fc19608092f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  - {fileID: 2155321135584268295, guid: 24303a611678f454da0e04159dc203dc, type: 3}
-  - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-  - {fileID: 2789697411693779188, guid: 7e6c76ea889c225408134450ceae6148, type: 3}
-  enemyTypeSpawnChances: 1400000014000000140000001400000014000000
-  spawnEventChances: 3200000032000000
-  spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  bossWave: 0
-  randomSpawnDisabled: 0
-  endCriteria: 0
-  bossObject: {fileID: 0}
-  spawnRate: 0
-  hasCustomSpawnActivatorFormation: 0
-  activatorSpawnFormation: {fileID: 0}
-  activatorFormationLocation: {x: 0, y: 0}
-  requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
-  testNumber: 0
 --- !u!4 &510345140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -5502,7 +6220,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 12.165449
+  field of view: 17.852144
   orthographic: 0
   orthographic size: 1
   m_Depth: -1
@@ -5730,6 +6448,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1586880586}
   - {fileID: 2027954093}
   - {fileID: 1141801739}
   - {fileID: 572631786}
@@ -5934,6 +6653,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 1855323090}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &547962816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 547962817}
+  - component: {fileID: 547962819}
+  - component: {fileID: 547962818}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &547962817
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547962816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1586880586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &547962818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547962816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.6745098}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &547962819
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547962816}
+  m_CullTransparentMesh: 1
 --- !u!1 &557120128
 GameObject:
   m_ObjectHideFlags: 0
@@ -5998,6 +6792,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &557265191
 GameObject:
   m_ObjectHideFlags: 0
@@ -6061,6 +6857,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &559186729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6201,6 +6999,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &565796043
 GameObject:
   m_ObjectHideFlags: 0
@@ -6264,6 +7064,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &572631785
 GameObject:
   m_ObjectHideFlags: 0
@@ -6370,6 +7172,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &584126468
 GameObject:
   m_ObjectHideFlags: 0
@@ -6415,14 +7219,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 2155321135584268295, guid: 24303a611678f454da0e04159dc203dc, type: 3}
   - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  enemyTypeSpawnChances: 4b00000019000000
+  enemyTypeSpawnChances: 64000000
   spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
-  randomSpawnDisabled: 0
+  randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 0}
   spawnRate: 2
@@ -6430,10 +7233,15 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 3
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 2500203242445162627, guid: 4ba33f27539d26940b42a0142037a00b, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 0, y: 0}
+  enemyGroupSpawnTiming:
+  - 0
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &584222421
 GameObject:
   m_ObjectHideFlags: 0
@@ -6852,6 +7660,9 @@ MonoBehaviour:
   insideArenaBound: 0
   enteredPlayingArea: 0
   playerDead: 0
+  airBurstObject: {fileID: 4152795769166717473, guid: 66b44d84ca88836449c1b462d03f0c4f, type: 3}
+  airBulletPool: {fileID: 1390667155}
+  fireBulletPool: {fileID: 918780496}
 --- !u!212 &605639850
 SpriteRenderer:
   serializedVersion: 2
@@ -7422,6 +8233,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2773493578597147067, guid: cc483a25983515944b171c440ab1c83f, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 2987183314073647554, guid: cc483a25983515944b171c440ab1c83f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -7565,6 +8380,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &628620411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7683,9 +8500,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  enemyTypeSpawnChances: 190000004b000000
+  - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+  enemyTypeSpawnChances: 64000000
   spawnEventChances: 6400000000000000000000000000000000000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -7702,6 +8518,145 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 3
+  enemiesSpawnedThisWave: 0
+--- !u!1 &639239347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 639239348}
+  - component: {fileID: 639239350}
+  - component: {fileID: 639239349}
+  m_Layer: 0
+  m_Name: Item Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &639239348
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639239347}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 119453128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 24, y: 73}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &639239349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639239347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &639239350
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639239347}
+  m_CullTransparentMesh: 1
 --- !u!4 &640406794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1865878009282151358, guid: 36c028335a7827f4b959405e177f839a, type: 3}
@@ -7852,6 +8807,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &660244388
 GameObject:
   m_ObjectHideFlags: 0
@@ -7906,18 +8863,20 @@ MonoBehaviour:
   randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 0}
-  spawnRate: 1.5
+  spawnRate: 0.5
   hasCustomSpawnActivatorFormation: 0
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 3
   enemyGroups:
-  - {fileID: 1693658001888855326, guid: b9120c82f46fcf7468103c4d38f505ef, type: 3}
+  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
   enemyGroupSpawnLocation:
-  - {x: 0, y: 0}
+  - {x: 1.2, y: -0.5}
   enemyGroupSpawnTiming:
-  - 1
+  - 1.5
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &661782175
 GameObject:
   m_ObjectHideFlags: 0
@@ -8336,16 +9295,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6107a3cad87474f802fc19608092f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-  - {fileID: 2155321135584268295, guid: 24303a611678f454da0e04159dc203dc, type: 3}
-  enemyTypeSpawnChances: 32000000280000000a000000
-  spawnEventChances: 6400000000000000000000000000000000000000
+  enemy: []
+  enemyTypeSpawnChances: 
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
-  randomSpawnDisabled: 0
+  randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 0}
   spawnRate: 0
@@ -8353,10 +9309,15 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 5856640048182131042, guid: 3ca7705da43a9c74aaa06427879f8337, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 0, y: 0}
+  enemyGroupSpawnTiming:
+  - 0
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &684878479
 GameObject:
   m_ObjectHideFlags: 0
@@ -8515,73 +9476,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684878479}
   m_CullTransparentMesh: 1
---- !u!1 &693778586
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 693778587}
-  - component: {fileID: 693778588}
-  m_Layer: 0
-  m_Name: Wave 10
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &693778587
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693778586}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1016632993}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &693778588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693778586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b6107a3cad87474f802fc19608092f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  - {fileID: 2155321135584268295, guid: 24303a611678f454da0e04159dc203dc, type: 3}
-  - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-  - {fileID: 2789697411693779188, guid: 7e6c76ea889c225408134450ceae6148, type: 3}
-  enemyTypeSpawnChances: 1400000014000000140000001400000014000000
-  spawnEventChances: 3200000032000000
-  spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  bossWave: 0
-  randomSpawnDisabled: 0
-  endCriteria: 0
-  bossObject: {fileID: 0}
-  spawnRate: 0
-  hasCustomSpawnActivatorFormation: 0
-  activatorSpawnFormation: {fileID: 0}
-  activatorFormationLocation: {x: 0, y: 0}
-  requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
-  testNumber: 0
 --- !u!50 &708628830 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4358313080623924034, guid: 03e1cc6d7e563d94da60ce4e0cab1fd3, type: 3}
@@ -8655,6 +9549,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &722742698
 GameObject:
   m_ObjectHideFlags: 0
@@ -8762,7 +9658,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -9175,14 +10071,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6107a3cad87474f802fc19608092f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 2789697411693779188, guid: 7e6c76ea889c225408134450ceae6148, type: 3}
-  enemyTypeSpawnChances: 64000000
-  spawnEventChances: 640000000000000000000000
+  enemy: []
+  enemyTypeSpawnChances: 
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
-  randomSpawnDisabled: 0
+  randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 0}
   spawnRate: 0
@@ -9190,10 +10085,15 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 0, y: -0.4}
+  enemyGroupSpawnTiming:
+  - 0
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!4 &740786590
 Transform:
   m_ObjectHideFlags: 0
@@ -9361,7 +10261,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 605639851}
   m_Lens:
-    FieldOfView: 12.165449
+    FieldOfView: 17.852144
     OrthographicSize: 1
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -9470,6 +10370,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &783228222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9650,7 +10552,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -10190,6 +11092,280 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4358313080623924034, guid: 03e1cc6d7e563d94da60ce4e0cab1fd3, type: 3}
   m_PrefabInstance: {fileID: 903322484}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &826563089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 826563090}
+  - component: {fileID: 826563092}
+  - component: {fileID: 826563091}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &826563090
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826563089}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 119453128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &826563091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826563089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Major Upgrade
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &826563092
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826563089}
+  m_CullTransparentMesh: 1
+--- !u!1 &836853085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 836853086}
+  - component: {fileID: 836853088}
+  - component: {fileID: 836853087}
+  m_Layer: 0
+  m_Name: Item Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &836853086
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836853085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1381147990}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 24, y: 73}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &836853087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836853085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &836853088
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836853085}
+  m_CullTransparentMesh: 1
 --- !u!1 &843690695
 GameObject:
   m_ObjectHideFlags: 0
@@ -10653,6 +11829,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &901514885
 GameObject:
   m_ObjectHideFlags: 0
@@ -10952,6 +12130,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3583677133983034058, guid: 9e8be5faee260704f902666a4fd70a74, type: 3}
   m_PrefabInstance: {fileID: 39644316}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &918780495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 918780497}
+  - component: {fileID: 918780496}
+  m_Layer: 0
+  m_Name: fireBulletPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &918780496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918780495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac048152b2708c41a9e0f721e39f1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
+  pooledObjects: []
+  objectToPool: {fileID: 4318917466505955545, guid: 7ed84bb0eafef84428affe4b50a74ce3, type: 3}
+  amountToPool: 40
+--- !u!4 &918780497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918780495}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1390667150}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920534433
 GameObject:
   m_ObjectHideFlags: 0
@@ -11016,6 +12241,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &938017697
 GameObject:
   m_ObjectHideFlags: 0
@@ -11081,6 +12308,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &938299874
 GameObject:
   m_ObjectHideFlags: 0
@@ -11241,6 +12470,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!4 &955077744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -11636,9 +12867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy:
   - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-  - {fileID: 2155321135584268295, guid: 24303a611678f454da0e04159dc203dc, type: 3}
-  enemyTypeSpawnChances: 32000000280000000a000000
+  enemyTypeSpawnChances: 64000000
   spawnEventChances: 6400000000000000000000000000000000000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -11646,7 +12875,7 @@ MonoBehaviour:
   randomSpawnDisabled: 0
   endCriteria: 0
   bossObject: {fileID: 0}
-  spawnRate: 0.1
+  spawnRate: 0.5
   hasCustomSpawnActivatorFormation: 0
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
@@ -11655,6 +12884,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 10
+  enemiesSpawnedThisWave: 0
 --- !u!1 &997414096
 GameObject:
   m_ObjectHideFlags: 0
@@ -11753,7 +12984,6 @@ Transform:
   - {fileID: 1025632840}
   - {fileID: 2056924624}
   - {fileID: 1468055388}
-  - {fileID: 693778587}
   - {fileID: 415000857}
   m_Father: {fileID: 997414097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11895,16 +13125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6107a3cad87474f802fc19608092f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-  enemyTypeSpawnChances: 0a0000003200000028000000
-  spawnEventChances: 6400000000000000000000000000000000000000
+  enemy: []
+  enemyTypeSpawnChances: 
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
-  randomSpawnDisabled: 0
+  randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 0}
   spawnRate: 0
@@ -11912,10 +13139,18 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 7661406969396715038, guid: cc94f053f9a37c0498fa5ff8dd1cdeb6, type: 3}
+  - {fileID: 840330640923057777, guid: bf1e402a8a2cba14e9a8fd95a9b6b2d6, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 1.6, y: -0.8}
+  - {x: -1.6, y: -0.8}
+  enemyGroupSpawnTiming:
+  - 0
+  - 0
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1034653672
 GameObject:
   m_ObjectHideFlags: 0
@@ -11980,6 +13215,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1039066786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12118,6 +13355,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1059533072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12191,63 +13430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07783f3a4bddabe499cd989f65df0e35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1081997125
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_Name
-      value: V
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019179677689141628, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.21472126
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019179677689141628, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5954517
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019179677689141628, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019179677689141628, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019179677689141628, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019179677689141628, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019179677689141628, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019179677689141628, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019179677689141628, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019179677689141628, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
 --- !u!1 &1094725128
 GameObject:
   m_ObjectHideFlags: 0
@@ -12312,6 +13494,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1098478255
 GameObject:
   m_ObjectHideFlags: 0
@@ -12466,63 +13650,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112330702}
   m_CullTransparentMesh: 1
---- !u!1001 &1122182577
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_Name
-      value: Ampersand
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.8009767
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.14221224
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
 --- !u!1 &1133591538
 GameObject:
   m_ObjectHideFlags: 0
@@ -12570,7 +13697,7 @@ MonoBehaviour:
   enemy:
   - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
   - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  enemyTypeSpawnChances: 190000004b000000
+  enemyTypeSpawnChances: 2400000040000000
   spawnEventChances: 6400000000000000000000000000000000000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -12587,6 +13714,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 8
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1141801738
 GameObject:
   m_ObjectHideFlags: 0
@@ -12618,6 +13747,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1787242580}
   - {fileID: 1112330703}
   - {fileID: 1821895258}
   - {fileID: 1796032894}
@@ -12683,7 +13813,7 @@ MonoBehaviour:
   coinUI: {fileID: 1821895256}
   shopItemSO:
   - {fileID: 11400000, guid: be45e1f53670195468f9fc7ea17994d7, type: 2}
-  - {fileID: 11400000, guid: 7825b05b361429a4e825842fac74a069, type: 2}
+  - {fileID: 11400000, guid: 2fdf4d0826f4e8140bc9b59850869446, type: 2}
   - {fileID: 11400000, guid: 09a648cb2e0d91b4e85d09cddb29d9ea, type: 2}
   - {fileID: 11400000, guid: deb268be88972194cb8e8c48e271bc4a, type: 2}
   shopButton:
@@ -12899,6 +14029,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1171342755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13063,7 +14195,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -13377,6 +14509,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!4 &1206371839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -13504,14 +14638,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6107a3cad87474f802fc19608092f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  enemyTypeSpawnChances: 64000000
-  spawnEventChances: 00000000000000006400000000000000
+  enemy: []
+  enemyTypeSpawnChances: 
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
-  randomSpawnDisabled: 0
+  randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 0}
   spawnRate: 0
@@ -13519,10 +14652,18 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
+  - {fileID: 5479986906931242212, guid: 50b04bad3f534f94f9848069612562a7, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 0, y: 0}
+  - {x: 0, y: -0.4}
+  enemyGroupSpawnTiming:
+  - 0
+  - 1
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1255720444
 GameObject:
   m_ObjectHideFlags: 0
@@ -13630,7 +14771,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -13659,6 +14800,143 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255720444}
+  m_CullTransparentMesh: 1
+--- !u!1 &1271343558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1271343559}
+  - component: {fileID: 1271343561}
+  - component: {fileID: 1271343560}
+  m_Layer: 0
+  m_Name: Item Price
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1271343559
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271343558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1381147990}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 26, y: -77}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1271343560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271343558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1271343561
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271343558}
   m_CullTransparentMesh: 1
 --- !u!4 &1275178706 stripped
 Transform:
@@ -13728,6 +15006,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1291239846
 GameObject:
   m_ObjectHideFlags: 0
@@ -14056,6 +15336,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1320372443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14347,6 +15629,160 @@ Transform:
   - {fileID: 372743328}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1381147989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1381147990}
+  - component: {fileID: 1381147994}
+  - component: {fileID: 1381147993}
+  - component: {fileID: 1381147992}
+  - component: {fileID: 1381147991}
+  m_Layer: 0
+  m_Name: Downgrade Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1381147990
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381147989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1656025001}
+  - {fileID: 836853086}
+  - {fileID: 1271343559}
+  m_Father: {fileID: 1586880586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 72.28117, y: 479.58386}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1381147991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381147989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07783f3a4bddabe499cd989f65df0e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopButton
+  ItemID: 0
+  PriceText: {fileID: 1271343560}
+  TitleText: {fileID: 836853087}
+  ShopManager: {fileID: 1586880585}
+  ShopImage: {fileID: 0}
+  ShopButtonAnimator: {fileID: 0}
+--- !u!114 &1381147992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381147989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0.55193806, g: 0.504717, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1381147993}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1586880587}
+        m_TargetAssemblyTypeName: UpDownShopManager, Assembly-CSharp
+        m_MethodName: PurchaseItem
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1381147993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381147989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1381147994
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381147989}
+  m_CullTransparentMesh: 1
 --- !u!1 &1390667148
 GameObject:
   m_ObjectHideFlags: 0
@@ -14393,7 +15829,7 @@ MonoBehaviour:
   - {fileID: 1025632841}
   - {fileID: 2056924625}
   - {fileID: 1468055389}
-  - {fileID: 693778588}
+  - {fileID: 0}
   - {fileID: 415000858}
   - {fileID: 740786589}
   - {fileID: 1232046800}
@@ -14403,7 +15839,7 @@ MonoBehaviour:
   - {fileID: 248548572}
   - {fileID: 1882864735}
   - {fileID: 1619098290}
-  - {fileID: 509246154}
+  - {fileID: 0}
   - {fileID: 1430612540}
   - {fileID: 415000858}
   - {fileID: 415000858}
@@ -14493,6 +15929,7 @@ Transform:
   - {fileID: 381217067}
   - {fileID: 2046792401}
   - {fileID: 2053780863}
+  - {fileID: 918780497}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1390667151
@@ -15797,6 +17234,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1416608208
 GameObject:
   m_ObjectHideFlags: 0
@@ -15861,6 +17300,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1419854316
 GameObject:
   m_ObjectHideFlags: 0
@@ -15999,6 +17440,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1430355318
 GameObject:
   m_ObjectHideFlags: 0
@@ -16118,14 +17561,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6107a3cad87474f802fc19608092f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 8402586300774934793, guid: d35d9cea9ee28a44797c4a1e86c4c665, type: 3}
-  enemyTypeSpawnChances: 64000000
-  spawnEventChances: 000000000000000064000000
+  enemy: []
+  enemyTypeSpawnChances: 
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 1
-  randomSpawnDisabled: 0
+  randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 11400000, guid: b3fb5622f7222a641ac0b4240612765c, type: 2}
   spawnRate: 0
@@ -16133,10 +17575,15 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 8402586300774934793, guid: d35d9cea9ee28a44797c4a1e86c4c665, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 0, y: 0}
+  enemyGroupSpawnTiming:
+  - 0
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1431735996
 GameObject:
   m_ObjectHideFlags: 0
@@ -16504,6 +17951,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1444070923
 GameObject:
   m_ObjectHideFlags: 0
@@ -16607,6 +18056,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!4 &1458459288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -16998,7 +18449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468055387}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17018,24 +18469,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 2789697411693779188, guid: 7e6c76ea889c225408134450ceae6148, type: 3}
+  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
   enemyTypeSpawnChances: 64000000
-  spawnEventChances: 6400000000000000
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
   randomSpawnDisabled: 0
   endCriteria: 0
   bossObject: {fileID: 0}
-  spawnRate: 0
+  spawnRate: 1
   hasCustomSpawnActivatorFormation: 0
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 2613035396717822991, guid: ee6a4a079f74f2d46ba72d4da7fcb531, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 0, y: 0}
+  enemyGroupSpawnTiming:
+  - 5
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 10
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1512871789
 GameObject:
   m_ObjectHideFlags: 0
@@ -17184,6 +18640,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!50 &1534905610 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4358313080623924034, guid: 03e1cc6d7e563d94da60ce4e0cab1fd3, type: 3}
@@ -17633,6 +19091,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1561822513
 GameObject:
   m_ObjectHideFlags: 0
@@ -17698,6 +19158,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1564843653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17918,6 +19380,222 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580176727}
+  m_CullTransparentMesh: 1
+--- !u!1 &1586880585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1586880586}
+  - component: {fileID: 1586880587}
+  m_Layer: 0
+  m_Name: Downgrade Shop Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1586880586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586880585}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -145, y: -233, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 463045950}
+  - {fileID: 547962817}
+  - {fileID: 1381147990}
+  - {fileID: 177686588}
+  - {fileID: 119453128}
+  m_Father: {fileID: 526032264}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1586880587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586880585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67da1b956b43880478537afecb447d66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpDownShopManager
+  playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
+  coinUI: {fileID: 463045951}
+  shopItemSO:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  shopButtonGameObject:
+  - {fileID: 1381147989}
+  - {fileID: 177686587}
+  - {fileID: 119453127}
+  buttons:
+  - {fileID: 1381147992}
+  - {fileID: 177686590}
+  - {fileID: 119453130}
+  images: []
+  downgradeButton: {fileID: 1381147991}
+  minorUpgradeButton: {fileID: 177686589}
+  majorUpgradeButton: {fileID: 119453129}
+  shopButtons:
+  - {fileID: 1381147991}
+  - {fileID: 177686589}
+  - {fileID: 119453129}
+  minorUpgrades:
+  - {fileID: 11400000, guid: be45e1f53670195468f9fc7ea17994d7, type: 2}
+  majorUpgrades:
+  - {fileID: 11400000, guid: 2fdf4d0826f4e8140bc9b59850869446, type: 2}
+  downgrades:
+  - {fileID: 11400000, guid: f977f0d3232caae42b9112208f18481b, type: 2}
+  ShopMenu: {fileID: 526032259}
+  totalMoney: {fileID: 463045951}
+--- !u!1 &1597795578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1597795579}
+  - component: {fileID: 1597795581}
+  - component: {fileID: 1597795580}
+  m_Layer: 5
+  m_Name: Gen Money Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1597795579
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597795578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1787242580}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1597795580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597795578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Generate Money
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 19
+  m_fontSizeBase: 19
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 4096
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1597795581
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597795578}
   m_CullTransparentMesh: 1
 --- !u!4 &1599960496 stripped
 Transform:
@@ -18140,14 +19818,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6107a3cad87474f802fc19608092f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 2789697411693779188, guid: 7e6c76ea889c225408134450ceae6148, type: 3}
-  enemyTypeSpawnChances: 64000000
-  spawnEventChances: 6400000000000000
+  enemy: []
+  enemyTypeSpawnChances: 
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
-  randomSpawnDisabled: 0
+  randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 0}
   spawnRate: 0
@@ -18155,10 +19832,18 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 7661406969396715038, guid: cc94f053f9a37c0498fa5ff8dd1cdeb6, type: 3}
+  - {fileID: 4816278234659003105, guid: 44332f66f0432a94b82bb55b3376e701, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: -0.5, y: -0.8}
+  - {x: 1, y: 0}
+  enemyGroupSpawnTiming:
+  - 0
+  - 3
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1624773159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18601,7 +20286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.08, y: 0.03}
+  m_AnchoredPosition: {x: 0.08, y: 0.000000052154}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1651944330
@@ -18684,6 +20369,143 @@ MonoBehaviour:
   - {x: 0.2911353, y: -0.23625924, z: 0.000000042385523}
   - {x: 0.33734027, y: -0.14981581, z: 0.000000042385523}
   - {x: 0.36579314, y: -0.05601922, z: 0.000000042385523}
+--- !u!1 &1656025000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1656025001}
+  - component: {fileID: 1656025003}
+  - component: {fileID: 1656025002}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1656025001
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656025000}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1381147990}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1656025002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656025000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Downgrade
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1656025003
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656025000}
+  m_CullTransparentMesh: 1
 --- !u!1 &1663575036
 GameObject:
   m_ObjectHideFlags: 0
@@ -19276,6 +21098,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1700158924
 GameObject:
   m_ObjectHideFlags: 0
@@ -19557,63 +21381,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!1001 &1715964649
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_Name
-      value: Why
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414918018862233230, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.43557882
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414918018862233230, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.035142347
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414918018862233230, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414918018862233230, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414918018862233230, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414918018862233230, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414918018862233230, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414918018862233230, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414918018862233230, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414918018862233230, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
 --- !u!1001 &1720587956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19750,6 +21517,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1738826258
 GameObject:
   m_ObjectHideFlags: 0
@@ -19814,6 +21583,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1750847677
 GameObject:
   m_ObjectHideFlags: 0
@@ -20105,6 +21876,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1769426689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20293,6 +22066,151 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+--- !u!1 &1787242579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1787242580}
+  - component: {fileID: 1787242583}
+  - component: {fileID: 1787242582}
+  - component: {fileID: 1787242581}
+  m_Layer: 5
+  m_Name: Generate Money Button (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1787242580
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787242579}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1597795579}
+  m_Father: {fileID: 1141801739}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -73.00003, y: 112.5}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1787242581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787242579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1787242582}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1141801742}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: AddCoins
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 526032265}
+        m_TargetAssemblyTypeName: MenusOveralll, Assembly-CSharp
+        m_MethodName: ForwardSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1787242582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787242579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1787242583
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787242579}
+  m_CullTransparentMesh: 1
 --- !u!1 &1793079747
 GameObject:
   m_ObjectHideFlags: 0
@@ -20357,6 +22275,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1796032893
 GameObject:
   m_ObjectHideFlags: 0
@@ -20566,6 +22486,145 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
+--- !u!1 &1808937410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1808937411}
+  - component: {fileID: 1808937413}
+  - component: {fileID: 1808937412}
+  m_Layer: 0
+  m_Name: Item Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1808937411
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808937410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 177686588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 24, y: 73}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1808937412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808937410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1808937413
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808937410}
+  m_CullTransparentMesh: 1
 --- !u!1 &1812678795
 GameObject:
   m_ObjectHideFlags: 0
@@ -20631,6 +22690,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1819527818
 GameObject:
   m_ObjectHideFlags: 0
@@ -20694,6 +22755,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1820404624
 GameObject:
   m_ObjectHideFlags: 0
@@ -20759,6 +22822,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1821895255
 GameObject:
   m_ObjectHideFlags: 0
@@ -20847,7 +22912,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -20959,6 +23024,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1844830857 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2057858560503527002, guid: cc483a25983515944b171c440ab1c83f, type: 3}
@@ -21116,6 +23183,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1855323090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21252,6 +23321,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1870259654
 GameObject:
   m_ObjectHideFlags: 0
@@ -21315,6 +23386,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1881323552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21447,9 +23520,8 @@ MonoBehaviour:
   enemy:
   - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
   - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-  enemyTypeSpawnChances: 2d0000002d0000000a000000
-  spawnEventChances: 6400000000000000
+  enemyTypeSpawnChances: 3200000032000000
+  spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   bossWave: 0
@@ -21461,10 +23533,15 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 0}
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
-  enemyGroups: []
-  enemyGroupSpawnLocation: []
-  enemyGroupSpawnTiming: []
+  enemyGroups:
+  - {fileID: 5744898415772077968, guid: 691a7fb8f7f1f2641b994c1b1e05965a, type: 3}
+  enemyGroupSpawnLocation:
+  - {x: 0, y: 0}
+  enemyGroupSpawnTiming:
+  - 2
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 10
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1886276668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21945,7 +24022,6 @@ Transform:
   - {fileID: 248548571}
   - {fileID: 1882864734}
   - {fileID: 1619098289}
-  - {fileID: 509246153}
   - {fileID: 1430612539}
   m_Father: {fileID: 997414097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22346,6 +24422,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &1948236161
 GameObject:
   m_ObjectHideFlags: 0
@@ -22453,6 +24531,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1956454072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22696,6 +24776,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &1961656705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22832,6 +24914,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!4 &1979002788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -23044,9 +25128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6107a3cad87474f802fc19608092f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 4816278234659003105, guid: 44332f66f0432a94b82bb55b3376e701, type: 3}
-  enemyTypeSpawnChances: 64000000
+  enemy: []
+  enemyTypeSpawnChances: 
   spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -23054,18 +25137,157 @@ MonoBehaviour:
   randomSpawnDisabled: 1
   endCriteria: 0
   bossObject: {fileID: 0}
-  spawnRate: 2
-  hasCustomSpawnActivatorFormation: 0
-  activatorSpawnFormation: {fileID: 0}
-  activatorFormationLocation: {x: 0.78, y: 0}
-  requiredActivators: 4
+  spawnRate: 0.5
+  hasCustomSpawnActivatorFormation: 1
+  activatorSpawnFormation: {fileID: 2648210873671690801, guid: c9869234948dff64eb395550a0861152, type: 3}
+  activatorFormationLocation: {x: -1, y: -0.5}
+  requiredActivators: 1
   enemyGroups:
-  - {fileID: 4816278234659003105, guid: 44332f66f0432a94b82bb55b3376e701, type: 3}
+  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
   enemyGroupSpawnLocation:
-  - {x: 0, y: 0}
+  - {x: 1, y: 0.5}
   enemyGroupSpawnTiming:
-  - 3
+  - 0
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
+--- !u!1 &2018863739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018863740}
+  - component: {fileID: 2018863742}
+  - component: {fileID: 2018863741}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2018863740
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018863739}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 177686588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2018863741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018863739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Minor Upgrade
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2018863742
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018863739}
+  m_CullTransparentMesh: 1
 --- !u!1 &2026354269
 GameObject:
   m_ObjectHideFlags: 0
@@ -23460,6 +25682,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2773493578597147067, guid: cc483a25983515944b171c440ab1c83f, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 2987183314073647554, guid: cc483a25983515944b171c440ab1c83f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -23634,6 +25860,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &2046792399
 GameObject:
   m_ObjectHideFlags: 0
@@ -24059,6 +26287,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1001 &2055417768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24178,9 +26408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy:
   - {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
-  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
-  - {fileID: 3019179677689141602, guid: 9d2a52f2cfdd28c4a9d1198ade665799, type: 3}
-  enemyTypeSpawnChances: 2d0000002d0000000a000000
+  enemyTypeSpawnChances: 64000000
   spawnEventChances: 6400000000000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -24197,6 +26425,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 10
+  enemiesSpawnedThisWave: 0
 --- !u!1 &2066263348
 GameObject:
   m_ObjectHideFlags: 0
@@ -24876,6 +27106,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &2134924897
 GameObject:
   m_ObjectHideFlags: 0
@@ -24943,6 +27175,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!1 &2145197930
 GameObject:
   m_ObjectHideFlags: 0
@@ -25213,6 +27447,8 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
+  maxEnemiesSpawnedRandomly: 999
+  enemiesSpawnedThisWave: 0
 --- !u!4 &2654224250026892692 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -25254,6 +27490,3 @@ SceneRoots:
   - {fileID: 758893065}
   - {fileID: 738133307}
   - {fileID: 505087117}
-  - {fileID: 1715964649}
-  - {fileID: 1122182577}
-  - {fileID: 1081997125}

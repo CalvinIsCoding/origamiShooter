@@ -123,12 +123,12 @@ public class EnemySpawn : MonoBehaviour
 
     void Update()
     {
-        if (wave[waveNumber].randomSpawnDisabled == true && spawningComplete == false)
+        if (spawningComplete == false)
         {
             //any number would be fine as the index to spawnEventRandomizer. 5 was just chosen randomly.
             SpawnEventSelector(wave[waveNumber].spawnEventRandomizer[5]);
 
-            spawningComplete = true;
+            spawningComplete = true; //this gets set to true since the coroutine handle the rest of the spawning
             bossWaveNumber = waveNumber;
         }
         else if(bossWaveNumber != waveNumber)
@@ -138,19 +138,23 @@ public class EnemySpawn : MonoBehaviour
 
         if (!fireMode.isFireMode && fireMode.waveCanStart == true)
         {
+            //putting this statement here instead of in Wave so that only one instance of this if statement is being checked each frame.
+            if (wave[waveNumber].enemiesSpawnedThisWave >= wave[waveNumber].maxEnemiesSpawnedRandomly)
+            {
+                wave[waveNumber].randomSpawnDisabled = true;
+            }
 
-            
             if (lastTime - Time.time < -timeBetweenSpawns && wave[waveNumber].randomSpawnDisabled == false)
             {
                 Spawn();
                 lastTime = Time.time;
-                spawnEventTrigger = Random.Range(0, spawnEvent_howOften);
+               // spawnEventTrigger = Random.Range(0, spawnEvent_howOften);
                 //timeBetweenSpawns = timeBetweenSpawns - 0.01f;
             }
 
             // I want "spawn events" to trigger randomly every so often. These are supposed to be more interesting things like a large group spawning 
             // right around the player, or enemies spawning around all 
-
+/*
             if (spawnEventTrigger == (Mathf.Round(spawnEvent_howOften / 5f)) && wave[waveNumber].randomSpawnDisabled == false)
             {
                 //spawn events are put into an array of 100 to determine the chance that a spawn event happens.
@@ -161,7 +165,7 @@ public class EnemySpawn : MonoBehaviour
                 //maybe add a cooldown and a maximum amount of time that can pass before another spawn many instance?
 
             }
-
+*/
         }
         if(waveNumber % 4 == 0 && !shopSpawned && waveNumber != 0)
         {
@@ -195,6 +199,7 @@ public class EnemySpawn : MonoBehaviour
         else
         {
             numberSpawned = Random.Range(1, maxSimultaneouslySpawned);
+            wave[waveNumber].enemiesSpawnedThisWave += numberSpawned;
         }
         
         typeSpawned = wave[waveNumber].spawnTypeRandomizer[Random.Range(1, 100)];

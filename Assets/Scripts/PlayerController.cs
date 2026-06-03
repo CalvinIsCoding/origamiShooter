@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -53,6 +54,9 @@ public class PlayerController : MonoBehaviour
     //public OverheatBar overheatBar;
     public float maxOverheat = 5f;
     private float coolDownFactor = 2f;
+    private float waitToCoolDownTime = 0.25f; //Time before cooldown actually starts. The purpose is to prevent players from clicking very quickly
+    private float timeSinceLastClick = 0f;
+    private bool coolDownAllowed = true;
     bool isRed;
    
 
@@ -178,13 +182,22 @@ public class PlayerController : MonoBehaviour
         airPushBackForce = airPushBackForceDefault + (speedFromAir.numberPurchased * speedFromAir.modifier);
 
         //Movement
-        moveHorizontal = Input.GetAxis("Horizontal");
-        moveVertical = Input.GetAxis("Vertical");
+        //checking here for if player fpurchased the lose base movement downgrade
+        if (loseBaseMovement.numberPurchased <= 0)
+        {
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
+            
+        }
+        else
+        {
+            moveHorizontal = 0;
+            moveVertical = 0;
+        }
         currentVelocity = characterRigidBody.linearVelocity;
 
-
         //FanSoundFX.volume = Mathf.Min(Mathf.Pow(currentVelocity.magnitude,3),0.5f);
-        
+
         //Aiming
 
 
@@ -203,7 +216,7 @@ public class PlayerController : MonoBehaviour
 
          }*/
         //parry
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && airBurst.numberPurchased > 0)
         {
             //parryBox =  Instantiate(parryBox, firePoint.position, firePoint.rotation,Player.transform);
             //parryBox.SetActive(true);
@@ -216,15 +229,35 @@ public class PlayerController : MonoBehaviour
         }
 
         //Overheating
+        
+        if (Input.GetButtonUp("Fire1")|| !Input.GetButton("Fire1"))
+        {
+            timeSinceLastClick = timeSinceLastClick + Time.deltaTime;
+            
+        }
+        if(Input.GetButtonDown("Fire1"))
+        {
+            coolDownAllowed = false;
+            timeSinceLastClick = 0f;
+
+
+        }
         if (Input.GetButton("Fire1") && !overHeating)
         {
             overHeatTime = overHeatTime + Time.deltaTime;
-            
+            timeSinceLastClick = 0f;
+
         }
-        else if (!Input.GetButton("Fire1") && overHeatTime > 0 || overHeating)
+      
+        if ((!Input.GetButton("Fire1") && overHeatTime > 0 && timeSinceLastClick >= waitToCoolDownTime )|| overHeating)
         {
-            overHeatTime = overHeatTime - (Time.deltaTime * coolDownFactor);
-            //overHeatCounter = overHeatCounter - 1;
+
+            Debug.Log("cooling down");
+           
+                overHeatTime = overHeatTime - (Time.deltaTime * coolDownFactor);
+            
+           
+          
 
         }
 
@@ -568,14 +601,22 @@ public class PlayerController : MonoBehaviour
         if (backStream.numberPurchased > 0)
         {
 
-           // bullet = airBulletPool.GetPooledObject();
+            bullet = airBulletPool.GetPooledObject();
             if (bullet != null)
             {
+                
                 bullet.transform.position = firePointBack.transform.position;
                 bullet.transform.rotation = firePointBack.transform.rotation;
+                
                 bullet.SetActive(true);
             }
         }
+    }
+    IEnumerator WaitToCoolDown()
+    {
+        coolDownAllowed = false;
+        yield return new WaitForSeconds(waitToCoolDownTime);
+        coolDownAllowed = true;
     }
 
 

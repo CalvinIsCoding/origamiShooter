@@ -22,6 +22,7 @@ public class Shop : MonoBehaviour
         //The Find gameobject functions generally don't work with inactive scene objects. This first finds the canvas object and then finds the component "shop manager" in any of it's children. 
         //The "true" overload in the getcomponent method makes the method find both active and inactive objects.
         shopMenu = GameObject.FindGameObjectWithTag("Canvas").GetComponentInChildren<UpDownShopManager>(true).gameObject;
+        Debug.Log("shop menu is" + shopMenu);
 
 
 

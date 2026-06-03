@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: -8785700098513055167}
   - component: {fileID: -6282433029633754365}
   - component: {fileID: 6731231026288482076}
-  m_Layer: 0
+  - component: {fileID: 1682419190519279380}
+  m_Layer: 11
   m_Name: FireActivator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,6 +125,7 @@ MonoBehaviour:
   activatorForce: 0
   airBurst: {fileID: 4152795769166717473, guid: 66b44d84ca88836449c1b462d03f0c4f, type: 3}
   fireActivatorCollider: {fileID: 4756198345167344552}
+  collisionDirection: {x: 0, y: 0, z: 0}
   fireSwitchMagnet: {fileID: 11400000, guid: f977f0d3232caae42b9112208f18481b, type: 2}
   fireSwitchMover: {fileID: 11400000, guid: 7f9ecd8ca7b339e47b2cb18cc2a100b8, type: 2}
   fireSwitchAirBurst: {fileID: 11400000, guid: f21d5f60b3ebe884f9298586fd0f01bb, type: 2}
@@ -309,3 +311,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &1682419190519279380
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6124478022723763214}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 3895
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 2.5

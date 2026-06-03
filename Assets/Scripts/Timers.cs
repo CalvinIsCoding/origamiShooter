@@ -13,6 +13,8 @@ public class Timers : ScriptableObject
     public float roundMoneyAddingTime = 1f;
     public float activatorWaitTime = 3f;
     public float enemyStunTime = 2f;
+    public float defaultBulletLivingTime = 0.8f;
+    public float defaultBulletShrinkTime = 0.5f;
 
 
 

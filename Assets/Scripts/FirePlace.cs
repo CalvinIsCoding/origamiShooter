@@ -29,6 +29,8 @@ public class FirePlace : MonoBehaviour
 
     public GameSettings gameSettings;
 
+    public ShopItemSO brokenBurners;
+
 
     // public PlayerInventory playerInventory;
 
@@ -78,6 +80,10 @@ public class FirePlace : MonoBehaviour
                 i++;
             }
             
+        }
+        if ( brokenBurners.numberPurchased > 0)
+        {
+
         }
 
         timeSinceLastSound = timeSinceLastSound + Time.deltaTime;
@@ -182,8 +188,17 @@ public class FirePlace : MonoBehaviour
     {
         foreach(SpriteRenderer flameAnimation in flameAnimationSprites)
         {
-            flameAnimation.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.045f);
+            if (brokenBurners.numberPurchased > 0 && Random.Range(0,2) == 1)
+            {
+                flameAnimation.gameObject.SetActive(false);
+                yield return new WaitForSeconds(0.045f);
+            }
+            else
+            {
+                flameAnimation.gameObject.SetActive(true);
+                yield return new WaitForSeconds(0.045f);
+            }
+            
         }
     }
     public IEnumerator UnlightFlames()

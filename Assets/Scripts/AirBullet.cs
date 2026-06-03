@@ -14,6 +14,8 @@ public class AirBullet: MonoBehaviour
     public float knockBack = 0.8f;
     public ShopItemSO fanBlades;
     public ShopItemSO biggerAir;
+    public ShopItemSO shortRange;
+    public Timers universalTimers;
 
     public SpriteRenderer airBulletSprite;
 
@@ -22,6 +24,7 @@ public class AirBullet: MonoBehaviour
     private float DefaultAirBulletScale;
     private float currentAirBulletScale;
     private float shrinkTime;
+    public float bulletLivingTime;
    
     void OnEnable()
     {
@@ -31,8 +34,19 @@ public class AirBullet: MonoBehaviour
         //Object Pooling
 
         knockBack = 15f + (fanBlades.numberPurchased * fanBlades.modifier);
-        shrinkTime = 0.5f;
-        DefaultAirBulletScale = 0.4f + (biggerAir.numberPurchased * biggerAir.modifier);
+        if (shortRange.numberPurchased <= 0)
+        {
+            bulletLivingTime = universalTimers.defaultBulletLivingTime;
+            shrinkTime = universalTimers.defaultBulletShrinkTime;
+        }
+        else
+        {
+            bulletLivingTime = universalTimers.defaultBulletLivingTime * shortRange.modifier;
+            shrinkTime = universalTimers.defaultBulletShrinkTime * shortRange.modifier;
+        }
+
+        
+        DefaultAirBulletScale = 0.6f + (biggerAir.numberPurchased * biggerAir.modifier);
         currentAirBulletScale = DefaultAirBulletScale;
         StartCoroutine(ShrinkBullets());
         StartCoroutine(DeactivateBullets());
@@ -49,6 +63,7 @@ public class AirBullet: MonoBehaviour
         EnemyProjectile enemyProjectile = collision.GetComponent<EnemyProjectile>();
         AirBullet collidedBullet = collision.GetComponent<AirBullet>();
         Boss boss = collision.GetComponent<Boss>();
+        Furniture furniture = collision.GetComponent<Furniture>();
 
         if (myWall != null)
         {
@@ -76,6 +91,10 @@ public class AirBullet: MonoBehaviour
         if (enemyProjectile != null)
         {
             //Destroy(airBullet);
+            airBullet.SetActive(false);
+        }
+        if(furniture != null)
+        {
             airBullet.SetActive(false);
         }
 
@@ -134,9 +153,16 @@ public class AirBullet: MonoBehaviour
         
         for (int i = 1; i < shrinkFrames; i++)
         {
-            currentAirBulletScale -= ((DefaultAirBulletScale/5.7f * (1f/i)));
-           
+            //the 5.7f was just chosen through trial and error I think
+            //  currentAirBulletScale -= ((DefaultAirBulletScale/5.7f * (1f/i)));
+            currentAirBulletScale -= DefaultAirBulletScale / Mathf.Pow(shrinkFrames, 0.95f);
             airBullet.transform.localScale = Vector2.one * currentAirBulletScale;
+            if (currentAirBulletScale <= 0)
+            {
+                StopAllCoroutines();
+                airBullet.SetActive(false);
+            }
+
             yield return new WaitForSeconds(shrinkTime / shrinkFrames);
         }
         
@@ -146,7 +172,7 @@ public class AirBullet: MonoBehaviour
     {
         //Want the bullets to deactivate no matter what after a certain amount of time to limit range etc. SetActive
         //Doesn't have a method for this.
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(bulletLivingTime);
         airBullet.SetActive(false);
     }
 }

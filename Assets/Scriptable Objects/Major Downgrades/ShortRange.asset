@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Your air bullets shrink much faster
   cost: 0
   numberPurchased: 0
-  modifier: 0
+  modifier: 0.25

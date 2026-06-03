@@ -6,6 +6,7 @@ public class FireActivator : MonoBehaviour
 {
     public FireMode fireMode;
     public Collider2D outsideCollider;
+
     public Animator animator;
     public AudioSource SwitchSound;
     public AudioClip[] switchClicks = new AudioClip[4];
@@ -18,6 +19,7 @@ public class FireActivator : MonoBehaviour
 
     public CircleCollider2D fireActivatorCollider;
     //public FireActivator fireActivator;
+    public Vector3 collisionDirection;
 
     public ShopItemSO fireSwitchMagnet;
     public ShopItemSO fireSwitchMover;
@@ -41,13 +43,18 @@ public class FireActivator : MonoBehaviour
     {
         if (fireSwitchMagnet.numberPurchased > 0)
         {
-            attractToPlayer();
+            AttractToPlayer();
+        }
+        if (fireSwitchMover.numberPurchased > 0)
+        {
+            AvoidPlayer();
         }
 
     }
     private void OnTriggerEnter2D(Collider2D outsideCollider)
     {
         PlayerController player = outsideCollider.GetComponent<PlayerController>();
+        WallDetection wallDetection = outsideCollider.GetComponent<WallDetection>();
         if (player != null)
         {
             fireMode.activatorCounter++;
@@ -66,10 +73,22 @@ public class FireActivator : MonoBehaviour
             }
 
         }
+        if (wallDetection != null)
+        {
+            collisionDirection = new Vector2(this.transform.position.x, this.transform.position.y) - outsideCollider.ClosestPoint(fireActivatorCollider.transform.position);
+        }
     }
-    void attractToPlayer()
+    
+    void AttractToPlayer()
     {
         directionTowardsPlayer = player.position - this.transform.position;
         rb.AddForce(directionTowardsPlayer.normalized * activatorForce);
+    }
+    void AvoidPlayer()
+    {
+        directionTowardsPlayer = player.position - this.transform.position;
+        
+        rb.AddForce(-directionTowardsPlayer.normalized * activatorForce);
+        //rb.AddForce(collisionDirection.normalized * 0.25f);
     }
 }

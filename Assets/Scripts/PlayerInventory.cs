@@ -10,6 +10,8 @@ public class PlayerInventory : ScriptableObject
     public int lives = 10;
     public int coinsBeforeMultiplier;
     public float multiplier;
+    public float multiplierMultiplier;
+    public float multiplierAdder;
 
     [SerializeField] private int defaultCoins = 0;
     [SerializeField] private int defaultLives;
@@ -23,6 +25,8 @@ public class PlayerInventory : ScriptableObject
         coins = defaultCoins;
         coinsBeforeMultiplier = 0;
         multiplier = 0f;
+        multiplierAdder = 0f;
+        multiplierMultiplier = 1f;
     }
     public void EndOfWave()
     {

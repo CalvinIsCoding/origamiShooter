@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Player;
     public GameObject parryBox;
     public CapsuleCollider2D parryBoxCollider;
+    public CircleCollider2D playerCollider;
     public Rigidbody2D rb;
     public Vector2 fanDirection;
     public float movementThrust;
@@ -130,7 +131,8 @@ public class PlayerController : MonoBehaviour
     public ObjectPool airBulletPool;
     public ObjectPool fireBulletPool;
 
-
+   public float airBurstCooldownPeriod = 5f;
+   public float timeSinceLastAirBurst = 5f;
     void Start()
     {
         playerInventory.resetToDefaults();
@@ -168,6 +170,9 @@ public class PlayerController : MonoBehaviour
         timeSlowDown = 0.30f;
         isRed = false;
         enteredPlayingArea = false;
+
+        airBurstCooldownPeriod = 5f;
+        timeSinceLastAirBurst = 5f;
 
         //FanSoundFX.clip = fanSlidingNoise;
         //FanSoundFX.Play();
@@ -216,17 +221,20 @@ public class PlayerController : MonoBehaviour
 
          }*/
         //parry
-        if (Input.GetButtonDown("Fire2") && airBurst.numberPurchased > 0)
+        timeSinceLastAirBurst += Time.deltaTime;
+        if (Input.GetButtonDown("Fire2") && airBurst.numberPurchased > 0 && timeSinceLastAirBurst >= airBurstCooldownPeriod)
         {
             //parryBox =  Instantiate(parryBox, firePoint.position, firePoint.rotation,Player.transform);
             //parryBox.SetActive(true);
             //StartCoroutine(disableParryBox());
             Debug.Log("shift is down");
             Instantiate(airBurstObject, this.transform.position, Quaternion.identity);
+            timeSinceLastAirBurst = 0f;
             //Boost(parryBoxCollider);
             //isBoost = true;
             //StartCoroutine(boostIsActive());
         }
+        
 
         //Overheating
         
@@ -466,6 +474,7 @@ public class PlayerController : MonoBehaviour
             playerDead = true;
 
             this.fanSprite.enabled = false;
+            this.playerCollider.enabled = false;
             this.enabled = false;
            
            // this.gameObject.SetActive(false);

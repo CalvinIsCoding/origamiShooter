@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemSO
   title: Air Burst
   description: Press Shift to let out a gust of air surrounding the whole player
-  cost: 125
+  cost: 250
   numberPurchased: 0
   modifier: 0
+  multiplierAdder: 0
+  multiplierMultiplier: 1

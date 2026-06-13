@@ -131,8 +131,29 @@ public class UpDownShopManager : MonoBehaviour
     }
     public void ExitShop()
     {
+        SetMultiplierModifiers();
+        
         Time.timeScale = 1;
         ShopMenu.SetActive(false);
+    }
+    void SetMultiplierModifiers()
+    {
+        playerInventory.multiplierAdder = 0;
+        playerInventory.multiplierMultiplier = 1;
+        foreach (ShopItemSO shopitem in downgrades)
+        {
+            
+            if (shopitem.numberPurchased >= 1)
+            {
+                playerInventory.multiplierAdder += shopitem.multiplierAdder;
+                playerInventory.multiplierMultiplier += shopitem.multiplierMultiplier;
+            }
+            else
+            {
+
+            }
+        }
+
     }
 
 

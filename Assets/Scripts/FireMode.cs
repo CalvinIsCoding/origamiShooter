@@ -52,6 +52,10 @@ public class FireMode : MonoBehaviour
     public Wave currentWave;
 
     public Enemy[] enemies;
+    public ShopItemSO[] downgrades;
+
+    public float multiplierMultiplier;
+    public float multiplierAdder;
 
     void Start()
     {
@@ -69,13 +73,15 @@ public class FireMode : MonoBehaviour
         liveActivators = 3;
         activatorsSpawned = false;
         StartCoroutine(DelayActivatorSpawn());
-        moneyMultiplierBar.SetMaxMoneyMultiplier(10f);
+        moneyMultiplierBar.SetMaxMoneyMultiplier(10f + multiplierAdder * multiplierMultiplier);
         
         lastMoneyMultiplier = 0;
         isBossWave = false;
         gameStats.ResetEnemyCounters();
         waveCanStart = true;
         currentWave = enemySpawn.wave[0];
+        multiplierMultiplier = 1;
+        multiplierAdder = 0;
     //fireCollider.enabled = true;
         /* timeTillFire;
          fireModeTime;*/
@@ -154,7 +160,8 @@ public class FireMode : MonoBehaviour
         StartCoroutine(numberSlammer.CrunchNumbers());
         StartCoroutine(DelayActivatorSpawn());
         isFireMode = false;
-        moneyEarnedThisRound = (int)(playerInventory.coinsBeforeMultiplier * Mathf.Ceil(playerInventory.multiplier));
+        GetMultiplierModifiers();
+        moneyEarnedThisRound = (int)(playerInventory.coinsBeforeMultiplier * (Mathf.Ceil(playerInventory.multiplier) + multiplierAdder) * multiplierMultiplier); //adding 
         Debug.Log("coins before multiplier" + playerInventory.coinsBeforeMultiplier);
         Debug.Log("multiplier" + Mathf.Ceil(playerInventory.multiplier));
         StartCoroutine(roundMoney.setMoneyEarnedThisRound(moneyEarnedThisRound));
@@ -194,11 +201,12 @@ public class FireMode : MonoBehaviour
     }
     void SetMoneyMultiplier()
     {
+        
         if (moneyMultiplierTimeElapsed <= moneyMultiplierTimer && activatorsSpawned == true && isFireMode == false)
         {
 
             moneyMultiplierTimeElapsed = moneyMultiplierTimeElapsed + Time.deltaTime;
-            moneyMultiplier = Mathf.Pow((moneyMultiplierTimer - moneyMultiplierTimeElapsed), 1f) / (moneyMultiplierTimer /10f);
+            moneyMultiplier = moneyMultiplierTimer - moneyMultiplierTimeElapsed;
             moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier,isFireMode);
 
         }
@@ -334,6 +342,12 @@ public class FireMode : MonoBehaviour
     {
         yield return new WaitForSeconds(timers.lullAfterFireModeEndsButWaveHasntBegun);
         waveCanStart = true;
+    }
+    void GetMultiplierModifiers()
+    {
+        multiplierMultiplier = playerInventory.multiplierMultiplier;
+        multiplierAdder = playerInventory.multiplierAdder;
+
     }
 
     //zones... in an effort to ensure that the fire activators are spaced out... I think it's too complicated.

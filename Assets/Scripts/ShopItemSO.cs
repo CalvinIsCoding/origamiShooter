@@ -10,6 +10,8 @@ public class ShopItemSO : ScriptableObject
     public int cost;
     public int numberPurchased;
     public float modifier;
+    public float multiplierAdder;
+    public float multiplierMultiplier = 1f;
     public void resetToDefaults()
     {
         numberPurchased = 0;

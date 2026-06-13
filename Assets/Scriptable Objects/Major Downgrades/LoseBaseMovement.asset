@@ -16,4 +16,6 @@ MonoBehaviour:
   description: lose ability to use WASD for movement
   cost: 0
   numberPurchased: 0
-  modifier: 0
+  modifier: 5
+  multiplierAdder: 0
+  multiplierMultiplier: 3

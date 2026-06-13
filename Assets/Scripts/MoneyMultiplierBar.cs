@@ -10,6 +10,8 @@ public class MoneyMultiplierBar : MonoBehaviour
     public Slider slider;
     public TMP_Text enemiesKilledText;
     public TMP_Text moneyMultiplierText;
+    public TMP_Text multiplierAdderText;
+    public TMP_Text multiplierMultiplierText;
     public int multiplierInteger;
     public int enemiesKilled;
     public int numberOfEnemiesSpawned;
@@ -27,6 +29,7 @@ public class MoneyMultiplierBar : MonoBehaviour
     {
         if (!isFireMode)
         {
+            SetMultiplierModifierText(playerInventory.multiplierMultiplier,playerInventory.multiplierAdder);
             sliderFill.color = Color.red;
             slider.maxValue = 10f;
             slider.value = multiplier;
@@ -50,5 +53,10 @@ public class MoneyMultiplierBar : MonoBehaviour
             //animator.SetInteger("Multiplier", multiplierInteger);
         }
         
+    }
+    public void SetMultiplierModifierText(float multiplierMultiplier, float multiplierAdder)
+    {
+        multiplierAdderText.SetText(MathF.Ceiling(multiplierAdder).ToString());
+        multiplierMultiplierText.SetText(MathF.Ceiling(multiplierMultiplier).ToString());
     }
 }

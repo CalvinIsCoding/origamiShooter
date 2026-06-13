@@ -17,3 +17,5 @@ MonoBehaviour:
   cost: 25
   numberPurchased: 0
   modifier: 2
+  multiplierAdder: 0
+  multiplierMultiplier: 1

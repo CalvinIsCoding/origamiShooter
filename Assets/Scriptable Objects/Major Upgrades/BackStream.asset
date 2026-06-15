@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemSO
   title: Back Stream
   description: Add an additional air stream that shoots behind you
-  cost: 150
+  cost: 2
   numberPurchased: 0
   modifier: -7.92
   multiplierAdder: 0

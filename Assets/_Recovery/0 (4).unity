@@ -3138,7 +3138,7 @@ MonoBehaviour:
   m_Intensity: 0.5
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 01b9f91c01789c0100000000b5b31fd049771b4bcf2c9870
+  m_ApplyToSortingLayers: 01b9f91c01789c0100000000b5b31fd049771b4b
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3526,17 +3526,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329452729}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.80000025, y: 0.80000025, z: 0.80000013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 973805859}
+  m_Father: {fileID: 334126117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.968098, y: 2.260023}
-  m_SizeDelta: {x: 59.788513, y: 68.3916}
+  m_AnchoredPosition: {x: -52.8, y: -31.1}
+  m_SizeDelta: {x: 29.571209, y: 68.3916}
   m_Pivot: {x: 0.5, y: 0.4999999}
 --- !u!222 &329452733
 CanvasRenderer:
@@ -3791,11 +3791,12 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2085174455}
+  - {fileID: 329452730}
   m_Father: {fileID: 973805859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -206, y: -27}
+  m_AnchoredPosition: {x: -0.00001335144, y: 44.5}
   m_SizeDelta: {x: 30.2173, y: 45.8035}
   m_Pivot: {x: 0.49999934, y: 0.56575626}
 --- !u!114 &334126119
@@ -9242,97 +9243,6 @@ MonoBehaviour:
   testNumber: 0
   maxEnemiesSpawnedRandomly: 3
   enemiesSpawnedThisWave: 0
---- !u!1 &636191607
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 636191609}
-  - component: {fileID: 636191608}
-  m_Layer: 0
-  m_Name: red filter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &636191608
-SpriteRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 636191607}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1889021135
-  m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
---- !u!4 &636191609
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 636191607}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.111, y: -0.04, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 10}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639239347
 GameObject:
   m_ObjectHideFlags: 0
@@ -11294,18 +11204,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenShake
   strength: 0
-  smoothTime: 2.09
-  strengthVelocity: 4.05
-  targetStrength: 2.06
+  smoothTime: 5.58
+  strengthVelocity: 2
+  targetStrength: 1.92
   shaking: 0
-  screenRed: 0
   firemode: {fileID: 1390667154}
-  redFilter: {fileID: 636191608}
-  redFilterOpacity: 0.13
-  targetOpacity: 0.2
-  filterVelocity: 0.02
-  filterSmoothTime: 10
-  lastCoupleSeconds: 2
 --- !u!4 &768473380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -12492,7 +12395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -204, y: -15}
+  m_AnchoredPosition: {x: 16.4, y: 116.5}
   m_SizeDelta: {x: 93.943, y: 52.0677}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &849654430
@@ -13839,7 +13742,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 329452730}
   - {fileID: 334126117}
   - {fileID: 849654429}
   m_Father: {fileID: 489665809}
@@ -14180,7 +14082,7 @@ MonoBehaviour:
   enemyGroupSpawnLocation: []
   enemyGroupSpawnTiming: []
   testNumber: 0
-  maxEnemiesSpawnedRandomly: 6
+  maxEnemiesSpawnedRandomly: 10
   enemiesSpawnedThisWave: 0
 --- !u!1 &997414096
 GameObject:
@@ -14436,8 +14338,8 @@ MonoBehaviour:
   activatorFormationLocation: {x: 0, y: 0}
   requiredActivators: 0
   enemyGroups:
-  - {fileID: 2022256454710970903, guid: 9ac76dbe5f2d1b244a8106311ab7e623, type: 3}
-  - {fileID: 8156136343995737872, guid: 204e298af6e09624eafe88cfe074ec41, type: 3}
+  - {fileID: 7661406969396715038, guid: cc94f053f9a37c0498fa5ff8dd1cdeb6, type: 3}
+  - {fileID: 840330640923057777, guid: bf1e402a8a2cba14e9a8fd95a9b6b2d6, type: 3}
   enemyGroupSpawnLocation:
   - {x: 1.6, y: -0.8}
   - {x: -1.6, y: -0.8}
@@ -21014,7 +20916,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f977f0d3232caae42b9112208f18481b, type: 2}
   downgrades:
   - {fileID: 11400000, guid: 3d5fbfbf082ba4b4dbe3269897cc368b, type: 2}
-  - {fileID: 11400000, guid: a5099efbc53dcbc479c11650075c26d9, type: 2}
   - {fileID: 11400000, guid: f5507c58f4080e64191c14cff640cf9f, type: 2}
   - {fileID: 11400000, guid: 7f9ecd8ca7b339e47b2cb18cc2a100b8, type: 2}
   ShopMenu: {fileID: 1586880585}
@@ -22011,7 +21912,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 01b9f91c01789c0100000000b5b31fd049771b4bcf2c9870
+  m_ApplyToSortingLayers: 01b9f91c01789c0100000000b5b31fd049771b4b
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -27041,7 +26942,8 @@ MonoBehaviour:
   activatorSpawnFormation: {fileID: 2648210873671690801, guid: c9869234948dff64eb395550a0861152, type: 3}
   activatorFormationLocation: {x: -1, y: -0.5}
   requiredActivators: 1
-  enemyGroups: []
+  enemyGroups:
+  - {fileID: 7414918018862233218, guid: 1ddd679eb51dc7d4fa188e40c424d298, type: 3}
   enemyGroupSpawnLocation:
   - {x: 1, y: 0.5}
   enemyGroupSpawnTiming:
@@ -29890,4 +29792,3 @@ SceneRoots:
   - {fileID: 738133307}
   - {fileID: 505087117}
   - {fileID: 1409198375}
-  - {fileID: 636191609}

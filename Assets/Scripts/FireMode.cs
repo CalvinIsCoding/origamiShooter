@@ -165,7 +165,7 @@ public class FireMode : MonoBehaviour
         Debug.Log("coins before multiplier" + playerInventory.coinsBeforeMultiplier);
         Debug.Log("multiplier" + Mathf.Ceil(playerInventory.multiplier));
         StartCoroutine(roundMoney.setMoneyEarnedThisRound(moneyEarnedThisRound));
-        
+        moneyMultiplierTimer = moneyMultiplierTimer * 0.95f;
         gameStats.EndOfWave(enemySpawn.waveNumber);
         playerInventory.EndOfWave();
         enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
@@ -208,6 +208,12 @@ public class FireMode : MonoBehaviour
             moneyMultiplierTimeElapsed = moneyMultiplierTimeElapsed + Time.deltaTime;
             moneyMultiplier = moneyMultiplierTimer - moneyMultiplierTimeElapsed;
             moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier,isFireMode);
+
+            if(moneyMultiplier <= 0f)
+            {
+                playerInventory.lives = 1;
+                player.PlayerDeath();
+            }
 
         }
         else if (isFireMode == true)

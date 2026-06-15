@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Bigger Airstream
   description: Makes air stream bigger
-  cost: 50
+  cost: 0
   numberPurchased: 0
   modifier: 0.02
   multiplierAdder: 0

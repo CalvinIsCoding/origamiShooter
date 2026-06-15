@@ -35,9 +35,9 @@ public class UpDownShopManager : MonoBehaviour
     void Start()
     {
         
-        //playerInventory.coins = 0;
+        //playerInventory.downgradesPurchased = 0;
         //coinUI.text = "Coins: " + coins.ToString();
-        coinUI.text = "Coins: " + playerInventory.coins.ToString();
+        coinUI.text = "Coins: " + playerInventory.downgradesPurchased.ToString();
         
 
         for (int i = 0; i < shopItemSO.Length; i++)
@@ -56,7 +56,7 @@ public class UpDownShopManager : MonoBehaviour
       
         ChooseItems();
         LoadPanels();
-        coinUI.text = "Coins: " + playerInventory.coins.ToString();
+        coinUI.text = "Coins: " + playerInventory.downgradesPurchased.ToString();
         CheckPurchaseable();
     }
     
@@ -68,8 +68,8 @@ public class UpDownShopManager : MonoBehaviour
     }
     public void AddCoins()
     {
-        playerInventory.coins++;
-        coinUI.text = "Coins: " + playerInventory.coins.ToString();
+        playerInventory.downgradesPurchased++;
+        coinUI.text = "Coins: " + playerInventory.downgradesPurchased.ToString();
         CheckPurchaseable();
     }
     public void LoadPanels()
@@ -98,10 +98,10 @@ public class UpDownShopManager : MonoBehaviour
     }
     public void PurchaseItem(int btnNo)
     {
-        if (playerInventory.coins >= shopItemSO[btnNo].cost)
+        if (playerInventory.downgradesPurchased >= shopItemSO[btnNo].cost)
         {
-            playerInventory.coins = playerInventory.coins - shopItemSO[btnNo].cost;
-            coinUI.text = "Coins: " + playerInventory.coins.ToString();
+            playerInventory.downgradesPurchased = playerInventory.downgradesPurchased - shopItemSO[btnNo].cost;
+            coinUI.text = "Coins: " + playerInventory.downgradesPurchased.ToString();
             CheckPurchaseable();
             shopItemSO[btnNo].numberPurchased++;
         }
@@ -110,14 +110,18 @@ public class UpDownShopManager : MonoBehaviour
             Debug.Log("item type: " + shopItemSO[btnNo].title);
             playerInventory.lives++;
         }
-        totalMoney.SetText(playerInventory.coins.ToString());
+        if (shopItemSO[btnNo] = shopItemSO[0])
+        {
+            playerInventory.downgradesPurchased++;
+        }
+        totalMoney.SetText(playerInventory.downgradesPurchased.ToString());
     }
 
     public void CheckPurchaseable()
     {
         for (int i = 0; i < shopItemSO.Length; i++)
         {
-            if (playerInventory.coins >= shopItemSO[i].cost)
+            if (playerInventory.downgradesPurchased >= shopItemSO[i].cost)
             {
                 buttons[i].interactable = true;
             }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Speed
   description: Player becomes faster from knockback and fanless movement
-  cost: 75
+  cost: 0
   numberPurchased: 0
   modifier: 0.005
   multiplierAdder: 0

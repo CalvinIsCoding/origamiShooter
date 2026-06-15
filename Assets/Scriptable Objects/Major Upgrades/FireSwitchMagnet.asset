@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemSO
   title: Fire Switch Magnet
   description: Fire Switches gravitate towards the player
-  cost: 125
+  cost: 1
   numberPurchased: 0
   modifier: 0
   multiplierAdder: 0

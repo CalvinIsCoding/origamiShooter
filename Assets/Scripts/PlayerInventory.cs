@@ -12,6 +12,7 @@ public class PlayerInventory : ScriptableObject
     public float multiplier;
     public float multiplierMultiplier;
     public float multiplierAdder;
+    public int downgradesPurchased;
 
     [SerializeField] private int defaultCoins = 0;
     [SerializeField] private int defaultLives;
@@ -27,7 +28,8 @@ public class PlayerInventory : ScriptableObject
         multiplier = 0f;
         multiplierAdder = 0f;
         multiplierMultiplier = 1f;
-    }
+        downgradesPurchased = 0;
+}
     public void EndOfWave()
     {
         coinsBeforeMultiplier = 0;

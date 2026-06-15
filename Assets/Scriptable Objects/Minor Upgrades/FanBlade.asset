@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Stronger Airstream
   description: Adds Additional Air
-  cost: 50
+  cost: 0
   numberPurchased: 0
   modifier: 0.2
   multiplierAdder: 0

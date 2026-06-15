@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Health
   description: gives the player 2 HP
-  cost: 25
+  cost: 0
   numberPurchased: 0
   modifier: 2
   multiplierAdder: 0

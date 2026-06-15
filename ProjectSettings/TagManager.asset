@@ -58,6 +58,9 @@ TagManager:
   - name: FirePlace
     uniqueID: 1260091209
     locked: 0
+  - name: Filter
+    uniqueID: 1889021135
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

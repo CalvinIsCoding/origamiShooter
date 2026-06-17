@@ -123,21 +123,22 @@ public class EnemySpawn : MonoBehaviour
 
     void Update()
     {
-        if (spawningComplete == false)
-        {
-            //any number would be fine as the index to spawnEventRandomizer. 5 was just chosen randomly.
-            SpawnEventSelector(wave[waveNumber].spawnEventRandomizer[5]);
-
-            spawningComplete = true; //this gets set to true since the coroutine handle the rest of the spawning
-            bossWaveNumber = waveNumber;
-        }
-        else if(bossWaveNumber != waveNumber)
-        {
-            spawningComplete = false; //resetting this so that the next boss can spawn properly in the next wave
-        }
+        
 
         if (!fireMode.isFireMode && fireMode.waveCanStart == true)
         {
+            if (spawningComplete == false)
+            {
+                //any number would be fine as the index to spawnEventRandomizer. 5 was just chosen randomly.
+                SpawnEventSelector(wave[waveNumber].spawnEventRandomizer[5]);
+
+                spawningComplete = true; //this gets set to true since the coroutine handle the rest of the spawning
+                bossWaveNumber = waveNumber;
+            }
+            else if (bossWaveNumber != waveNumber)
+            {
+                spawningComplete = false; //resetting this so that the next boss can spawn properly in the next wave
+            }
             //putting this statement here instead of in Wave so that only one instance of this if statement is being checked each frame.
             if (wave[waveNumber].enemiesSpawnedThisWave >= wave[waveNumber].maxEnemiesSpawnedRandomly)
             {

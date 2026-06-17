@@ -13,6 +13,7 @@ public class Ampersand : MonoBehaviour
     public float angle;
     public float dAngle;
     public Rigidbody2D rb;
+    public Enemy _enemy;
 
     //Sprites
     /*public Sprite N;
@@ -72,7 +73,16 @@ public class Ampersand : MonoBehaviour
         }
 
 
-
+        if (_enemy.isStunned && !_enemy.isBlink)
+        {
+            
+            speed = 0.0f;
+        }
+        else if (!_enemy.isBlink)
+        {
+            speed = 0.5f;
+            
+        }
 
 
         //transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));

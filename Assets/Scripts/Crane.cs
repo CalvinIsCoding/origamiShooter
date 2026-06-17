@@ -57,6 +57,16 @@ public class Crane : MonoBehaviour
             craneMovementForce = 10f;
             lastTime = Time.time;
         }
+        if (enemy.isStunned && !enemy.isBlink)
+        {
+            craneMovementForce = 0f;
+            speed = 0.0f;
+        }
+        else if (!enemy.isBlink)
+        {
+            speed = 0.5f;
+            craneMovementForce = 10f;
+        }
 
 
         /* if (lastTime - Time.time < -spawnDelayTime && !(speed == 0.5f))

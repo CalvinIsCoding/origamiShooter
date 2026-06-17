@@ -165,7 +165,7 @@ public class FireMode : MonoBehaviour
         Debug.Log("coins before multiplier" + playerInventory.coinsBeforeMultiplier);
         Debug.Log("multiplier" + Mathf.Ceil(playerInventory.multiplier));
         StartCoroutine(roundMoney.setMoneyEarnedThisRound(moneyEarnedThisRound));
-        moneyMultiplierTimer = moneyMultiplierTimer * 0.95f;
+        moneyMultiplierTimer = moneyMultiplierTimer * 0.96f;
         gameStats.EndOfWave(enemySpawn.waveNumber);
         playerInventory.EndOfWave();
         enemySpawn.waveNumber = enemySpawn.waveNumber + 1;
@@ -346,6 +346,7 @@ public class FireMode : MonoBehaviour
     }
     IEnumerator WaitToStartWave()
     {
+        waveCanStart = false;
         yield return new WaitForSeconds(timers.lullAfterFireModeEndsButWaveHasntBegun);
         waveCanStart = true;
     }

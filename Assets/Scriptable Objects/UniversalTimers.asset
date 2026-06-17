@@ -20,3 +20,5 @@ MonoBehaviour:
   roundMoneyAddingTime: 1
   activatorWaitTime: 6
   enemyStunTime: 1
+  defaultBulletLivingTime: 0.8
+  defaultBulletShrinkTime: 0.5

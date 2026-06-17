@@ -17,7 +17,7 @@ public class ScreenShake : MonoBehaviour
 
     public FireMode firemode;
     public SpriteRenderer redFilter;
- 
+
     public float redFilterOpacity;
     [Range(0.0f, 10.0f)]
     public float targetOpacity;
@@ -26,7 +26,7 @@ public class ScreenShake : MonoBehaviour
     [Range(0.0f, 10.0f)]
     public float filterSmoothTime;
 
-    Color filterColor = new Color (1f,0f,0f,0f);
+    Color filterColor = new Color(1f, 0f, 0f, 0f);
 
     public float lastCoupleSeconds;
     void Start()
@@ -40,7 +40,7 @@ public class ScreenShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( firemode.moneyMultiplierTimeElapsed >= (firemode.moneyMultiplierTimer - lastCoupleSeconds) && firemode.liveActivators > 0)
+        if (firemode.moneyMultiplierTimeElapsed >= (firemode.moneyMultiplierTimer - lastCoupleSeconds) && firemode.liveActivators > 0)
         {
             shaking = true;
             screenRed = true;
@@ -52,12 +52,13 @@ public class ScreenShake : MonoBehaviour
         }
         screenShaking(shaking);
         turnScreenRed(screenRed);
-        
+
     }
 
-    void screenShaking(bool shaking)
+    void screenShaking(bool shaking, float customStrength = -1f)
     {
-        if (shaking)
+        //I allow people to use a custom strength value
+        if (shaking && customStrength < 0f)
         {
             float randomX = Random.value - 0.5f;
             float randomY = Random.value - 0.5f;
@@ -68,17 +69,40 @@ public class ScreenShake : MonoBehaviour
             transform.localEulerAngles = new Vector3(randomX, randomY, randomZ) * strength;
 
         }
-        else
+        else if (customStrength < 0f)
+        
         {
             strength = 0f;
         }
 
+
+
+        if (shaking && customStrength >= 0f)
+        {
+            float randomX = Random.value - 0.5f;
+            float randomY = Random.value - 0.5f;
+            float randomZ = Random.value - 0.5f;
+            strength = customStrength;
+            // strength = Mathf.SmoothStep()
+
+            transform.localEulerAngles = new Vector3(randomX, randomY, randomZ) * strength;
+
+        }
+        else if (customStrength >= 0f)
+        {
+            strength = 0f;
+        }
+
+
+
     }
+    
+
     void turnScreenRed(bool screenRed)
     {
         if (screenRed)
         {
-            
+
             redFilterOpacity = Mathf.SmoothDamp(redFilterOpacity, targetOpacity, ref filterVelocity, filterSmoothTime);
             // strength = Mathf.SmoothStep()
 
@@ -91,8 +115,9 @@ public class ScreenShake : MonoBehaviour
         }
         filterColor.a = redFilterOpacity;
         redFilter.color = filterColor;
-        
+
     }
 
-}
+    }
+
 

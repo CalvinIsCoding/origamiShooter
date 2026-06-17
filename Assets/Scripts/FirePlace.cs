@@ -105,7 +105,7 @@ public class FirePlace : MonoBehaviour
         // Tilemap tilemap = GetComponent<Tilemap>();
 
 
-        if (enemy != null && fireMode.isFireMode)
+        if (enemy != null)
         {
 
             //enemy.Die();
@@ -129,7 +129,7 @@ public class FirePlace : MonoBehaviour
             }
             
         }
-        if(player!= null && fireMode.isFireMode)
+        if(player!= null)
         {
             player.PlayerDeath();
            // player.Boost(collision);

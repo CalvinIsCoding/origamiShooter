@@ -12,15 +12,20 @@ public class NonEnemyObjectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (furniture.numberPurchased > 0)
+        if (furniturePrefab != null)
         {
-            furniturePrefab.SetActive(true);
-        }
-        else
-        {
-            furniturePrefab.SetActive(false);
+            if (furniture.numberPurchased > 0)
+            {
+                furniturePrefab.SetActive(true);
+            }
+            else
+            {
+                furniturePrefab.SetActive(false);
 
+            }
         }
+        
+        
 
     }
 }

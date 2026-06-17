@@ -71,6 +71,18 @@ public class Why : MonoBehaviour
             timer = 0.51f;
         }
 
+        if (_enemy.isStunned && !_enemy.isBlink)
+        {
+            planeMovementForce = 0f;
+            speed = 0.0f;
+        }
+        else if (!_enemy.isBlink)
+        {
+            speed = 0.5f;
+            planeMovementForce = 0.75f;
+        }
+
+
 
 
         

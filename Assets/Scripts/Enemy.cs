@@ -177,13 +177,13 @@ public class Enemy : MonoBehaviour
 		isStunned = true;
         enemyAnimator.SetTrigger("Stunned");
         enemyAnimator.SetBool("Stun",true);
-        this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        this.enemyCollider.enabled = false;
+        //this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+       // this.enemyCollider.enabled = false;
 		yield return new WaitForSeconds(gameTimers.enemyStunTime);
         enemyAnimator.ResetTrigger("Stunned");
         enemyAnimator.SetBool("Stun", false);
-        this.rb.constraints = RigidbodyConstraints2D.None;
-        this.enemyCollider.enabled = true;
+       // this.rb.constraints = RigidbodyConstraints2D.None;
+        //this.enemyCollider.enabled = true;
 		isStunned = false;
     }
 	public void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet, Vector2 airBulletVelocity)

@@ -190,6 +190,7 @@ MonoBehaviour:
   angle: 0
   dAngle: 0
   rb: {fileID: 2852395986926089973}
+  _enemy: {fileID: 2852395986926089975}
   isBlink: 0
   animator: {fileID: 3514091169807547124}
   isForcing: 0

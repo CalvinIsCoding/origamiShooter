@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -40,65 +41,64 @@ public class ScreenShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (firemode.moneyMultiplierTimeElapsed >= (firemode.moneyMultiplierTimer - lastCoupleSeconds) && firemode.liveActivators > 0)
-        {
-            shaking = true;
-            screenRed = true;
-        }
-        else
-        {
-            shaking = false;
-            screenRed = false;
-        }
-        screenShaking(shaking);
-        turnScreenRed(screenRed);
+        
 
     }
 
-    void screenShaking(bool shaking, float customStrength = -1f)
+    public void ShakeRampUp(float targetStrength = 2f, float strengthVelocityFloat = 1f, float smoothTime = 3f)
     {
         //I allow people to use a custom strength value
-        if (shaking && customStrength < 0f)
-        {
+       
+            strength = Mathf.SmoothDamp(strength, targetStrength, ref strengthVelocityFloat, smoothTime);
+            // strength = Mathf.SmoothStep()
+
             float randomX = Random.value - 0.5f;
             float randomY = Random.value - 0.5f;
             float randomZ = Random.value - 0.5f;
-            strength = Mathf.SmoothDamp(strength, targetStrength, ref strengthVelocity, smoothTime);
-            // strength = Mathf.SmoothStep()
 
             transform.localEulerAngles = new Vector3(randomX, randomY, randomZ) * strength;
-
-        }
-        else if (customStrength < 0f)
+            
         
+            
+        
+
+    }
+    public void ShakeRampDown(float strengthVelocity = 2f, float smoothTime = 0.5f)
+    {/*
+        for (int i = 0; i < 50; i++)
         {
-            strength = 0f;
-        }
+            strength = Mathf.SmoothDamp(strength, 0f, ref strengthVelocity, smoothTime);
+            // strength = Mathf.SmoothStep()
 
-
-
-        if (shaking && customStrength >= 0f)
-        {
             float randomX = Random.value - 0.5f;
             float randomY = Random.value - 0.5f;
             float randomZ = Random.value - 0.5f;
-            strength = customStrength;
-            // strength = Mathf.SmoothStep()
 
             transform.localEulerAngles = new Vector3(randomX, randomY, randomZ) * strength;
-
+            yield return new WaitForSeconds(smoothTime / 50);
         }
-        else if (customStrength >= 0f)
+        */
+        strength = 0f;
+    }
+    public IEnumerator ShakeJolt(float strength = 2f, float strengthVelocity = 1f, float smoothTime = 0.1f)
+    {
+        for (int i = 0; i < 15; i++)
         {
-            strength = 0f;
+            strength = Mathf.SmoothDamp(strength, 0f, ref strengthVelocity, smoothTime);
+            // strength = Mathf.SmoothStep()
+
+            float randomX = Random.value - 0.5f;
+            float randomY = Random.value - 0.5f;
+            float randomZ = Random.value - 0.5f;
+
+            transform.localEulerAngles = new Vector3(randomX, randomY, 0f) * strength;
+
+            yield return new WaitForSeconds(smoothTime / 15);
         }
-
-
-
     }
     
 
-    void turnScreenRed(bool screenRed)
+    public void turnScreenRed(bool screenRed)
     {
         if (screenRed)
         {

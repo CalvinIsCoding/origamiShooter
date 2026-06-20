@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
     public float timeSlowDown = 0.90f;
 
     public GameSettings gameSettings;
+    public Timers timers;
 
 
     public bool insideArenaBound;
@@ -133,6 +134,12 @@ public class PlayerController : MonoBehaviour
 
    public float airBurstCooldownPeriod = 5f;
    public float timeSinceLastAirBurst = 5f;
+
+    public bool timerExhausted;
+    public float sapHealthTickTimeElapsed;
+   
+
+    public ScreenShake screenEffects;
     void Start()
     {
         playerInventory.resetToDefaults();
@@ -187,7 +194,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        SappingHealth();
         airPushBackForce = airPushBackForceDefault + (speedFromAir.numberPurchased * speedFromAir.modifier);
 
         //Movement
@@ -465,7 +472,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInventory.lives--;
         StartCoroutine(TurnSpriteRed());
-
+        StartCoroutine(screenEffects.ShakeJolt());
 
 
         if (playerInventory.lives <= 0)
@@ -624,6 +631,22 @@ public class PlayerController : MonoBehaviour
                 bullet.SetActive(true);
             }
         }
+    }
+    public void SappingHealth()
+    {
+        if (timerExhausted == true && sapHealthTickTimeElapsed >= timers.healthSapTickTime)
+        {
+            this.PlayerDeath();
+            sapHealthTickTimeElapsed = 0f;
+            
+        }
+        else
+        {
+            sapHealthTickTimeElapsed += Time.deltaTime;
+        }
+
+     
+
     }
     IEnumerator WaitToCoolDown()
     {

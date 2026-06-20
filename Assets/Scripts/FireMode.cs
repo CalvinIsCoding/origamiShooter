@@ -57,6 +57,8 @@ public class FireMode : MonoBehaviour
     public float multiplierMultiplier;
     public float multiplierAdder;
 
+    public ScreenShake screenEffects;
+    public bool shakingStarted = false;
     void Start()
     {
         //resetting the boss defaults here to prevent a bug where bossIsDead is true at the very start of a boss wave before the boss spawns
@@ -95,6 +97,10 @@ public class FireMode : MonoBehaviour
 
         SetMoneyMultiplier();
         globalAudio.volume = gameSettings.sfxVolume;
+
+        
+            ShakeScreenDuringLastCoupleSeconds();
+      
        
     }
     void FixedUpdate()
@@ -186,6 +192,7 @@ public class FireMode : MonoBehaviour
     {
         //StartCoroutine(LightFlames());
         StartCoroutine(DisableFireMode());
+        screenEffects.ShakeRampDown();
         isFireMode = true;
         waveCanStart = false;
 
@@ -211,9 +218,13 @@ public class FireMode : MonoBehaviour
 
             if(moneyMultiplier <= 0f)
             {
-                playerInventory.lives = 1;
-                player.PlayerDeath();
+                //playerInventory.lives = 1;
+                player.timerExhausted = true;
+                Debug.Log("timer Exhausted");
             }
+            
+               
+            
 
         }
         else if (isFireMode == true)
@@ -221,6 +232,7 @@ public class FireMode : MonoBehaviour
             moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier,isFireMode);
             playerInventory.multiplier = moneyMultiplier;
             moneyMultiplierTimeElapsed = 0f;
+            player.timerExhausted = false;
 
         }
     }
@@ -355,6 +367,30 @@ public class FireMode : MonoBehaviour
         multiplierMultiplier = playerInventory.multiplierMultiplier;
         multiplierAdder = playerInventory.multiplierAdder;
 
+    }
+    void ShakeScreenDuringLastCoupleSeconds()
+    {
+        if (moneyMultiplierTimeElapsed >= (moneyMultiplierTimer - timers.lastFewSeconds) && moneyMultiplierTimeElapsed < moneyMultiplierTimer && liveActivators > 0)
+        {
+            
+            screenEffects.screenRed = true;
+            
+            screenEffects.ShakeRampUp();
+              
+            
+            screenEffects.turnScreenRed(screenEffects.screenRed);
+        }
+        else if (liveActivators == 0)
+        {
+            
+            screenEffects.screenRed = false;
+            shakingStarted = false;
+           // screenEffects.ShakeRampUp(0f,5f,1f,2f);
+            screenEffects.turnScreenRed(screenEffects.screenRed);
+            
+            
+        }
+       
     }
 
     //zones... in an effort to ensure that the fire activators are spaced out... I think it's too complicated.

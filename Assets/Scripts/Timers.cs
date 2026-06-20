@@ -15,6 +15,8 @@ public class Timers : ScriptableObject
     public float enemyStunTime = 2f;
     public float defaultBulletLivingTime = 0.8f;
     public float defaultBulletShrinkTime = 0.5f;
+    public float healthSapTickTime = 0.5f;
+    public float lastFewSeconds = 3f;
 
 
 

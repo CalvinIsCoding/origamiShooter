@@ -8,7 +8,7 @@ public class Ampersand : MonoBehaviour
     //public GameObject enemy;
     public GameObject player;
     public Rigidbody2D playerRb;
-    public CircleCollider2D cc;
+    public CapsuleCollider2D cc;
     public SpriteRenderer ampersandSprite;
     public float angle;
     public float dAngle;

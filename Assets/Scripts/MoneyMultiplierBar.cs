@@ -30,7 +30,7 @@ public class MoneyMultiplierBar : MonoBehaviour
         if (!isFireMode)
         {
             SetMultiplierModifierText(playerInventory.multiplierMultiplier,playerInventory.multiplierAdder);
-            sliderFill.color = Color.red;
+            sliderFill.color = Color.yellow;
             slider.maxValue = 10f;
             slider.value = multiplier;
 

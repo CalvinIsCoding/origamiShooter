@@ -102,7 +102,7 @@ public class Crane : MonoBehaviour
            rb.AddForceAtPosition(direction.normalized * craneMovementForce, rb.position);
 
         }
-        if(Time.time - lastTime > 1.5f && !enemy.isBlink)
+        if((Time.time - lastTime > 1.5f && !enemy.isBlink))
         {
             rb.freezeRotation = false;
             rb.linearDamping = 10;
@@ -110,6 +110,13 @@ public class Crane : MonoBehaviour
             animator.SetBool("Dragging", true);
             //Orient();
             //enemy.isBlink = true;
+            lastTime = Time.time;
+        }
+
+        if (enemy.isStunned)
+        {
+            animator.SetBool("Dragging", false);
+            windingUp = false;
             lastTime = Time.time;
         }
 

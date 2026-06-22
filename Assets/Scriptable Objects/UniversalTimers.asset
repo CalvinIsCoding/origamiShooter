@@ -22,3 +22,6 @@ MonoBehaviour:
   enemyStunTime: 1
   defaultBulletLivingTime: 0.8
   defaultBulletShrinkTime: 0.5
+  healthSapTickTime: 0.5
+  lastFewSeconds: 3
+  playerInvulnerableAfterHit: 0.2

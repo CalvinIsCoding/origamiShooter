@@ -137,9 +137,12 @@ public class PlayerController : MonoBehaviour
 
     public bool timerExhausted;
     public float sapHealthTickTimeElapsed;
-   
+
+    public bool playerInvulnerable;
 
     public ScreenShake screenEffects;
+    public float fanSpriteAlpha;
+    
     void Start()
     {
         playerInventory.resetToDefaults();
@@ -180,6 +183,8 @@ public class PlayerController : MonoBehaviour
 
         airBurstCooldownPeriod = 5f;
         timeSinceLastAirBurst = 5f;
+        playerInvulnerable = false;
+        fanSpriteAlpha = 1f;
 
         //FanSoundFX.clip = fanSlidingNoise;
         //FanSoundFX.Play();
@@ -409,7 +414,7 @@ public class PlayerController : MonoBehaviour
         Wall myWall = collision.gameObject.GetComponent<Wall>();
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         EnemyProjectile enemyProjectile = collision.gameObject.GetComponent<EnemyProjectile>();
-        if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter && !enemy.isStunned)
+        if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter && !enemy.isStunned && !playerInvulnerable)
         {
             // enemy.Die(true);
             StartCoroutine(enemy.Stun());
@@ -435,7 +440,7 @@ public class PlayerController : MonoBehaviour
         Wall myWall = collision.gameObject.GetComponent<Wall>();
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         EnemyProjectile enemyProjectile = collision.gameObject.GetComponent<EnemyProjectile>();
-        if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter && !enemy.isStunned)
+        if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter && !enemy.isStunned && !playerInvulnerable)
         {
             //enemy.Die(true);
             StartCoroutine(enemy.Stun());
@@ -468,12 +473,28 @@ public class PlayerController : MonoBehaviour
 
          }
      }*/
-    public void PlayerDeath()
+    public void PlayerDeath(bool damageFromTimer = false)
     {
-        playerInventory.lives--;
-        StartCoroutine(TurnSpriteRed());
-        StartCoroutine(screenEffects.ShakeJolt());
+        //putting this check here so that if player death is called from anywhere, it won't happen unless player is vulnerable
+        if (!playerInvulnerable && damageFromTimer == false)
+        {
 
+
+            playerInventory.lives--;
+            StartCoroutine(TurnSpriteRed());
+            StartCoroutine(screenEffects.ShakeJolt());
+            StartCoroutine(InvulnerableAfterHit());
+
+
+
+
+        }
+        if (damageFromTimer == true)
+        {
+            playerInventory.lives--;
+            StartCoroutine(TurnSpriteRed());
+            StartCoroutine(screenEffects.ShakeJolt());
+        }
 
         if (playerInventory.lives <= 0)
         {
@@ -487,8 +508,8 @@ public class PlayerController : MonoBehaviour
             this.fanSprite.enabled = false;
             this.playerCollider.enabled = false;
             this.enabled = false;
-           
-           // this.gameObject.SetActive(false);
+
+            // this.gameObject.SetActive(false);
         }
 
     }
@@ -576,7 +597,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator TurnSpriteRed()
     {
-        fanSprite.color = Color.red;
+        fanSprite.color = new Color(1f,0,0,fanSpriteAlpha);
         Time.timeScale = timeSlowDown;
         isRed = true;
         FanSoundFX.pitch = Random.Range(0.80f, 1.20f);
@@ -590,7 +611,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator SetOverheatSpriteColor(float overHeat)
     {
         float colorValue = 1.3f - ((overHeat / maxOverheat));
-        Color fanHue = new Color(1, colorValue, colorValue);
+        Color fanHue = new Color(1f, colorValue, colorValue,fanSpriteAlpha);
         //Debug.Log(fanHue);
         if (!isRed)
         {
@@ -636,7 +657,7 @@ public class PlayerController : MonoBehaviour
     {
         if (timerExhausted == true && sapHealthTickTimeElapsed >= timers.healthSapTickTime)
         {
-            this.PlayerDeath();
+            this.PlayerDeath(true);
             sapHealthTickTimeElapsed = 0f;
             
         }
@@ -653,6 +674,15 @@ public class PlayerController : MonoBehaviour
         coolDownAllowed = false;
         yield return new WaitForSeconds(waitToCoolDownTime);
         coolDownAllowed = true;
+    }
+    IEnumerator InvulnerableAfterHit()
+    {
+        playerInvulnerable = true;
+        fanSpriteAlpha = 0.5f;
+        yield return new WaitForSecondsRealtime(timers.playerInvulnerableAfterHit);
+        playerInvulnerable = false;
+        fanSpriteAlpha = 1f;
+
     }
 
 

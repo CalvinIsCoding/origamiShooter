@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemSO
   title: Furniture
   description: Might not be your taste
-  cost: 0
+  cost: -2
   numberPurchased: 0
   modifier: 0
+  multiplierAdder: 0
+  multiplierMultiplier: 1

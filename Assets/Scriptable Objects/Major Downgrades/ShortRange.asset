@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemSO
   title: Short Range
   description: Your air bullets shrink much faster
-  cost: 0
-  numberPurchased: 0
+  cost: -2
+  numberPurchased: 1
   modifier: 0.25
   multiplierAdder: 2
   multiplierMultiplier: 1

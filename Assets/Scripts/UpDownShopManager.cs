@@ -30,6 +30,8 @@ public class UpDownShopManager : MonoBehaviour
 
     public GameObject ShopMenu;
     public TMP_Text totalMoney;
+    public bool shopExplainerSpawnedOnce;
+    public GameObject shopExplainer;
    
 
     void Start()
@@ -38,7 +40,7 @@ public class UpDownShopManager : MonoBehaviour
         //playerInventory.downgradesPurchased = 0;
         //coinUI.text = "Coins: " + coins.ToString();
         coinUI.text = "Coins: " + playerInventory.downgradesPurchased.ToString();
-        
+        shopExplainerSpawnedOnce = false;
 
         for (int i = 0; i < shopItemSO.Length; i++)
         {
@@ -58,6 +60,12 @@ public class UpDownShopManager : MonoBehaviour
         LoadPanels();
         coinUI.text = "Coins: " + playerInventory.downgradesPurchased.ToString();
         CheckPurchaseable();
+        if (!shopExplainerSpawnedOnce)
+        {
+
+            EnableShopExplainer();
+        }
+
     }
     
 
@@ -79,7 +87,7 @@ public class UpDownShopManager : MonoBehaviour
         { 
              shopButtons[i].TitleText.text = shopItemSO[i].title;
             //shopButton[i].ShopImage = images[i];
-             shopButtons[i].PriceText.text = shopItemSO[i].cost.ToString();
+             shopButtons[i].PriceText.text = (shopItemSO[i].cost * -1).ToString();
             
 
         }
@@ -93,6 +101,9 @@ public class UpDownShopManager : MonoBehaviour
         shopItemSO[0] = downgrades[Random.Range(0, downgrades.Length)];
         shopItemSO[1] = minorUpgrades[Random.Range(0, minorUpgrades.Length)];
         shopItemSO[2] = majorUpgrades[Random.Range(0, majorUpgrades.Length)];
+
+
+        //Below is a test of the "double edged shop.
         
         
     }
@@ -158,6 +169,19 @@ public class UpDownShopManager : MonoBehaviour
             }
         }
 
+    }
+
+    public void EnableShopExplainer()
+    {
+        shopExplainer.SetActive(true);
+        shopExplainerSpawnedOnce = true;
+    }
+    public void ClearAllDowngrades()
+    {
+        foreach (var shopitem in downgrades)
+        {
+            shopitem.numberPurchased = 0;
+        }
     }
 
 

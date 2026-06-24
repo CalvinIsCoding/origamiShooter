@@ -72,6 +72,8 @@ public class EnemySpawn : MonoBehaviour
     public float bossWaitTime;
     public int bossWaveNumber;
 
+    public int shopSpawnsEveryXWaves;
+
     void Start()
     {
         bossWaitTime = 5f;
@@ -168,12 +170,12 @@ public class EnemySpawn : MonoBehaviour
             }
 */
         }
-        if(waveNumber % 4 == 0 && !shopSpawned && waveNumber != 0)
+        if(waveNumber % shopSpawnsEveryXWaves == 0 && !shopSpawned && waveNumber != 0)
         {
             SpawnShop();
             maxSimultaneouslySpawned++;
         }
-        if(waveNumber % 4 != 0)
+        if(waveNumber % shopSpawnsEveryXWaves != 0)
         {
             shopSpawned = false;
         }

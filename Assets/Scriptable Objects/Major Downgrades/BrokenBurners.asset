@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemSO
   title: Broken Burners
   description: Some of the flames may not light when you flick every fire switch
-  cost: 0
-  numberPurchased: 0
+  cost: -2
+  numberPurchased: 1
   modifier: 0
   multiplierAdder: 2
   multiplierMultiplier: 0

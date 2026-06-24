@@ -161,7 +161,7 @@ PolygonCollider2D:
   m_Offset: {x: 2.4, y: -2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 1}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5, y: 5}
     newSize: {x: 3.24, y: 1.95}
     adaptiveTilingThreshold: 0.5
@@ -170,9 +170,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.9126816, y: 0.65107656}
-      - {x: -1.2102802, y: 0.72045135}
-      - {x: -0.13226724, y: -1.0537367}
+    - - {x: -1.5415407, y: 3.1543846}
+      - {x: -3.860841, y: 3.2237582}
+      - {x: -2.7337437, y: 1.4495709}
   m_UseDelaunayMesh: 0
 --- !u!114 &3019179677689141600
 MonoBehaviour:
@@ -290,8 +290,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 2.2452998, y: -1.721, z: 0}
-    m_Extent: {x: 3.6398, y: 3.6757, z: 0}
+    m_Center: {x: -0.2824, y: 0.29919994, z: 0}
+    m_Extent: {x: 3.7129002, y: 3.6834002, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 3
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: 1.7115985, y: -2.395761, z: 0.0000019073486}
-  - {x: 2.8520193, y: -2.3957431, z: 0.0000019073486}
-  - {x: 2.887122, y: -1.0797321, z: 0.0000019073486}
-  - {x: 1.606284, y: -1.0446553, z: 0.0000019073486}
+  - {x: -0.7426245, y: -0.38329864, z: 0.0000019073486}
+  - {x: 0.054204345, y: -0.38328016, z: 0.0000019073486}
+  - {x: 0.43289888, y: 0.9818152, z: 0.0000019073486}
+  - {x: -0.99519265, y: 0.82055426, z: 0.0000019073486}

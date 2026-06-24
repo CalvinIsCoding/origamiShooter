@@ -12,6 +12,7 @@ public class ShopButton : MonoBehaviour
     public GameObject ShopManager;
     public Image ShopImage;
     public Animator ShopButtonAnimator;
+    public ShopItemSO shopItem;
 
    
     void Update()

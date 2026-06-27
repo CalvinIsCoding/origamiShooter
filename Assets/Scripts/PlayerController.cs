@@ -142,6 +142,11 @@ public class PlayerController : MonoBehaviour
 
     public ScreenShake screenEffects;
     public float fanSpriteAlpha;
+
+    public GameObject WASDmovementDirection;
+    public float angleWalking;
+
+    public GameObject airMovementDirection;
     
     void Start()
     {
@@ -206,8 +211,8 @@ public class PlayerController : MonoBehaviour
         //checking here for if player fpurchased the lose base movement downgrade
         if (loseBaseMovement.numberPurchased <= 0)
         {
-            moveHorizontal = Input.GetAxis("Horizontal");
-            moveVertical = Input.GetAxis("Vertical");
+            moveHorizontal = Input.GetAxisRaw("Horizontal");
+            moveVertical = Input.GetAxisRaw("Vertical");
             
         }
         else
@@ -337,6 +342,10 @@ public class PlayerController : MonoBehaviour
         firePointBack.transform.rotation = Quaternion.Euler(0, 0, (angleOfShooting + Mathf.PI) * Mathf.Rad2Deg);
         firePointBack.transform.localPosition = new Vector2(Mathf.Cos(angleOfShooting + Mathf.PI) * 0.18f, Mathf.Sin(angleOfShooting + Mathf.PI) * 0.18f);
 
+
+
+        airMovementDirection.transform.rotation = Quaternion.Euler(0, 0, (angleOfShooting + Mathf.PI/2) * Mathf.Rad2Deg);
+        airMovementDirection.transform.localPosition = new Vector2(Mathf.Cos(angleOfShooting + Mathf.PI) * 0.5f, Mathf.Sin(angleOfShooting + Mathf.PI) * 0.5f);
         //Animating
         animator.SetFloat("Horizontal", (mouse.x - transform.position.x));
         animator.SetFloat("Vertical", (mouse.y - transform.position.y));
@@ -371,7 +380,7 @@ public class PlayerController : MonoBehaviour
                 //characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed, moveVertical * movementSpeed);
                 characterRigidBody.AddForce(new Vector2(movementThrust * moveHorizontal * movementSpeed, movementThrust * moveVertical * movementSpeed));
             }
-
+            determineWASDIndicatorDirection();
         }
 
         //shooting
@@ -685,5 +694,51 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void determineWASDIndicatorDirection()
+    {
+       if(moveHorizontal == 0 && moveVertical > 0)
+        {
+            angleWalking = Mathf.PI/2;
+        }
+       if(moveHorizontal > 0 && moveVertical == 0 )
+        {
+            angleWalking = 0;
+        }
+        if (moveHorizontal == 0 && moveVertical < 0)
+        {
+            angleWalking = -Mathf.PI / 2;
+        }
+        if (moveHorizontal < 0 && moveVertical == 0)
+        {
+            angleWalking = Mathf.PI;
+
+        }
+
+        if(moveHorizontal == 1 && moveVertical == 1)
+        {
+            angleWalking = Mathf.PI/4;
+        }
+       if(moveHorizontal == 1 && moveVertical == -1 )
+        {
+            angleWalking = -Mathf.PI / 4;
+        }
+        if (moveHorizontal == -1 && moveVertical == -1)
+        {
+            angleWalking = -3 * Mathf.PI / 4;
+        }
+        if (moveHorizontal == -1 && moveVertical == 1)
+        {
+            angleWalking = 3 * Mathf.PI / 4;
+
+        }
+        
+      
+        
+        Debug.Log(moveHorizontal);
+        WASDmovementDirection.transform.rotation = Quaternion.Euler(0, 0, angleWalking * Mathf.Rad2Deg - 90f);
+        WASDmovementDirection.transform.localPosition = new Vector2(Mathf.Cos(angleWalking) * 0.5f, Mathf.Sin(angleWalking) * 0.5f);
+       
+           
+    }
 
 }

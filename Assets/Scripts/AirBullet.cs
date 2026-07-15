@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AirBullet: MonoBehaviour
@@ -16,6 +17,7 @@ public class AirBullet: MonoBehaviour
     public ShopItemSO biggerAir;
     public ShopItemSO shortRange;
     public Timers universalTimers;
+    public PlayerInventory playerInventory;
 
     public SpriteRenderer airBulletSprite;
 
@@ -29,25 +31,19 @@ public class AirBullet: MonoBehaviour
     void OnEnable()
     {
 
-        rb.linearVelocity = transform.right * speed;
+        rb.linearVelocity = transform.right * playerInventory.airBulletSpeed;
         //Destroy(airBullet, 1.0f);
         //Object Pooling
 
-        knockBack = 15f + (fanBlades.numberPurchased * fanBlades.modifier);
-        if (shortRange.numberPurchased <= 0)
-        {
-            bulletLivingTime = universalTimers.defaultBulletLivingTime;
-            shrinkTime = universalTimers.defaultBulletShrinkTime;
-        }
-        else
-        {
-            bulletLivingTime = universalTimers.defaultBulletLivingTime * shortRange.modifier;
-            shrinkTime = universalTimers.defaultBulletShrinkTime * shortRange.modifier;
-        }
-
+       // knockBack = 15f; //+ (fanBlades.numberPurchased * fanBlades.modifier);
         
-        DefaultAirBulletScale = 0.6f + (biggerAir.numberPurchased * biggerAir.modifier);
-        currentAirBulletScale = DefaultAirBulletScale;
+            bulletLivingTime = universalTimers.defaultBulletLivingTime;
+            shrinkTime = playerInventory.BulletShrinkTime;
+        
+        knockBack = playerInventory.knockBack;
+        
+        DefaultAirBulletScale = playerInventory.airBulletSizeDefault;
+        currentAirBulletScale = playerInventory.airBulletSize;
         StartCoroutine(ShrinkBullets());
         StartCoroutine(DeactivateBullets());
     }

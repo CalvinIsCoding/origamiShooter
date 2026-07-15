@@ -214,6 +214,7 @@ MonoBehaviour:
   closedHiHat: {fileID: 0}
   snare: {fileID: 0}
   bassDrum: {fileID: 0}
+  enemyStats: {fileID: 11400000, guid: 124a2ab211c6fff4b8fb4b00855dcb47, type: 2}
   fireMode: {fileID: 0}
   isTitleLetter: 0
   enemyAnimator: {fileID: 3768618109727446638}

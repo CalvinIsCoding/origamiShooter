@@ -52,7 +52,7 @@ public class Why : MonoBehaviour
 
         planeMovementForce = 0f;
 
-        bc.enabled = false;
+       // bc.enabled = false;
        
 
     }

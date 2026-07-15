@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd77398ad1ab164ab8f31959f4a5cc2, type: 3}
+  m_Name: Faster Air Stream
+  m_EditorClassIdentifier: Assembly-CSharp::SoFasterAirStream
+  title: Faster Air Stream
+  description: Increase the speed of your airstream by 20%
+  cost: 0
+  numberPurchased: 0
+  modifier: 0
+  multiplierAdder: 0
+  multiplierMultiplier: 1
+  playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
+  shop: {fileID: 0}
+  baseAirBulletSpeedIncrement: 2

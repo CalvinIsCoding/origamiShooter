@@ -74,6 +74,8 @@ public class EnemySpawn : MonoBehaviour
 
     public int shopSpawnsEveryXWaves;
 
+    public EnemyStats enemyStats;
+
     void Start()
     {
         bossWaitTime = 5f;
@@ -81,7 +83,7 @@ public class EnemySpawn : MonoBehaviour
           enemyTypeSpawnChances[1] = redPlaneSpawnChance;
           enemyTypeSpawnChances[2] = redCircleSpawnChance;*/
         //SetSpawnChance();
-
+        enemyStats.resetValues();
         lastTime = 0f;
         timeBetweenSpawns = 1.5f;
         spawnEvent_timeStep = 0.01f;
@@ -238,9 +240,10 @@ public class EnemySpawn : MonoBehaviour
             
             
         }
-        gameStats.enemiesSpawnedThisWave = gameStats.enemiesSpawnedThisWave + numberSpawned;
-        gameStats.totalEnemiesSpawned = gameStats.totalEnemiesSpawned + numberSpawned;
+        //gameStats.enemiesSpawnedThisWave = gameStats.enemiesSpawnedThisWave + numberSpawned;
+       // gameStats.totalEnemiesSpawned = gameStats.totalEnemiesSpawned + numberSpawned;
 
+       // Debug.Log("EnemySpawn spawned" + gameStats.enemiesSpawnedThisWave);
     }
 
     //The Spawn Event Selector takes in an int and will activate 1 function of a spawn event.

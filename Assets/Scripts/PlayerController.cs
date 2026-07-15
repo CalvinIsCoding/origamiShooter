@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -53,9 +54,9 @@ public class PlayerController : MonoBehaviour
     public bool overHeating = false;
     public int overHeatCounter;
     //public OverheatBar overheatBar;
-    public float maxOverheat = 5f;
+    //public float maxOverheat = 5f;
     private float coolDownFactor = 2f;
-    private float waitToCoolDownTime = 0.25f; //Time before cooldown actually starts. The purpose is to prevent players from clicking very quickly
+    private float waitToCoolDownTime = 0.15f; //Time before cooldown actually starts. The purpose is to prevent players from clicking very quickly
     private float timeSinceLastClick = 0f;
     private bool coolDownAllowed = true;
     bool isRed;
@@ -79,25 +80,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerInventory playerInventory;
 
-    //minor items
-    public ShopItemSO speedFromAir;
-    public ShopItemSO health;
-    public ShopItemSO fanBlade;
-    public ShopItemSO biggerAir;
-
-    //major items
-    public ShopItemSO airBurst;
-    public ShopItemSO activatorMagnet;
-    public ShopItemSO activatorAirBurst;
-    public ShopItemSO backStream;
-    public ShopItemSO flameThrower;
-
-    //major downgrades
-    public ShopItemSO loseBaseMovement;
-    public ShopItemSO brokenBurners;
-    public ShopItemSO furniture;
-    public ShopItemSO shortRange;
-    public ShopItemSO avoidantActivators;
+   
 
    
 
@@ -147,24 +130,14 @@ public class PlayerController : MonoBehaviour
     public float angleWalking;
 
     public GameObject airMovementDirection;
-    
+
+    public GameObject totalMovementDirection;
+
+    public bool loseBaseMovementTest;
     void Start()
     {
         playerInventory.resetToDefaults();
-        health.resetToDefaults();
-        fanBlade.resetToDefaults();
-        biggerAir.resetToDefaults();
-        speedFromAir.resetToDefaults();
-        airBurst.resetToDefaults();
-        activatorAirBurst.resetToDefaults();
-        backStream.resetToDefaults();
-        flameThrower.resetToDefaults();
-        activatorMagnet.resetToDefaults();
-        loseBaseMovement.resetToDefaults();
-        brokenBurners.resetToDefaults();
-        furniture.resetToDefaults();
-        shortRange.resetToDefaults();
-        avoidantActivators.resetToDefaults();
+      
 
         Time.timeScale = 1f;
 
@@ -205,14 +178,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SappingHealth();
-        airPushBackForce = airPushBackForceDefault + (speedFromAir.numberPurchased * speedFromAir.modifier);
+        airPushBackForce = airPushBackForceDefault;
 
         //Movement
         //checking here for if player fpurchased the lose base movement downgrade
-        if (loseBaseMovement.numberPurchased <= 0)
+        if (!playerInventory.currentShopItems.Any(shopItem => shopItem is loseBaseMovementSO))
         {
             moveHorizontal = Input.GetAxisRaw("Horizontal");
             moveVertical = Input.GetAxisRaw("Vertical");
+          
             
         }
         else
@@ -230,8 +204,13 @@ public class PlayerController : MonoBehaviour
 
         currentTimeBetweenBullets = currentTimeBetweenBullets + Time.deltaTime;
 
+        //puttig this here so the mass isn't constantly being assigned
 
+        if (rb.mass != playerInventory.mass)
+        {
 
+            rb.mass = playerInventory.mass;
+        }
 
 
         /* else if(Input.GetButtonDown("Fire1")  && _DestroyMode.isDestroyMode)
@@ -243,7 +222,7 @@ public class PlayerController : MonoBehaviour
          }*/
         //parry
         timeSinceLastAirBurst += Time.deltaTime;
-        if (Input.GetButtonDown("Fire2") && airBurst.numberPurchased > 0 && timeSinceLastAirBurst >= airBurstCooldownPeriod)
+        if (Input.GetButtonDown("Fire2")  && timeSinceLastAirBurst >= airBurstCooldownPeriod)
         {
             //parryBox =  Instantiate(parryBox, firePoint.position, firePoint.rotation,Player.transform);
             //parryBox.SetActive(true);
@@ -251,50 +230,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log("shift is down");
             Instantiate(airBurstObject, this.transform.position, Quaternion.identity);
             timeSinceLastAirBurst = 0f;
-            //Boost(parryBoxCollider);
-            //isBoost = true;
-            //StartCoroutine(boostIsActive());
-        }
-        
-
-        //Overheating
-        
-        if (Input.GetButtonUp("Fire1")|| !Input.GetButton("Fire1"))
-        {
-            timeSinceLastClick = timeSinceLastClick + Time.deltaTime;
-            
-        }
-        if(Input.GetButtonDown("Fire1"))
-        {
-            coolDownAllowed = false;
-            timeSinceLastClick = 0f;
-
-
-        }
-        if (Input.GetButton("Fire1") && !overHeating)
-        {
-            overHeatTime = overHeatTime + Time.deltaTime;
-            timeSinceLastClick = 0f;
-
-        }
-      
-        if ((!Input.GetButton("Fire1") && overHeatTime > 0 && timeSinceLastClick >= waitToCoolDownTime )|| overHeating)
-        {
-
-            Debug.Log("cooling down");
-           
-                overHeatTime = overHeatTime - (Time.deltaTime * coolDownFactor);
-            
-           
-          
-
+            Boost(parryBoxCollider);
+            isBoost = true;
+            StartCoroutine(boostIsActive());
         }
 
 
-        OverHeat(overHeatTime);
-        //overheatBar.SetOverheat(overHeatTime);
-        StartCoroutine(SetOverheatSpriteColor(overHeatTime));
-
+        CheckOverHeat();
 
         FanNoise.volume = gameSettings.sfxVolume;
         FanSoundFX.volume = gameSettings.sfxVolume;
@@ -320,8 +262,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Overheating", false);
         }
-     
 
+        checkIfDirectionsOverlap();
 
     }
 
@@ -372,13 +314,13 @@ public class PlayerController : MonoBehaviour
             {
 
                 // characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed * 0.707f, moveVertical * movementSpeed * 0.707f);
-                characterRigidBody.AddForce(new Vector2(movementThrust * moveHorizontal * movementSpeed * 0.707f, movementThrust * moveVertical * movementSpeed * 0.707f));
+                characterRigidBody.AddForce(new Vector2( moveHorizontal * playerInventory.baseSpeed * 0.707f,  moveVertical * playerInventory.baseSpeed * 0.707f));
             }
 
             else
             {
                 //characterRigidBody.velocity = new Vector2(moveHorizontal * movementSpeed, moveVertical * movementSpeed);
-                characterRigidBody.AddForce(new Vector2(movementThrust * moveHorizontal * movementSpeed, movementThrust * moveVertical * movementSpeed));
+                characterRigidBody.AddForce(new Vector2(moveHorizontal * playerInventory.baseSpeed, moveVertical * playerInventory.baseSpeed));
             }
             determineWASDIndicatorDirection();
         }
@@ -418,6 +360,48 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void CheckOverHeat()
+    {
+
+        //Overheating
+
+        if (Input.GetButtonUp("Fire1") || !Input.GetButton("Fire1"))
+        {
+            timeSinceLastClick = timeSinceLastClick + Time.deltaTime;
+
+        }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            coolDownAllowed = false;
+            timeSinceLastClick = 0f;
+
+
+        }
+        if (Input.GetButton("Fire1") && !overHeating)
+        {
+            overHeatTime = overHeatTime + Time.deltaTime;
+            timeSinceLastClick = 0f;
+
+        }
+
+        if ((!Input.GetButton("Fire1") && overHeatTime > 0 && timeSinceLastClick >= waitToCoolDownTime) || overHeating)
+        {
+
+
+
+            overHeatTime = overHeatTime - (Time.deltaTime * coolDownFactor);
+
+
+
+
+        }
+
+
+        OverHeat(overHeatTime);
+        //overheatBar.SetOverheat(overHeatTime);
+        StartCoroutine(SetOverheatSpriteColor(overHeatTime));
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         Wall myWall = collision.gameObject.GetComponent<Wall>();
@@ -426,8 +410,18 @@ public class PlayerController : MonoBehaviour
         if (enemy != null && !enemy.isBlink && !enemy.isTitleLetter && !enemy.isStunned && !playerInvulnerable)
         {
             // enemy.Die(true);
-            StartCoroutine(enemy.Stun());
-            PlayerDeath();
+            if (playerInventory.currentShopItems.Any(shopItem => shopItem is SoEnemiesDieFromTouching))
+            {
+                enemy.Die(true);
+                
+                PlayerDeath();
+            }
+            else
+            {
+                StartCoroutine(enemy.Stun());
+                PlayerDeath();
+            }
+
 
         }
         if (enemyProjectile != null)
@@ -492,6 +486,7 @@ public class PlayerController : MonoBehaviour
             playerInventory.lives--;
             StartCoroutine(TurnSpriteRed());
             StartCoroutine(screenEffects.ShakeJolt());
+           
             StartCoroutine(InvulnerableAfterHit());
 
 
@@ -503,6 +498,7 @@ public class PlayerController : MonoBehaviour
             playerInventory.lives--;
             StartCoroutine(TurnSpriteRed());
             StartCoroutine(screenEffects.ShakeJolt());
+            StartCoroutine(screenEffects.turnScreenBrieflyRed());
         }
 
         if (playerInventory.lives <= 0)
@@ -545,7 +541,7 @@ public class PlayerController : MonoBehaviour
     {
         
         
-        if (overHeatCounter >= maxOverheat)
+        if (overHeatCounter >= playerInventory.timeTillOverheat)
         {
             StartCoroutine(CoolDown());
             overHeating = true;
@@ -619,7 +615,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator SetOverheatSpriteColor(float overHeat)
     {
-        float colorValue = 1.3f - ((overHeat / maxOverheat));
+        float colorValue = 1.3f - (overHeat / playerInventory.timeTillOverheat);
         Color fanHue = new Color(1f, colorValue, colorValue,fanSpriteAlpha);
         //Debug.Log(fanHue);
         if (!isRed)
@@ -632,23 +628,26 @@ public class PlayerController : MonoBehaviour
     }
     public void ShootAirBullet()
     {
+        /*
         if (flameThrower.numberPurchased > 0)
         {
             bullet = fireBulletPool.GetPooledObject();
         }
         else
         {
-            bullet = airBulletPool.GetPooledObject();
+            
         }
-        
+        */
+        bullet = airBulletPool.GetPooledObject();
+
         if (bullet != null)
         {
             bullet.transform.position = firePoint.transform.position;
             bullet.transform.rotation = firePoint.transform.rotation;
             bullet.SetActive(true);
         }
-
-        if (backStream.numberPurchased > 0)
+        
+        if (playerInventory.currentShopItems.Any(shopItem => shopItem is SoBackStream))
         {
 
             bullet = airBulletPool.GetPooledObject();
@@ -661,6 +660,7 @@ public class PlayerController : MonoBehaviour
                 bullet.SetActive(true);
             }
         }
+        
     }
     public void SappingHealth()
     {
@@ -734,11 +734,33 @@ public class PlayerController : MonoBehaviour
         
       
         
-        Debug.Log(moveHorizontal);
+       // Debug.Log(moveHorizontal);
         WASDmovementDirection.transform.rotation = Quaternion.Euler(0, 0, angleWalking * Mathf.Rad2Deg - 90f);
         WASDmovementDirection.transform.localPosition = new Vector2(Mathf.Cos(angleWalking) * 0.5f, Mathf.Sin(angleWalking) * 0.5f);
        
            
+    }
+    public void checkIfDirectionsOverlap()
+    {  
+        Vector3 distanceBetweenDirectionMarkers;
+        distanceBetweenDirectionMarkers = WASDmovementDirection.transform.localPosition - airMovementDirection.transform.localPosition;
+        Debug.Log("distance between Markers" + distanceBetweenDirectionMarkers.magnitude);
+        if (distanceBetweenDirectionMarkers.magnitude < 0.2f)
+        {
+            totalMovementDirection.gameObject.SetActive(true);
+            totalMovementDirection.transform.localPosition = airMovementDirection.transform.localPosition + distanceBetweenDirectionMarkers / 2f;
+            totalMovementDirection.transform.localScale = new Vector3(0.35f/((distanceBetweenDirectionMarkers.magnitude * 5f)+ 1f),0.35f / ((distanceBetweenDirectionMarkers.magnitude * 5f) + 1f), 0.25f / (Mathf.Pow(distanceBetweenDirectionMarkers.magnitude,2) + 1f));
+            totalMovementDirection.transform.rotation = airMovementDirection.transform.rotation;// + (airMovementDirection.transform.rotation.z - WASDmovementDirection.transform.rotation.z) /2f);
+            WASDmovementDirection.gameObject.SetActive(false);
+            airMovementDirection.gameObject.SetActive(false);
+        }
+        else
+        {
+            totalMovementDirection.gameObject.SetActive(false);
+            WASDmovementDirection.gameObject.SetActive(true);
+            airMovementDirection.gameObject.SetActive(true);
+        }
+
     }
 
 }

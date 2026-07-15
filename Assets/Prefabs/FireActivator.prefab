@@ -129,6 +129,7 @@ MonoBehaviour:
   fireSwitchMagnet: {fileID: 11400000, guid: f977f0d3232caae42b9112208f18481b, type: 2}
   fireSwitchMover: {fileID: 11400000, guid: 7f9ecd8ca7b339e47b2cb18cc2a100b8, type: 2}
   fireSwitchAirBurst: {fileID: 11400000, guid: f21d5f60b3ebe884f9298586fd0f01bb, type: 2}
+  playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
 --- !u!58 &4756198345167344552
 CircleCollider2D:
   m_ObjectHideFlags: 0

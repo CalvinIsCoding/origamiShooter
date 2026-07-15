@@ -30,7 +30,7 @@ public class moneyEarnedThisRoundProcesser : MonoBehaviour
     public IEnumerator setMoneyEarnedThisRound(int moneyEarned)
     {
         int i;
-        Debug.Log(moneyEarned);
+        //Debug.Log(moneyEarned);
         moneyEarnedObject.SetActive(true);
         for (i = 1; i < moneyEarned + 1; i = i +1)
         {

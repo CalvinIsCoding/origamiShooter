@@ -168,8 +168,8 @@ public class FireMode : MonoBehaviour
         isFireMode = false;
         GetMultiplierModifiers();
         moneyEarnedThisRound = (int)(playerInventory.coinsBeforeMultiplier * (Mathf.Ceil(playerInventory.multiplier) + multiplierAdder) * multiplierMultiplier); //adding 
-        Debug.Log("coins before multiplier" + playerInventory.coinsBeforeMultiplier);
-        Debug.Log("multiplier" + Mathf.Ceil(playerInventory.multiplier));
+       // Debug.Log("coins before multiplier" + playerInventory.coinsBeforeMultiplier);
+        //Debug.Log("multiplier" + Mathf.Ceil(playerInventory.multiplier));
         StartCoroutine(roundMoney.setMoneyEarnedThisRound(moneyEarnedThisRound));
         moneyMultiplierTimer = moneyMultiplierTimer * 0.96f;
         gameStats.EndOfWave(enemySpawn.waveNumber);
@@ -252,10 +252,10 @@ public class FireMode : MonoBehaviour
         else
         {
 
-            requiredActivators = 3;
+            requiredActivators = playerInventory.requiredActivators;
 
 
-            Vector2[] activatorSpawnPositions = new Vector2[3];
+            Vector2[] activatorSpawnPositions = new Vector2[playerInventory.requiredActivators];
 
 
             for (int i = 0; i < requiredActivators; i++)
@@ -346,7 +346,7 @@ public class FireMode : MonoBehaviour
     void EndBossWave()
     {
         Debug.Log("Boss Wave Ending");
-        liveActivators = 3; //This is dumb, but this gets set to a nonzero number to prevent an extra set of fire activators from spawning
+        liveActivators = requiredActivators; //This is dumb, but this gets set to a nonzero number to prevent an extra set of fire activators from spawning
          //restting this so that new boss waves begin properluy
         Debug.Log("Wave Has Started" + waveHasStarted);
         StartCoroutine(DisableFireMode());

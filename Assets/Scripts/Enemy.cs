@@ -12,7 +12,8 @@ public class Enemy : MonoBehaviour
 	public GameObject deathEffect;
 	public GameObject spawnEffect;
 	public Rigidbody2D rb;
-	public Collider2D enemyCollider;
+	public Collider2D enemyPhysicalCollider;
+	public Collider2D enemyHurtBox;
 
 	//Push() variables
 	Vector2 positionVector;
@@ -59,6 +60,7 @@ public class Enemy : MonoBehaviour
 	private float currentScale;
 	private float maxScale;
     private float minScale;
+	public EnemyStats enemyStats;
 
     public FireMode fireMode;
 
@@ -75,6 +77,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+		//enemyStats.ResetToDefaults();
 		enemySpawn = FindAnyObjectByType<EnemySpawn>();
 		fireMode = FindAnyObjectByType<FireMode>();
         //shopManager = FindObjectOfType<ShopManager>();
@@ -86,6 +89,8 @@ public class Enemy : MonoBehaviour
 		wavesSaved = 0;
         spawnDelayTime = 1f;
 		isStunned = false;
+		this.enemyPhysicalCollider.enabled = true;
+		
         //StartCoroutine(Blink());
 
 
@@ -164,7 +169,11 @@ public class Enemy : MonoBehaviour
 
         //Instantiate(deathAnimation, this.transform);
         this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-		this.enemyCollider.enabled = false;
+		this.enemyPhysicalCollider.enabled = false;
+		this.enemyHurtBox.enabled = false;
+		
+
+		
 		//Instantiate(deathEffect);
 		Destroy(gameObject,0.5f);
 		
@@ -174,17 +183,25 @@ public class Enemy : MonoBehaviour
         //intended for when an enemy touches the player. The enemy shouldn't die but should just be stunned.
         //This is so that waves with one difficult enemy don't become cheesable by just letting the enemy touch the player
         //This may change if I reduce the health the player has
-		isStunned = true;
-        enemyAnimator.SetTrigger("Stunned");
-        enemyAnimator.SetBool("Stun",true);
-        //this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-       // this.enemyCollider.enabled = false;
-		yield return new WaitForSeconds(gameTimers.enemyStunTime);
-        enemyAnimator.ResetTrigger("Stunned");
-        enemyAnimator.SetBool("Stun", false);
-       // this.rb.constraints = RigidbodyConstraints2D.None;
-        //this.enemyCollider.enabled = true;
-		isStunned = false;
+		if(this.gameObject != null)
+		{
+            isStunned = true;
+            enemyAnimator.SetTrigger("Stunned");
+            enemyAnimator.SetBool("Stun", true);
+            //this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            // this.enemyCollider.enabled = false;
+            yield return new WaitForSeconds(gameTimers.enemyStunTime);
+            enemyAnimator.ResetTrigger("Stunned");
+            enemyAnimator.SetBool("Stun", false);
+            // this.rb.constraints = RigidbodyConstraints2D.None;
+            //this.enemyCollider.enabled = true;
+            isStunned = false;
+        }
+		else
+		{
+			yield return new WaitForEndOfFrame();
+		}
+		
     }
 	public void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet, Vector2 airBulletVelocity)
     {
@@ -283,7 +300,7 @@ public class Enemy : MonoBehaviour
 	IEnumerator SlamIntoExistance()
     {
         maxScale = currentScale;
-		enemyCollider.enabled = false;
+		enemyHurtBox.enabled = false;
 		
         for (int i = 0; i < growthFrames; i++)
 		{
@@ -293,11 +310,13 @@ public class Enemy : MonoBehaviour
 			yield return new WaitForSeconds(spawnDelayTime / growthFrames);
 		}
 		isBlink = false;
-		enemyCollider.enabled = true;
+		enemyHurtBox.enabled = true;
 	}
 	IEnumerator GrowIntoExistance()
 	{
 		Instantiate(spawnEffect,this.transform.position,Quaternion.identity);
+		maxScale = maxScale * enemyStats.enemyScaleModifier;
+		gameStats.enemiesSpawnedThisWave += 1;
         for (int i = 0; i < growthFrames; i++)
         {
             currentScale += (maxScale / growthFrames);

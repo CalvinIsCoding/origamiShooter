@@ -18,6 +18,7 @@ public class Timers : ScriptableObject
     public float healthSapTickTime = 0.5f;
     public float lastFewSeconds = 3f;
     public float playerInvulnerableAfterHit = 10f;
+    public float timeToGetFireSwitches = 10f;
 
 
 

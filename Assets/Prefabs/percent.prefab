@@ -39,6 +39,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30}
 --- !u!212 &2279726436481614842
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -54,6 +55,11 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -75,9 +81,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -1959325574, guid: a02d5093cdd8de445886805666b56e29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -87,7 +95,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2279726436481614845
 MonoBehaviour:
@@ -104,8 +111,11 @@ MonoBehaviour:
   health: 100
   enemy: {fileID: 2279726436481614833}
   deathEffect: {fileID: 0}
+  spawnEffect: {fileID: 0}
   rb: {fileID: 2279726436481614847}
+  enemyCollider: {fileID: 0}
   isBlown: 0
+  isStunned: 0
   travelDirection: {x: 0, y: 0}
   sprite: {fileID: 2279726436481614842}
   isBlink: 0
@@ -115,10 +125,15 @@ MonoBehaviour:
   wavesSaved: 0
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   gameStats: {fileID: 11400000, guid: 176c2fbf11a28a540b2689361b73a3c9, type: 2}
+  gameTimers: {fileID: 0}
   source: {fileID: 0}
   closedHiHat: {fileID: 0}
   snare: {fileID: 0}
   bassDrum: {fileID: 0}
+  enemyStats: {fileID: 11400000, guid: 124a2ab211c6fff4b8fb4b00855dcb47, type: 2}
+  fireMode: {fileID: 0}
+  isTitleLetter: 0
+  enemyAnimator: {fileID: 0}
 --- !u!114 &2279726436481614844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +161,7 @@ MonoBehaviour:
   isBlink: 0
 --- !u!50 &2279726436481614847
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,8 +172,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 2
+  m_LinearDamping: 1
+  m_AngularDamping: 2
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 7486139d05ca33249bae11326b8e8c7c, type: 2}
   m_IncludeLayers:
@@ -179,6 +194,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2279726436481614833}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -202,7 +218,8 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0.111821026, y: 0.14536715}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,12 +230,11 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 0.55271584, y: 3.4824228}
   m_EdgeRadius: 0
 --- !u!95 &6672464314852709259
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -232,6 +248,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

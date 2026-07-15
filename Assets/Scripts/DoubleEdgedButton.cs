@@ -3,6 +3,7 @@ using UnityEngine;
 public class DoubleEdgedButton : MonoBehaviour
 {
     public ShopButton[] shopButtons = new ShopButton[2];
+   
     void Start()
     {
         

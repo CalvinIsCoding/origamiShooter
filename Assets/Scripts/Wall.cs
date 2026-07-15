@@ -20,6 +20,12 @@ public class Wall : MonoBehaviour
 
     private int collisionCount;
     private int soundSelect;
+
+    public PhysicsMaterial2D normalWallMaterial;
+    public PhysicsMaterial2D bouncyWallMaterial;
+
+    public WallCharacteristics characteristics;
+    public Rigidbody2D rb;
    
 
 
@@ -27,6 +33,7 @@ public class Wall : MonoBehaviour
     {
         soundWaitTime = 0.01f;
         collisionCount = 2;
+       rb.sharedMaterial = normalWallMaterial;
     }
 
     // Update is called once per frame
@@ -36,6 +43,9 @@ public class Wall : MonoBehaviour
         timeSinceLastBassDrum = timeSinceLastBassDrum + Time.deltaTime;
         timeSinceLastHiHat = timeSinceLastHiHat + Time.deltaTime;
         timeSinceLastSound = timeSinceLastSound + Time.deltaTime;
+
+        
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

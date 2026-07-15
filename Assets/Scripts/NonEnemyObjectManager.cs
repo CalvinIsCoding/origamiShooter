@@ -4,6 +4,7 @@ public class NonEnemyObjectManager : MonoBehaviour
 {
     public ShopItemSO furniture;
     public GameObject furniturePrefab;
+    public PhysicsMaterial2D wallMaterial;
     void Start()
     {
         
@@ -12,18 +13,7 @@ public class NonEnemyObjectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (furniturePrefab != null)
-        {
-            if (furniture.numberPurchased > 0)
-            {
-                furniturePrefab.SetActive(true);
-            }
-            else
-            {
-                furniturePrefab.SetActive(false);
-
-            }
-        }
+        
         
         
 

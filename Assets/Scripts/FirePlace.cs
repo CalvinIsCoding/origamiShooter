@@ -30,6 +30,7 @@ public class FirePlace : MonoBehaviour
     public GameSettings gameSettings;
 
     public ShopItemSO brokenBurners;
+    public PlayerInventory playerInventory;
 
 
     // public PlayerInventory playerInventory;
@@ -81,10 +82,7 @@ public class FirePlace : MonoBehaviour
             }
             
         }
-        if ( brokenBurners.numberPurchased > 0)
-        {
-
-        }
+       
 
         timeSinceLastSound = timeSinceLastSound + Time.deltaTime;
 
@@ -105,7 +103,7 @@ public class FirePlace : MonoBehaviour
         // Tilemap tilemap = GetComponent<Tilemap>();
 
 
-        if (enemy != null)
+        if (enemy != null && !playerInventory.currentShopItems.Any(shopitem => shopitem is SoEnemiesMustDieFromTouching))
         {
 
             //enemy.Die();
@@ -151,9 +149,9 @@ public class FirePlace : MonoBehaviour
 
         Enemy enemy = collision.GetComponent<Enemy>();
         BoxFan boxfan = collision.GetComponent<BoxFan>();
-        if (enemy != null && fireMode.isFireMode)
+        if (enemy != null && fireMode.isFireMode && !playerInventory.currentShopItems.Any(shopitem => shopitem is SoEnemiesMustDieFromTouching))
         {
-            processSound();
+            //processSound();
             enemy.TakeDamage(10);
 
 
@@ -166,19 +164,20 @@ public class FirePlace : MonoBehaviour
     private void processSound()
     {
 
-        soundSelect = Random.Range(0, flameErupt.Length - 1);
+        
 
         if (timeSinceLastSound >= soundWaitTime)
         {
-
+            soundSelect = Random.Range(0, flameErupt.Length - 1);
             flameAudio.volume = 3f;
             
             flameAudio.PlayOneShot(flameErupt[soundSelect]);
 
 
-            flameAudio.pitch = ((float)gameStats.enemiesKilledThisWave / (float)gameStats.enemiesSpawnedThisWave) + 0.5f;
-            
+            flameAudio.pitch = (((float)gameStats.enemiesKilledThisWave + 1f) / ((float)gameStats.enemiesSpawnedThisWave + 0.1f)) + 0.7f;
 
+            Debug.Log("enemies killed this wave" + gameStats.enemiesKilledThisWave + " Enemies spawned this wave" + gameStats.enemiesSpawnedThisWave);
+            Debug.Log("pitch" + flameAudio.pitch);
 
             timeSinceLastSound = 0f;
 
@@ -188,7 +187,7 @@ public class FirePlace : MonoBehaviour
     {
         foreach(SpriteRenderer flameAnimation in flameAnimationSprites)
         {
-            if (brokenBurners.numberPurchased > 0 && Random.Range(0,2) == 1)
+            if ( playerInventory.currentShopItems.Any(shopItem => shopItem is SoBrokenBurners)&& Random.Range(0,2) == 1)
             {
                 flameAnimation.gameObject.SetActive(false);
                 yield return new WaitForSeconds(0.045f);

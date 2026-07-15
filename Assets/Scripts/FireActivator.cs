@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FireActivator : MonoBehaviour
@@ -24,6 +25,8 @@ public class FireActivator : MonoBehaviour
     public ShopItemSO fireSwitchMagnet;
     public ShopItemSO fireSwitchMover;
     public ShopItemSO fireSwitchAirBurst;
+
+    public PlayerInventory playerInventory;
     void Start()
     {
         fireMode = FindAnyObjectByType<FireMode>();
@@ -41,14 +44,17 @@ public class FireActivator : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (fireSwitchMagnet.numberPurchased > 0)
+       if (playerInventory.currentShopItems.Any(shopItem =>  shopItem is SoAttractiveFireSwitches)) 
         {
             AttractToPlayer();
         }
-        if (fireSwitchMover.numberPurchased > 0)
+       
+        
+        if (playerInventory.currentShopItems.Any(shopItem => shopItem is SoAvoidantFireSwitches))
         {
             AvoidPlayer();
         }
+        
 
     }
     private void OnTriggerEnter2D(Collider2D outsideCollider)
@@ -64,6 +70,7 @@ public class FireActivator : MonoBehaviour
             SwitchSound = player.FanSoundFX;
             SwitchSound.pitch = 0.9f + (0.05f * gameStats.wavesSurvived);
             SwitchSound.PlayOneShot(switchClicks[fireMode.activatorCounter - 1]);
+            this.fireActivatorCollider.enabled = false;
 
 
             Destroy(gameObject,0.550f);

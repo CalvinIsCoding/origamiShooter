@@ -116,7 +116,8 @@ MonoBehaviour:
   deathEffect: {fileID: 0}
   spawnEffect: {fileID: 4670229829609038548, guid: 6babb3651b4881c4aba2f64f247d3bb8, type: 3}
   rb: {fileID: 8754854020466067066}
-  enemyCollider: {fileID: 7414918018862233219}
+  enemyPhysicalCollider: {fileID: 7414918018862233219}
+  enemyHurtBox: {fileID: 2925898061926041927}
   isBlown: 0
   isStunned: 0
   travelDirection: {x: 0, y: 0}
@@ -133,6 +134,7 @@ MonoBehaviour:
   closedHiHat: {fileID: 8300000, guid: 28ea569996d25fd4db9006d8fd3bf8fd, type: 3}
   snare: {fileID: 8300000, guid: 951a6c7cd789a694ea2f01b1335e6242, type: 3}
   bassDrum: {fileID: 8300000, guid: 1b7ff182f4614cb48a554a5fb8c2b0f3, type: 3}
+  enemyStats: {fileID: 11400000, guid: 124a2ab211c6fff4b8fb4b00855dcb47, type: 2}
   fireMode: {fileID: 0}
   isTitleLetter: 0
   enemyAnimator: {fileID: 1013666208032103757}

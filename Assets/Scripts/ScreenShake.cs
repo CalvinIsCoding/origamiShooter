@@ -115,6 +115,40 @@ public class ScreenShake : MonoBehaviour
         }
         filterColor.a = redFilterOpacity;
         redFilter.color = filterColor;
+        
+    }
+    public IEnumerator turnScreenBrieflyRed(float strength = 0.2f, float strengthVelocity = 1f, float smoothTime = 0.1f)
+    {
+        
+        filterColor.a = strength;
+        redFilter.color = filterColor;
+        Debug.Log("Screens Red" + filterColor.a);
+         for (int i = 0; i < 5; i++)
+         {
+            filterColor.a = Mathf.SmoothDamp(strength, 0f, ref strengthVelocity, smoothTime);
+            redFilter.color = filterColor;
+            // strength = Mathf.SmoothStep()
+
+
+
+            //transform.localEulerAngles = new Vector3(randomX, randomY, 0f) * strength;
+
+            yield return new WaitForSeconds(smoothTime / 15);
+         }
+        filterColor.a = redFilterOpacity;
+        redFilter.color = filterColor;
+        /*
+       filterColor.a = strength;
+       redFilter.color = filterColor;
+       Debug.Log("turn screen red");
+       yield return new WaitForSeconds(smoothTime);
+       Debug.Log("Screen non longer red");
+       filterColor.a = redFilterOpacity;
+       redFilter.color = filterColor;
+        */
+        //you can't set color alpha chnanle directly, you have to set it to a color
+
+
 
     }
 

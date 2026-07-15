@@ -87,7 +87,7 @@ public class BoxFan : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerRb = player.GetComponent<Rigidbody2D>();
         lastTime = Time.time;
-        boxFanMovementForce = 11.75f;
+        boxFanMovementForce = 7.75f;
 
         boxFan.health = 50;
 
@@ -155,7 +155,7 @@ private void FixedUpdate()
         }
         else
         {
-            boxFanMovementForce = 11.75f;
+            boxFanMovementForce = 7.75f;
             boxFanDirection = DetermineDirection();
             //float angleOfFirePointOfShooting = Mathf.Atan2(playerRb.position.y - rb.position.y, playerRb.position.y - rb.position.y);
             firePoint.transform.rotation = Quaternion.Euler(0, 0, angleOfFirePoint * Mathf.Rad2Deg);

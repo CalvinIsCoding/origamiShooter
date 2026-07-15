@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3019179677689141601}
   - component: {fileID: 4397309817426523177}
   - component: {fileID: -3752422350247024591}
+  - component: {fileID: -3712151756032438301}
   m_Layer: 8
   m_Name: V
   m_TagString: Untagged
@@ -212,7 +213,8 @@ MonoBehaviour:
   deathEffect: {fileID: 0}
   spawnEffect: {fileID: 4670229829609038548, guid: 6babb3651b4881c4aba2f64f247d3bb8, type: 3}
   rb: {fileID: 3019179677689141630}
-  enemyCollider: {fileID: 3019179677689141631}
+  enemyPhysicalCollider: {fileID: 3019179677689141631}
+  enemyHurtBox: {fileID: -3712151756032438301}
   isBlown: 0
   isStunned: 0
   travelDirection: {x: 0, y: 0}
@@ -229,6 +231,7 @@ MonoBehaviour:
   closedHiHat: {fileID: 0}
   snare: {fileID: 0}
   bassDrum: {fileID: 0}
+  enemyStats: {fileID: 11400000, guid: 124a2ab211c6fff4b8fb4b00855dcb47, type: 2}
   fireMode: {fileID: 0}
   isTitleLetter: 0
   enemyAnimator: {fileID: 4397309817426523177}
@@ -306,3 +309,40 @@ MonoBehaviour:
   - {x: 0.054204345, y: -0.38328016, z: 0.0000019073486}
   - {x: 0.43289888, y: 0.9818152, z: 0.0000019073486}
   - {x: -0.99519265, y: 0.82055426, z: 0.0000019073486}
+--- !u!70 &-3712151756032438301
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3019179677689141602}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.16910964, y: 0.5940861}
+  m_Size: {x: 4.3251424, y: 2.816743}
+  m_Direction: 1

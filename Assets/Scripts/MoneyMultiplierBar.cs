@@ -31,10 +31,10 @@ public class MoneyMultiplierBar : MonoBehaviour
         {
             SetMultiplierModifierText(playerInventory.multiplierMultiplier,playerInventory.multiplierAdder);
             sliderFill.color = Color.yellow;
-            slider.maxValue = 10f;
+            slider.maxValue = 10.0f;
             slider.value = multiplier;
 
-            moneyMultiplierText.SetText(MathF.Ceiling(multiplier).ToString()); 
+            moneyMultiplierText.SetText(MathF.Round(multiplier,1).ToString("F1")); 
             multiplierInteger = (int)MathF.Ceiling(multiplier);
             //animator.SetInteger("Multiplier", multiplierInteger);
             enemiesKilledText.text = playerInventory.coinsBeforeMultiplier.ToString();

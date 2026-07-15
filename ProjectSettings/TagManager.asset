@@ -9,6 +9,8 @@ TagManager:
   - Canvas
   - fireSwtich
   - titleScreenLetter
+  - Global Light
+  - Wave Set
   layers:
   - Default
   - TransparentFX

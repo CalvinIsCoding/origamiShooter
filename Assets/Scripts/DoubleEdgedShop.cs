@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class DoubleEdgedShop : MonoBehaviour
 {
@@ -23,8 +24,11 @@ public class DoubleEdgedShop : MonoBehaviour
     
     public List<ShopButton> shopButtons = new List<ShopButton>(4);
 
-    public ShopItemSO[] upgrades;
-    public ShopItemSO[] downgrades;
+   // public ShopItemSO[] upgrades;
+   // public ShopItemSO[] downgrades;
+
+    public List<ShopItemSO> downgrades;
+    public List<ShopItemSO> upgrades;
 
 
 
@@ -41,7 +45,7 @@ public class DoubleEdgedShop : MonoBehaviour
         
         //playerInventory.downgradesPurchased = 0;
         //coinUI.text = "Coins: " + coins.ToString();
-        coinUI.text = "Coins: " + playerInventory.downgradesPurchased.ToString();
+       // coinUI.text = "Coins: " + playerInventory.downgradesPurchased.ToString();
         shopExplainerSpawnedOnce = false;
 
         for (int i = 0; i < shopItemSO.Length; i++)
@@ -60,12 +64,13 @@ public class DoubleEdgedShop : MonoBehaviour
       
         ChooseItems();
         LoadPanels();
-        coinUI.text = "Coins: " + playerInventory.downgradesPurchased.ToString();
+        //coinUI.text = "Coins: " + playerInventory.downgradesPurchased.ToString();
      // CheckPurchaseable();
         if (!shopExplainerSpawnedOnce)
         {
 
             EnableShopExplainer();
+            shopExplainerSpawnedOnce=true;
         }
 
     }
@@ -89,7 +94,7 @@ public class DoubleEdgedShop : MonoBehaviour
         { 
              shopButtons[i].TitleText.text = shopItemSO[i].title;
             //shopButton[i].ShopImage = images[i];
-             shopButtons[i].PriceText.text = (shopItemSO[i].cost * -1).ToString();
+            // shopButtons[i].PriceText.text = (shopItemSO[i].cost * -1).ToString();
 
             shopButtons[i].shopItem = shopItemSO[i];
 
@@ -101,10 +106,11 @@ public class DoubleEdgedShop : MonoBehaviour
     public void ChooseItems()
     {
         //there are only three buttons so I 'm just manually assinging them here
-        shopItemSO[0] = downgrades[Random.Range(0, downgrades.Length)];
-        shopItemSO[1] = upgrades[Random.Range(0, upgrades.Length)];
-        shopItemSO[2] = downgrades[Random.Range(0, downgrades.Length)];
-        shopItemSO[3] = upgrades[Random.Range(0, upgrades.Length)];
+        
+        shopItemSO[0] = downgrades[Random.Range(0, downgrades.Count)];
+        shopItemSO[1] = upgrades[Random.Range(0, upgrades.Count)];
+        shopItemSO[2] = downgrades[Random.Range(0, downgrades.Count)];
+        shopItemSO[3] = upgrades[Random.Range(0, upgrades.Count)];
 
 
 
@@ -120,7 +126,8 @@ public class DoubleEdgedShop : MonoBehaviour
         foreach (ShopButton shopButton in doubleEdgedButton[btnNo].shopButtons) 
         {
 
-            shopButton.shopItem.numberPurchased++;
+            shopButton.shopItem.playerInventory = playerInventory;
+            shopButton.shopItem.OnPurchase();
         }
 
         /* 
@@ -150,7 +157,7 @@ public class DoubleEdgedShop : MonoBehaviour
     }
     public void ExitShop()
     {
-        SetMultiplierModifiers();
+       // SetMultiplierModifiers();
         
         Time.timeScale = 1;
         ShopMenu.SetActive(false);
@@ -180,17 +187,26 @@ public class DoubleEdgedShop : MonoBehaviour
         shopExplainer.SetActive(true);
         shopExplainerSpawnedOnce = true;
     }
+    
     public void ClearAllDowngrades()
     {
-        foreach (var shopitem in downgrades)
+        //Need the ToList() function here in order to remove items from an actively iterating list.
+        foreach (var shopitem in playerInventory.currentShopItems.ToList())
         {
-            shopitem.numberPurchased = 0;
+           shopitem.OnClearDowngrade();
         }
     }
+    
     public void SelectOption()
     {
 
     }
+
+
+
+    //New Functions dealing with modifiers
+
+
 
 
 }

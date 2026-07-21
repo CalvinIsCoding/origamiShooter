@@ -744,7 +744,7 @@ public class PlayerController : MonoBehaviour
     {  
         Vector3 distanceBetweenDirectionMarkers;
         distanceBetweenDirectionMarkers = WASDmovementDirection.transform.localPosition - airMovementDirection.transform.localPosition;
-        Debug.Log("distance between Markers" + distanceBetweenDirectionMarkers.magnitude);
+       // Debug.Log("distance between Markers" + distanceBetweenDirectionMarkers.magnitude);
         if (distanceBetweenDirectionMarkers.magnitude < 0.2f)
         {
             totalMovementDirection.gameObject.SetActive(true);

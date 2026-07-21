@@ -7,7 +7,11 @@ public class SoHeavyWeight : ShopItemSO
     public PlayerController player;
     public override void OnClearDowngrade()
     {
+        playerInventory.currentShopItems.Remove(this);
+        playerInventory.mass = playerInventory.massDefault;
+        player.rb.mass = playerInventory.mass;
         base.OnClearDowngrade();
+       
     }
 
     public override void OnPurchase()

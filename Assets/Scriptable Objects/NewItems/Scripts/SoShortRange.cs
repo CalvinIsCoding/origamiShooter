@@ -7,6 +7,7 @@ public class SoShortRange : ShopItemSO
     public override void OnClearDowngrade()
     {
         base.OnClearDowngrade();
+        playerInventory.airBulletSize = playerInventory.airBulletSizeDefault;
     }
 
     public override void OnPurchase()

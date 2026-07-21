@@ -8,6 +8,21 @@ public class SoMoreEnemies : ShopItemSO
     {
         base.OnClearDowngrade();
         playerInventory.currentShopItems.Remove(this);
+        foreach (Wave wave in waveSet.GetComponentsInChildren<Wave>())
+        {
+            if (wave.randomSpawnDisabled == true && wave.bossWave == false)
+            {
+                wave.randomSpawnDisabled = false;
+                wave.maxEnemiesSpawnedRandomly = 0;
+            }
+            else if (wave.randomSpawnDisabled == false)
+            {
+
+                wave.maxEnemiesSpawnedRandomly -= 10;
+            }
+
+
+        }
     }
 
     public override void OnPurchase()

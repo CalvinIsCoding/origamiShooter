@@ -11,6 +11,7 @@ TagManager:
   - titleScreenLetter
   - Global Light
   - Wave Set
+  - timerUI
   layers:
   - Default
   - TransparentFX

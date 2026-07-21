@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -54,11 +55,15 @@ public class FireMode : MonoBehaviour
     public Enemy[] enemies;
     public ShopItemSO[] downgrades;
 
+    public FireActivator[] remainingActivators;
+
     public float multiplierMultiplier;
     public float multiplierAdder;
 
     public ScreenShake screenEffects;
     public bool shakingStarted = false;
+
+    public GameObject clockEnemy;
     void Start()
     {
         //resetting the boss defaults here to prevent a bug where bossIsDead is true at the very start of a boss wave before the boss spawns
@@ -123,6 +128,10 @@ public class FireMode : MonoBehaviour
         
         if (activatorCounter >= requiredActivators && isBossWave == false)
         {
+            if(clockEnemy.activeInHierarchy == true)
+            {
+                clockEnemy.SetActive(false);
+            }
             
             StartFireAndEndWave();
 
@@ -216,10 +225,20 @@ public class FireMode : MonoBehaviour
             moneyMultiplier = moneyMultiplierTimer - moneyMultiplierTimeElapsed;
             moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier,isFireMode);
 
-            if(moneyMultiplier <= 0f)
+            FindAnyObjectByType<Clock>();
+
+            if (moneyMultiplier <= 0f && clockEnemy.activeInHierarchy == false)
             {
                 //playerInventory.lives = 1;
-                player.timerExhausted = true;
+
+                //player.timerExhausted = true;
+
+            //    remainingActivators = GameObject.FindObjectsByType<FireActivator>();
+
+                clockEnemy.SetActive(true);
+             //   activatorCounter = 0;
+            //    StartCoroutine(DisableFireMode());
+              //  activatorsSpawned = false;
                 Debug.Log("timer Exhausted");
             }
             

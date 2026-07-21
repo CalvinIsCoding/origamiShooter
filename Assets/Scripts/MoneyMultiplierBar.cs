@@ -43,11 +43,11 @@ public class MoneyMultiplierBar : MonoBehaviour
         if (isFireMode)
         {
             //when fire mode I want to reuse the same slider object in order to reduce UI clutter. The bar will fill from bottom to top when it switches to indicate the number of enemies killed.
-            sliderFill.color = Color.blue;
-            slider.maxValue = gameStats.enemiesSpawnedThisWave;
-            slider.value = playerInventory.coinsBeforeMultiplier;
+           // sliderFill.color = Color.blue;
+           // slider.maxValue = gameStats.enemiesSpawnedThisWave;
+           // slider.value = playerInventory.coinsBeforeMultiplier;
 
-            enemiesKilledText.text = playerInventory.coinsBeforeMultiplier.ToString();
+            //enemiesKilledText.text = playerInventory.coinsBeforeMultiplier.ToString();
             //moneyMultiplierText.text = multiplier.ToString();
             //multiplierInteger = (int)multiplier;
             //animator.SetInteger("Multiplier", multiplierInteger);

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class Clock : MonoBehaviour
@@ -74,10 +75,17 @@ public class Clock : MonoBehaviour
         
         clockRb.AddForce(direction.normalized * dashSpeed,ForceMode2D.Impulse);
     }
-    public void ShootRomanNumerals()
+    public void ShootRomanNumerals(float angleShooting)
     {
-        
-        Instantiate(romanNumeral,firePoint.transform.position,firePoint.transform.rotation);
+        float realAngleShooting = angleShooting -( 20f * Mathf.PI/  180f);
+        for (int i = 0; i < 3; i++)
+        {
+            firePoint.transform.rotation = Quaternion.Euler(0, 0, (realAngleShooting * Mathf.Rad2Deg) - 90);
+            firePoint.transform.localPosition = new Vector2(Mathf.Cos(realAngleShooting) * 1f, Mathf.Sin(realAngleShooting) * 1f);
+            Instantiate(romanNumeral, firePoint.transform.position, firePoint.transform.rotation);
+            realAngleShooting += (20f * Mathf.PI / 180f);
+        }
+
     }
     
     public void BlowAir()
@@ -111,10 +119,10 @@ public class Clock : MonoBehaviour
             this.transform.position = cornerCoordinates[randomCorner];
             yield return new WaitForSeconds(0.2f);
 
-            angleShooting = Mathf.Atan2(-cornerCoordinates[randomCorner].x, -cornerCoordinates[randomCorner].y);
-            firePoint.transform.rotation = Quaternion.Euler(0, 0, angleShooting * Mathf.Rad2Deg);
+            angleShooting = Mathf.Atan2(-cornerCoordinates[randomCorner].y - 0.1f, -cornerCoordinates[randomCorner].x);
+           
             clockSprite.color = Color.white;
-            ShootRomanNumerals();
+            ShootRomanNumerals(angleShooting);
             yield return new WaitForSeconds(1f);
            
         }

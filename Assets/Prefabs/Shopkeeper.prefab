@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1947870743713967006}
   - component: {fileID: -7005994759170172791}
   - component: {fileID: 8109490639828049601}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shopkeeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

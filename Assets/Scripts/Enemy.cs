@@ -203,13 +203,13 @@ public class Enemy : MonoBehaviour
 		}
 		
     }
-	public void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet, Vector2 airBulletVelocity)
+	public virtual void Push(float knockBack, Rigidbody2D bullet,GameObject _bullet, Vector2 airBulletVelocity)
     {
-		
+		//Debug.Log("Pushing Fire");
 		Vector2 perpendicularToVelocity;
 		Vector2 positionComponentOfForce;
 		//Vector3 clampedCrossProduct;
-		positionVector = new Vector2(_bullet.transform.position.x - enemy.transform.position.x, _bullet.transform.position.y - enemy.transform.position.y);
+		positionVector = new Vector2(_bullet.transform.position.x - this.enemy.transform.position.x, _bullet.transform.position.y - this.enemy.transform.position.y);
 		positionMagnitude = Mathf.Sqrt(Mathf.Pow(positionVector.x, 2) + Mathf.Pow(positionVector.y, 2));
 
 		velocityMagnitude = Mathf.Sqrt(Mathf.Pow(airBulletVelocity.x, 2) + Mathf.Pow(airBulletVelocity.y, 2));

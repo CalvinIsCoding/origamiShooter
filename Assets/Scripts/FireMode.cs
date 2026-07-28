@@ -239,7 +239,7 @@ public class FireMode : MonoBehaviour
              //   activatorCounter = 0;
             //    StartCoroutine(DisableFireMode());
               //  activatorsSpawned = false;
-                Debug.Log("timer Exhausted");
+               // Debug.Log("timer Exhausted");
             }
             
                

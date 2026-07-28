@@ -176,8 +176,8 @@ public class FirePlace : MonoBehaviour
 
             flameAudio.pitch = (((float)gameStats.enemiesKilledThisWave + 1f) / ((float)gameStats.enemiesSpawnedThisWave + 0.1f)) + 0.7f;
 
-            Debug.Log("enemies killed this wave" + gameStats.enemiesKilledThisWave + " Enemies spawned this wave" + gameStats.enemiesSpawnedThisWave);
-            Debug.Log("pitch" + flameAudio.pitch);
+            //Debug.Log("enemies killed this wave" + gameStats.enemiesKilledThisWave + " Enemies spawned this wave" + gameStats.enemiesSpawnedThisWave);
+           // Debug.Log("pitch" + flameAudio.pitch);
 
             timeSinceLastSound = 0f;
 

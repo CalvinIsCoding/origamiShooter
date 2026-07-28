@@ -29,7 +29,7 @@ public class Clock : MonoBehaviour
     void Start()
     {
         timerUI = GameObject.FindWithTag("timerUI");
-        Debug.Log("corner Coordinate array size" + cornerCoordinates.Count);
+        //Debug.Log("corner Coordinate array size" + cornerCoordinates.Count);
         cornerCoordinates[0] = new Vector2(-1.5f, -0.7f);
         cornerCoordinates[1] = new Vector3(-1.5f, 0.5f, 0f);
         cornerCoordinates[2] = new Vector3(1.5f, -0.7f, 0f);
@@ -41,7 +41,7 @@ public class Clock : MonoBehaviour
         clockSpawnArea = Camera.main.ScreenToWorldPoint(timerUI.transform.position);
         this.transform.position = new Vector3(clockSpawnArea.x - 1.5f, clockSpawnArea.y + 0.8f, 0f);
         
-        Debug.Log("Clock Spawn" + clockSpawnArea);
+       // Debug.Log("Clock Spawn" + clockSpawnArea);
         player = GameObject.FindWithTag("Player");
         playerRb = player.GetComponent<Rigidbody2D>();
         attackOccurring = false;

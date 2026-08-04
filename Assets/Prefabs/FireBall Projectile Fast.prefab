@@ -114,7 +114,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 8448
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -230,7 +230,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -346,7 +346,7 @@ MonoBehaviour:
   spawnEffect: {fileID: 0}
   rb: {fileID: 4670038149642537929}
   enemyPhysicalCollider: {fileID: 4829218390775614493}
-  enemyHurtBox: {fileID: 0}
+  enemyHurtBox: {fileID: 7625892924693359302}
   isBlown: 0
   isStunned: 0
   travelDirection: {x: 0, y: 0}
@@ -367,5 +367,5 @@ MonoBehaviour:
   fireMode: {fileID: 0}
   isTitleLetter: 0
   enemyAnimator: {fileID: 2682192373605246528}
-  startingForce: 4
+  startingForce: 2
   startingForceVector: {x: 0, y: 0}

@@ -59,8 +59,7 @@ public class PercentCircles : MonoBehaviour
     {
         
 
-        if (timer >= 1.5f)
-        {   
+         
             if(!_enemy.isBlown)
             {
                 Vector2 direction = playerRb.position - rb.position;
@@ -69,8 +68,7 @@ public class PercentCircles : MonoBehaviour
                 rb.AddForceAtPosition(direction.normalized * (percentDotMovementForce), this.rb.position);
             }
                 
-        }
-        timer += Time.fixedDeltaTime;
+        
     }
 
 }

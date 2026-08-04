@@ -28,6 +28,8 @@ public class Wave : MonoBehaviour
     public float testNumber = 10f;
     public int maxEnemiesSpawnedRandomly = 999;
     public int enemiesSpawnedThisWave = 0;
+
+    public bool fireOn;
     private void Awake()
     {
         if (spawnRate <= 0)

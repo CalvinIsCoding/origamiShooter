@@ -64,6 +64,8 @@ public class FireMode : MonoBehaviour
     public bool shakingStarted = false;
 
     public GameObject clockEnemy;
+
+    
     void Start()
     {
         //resetting the boss defaults here to prevent a bug where bossIsDead is true at the very start of a boss wave before the boss spawns
@@ -351,7 +353,16 @@ public class FireMode : MonoBehaviour
             enemy.Die(false);
         }
         Debug.Log("is Fire Mode is true");
-        isFireMode = true;
+
+        if(currentWave.fireOn == true)
+        {
+            isFireMode = true;
+        }
+        else
+        {
+            isFireMode=false;
+        }
+       
     }
     IEnumerator GameCompletion()
     {

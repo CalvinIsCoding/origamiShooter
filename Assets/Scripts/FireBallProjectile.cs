@@ -41,10 +41,10 @@ public class FireBallProjectile : Enemy
         Wall wall = collision.gameObject.GetComponent<Wall>();
         Player player = collision.gameObject.GetComponent<Player>();
 
-        if (wall != null || player != null)
-        {
+       // if (wall != null || player != null)
+       // {
             Destroy(this.gameObject);
-        }
+      //  }
 
     }
 

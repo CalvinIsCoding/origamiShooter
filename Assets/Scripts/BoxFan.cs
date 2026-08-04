@@ -106,7 +106,7 @@ public class BoxFan : MonoBehaviour
         hitTime = 0.15f;
         timeSlowDown = 0.90f;
 
-        minimumDistanceFromFire = 0.65f;
+        minimumDistanceFromFire = 0.45f;
         defaultLayer = 0;
         angryFromHit = false;
 
@@ -155,7 +155,7 @@ private void FixedUpdate()
         }
         else
         {
-            boxFanMovementForce = 7.75f;
+            boxFanMovementForce = 3.75f;
             boxFanDirection = DetermineDirection();
             //float angleOfFirePointOfShooting = Mathf.Atan2(playerRb.position.y - rb.position.y, playerRb.position.y - rb.position.y);
             firePoint.transform.rotation = Quaternion.Euler(0, 0, angleOfFirePoint * Mathf.Rad2Deg);

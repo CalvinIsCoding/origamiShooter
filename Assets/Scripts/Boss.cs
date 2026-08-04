@@ -104,7 +104,7 @@ public class Boss : MonoBehaviour
 	public void Die()
 	{
 		BossObject.bossIsDead = true;
-        playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
+       // playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
 		Destroy(this.gameObject);
 
 	}

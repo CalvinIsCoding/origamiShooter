@@ -17,8 +17,9 @@ GameObject:
   - component: {fileID: 1729237584644953157}
   - component: {fileID: 6754974623444560407}
   - component: {fileID: 439881304497260504}
+  - component: {fileID: -706159352686094087}
   m_Layer: 0
-  m_Name: FireBall Projectile
+  m_Name: Queue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +148,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.5
+  m_Mass: 1
   m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -369,3 +370,32 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1729237584644953157}
   startingForce: 1
   startingForceVector: {x: 0, y: 0}
+  explosion: {fileID: 7497191370091837722, guid: dffe444174c590f49b1f8bf78c98552c, type: 3}
+  deathTime: 6
+--- !u!114 &-706159352686094087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787040646988971386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e9c348444038d24eb54935e78c6a2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PercentCircles
+  player: {fileID: 0}
+  playerRb: {fileID: 0}
+  bc: {fileID: 0}
+  percentDotSprite: {fileID: 960780850050090026}
+  dotTransform1: {fileID: 0}
+  dotTransform2: {fileID: 0}
+  _enemy: {fileID: 439881304497260504}
+  angle: 0
+  dAngle: 0
+  rb: {fileID: 8610042347151135668}
+  dot: {fileID: 0}
+  N: {fileID: 0}
+  NE: {fileID: 0}
+  E: {fileID: 0}
+  isBlink: 0

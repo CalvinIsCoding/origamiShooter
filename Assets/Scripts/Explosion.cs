@@ -21,6 +21,7 @@ public class Explosion : MonoBehaviour
     {
 
         Enemy enemy = collision.GetComponent<Enemy>();
+        PlayerController player = collision.GetComponent<PlayerController>();
 
         // Border border = collision.GetComponent<Border>();
         // Tilemap tilemap = GetComponent<Tilemap>();
@@ -34,6 +35,10 @@ public class Explosion : MonoBehaviour
 
         }
     
+        if (player != null)
+        {
+            player.PlayerDeath();
+        }
         /*if (border != null)
         {
             Border.instance.DestroyBorder(transform.position, radius);

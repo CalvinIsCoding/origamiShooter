@@ -21,11 +21,11 @@ public class BoxFanAirBullet: MonoBehaviour
     private float shrinkTime;
     void Start()
     {
-        knockBack = 10f;
+        knockBack = 3f;
         rb.linearVelocity = transform.right * speed;
         Destroy(boxFanAirBullet, 1.0f);
         shrinkTime = 1.5f;
-        currentScale = 0.2f;
+        currentScale = 0.3f;
         StartCoroutine(ShrinkBullets());
     }
     private void Update()

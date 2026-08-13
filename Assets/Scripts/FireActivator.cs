@@ -26,13 +26,17 @@ public class FireActivator : MonoBehaviour
     public ShopItemSO fireSwitchMover;
     public ShopItemSO fireSwitchAirBurst;
 
+    public bool colliderHit;
+
     public PlayerInventory playerInventory;
+   // public bool coll
     void Start()
     {
         fireMode = FindAnyObjectByType<FireMode>();
         player = FindAnyObjectByType<PlayerController>().transform;
         rb.linearDamping = Random.Range(0.25f, 0.5f);
         activatorForce = Random.Range(0.1f, 0.2f);
+        colliderHit = false;
        // Debug.Log("damping" + rb.linearDamping);
        // Debug.Log("force" + activatorForce);
     }
@@ -61,14 +65,15 @@ public class FireActivator : MonoBehaviour
     {
         PlayerController player = outsideCollider.GetComponent<PlayerController>();
         WallDetection wallDetection = outsideCollider.GetComponent<WallDetection>();
-        if (player != null)
+        if (player != null && colliderHit == false)
         {
+            colliderHit = true;
             fireMode.activatorCounter++;
             animator.SetBool("SwitchActivated", true);
             fireActivatorCollider.enabled = false;
 
             SwitchSound = player.FanSoundFX;
-            SwitchSound.pitch = 0.9f + (0.05f * gameStats.wavesSurvived);
+            SwitchSound.pitch = 0.9f + (0.05f );
             SwitchSound.PlayOneShot(switchClicks[fireMode.activatorCounter - 1]);
             this.fireActivatorCollider.enabled = false;
 

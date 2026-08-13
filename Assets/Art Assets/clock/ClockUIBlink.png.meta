@@ -1,0 +1,442 @@
+fileFormatVersion: 2
+guid: a14ea41f7868f2b4f83abda6db82ec59
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5339202243968467878
+    second: ClockUIBlink_0
+  - first:
+      213: 1551908593127993230
+    second: ClockUIBlink_1
+  - first:
+      213: -8940276620478712233
+    second: ClockUIBlink_2
+  - first:
+      213: 734561255432585943
+    second: ClockUIBlink_3
+  - first:
+      213: -8945761080245879757
+    second: ClockUIBlink_4
+  - first:
+      213: -8156311630231841409
+    second: ClockUIBlink_5
+  - first:
+      213: -5880567456981207447
+    second: ClockUIBlink_6
+  - first:
+      213: 4182650081639847260
+    second: ClockUIBlink_7
+  - first:
+      213: -5747129467854079548
+    second: ClockUIBlink_8
+  - first:
+      213: -1325043991450142300
+    second: ClockUIBlink_9
+  - first:
+      213: 8548983366482318785
+    second: ClockUIBlink_10
+  - first:
+      213: 8296720781550666348
+    second: ClockUIBlink_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ClockUIBlink_0
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 2867
+        width: 877
+        height: 1122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5c7a40f8d757e5b0800000000000000
+      internalID: -5339202243968467878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_1
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 2861
+        width: 876
+        height: 1131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8f2541a4ac798510800000000000000
+      internalID: 1551908593127993230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_2
+      rect:
+        serializedVersion: 2
+        x: 2915
+        y: 2851
+        width: 903
+        height: 1138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 756f2a208c1cde380800000000000000
+      internalID: -8940276620478712233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_3
+      rect:
+        serializedVersion: 2
+        x: 4275
+        y: 2873
+        width: 890
+        height: 1113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d203d7e19fa13a00800000000000000
+      internalID: 734561255432585943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_4
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1517
+        width: 877
+        height: 1122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33cfd66b1b54ad380800000000000000
+      internalID: -8945761080245879757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_5
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 1511
+        width: 876
+        height: 1131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f75d4aa49c5fece80800000000000000
+      internalID: -8156311630231841409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_6
+      rect:
+        serializedVersion: 2
+        x: 2915
+        y: 1501
+        width: 903
+        height: 1138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 966b9e0fd07046ea0800000000000000
+      internalID: -5880567456981207447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_7
+      rect:
+        serializedVersion: 2
+        x: 4275
+        y: 1523
+        width: 890
+        height: 1113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c55d6efa612cb0a30800000000000000
+      internalID: 4182650081639847260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_8
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 167
+        width: 877
+        height: 1122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c9b066d2381e30b0800000000000000
+      internalID: -5747129467854079548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_9
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 161
+        width: 876
+        height: 1131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a939d9928f7c9de0800000000000000
+      internalID: -1325043991450142300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_10
+      rect:
+        serializedVersion: 2
+        x: 2915
+        y: 151
+        width: 903
+        height: 1138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c5d6edc31714a670800000000000000
+      internalID: 8548983366482318785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockUIBlink_11
+      rect:
+        serializedVersion: 2
+        x: 4275
+        y: 173
+        width: 890
+        height: 1113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c62cde8c79fd32370800000000000000
+      internalID: 8296720781550666348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ClockUIBlink_0: -5339202243968467878
+      ClockUIBlink_1: 1551908593127993230
+      ClockUIBlink_10: 8548983366482318785
+      ClockUIBlink_11: 8296720781550666348
+      ClockUIBlink_2: -8940276620478712233
+      ClockUIBlink_3: 734561255432585943
+      ClockUIBlink_4: -8945761080245879757
+      ClockUIBlink_5: -8156311630231841409
+      ClockUIBlink_6: -5880567456981207447
+      ClockUIBlink_7: 4182650081639847260
+      ClockUIBlink_8: -5747129467854079548
+      ClockUIBlink_9: -1325043991450142300
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

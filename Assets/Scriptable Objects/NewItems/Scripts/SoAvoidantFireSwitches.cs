@@ -7,7 +7,7 @@ public class SoAvoidantFireSwitches : ShopItemSO
     public override void OnClearDowngrade()
     {
         //base.OnClearDowngrade();
-        shop = FindAnyObjectByType<DoubleEdgedShop>();
+        shop = FindAnyObjectByType<McPickThreeShop>();
         playerInventory.currentShopItems.Remove(this);
         shop.downgrades.Add(this);
         return;

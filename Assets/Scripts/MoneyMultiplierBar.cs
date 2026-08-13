@@ -18,6 +18,7 @@ public class MoneyMultiplierBar : MonoBehaviour
     public GameStatsScript gameStats;
     public PlayerInventory playerInventory;
     public Image sliderFill;
+   // public float currentTime;
     
     public void SetMaxMoneyMultiplier(float maxMultiplier)
     {
@@ -34,7 +35,7 @@ public class MoneyMultiplierBar : MonoBehaviour
             slider.maxValue = 10.0f;
             slider.value = multiplier;
 
-            moneyMultiplierText.SetText(MathF.Round(multiplier,1).ToString("F1")); 
+            moneyMultiplierText.SetText("00:0" + MathF.Round(multiplier,1).ToString("F1")); 
             multiplierInteger = (int)MathF.Ceiling(multiplier);
             //animator.SetInteger("Multiplier", multiplierInteger);
             enemiesKilledText.text = playerInventory.coinsBeforeMultiplier.ToString();

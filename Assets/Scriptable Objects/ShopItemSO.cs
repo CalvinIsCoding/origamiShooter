@@ -18,16 +18,17 @@ public class ShopItemSO : ScriptableObject
     public float multiplierAdder;
     public float multiplierMultiplier = 1f;
     public PlayerInventory playerInventory;
-    public DoubleEdgedShop shop;
+    public McPickThreeShop shop;
   
     public virtual void resetToDefaults()
     {
         numberPurchased = 0;
         //shop = FindAnyObjectByType<DoubleEdgedShop>();
+        shop = FindAnyObjectByType<McPickThreeShop>();
     }
     public virtual void OnPurchase()
     {
-        shop = FindAnyObjectByType<DoubleEdgedShop>();
+        shop = FindAnyObjectByType<McPickThreeShop>();
         playerInventory.currentShopItems.Add(this);
         shop.upgrades.Remove(this);
         shop.downgrades.Remove(this);

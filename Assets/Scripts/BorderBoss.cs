@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 using System.Collections;
-using UnityEditor.Build;
+//using UnityEditor.Build;
 using UnityEngine;
 
 public class BorderBoss : Boss
@@ -40,7 +40,8 @@ public class BorderBoss : Boss
     public int angleToStartSweep;
     public int widthOfSweep;
     public int lastAttack;
-    public int numberOfAttacks = 3;
+    public int numberOfAttacks = 4;
+    public int numberOfNonBombAttacksInARow;
     
 
 
@@ -95,7 +96,22 @@ public class BorderBoss : Boss
             {
                 attackType = UnityEngine.Random.Range(1, numberOfAttacks + 1);
             }
-           
+
+
+           //This logic here is to make the bombs spawn more often so the player doesn't get stuck dodging bullets for a few years.
+            if(attackType != 3)
+            {
+                numberOfNonBombAttacksInARow++;
+            }
+            else
+            {
+                numberOfNonBombAttacksInARow = 0;
+            }
+
+            if(numberOfNonBombAttacksInARow > 4)
+            {
+                attackType = 3;
+            }
 
             switch (attackType)
             {
@@ -110,6 +126,10 @@ public class BorderBoss : Boss
 
                 case 3:
                     StartCoroutine(SpawnQueueBombs());
+                    break;
+
+                case 4:
+                    StartCoroutine(Bursts());
                     break;
 
             }
@@ -145,10 +165,64 @@ public class BorderBoss : Boss
          */
 
     }
+    public IEnumerator Spawn()
+    {
+        attackOccurring = true;
+        rotationSpeed = 150f;
+        yield return new WaitForSeconds(2f);
+        attackOccurring = false;
+    }
+    public IEnumerator Bursts()
+    {
+        attackOccurring = true;
+        rotationSpeed = (100f);
+        yield return new WaitForSeconds(1f);
+        do
+        {
+            RotateUntil(75f, 200);
+            yield return new WaitForEndOfFrame();
+        }
+        while (rotationSet == false);
+        yield return new WaitForSeconds(0.1f);
+        for (int i = 0; i < 4; i++)
+        {
+            ShootFireball();
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(0.1f);
+        do
+        {
+            RotateUntil(105f, 200);
+            yield return new WaitForEndOfFrame();
+        }
+        while (rotationSet == false);
+        yield return new WaitForSeconds(0.1f);
+        for (int i = 0; i < 4; i++)
+        {
+            ShootFireball();
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(0.1f);
+        do
+        {
+            RotateUntil(45f, 200);
+            yield return new WaitForEndOfFrame();
+        }
+        while (rotationSet == false);
+        yield return new WaitForSeconds(0.1f);
+        for (int i = 0; i < 4; i++)
+        {
+            ShootFireball();
+            yield return new WaitForSeconds(0.1f);
+        }
+        rotationSpeed = -100f;
+        yield return new WaitForSeconds(1f);
+        attackOccurring = false;
+    }
     public IEnumerator SpawnQueueBombs()
     {
         attackOccurring = true;
-        rotationSpeed = -100f;
+        rotationSpeed = -50f;
         yield return new WaitForSeconds(1f);
         do
         {
@@ -180,6 +254,8 @@ public class BorderBoss : Boss
         bool secondSweepDone = false;
         float timeSinceLoopStarted = 0f;
         attackOccurring = true;
+        rotationSpeed = (200f);
+        yield return new WaitForSeconds(1f);
         int sweeps;
         do
         {
@@ -239,7 +315,8 @@ public class BorderBoss : Boss
             yield return new WaitForEndOfFrame();
         }
         while (firstSweepDone == false);
-        yield return new WaitForSeconds(0.5f);
+        rotationSpeed = -100f;
+        yield return new WaitForSeconds(1f);
         attackOccurring = false;
     }
 

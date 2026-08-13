@@ -145,7 +145,7 @@ public class FireMode : MonoBehaviour
         }
         if(isBossWave && bossObject.bossIsDead && !currentlyDisablingFireMode)
         {
-           
+            Debug.Log("ending boss wave");
             EndBossWave();
             currentlyDisablingFireMode = true;
         }

@@ -830,7 +830,7 @@ MonoBehaviour:
   angleToStartSweep: 0
   widthOfSweep: 0
   lastAttack: 0
-  numberOfAttacks: 3
+  numberOfAttacks: 4
 --- !u!50 &4188502255973728979
 Rigidbody2D:
   serializedVersion: 5

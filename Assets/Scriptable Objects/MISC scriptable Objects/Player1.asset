@@ -44,7 +44,8 @@ MonoBehaviour:
   BulletLivingTimeDefault: 0.8
   BulletShrinkTimeDefault: 0.5
   currentModifiers: []
-  currentShopItems: []
+  currentShopItems:
+  - {fileID: 11400000, guid: 0e8847b2a72c62944a7bda2bec7e8d62, type: 2}
   references:
     version: 2
     RefIds: []

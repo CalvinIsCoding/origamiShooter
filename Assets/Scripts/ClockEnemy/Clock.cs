@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
 public class Clock : MonoBehaviour
@@ -24,6 +25,9 @@ public class Clock : MonoBehaviour
     public List<Vector2> cornerCoordinates = new List<Vector2>(4);
     public GameObject romanNumeral;
     public GameObject firePoint;
+    public FireMode fireMode;
+    public bool enemyMode;
+    public Light2D RedEyeLight;
 
 
     void Start()
@@ -34,6 +38,7 @@ public class Clock : MonoBehaviour
         cornerCoordinates[1] = new Vector3(-1.5f, 0.5f, 0f);
         cornerCoordinates[2] = new Vector3(1.5f, -0.7f, 0f);
         cornerCoordinates[3] = new Vector3(1.5f, 0.5f, 0f);
+        fireMode = GameObject.FindAnyObjectByType<FireMode>();
     }
     void OnEnable()
     {
@@ -45,17 +50,18 @@ public class Clock : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerRb = player.GetComponent<Rigidbody2D>();
         attackOccurring = false;
+        
     }
     
 
    
     void Update()
     {
-        if (!attackOccurring)
+        if (!attackOccurring && enemyMode == true)
         {
             clockSprite.color = Color.white;
-            attackType = UnityEngine.Random.Range(1, 3);
 
+            RedEyeLight.enabled = true;
             switch (attackType)
             {
                 case 1:
@@ -67,7 +73,18 @@ public class Clock : MonoBehaviour
                     break;
 
             }
+            attackType = UnityEngine.Random.Range(1, 3);
         }
+
+        if(fireMode.moneyMultiplier > 0 || enemyMode == false)
+        {
+            this.transform.position = new Vector3(-0.944f, 1.139f, 0);
+            RedEyeLight.enabled = false;
+            attackType = 1; //I do this here because I want Dash attack to always be the first attack type
+         
+        }
+
+
 
     }
     public void Dash()
@@ -126,7 +143,7 @@ public class Clock : MonoBehaviour
             yield return new WaitForSeconds(1f);
            
         }
-        clockSprite.color = Color.green;
+        //clockSprite.color = Color.green;
         yield return new WaitForSeconds(1f);
         attackOccurring = false;
 
@@ -152,7 +169,7 @@ public class Clock : MonoBehaviour
     }
     void Rest()
     {
-        clockSprite.color = Color.blue;
+        //clockSprite.color = Color.blue;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

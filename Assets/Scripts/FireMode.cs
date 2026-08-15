@@ -72,7 +72,7 @@ public class FireMode : MonoBehaviour
         //bossObject.resetToDefaults();
         waveHasStarted = false;
         currentlyDisablingFireMode = false;
-        moneyMultiplier = 0;
+        moneyMultiplier = 10f;
         activatorWaitTime = timers.activatorWaitTime;
         moneyMultiplierTimer = 10f;
         moneyMultiplierTimeElapsed = 0f;
@@ -132,7 +132,9 @@ public class FireMode : MonoBehaviour
         {
             if(clockEnemy.activeInHierarchy == true)
             {
-                clockEnemy.SetActive(false);
+                //clockEnemy.SetActive(false);
+                clockEnemy.GetComponent<Animator>().SetBool("WaveOver", true);
+                clockEnemy.GetComponent<Clock>().enemyMode = false;
             }
             
             StartFireAndEndWave();
@@ -191,6 +193,8 @@ public class FireMode : MonoBehaviour
         globalAudio.PlayOneShot(fireEnding);
         waveHasStarted = false;
         StartCoroutine(WaitToStartWave());
+
+        
         //currentlyDisablingFireMode = false;
 
     }
@@ -228,20 +232,21 @@ public class FireMode : MonoBehaviour
             moneyMultiplierBar.SetMoneyMultiplierBar(moneyMultiplier,isFireMode);
 
             FindAnyObjectByType<Clock>();
+            clockEnemy.GetComponent<Animator>().SetFloat("Time", moneyMultiplier);
 
-            if (moneyMultiplier <= 0f && clockEnemy.activeInHierarchy == false)
+            if (moneyMultiplier <= 0f)
             {
                 //playerInventory.lives = 1;
 
                 //player.timerExhausted = true;
 
-            //    remainingActivators = GameObject.FindObjectsByType<FireActivator>();
-
-                clockEnemy.SetActive(true);
-             //   activatorCounter = 0;
-            //    StartCoroutine(DisableFireMode());
-              //  activatorsSpawned = false;
-               // Debug.Log("timer Exhausted");
+                //    remainingActivators = GameObject.FindObjectsByType<FireActivator>();
+                clockEnemy.GetComponent<Clock>().enemyMode = true;
+                // clockEnemy.SetActive(true);
+                //   activatorCounter = 0;
+                //    StartCoroutine(DisableFireMode());
+                //  activatorsSpawned = false;
+                // Debug.Log("timer Exhausted");
             }
             
                
@@ -336,6 +341,7 @@ public class FireMode : MonoBehaviour
       
 
         activatorsSpawned = true;
+        clockEnemy.GetComponent<Animator>().SetBool("WaveOver", false);
 
     }
     IEnumerator BeginBossWave()

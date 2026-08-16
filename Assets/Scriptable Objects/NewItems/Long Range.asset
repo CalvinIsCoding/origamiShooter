@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c014ec287caa747bbaa3ee890fc850, type: 3}
   m_Name: Long Range
   m_EditorClassIdentifier: Assembly-CSharp::SoLongRange
-  title: Longer Range Airstream
-  description: 
+  title: Long-Range
+  description: Your airstream shrinks more slowly and travels further
   cost: 0
   numberPurchased: 0
   modifier: 0
@@ -21,3 +21,5 @@ MonoBehaviour:
   multiplierMultiplier: 1
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   shop: {fileID: 0}
+  bulletLivingTimeModifier: 0.2
+  longerRange2: {fileID: 11400000, guid: 9902d5444ece7a94296bd2db7ceb913f, type: 2}

@@ -23,9 +23,9 @@ public class AirBullet: MonoBehaviour
 
     //shrink bullets
     private int shrinkFrames = 30;
-    private float DefaultAirBulletScale;
-    private float currentAirBulletScale;
-    private float shrinkTime;
+    public float DefaultAirBulletScale;
+    public float currentAirBulletScale;
+    public float shrinkTime;
     public float bulletLivingTime;
    
     void OnEnable()
@@ -144,7 +144,7 @@ public class AirBullet: MonoBehaviour
 
 
     }
-    IEnumerator ShrinkBullets()
+   public IEnumerator ShrinkBullets()
     {
         
         for (int i = 1; i < shrinkFrames; i++)
@@ -164,7 +164,7 @@ public class AirBullet: MonoBehaviour
         
 
     }
-    IEnumerator DeactivateBullets()
+    public IEnumerator DeactivateBullets()
     {
         //Want the bullets to deactivate no matter what after a certain amount of time to limit range etc. SetActive
         //Doesn't have a method for this.

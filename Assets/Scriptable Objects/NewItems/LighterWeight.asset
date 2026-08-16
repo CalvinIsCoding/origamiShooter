@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12c00345d7b6f34bbd9e2d5c3fefc10, type: 3}
   m_Name: LighterWeight
   m_EditorClassIdentifier: Assembly-CSharp::SoLightWeight
-  title: Light Weight
-  description: Player loses some mass
+  title: Light-Weight
+  description: You get faster, but less stable
   cost: 0
   numberPurchased: 0
   modifier: 0
@@ -22,3 +22,4 @@ MonoBehaviour:
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   shop: {fileID: 0}
   massIncrement: 0.1
+  lightweight2: {fileID: 11400000, guid: 5870815ede0ec3441a118e5ed2dee9ee, type: 2}

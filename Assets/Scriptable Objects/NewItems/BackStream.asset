@@ -21,3 +21,4 @@ MonoBehaviour:
   multiplierMultiplier: 1
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   shop: {fileID: 0}
+  backstream2: {fileID: 11400000, guid: 9c65fa662cf4f804b867256fc481c517, type: 2}

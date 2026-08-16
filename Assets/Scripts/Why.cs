@@ -109,7 +109,7 @@ public class Why : MonoBehaviour
         angle = Mathf.Atan2(direction.y, direction.x);
         rb.rotation = 90 + (angle * (180 / Mathf.PI));
 
-        if (timer > 0.5f)
+        if (timer > 0.5f /_enemy.speedModifier)
         {
             
             
@@ -117,7 +117,7 @@ public class Why : MonoBehaviour
             {
                 rb.AddForceAtPosition(direction.normalized * (planeMovementForce * 40), this.rb.position);
             }
-            timer -= 0.5f;
+            timer -= 0.5f/_enemy.speedModifier;
 
         }
 
@@ -166,4 +166,5 @@ public class Why : MonoBehaviour
 
         return selectedSprite;
     }
+   
 }

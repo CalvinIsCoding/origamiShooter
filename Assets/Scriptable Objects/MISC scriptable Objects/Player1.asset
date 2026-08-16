@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Player 1
   coins: 0
-  lives: 25
+  lives: 49
   coinsBeforeMultiplier: 0
-  multiplier: 0
+  multiplier: -0.0008993149
   multiplierMultiplier: 1
   multiplierAdder: 0
   downgradesPurchased: 0
@@ -28,11 +28,13 @@ MonoBehaviour:
   timeTillOverheat: 5
   airBulletSize: 0.6
   airBulletSpeed: 5
-  maxLives: 25
+  maxLives: 31
   mass: 1
   knockBack: 6
   BulletLivingTime: 0.8
   BulletShrinkTime: 0.5
+  backBulletSize: 0.4
+  fireSwitchMagnetStrength: 1
   timeTillOverheatDefault: 5
   airBulletSizeDefault: 0.6
   airBulletSpeedDefault: 5
@@ -43,9 +45,14 @@ MonoBehaviour:
   requiredActivatorsDefault: 3
   BulletLivingTimeDefault: 0.8
   BulletShrinkTimeDefault: 0.5
+  backBulletSizeDefault: 0.3
+  fireSwitchMagnetStrengthDefault: 1
   currentModifiers: []
   currentShopItems:
+  - {fileID: 11400000, guid: 2ab92aff2cf91e646b4dc12f3beb71ba, type: 2}
   - {fileID: 11400000, guid: 0e8847b2a72c62944a7bda2bec7e8d62, type: 2}
+  - {fileID: 11400000, guid: 82ca5aa5dcbffd54b9be4404a527cebc, type: 2}
+  - {fileID: 11400000, guid: 9c65fa662cf4f804b867256fc481c517, type: 2}
   references:
     version: 2
     RefIds: []

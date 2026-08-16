@@ -4,6 +4,7 @@ using UnityEngine;
 public class SoKnockBack : ShopItemSO
 {
     public float knockBackIncrement;
+    public ShopItemSO knockback2;
     public override void OnClearDowngrade()
     {
         base.OnClearDowngrade();
@@ -13,5 +14,6 @@ public class SoKnockBack : ShopItemSO
     {
         base.OnPurchase();
         playerInventory.knockBack += knockBackIncrement;
+        shop.upgrades.Add(knockback2);
     }
 }

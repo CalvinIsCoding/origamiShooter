@@ -22,3 +22,4 @@ MonoBehaviour:
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   shop: {fileID: 0}
   airStreamSizeIncrement: 0.1
+  biggerAirStream2: {fileID: 11400000, guid: bc211477c3f4ee747a71e6e01239b4f3, type: 2}

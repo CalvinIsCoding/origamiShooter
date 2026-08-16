@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766646c8abec6564d89ba9ccf868bcb0, type: 3}
   m_Name: Max Health Increase
   m_EditorClassIdentifier: Assembly-CSharp::SoIncreaseMaxHealth
-  title: Increase Max Health
+  title: Max-Health
   description: Max Health Increased by 25%
   cost: 0
   numberPurchased: 0
@@ -22,3 +22,4 @@ MonoBehaviour:
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   shop: {fileID: 0}
   maxHealthIncrement: 1.25
+  maxhealth2: {fileID: 11400000, guid: 621f6b099c2758d4fa3c8ca822300685, type: 2}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053c8fce183d41145830b54a01c08bbb, type: 3}
   m_Name: Knockback
   m_EditorClassIdentifier: Assembly-CSharp::SoKnockBack
-  title: Increased Knock Back
-  description: Your fan kicks the enemies back a tad more
+  title: Knock-Back
+  description: Your fan kicks the enemies back more
   cost: 0
   numberPurchased: 0
   modifier: 0
@@ -22,3 +22,4 @@ MonoBehaviour:
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   shop: {fileID: 0}
   knockBackIncrement: 0.2
+  knockback2: {fileID: 11400000, guid: 2c89aeb8085bf2942a744101e88b2896, type: 2}

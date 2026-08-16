@@ -4,6 +4,7 @@ using UnityEngine;
 public class SoLightWeight : ShopItemSO
 {
     public float massIncrement;
+    public ShopItemSO lightweight2;
     public override void OnClearDowngrade()
     {
         base.OnClearDowngrade();
@@ -13,5 +14,6 @@ public class SoLightWeight : ShopItemSO
     {
         base.OnPurchase();
         playerInventory.mass = playerInventory.mass - massIncrement;
+        shop.upgrades.Add(lightweight2);
     }
 }

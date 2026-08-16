@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2789697411693779191}
   - component: {fileID: 3768618109727446638}
   - component: {fileID: 3268442327947266428}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,8 @@ MonoBehaviour:
   deathEffect: {fileID: 0}
   spawnEffect: {fileID: 4670229829609038548, guid: 6babb3651b4881c4aba2f64f247d3bb8, type: 3}
   rb: {fileID: 2789697411693779185}
-  enemyCollider: {fileID: 2789697411693779184}
+  enemyPhysicalCollider: {fileID: 0}
+  enemyHurtBox: {fileID: 0}
   isBlown: 0
   isStunned: 0
   travelDirection: {x: 0, y: 0}

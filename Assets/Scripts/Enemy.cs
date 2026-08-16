@@ -73,6 +73,8 @@ public class Enemy : MonoBehaviour
 	string ClipName;
 	float NextStateLength;
 
+	public float speedModifier;
+
 	//AnimationUtility animationUtility;
 
     void Start()
@@ -90,7 +92,8 @@ public class Enemy : MonoBehaviour
         spawnDelayTime = 1f;
 		isStunned = false;
 		this.enemyPhysicalCollider.enabled = true;
-		
+		speedModifier = 1f;
+
         //StartCoroutine(Blink());
 
 
@@ -278,21 +281,24 @@ public class Enemy : MonoBehaviour
 	
 	}
 
-	void ColorTurn()
+	public virtual void ColorTurn()
     {
 		switch (wavesSaved)
 		{
 			case (1):
 				sprite.color = Color.red;
+				speedModifier = 1.5f;
 				
 				break;
 
 			case (2):
 				sprite.color = Color.blue;
+				speedModifier = 1.8f;
 				break;
 
 			case (3):
 				sprite.color = Color.magenta;
+				speedModifier = 2.0f;
 				break;
 		}
 

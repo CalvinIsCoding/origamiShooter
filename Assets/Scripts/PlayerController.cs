@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
     //object pools
     public ObjectPool airBulletPool;
     public ObjectPool fireBulletPool;
+    public ObjectPool backAirBulletPool;
 
    public float airBurstCooldownPeriod = 5f;
    public float timeSinceLastAirBurst = 5f;
@@ -650,10 +651,10 @@ public class PlayerController : MonoBehaviour
         if (playerInventory.currentShopItems.Any(shopItem => shopItem is SoBackStream))
         {
 
-            bullet = airBulletPool.GetPooledObject();
+            bullet = backAirBulletPool.GetPooledObject();
             if (bullet != null)
             {
-                
+                //bullet.transform.localScale = bullet.transform.localScale * 0.5f;
                 bullet.transform.position = firePointBack.transform.position;
                 bullet.transform.rotation = firePointBack.transform.rotation;
                 

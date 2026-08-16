@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6865439719042251565}
   - component: {fileID: 8876982246020264357}
   - component: {fileID: 219017651708879130}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ampersand
   m_TagString: Untagged
   m_Icon: {fileID: 0}

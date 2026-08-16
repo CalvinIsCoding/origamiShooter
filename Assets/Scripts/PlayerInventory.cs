@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerInventory", menuName = "Scriptable Objects/New Player Inventory")]
@@ -32,6 +33,8 @@ public class PlayerInventory : ScriptableObject
     public float knockBack;
     public float BulletLivingTime;
     public float BulletShrinkTime;
+    public float backBulletSize;
+    public float fireSwitchMagnetStrength;
 
     //Default Stats
     //These are here so that I can reference a default value in the modifier scripts instead of having a magic number.
@@ -48,6 +51,8 @@ public class PlayerInventory : ScriptableObject
     public int requiredActivatorsDefault = 3;
     public float BulletLivingTimeDefault = 0.8f;
     public float BulletShrinkTimeDefault = 0.5f;
+    public float backBulletSizeDefault = 0.3f;
+    public float fireSwitchMagnetStrengthDefault = 1f;
 
     [SerializeReference]
     public List<Modifier> currentModifiers = new List<Modifier>();
@@ -72,6 +77,8 @@ public class PlayerInventory : ScriptableObject
         requiredActivators = requiredActivatorsDefault;
         BulletLivingTime = BulletLivingTimeDefault;
         BulletShrinkTime = BulletShrinkTimeDefault;
+        backBulletSize = backBulletSizeDefault;
+        fireSwitchMagnetStrength = fireSwitchMagnetStrengthDefault;
 
 
 }

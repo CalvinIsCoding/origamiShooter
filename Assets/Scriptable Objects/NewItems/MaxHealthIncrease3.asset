@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00011ee00a608094ca28d73b429e9f2c, type: 3}
-  m_Name: Attractve Fire Switches
-  m_EditorClassIdentifier: Assembly-CSharp::SoAttractiveFireSwitches
-  title: Magnetic Fire Switches
-  description: Fire Switches become attracted to you
+  m_Script: {fileID: 11500000, guid: 7029d7424e66545408f133abc5114576, type: 3}
+  m_Name: MaxHealthIncrease3
+  m_EditorClassIdentifier: Assembly-CSharp::SoIncreaseMaxHealth3
+  title: Max-Health++
+  description: Max Health Increased by ANOTHER 25%
   cost: 0
   numberPurchased: 0
   modifier: 0
@@ -21,3 +21,4 @@ MonoBehaviour:
   multiplierMultiplier: 1
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   shop: {fileID: 0}
+  maxHealthIncrement: 1.25

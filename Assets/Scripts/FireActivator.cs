@@ -29,6 +29,10 @@ public class FireActivator : MonoBehaviour
     public bool colliderHit;
 
     public PlayerInventory playerInventory;
+
+    public int lastPulse;
+    public Vector3 baseScale;
+    public float postFireTimer;
    // public bool coll
     void Start()
     {
@@ -37,14 +41,17 @@ public class FireActivator : MonoBehaviour
         rb.linearDamping = Random.Range(0.25f, 0.5f);
         activatorForce = Random.Range(0.1f, 0.2f);
         colliderHit = false;
-       // Debug.Log("damping" + rb.linearDamping);
-       // Debug.Log("force" + activatorForce);
+        // Debug.Log("damping" + rb.linearDamping);
+        // Debug.Log("force" + activatorForce);
+        baseScale = new Vector3(0.1f, 0.1f, 0.1f);
+        lastPulse = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
-            
+           
+        Pulse();
     }
     private void FixedUpdate()
     {
@@ -94,7 +101,7 @@ public class FireActivator : MonoBehaviour
     void AttractToPlayer()
     {
         directionTowardsPlayer = player.position - this.transform.position;
-        rb.AddForce(directionTowardsPlayer.normalized * activatorForce);
+        rb.AddForce(directionTowardsPlayer.normalized * activatorForce * playerInventory.fireSwitchMagnetStrength);
     }
     void AvoidPlayer()
     {
@@ -102,5 +109,29 @@ public class FireActivator : MonoBehaviour
         
         rb.AddForce(-directionTowardsPlayer.normalized * activatorForce);
         //rb.AddForce(collisionDirection.normalized * 0.25f);
+    }
+    void Pulse()
+    {
+        if (fireMode.moneyMultiplier > 0)
+        {
+            lastPulse = (int)fireMode.moneyMultiplier;
+            this.transform.localScale = baseScale * (1 + ((0.2f + (0.2f/(lastPulse + 1)))   * Mathf.Pow(fireMode.moneyMultiplier - lastPulse, 2))); //+ (0.2f / (lastPulse + 1)))
+
+        }
+        else
+        {
+            lastPulse = 1;
+            postFireTimer += Time.deltaTime;
+            if(postFireTimer > 1)
+            {
+                postFireTimer = 0;
+            }
+            this.transform.localScale = baseScale * (1 + (0.4f * Mathf.Pow(postFireTimer - lastPulse, 2)));
+        }
+
+
+       
+
+        
     }
 }

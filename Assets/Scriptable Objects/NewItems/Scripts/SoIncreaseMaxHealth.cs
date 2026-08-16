@@ -4,6 +4,7 @@ using UnityEngine;
 public class SoIncreaseMaxHealth : ShopItemSO
 {
     public float maxHealthIncrement;
+    public ShopItemSO maxhealth2;
     public override void OnClearDowngrade()
     {
         base.OnClearDowngrade();
@@ -14,5 +15,6 @@ public class SoIncreaseMaxHealth : ShopItemSO
         base.OnPurchase();
         playerInventory.maxLives = (int)(playerInventory.maxLives * maxHealthIncrement);
         playerInventory.lives += (int)(playerInventory.maxLives * (maxHealthIncrement - 1));
+        shop.upgrades.Add(maxhealth2);
     }
 }

@@ -1,7 +1,22 @@
 fileFormatVersion: 2
-guid: a9ef74866512b1c4cb62396390d306f7
+guid: cd5bf185dc5350d43844ae19ef0265b2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -937963281741566607
+    second: MultipleGrateWhiteOut_0
+  - first:
+      213: -4889238408059830529
+    second: MultipleGrateWhiteOut_1
+  - first:
+      213: -6796013313777471528
+    second: MultipleGrateWhiteOut_2
+  - first:
+      213: 3075941887924620349
+    second: MultipleGrateWhiteOut_3
+  - first:
+      213: 7099633158901491827
+    second: MultipleGrateWhiteOut_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,9 +82,9 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -80,7 +95,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -93,34 +108,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
+  - serializedVersion: 4
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -136,127 +125,134 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Quit Button_0
+      name: MultipleGrateWhiteOut_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 303
-        width: 1277
-        height: 303
+        x: 185
+        y: 345
+        width: 1129
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ef6e08cafd94ef9459aacc3f68f94c59
-      internalID: 1286596534
+      spriteID: 17d2f636d5fabf2f0800000000000000
+      internalID: -937963281741566607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Quit Button_1
+      name: MultipleGrateWhiteOut_1
       rect:
         serializedVersion: 2
-        x: 1277
-        y: 303
-        width: 1277
-        height: 303
+        x: 1676
+        y: 327
+        width: 1154
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8e55c8955eb21ce439ff0be5abee6421
-      internalID: 1879256933
+      spriteID: ffeb569729fe52cb0800000000000000
+      internalID: -4889238408059830529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Quit Button_2
+      name: MultipleGrateWhiteOut_2
       rect:
         serializedVersion: 2
-        x: 2554
-        y: 303
-        width: 1277
-        height: 303
+        x: 3167
+        y: 316
+        width: 1173
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8cdc50178264e7d458e0a31b5f93f36b
-      internalID: -1860845465
+      spriteID: 8dfe77fd5e5bfa1a0800000000000000
+      internalID: -6796013313777471528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Quit Button_3
+      name: MultipleGrateWhiteOut_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1277
-        height: 303
+        x: 166
+        y: 59
+        width: 1174
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a5c895cbc2219a64fb53ab9090d84c40
-      internalID: 1812410141
+      spriteID: d3ccd7b99d0ffaa20800000000000000
+      internalID: 3075941887924620349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Quit Button_4
+      name: MultipleGrateWhiteOut_4
       rect:
         serializedVersion: 2
-        x: 1277
-        y: 0
-        width: 1277
-        height: 303
+        x: 1666
+        y: 54
+        width: 1178
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c4d6fab61ce9b3842a6e0f97a999f46a
-      internalID: 66942360
+      spriteID: 37868e71eb6f68260800000000000000
+      internalID: 7099633158901491827
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
-      Quit Button_0: 1286596534
-      Quit Button_1: 1879256933
-      Quit Button_2: -1860845465
-      Quit Button_3: 1812410141
-      Quit Button_4: 66942360
-      Quit Button_5: 1481507908
+      MultipleGrateWhiteOut_0: -937963281741566607
+      MultipleGrateWhiteOut_1: -4889238408059830529
+      MultipleGrateWhiteOut_2: -6796013313777471528
+      MultipleGrateWhiteOut_3: 3075941887924620349
+      MultipleGrateWhiteOut_4: 7099633158901491827
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

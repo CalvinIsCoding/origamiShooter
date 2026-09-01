@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
+//using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerInventory", menuName = "Scriptable Objects/New Player Inventory")]
@@ -44,7 +44,7 @@ public class PlayerInventory : ScriptableObject
     public float timeTillOverheatDefault = 5f;
     public float airBulletSizeDefault = 0.6f;
     public float airBulletSpeedDefault = 5f;
-    public int maxLivesDefault = 25;
+    public int maxLivesDefault = 35;
     public float massDefault = 1f;
     public float knockBackDefault = 15f;
     public int requiredActivators;

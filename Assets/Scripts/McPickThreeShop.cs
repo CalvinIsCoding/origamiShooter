@@ -29,6 +29,7 @@ public class McPickThreeShop : MonoBehaviour
 
     public List<ShopItemSO> downgrades;
     public List<ShopItemSO> upgrades;
+    public List<ShopItemSO> remainingUpgrades;
 
 
 
@@ -38,6 +39,7 @@ public class McPickThreeShop : MonoBehaviour
     public bool shopExplainerSpawnedOnce;
     public GameObject shopExplainer;
     public DoubleEdgedButton[] doubleEdgedButton = new DoubleEdgedButton[2];
+    public int itemChoice;
    
 
     void Start()
@@ -99,6 +101,8 @@ public class McPickThreeShop : MonoBehaviour
             // shopButtons[i].PriceText.text = (shopItemSO[i].cost * -1).ToString();
 
             shopButtons[i].shopItem = shopItemSO[i];
+            shopButtons[i].ShopImage.sprite = shopItemSO[i].itemSprite;
+            shopButtons[i].DescriptionText.text = shopItemSO[i].description;
 
         }
         
@@ -115,10 +119,23 @@ public class McPickThreeShop : MonoBehaviour
         shopItemSO[2] = downgrades[Random.Range(0, downgrades.Count)];
         shopItemSO[3] = upgrades[Random.Range(0, upgrades.Count)];
         */
+        Debug.Log("Remaining Upgrades Before Equalizing " + remainingUpgrades.Count);
+        remainingUpgrades = upgrades.ToList();
+        Debug.Log("Remaining Upgrades After Equalizing " + remainingUpgrades.Count);
+        for (int i = 0; i < 3; i++)
+        {
+            itemChoice = Random.Range(0, remainingUpgrades.Count);
+            Debug.Log("item choice " + itemChoice);
+            
+             shopItemSO[i] = remainingUpgrades[itemChoice];
+            remainingUpgrades.Remove(shopItemSO[i]);
+        }
 
-        shopItemSO[0] = upgrades[Random.Range(0, upgrades.Count)];
-        shopItemSO[1] = upgrades[Random.Range(0, upgrades.Count)];
-        shopItemSO[2] = upgrades[Random.Range(0, upgrades.Count)];
+
+        
+
+        // shopItemSO[1] = upgrades[Random.Range(0, upgrades.Count)];
+        // shopItemSO[2] = upgrades[Random.Range(0, upgrades.Count)];
 
 
 

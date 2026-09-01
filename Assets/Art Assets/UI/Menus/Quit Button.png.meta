@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6d5cdb1d6b4e99b469107391fc22036b
+guid: a9ef74866512b1c4cb62396390d306f7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -67,7 +67,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 16384
     resizeAlgorithm: 0
@@ -80,7 +80,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -93,8 +93,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
+  - serializedVersion: 4
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -106,7 +106,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -119,9 +119,22 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -136,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Music Button_0
+      name: Quit Button_0
       rect:
         serializedVersion: 2
         x: 0
@@ -146,18 +159,19 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f07ab784fe4f1340af9595f830da6b3
-      internalID: 103665014
+      spriteID: ef6e08cafd94ef9459aacc3f68f94c59
+      internalID: 1286596534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Music Button_1
+      name: Quit Button_1
       rect:
         serializedVersion: 2
         x: 1277
@@ -167,18 +181,19 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d97e3a31d1be5243b8088c3f8d9adc9
-      internalID: -1757366987
+      spriteID: 8e55c8955eb21ce439ff0be5abee6421
+      internalID: 1879256933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Music Button_2
+      name: Quit Button_2
       rect:
         serializedVersion: 2
         x: 2554
@@ -188,18 +203,19 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb809159b4652564dbb2c4f210892a8b
-      internalID: 543728196
+      spriteID: 8cdc50178264e7d458e0a31b5f93f36b
+      internalID: -1860845465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Music Button_3
+      name: Quit Button_3
       rect:
         serializedVersion: 2
         x: 0
@@ -209,18 +225,19 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 019a1d4766f29b740b7d265924f291ac
-      internalID: -1080177548
+      spriteID: a5c895cbc2219a64fb53ab9090d84c40
+      internalID: 1812410141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Music Button_4
+      name: Quit Button_4
       rect:
         serializedVersion: 2
         x: 1277
@@ -230,17 +247,19 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 936bc145a0f14fa46afc0d8c8503ddfa
-      internalID: -987114471
+      spriteID: c4d6fab61ce9b3842a6e0f97a999f46a
+      internalID: 66942360
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -250,13 +269,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
-      Music Button_0: 103665014
-      Music Button_1: -1757366987
-      Music Button_2: 543728196
-      Music Button_3: -1080177548
-      Music Button_4: -987114471
-      Music Button_5: -541570685
+      Quit Button_0: 1286596534
+      Quit Button_1: 1879256933
+      Quit Button_2: -1860845465
+      Quit Button_3: 1812410141
+      Quit Button_4: 66942360
+      Quit Button_5: 1481507908
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

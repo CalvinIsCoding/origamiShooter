@@ -1,7 +1,19 @@
 fileFormatVersion: 2
-guid: 23d751d084cbaa84682997caf674ae2d
+guid: c6428505bb23b354d9fdfebda72eb082
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -320396352135940295
+    second: Fire Switch 2 spawn_0
+  - first:
+      213: 8990961960699714892
+    second: Fire Switch 2 spawn_1
+  - first:
+      213: 2764934916772293176
+    second: Fire Switch 2 spawn_2
+  - first:
+      213: -7317061656996424502
+    second: Fire Switch 2 spawn_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,9 +79,9 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -80,7 +92,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -93,34 +105,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
+  - serializedVersion: 4
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -136,127 +122,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Back Button_0
+      name: Fire Switch 2 spawn_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 303
-        width: 1277
-        height: 303
+        x: 57
+        y: 545
+        width: 444
+        height: 327
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4026003e1b3734347ac2af2af4c23d71
-      internalID: 1900312033
+      spriteID: 9373b9b1739bd8bf0800000000000000
+      internalID: -320396352135940295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Back Button_1
+      name: Fire Switch 2 spawn_1
       rect:
         serializedVersion: 2
-        x: 1277
-        y: 303
-        width: 1277
-        height: 303
+        x: 563
+        y: 552
+        width: 437
+        height: 302
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 791fbef165039b342941f4bb19fe65ea
-      internalID: 357622750
+      spriteID: c4d5e80644056cc70800000000000000
+      internalID: 8990961960699714892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Back Button_2
+      name: Fire Switch 2 spawn_2
       rect:
         serializedVersion: 2
-        x: 2554
-        y: 303
-        width: 1277
-        height: 303
+        x: 63
+        y: 53
+        width: 438
+        height: 298
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d9c265da5fb090e44a6dfaaec4cfbc55
-      internalID: -352641004
+      spriteID: 83a694558a50f5620800000000000000
+      internalID: 2764934916772293176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Back Button_3
+      name: Fire Switch 2 spawn_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1277
-        height: 303
+        x: 564
+        y: 59
+        width: 436
+        height: 283
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 49e42f8e627962444820ebb180e3b8ff
-      internalID: 1516980654
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Back Button_4
-      rect:
-        serializedVersion: 2
-        x: 1277
-        y: 0
-        width: 1277
-        height: 303
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db8cddc79b7b1ef4db95928d69028431
-      internalID: 703195887
+      spriteID: ac4d81fb033947a90800000000000000
+      internalID: -7317061656996424502
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
-      Back Button_0: 1900312033
-      Back Button_1: 357622750
-      Back Button_2: -352641004
-      Back Button_3: 1516980654
-      Back Button_4: 703195887
-      Back Button_5: -1909010792
+      Fire Switch 2 spawn_0: -320396352135940295
+      Fire Switch 2 spawn_1: 8990961960699714892
+      Fire Switch 2 spawn_2: 2764934916772293176
+      Fire Switch 2 spawn_3: -7317061656996424502
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

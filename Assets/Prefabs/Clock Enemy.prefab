@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3949095817542858269}
   - component: {fileID: 1463112168704293636}
   - component: {fileID: 4336595020102899767}
-  - component: {fileID: 3421176156331579622}
   m_Layer: 0
   m_Name: ClockHand_0
   m_TagString: Untagged
@@ -128,35 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47529ab494aeac744895eeb062d27372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpinClockHand
-  rb: {fileID: 3421176156331579622}
+  rb: {fileID: 0}
+  clockHandTransform: {fileID: 5501853344701671144}
   moneyMultiplierBar: {fileID: 0}
---- !u!50 &3421176156331579622
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384867884875920119}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 3
 --- !u!1 &2241752741596836375
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +141,7 @@ GameObject:
   - component: {fileID: 7149485278044298855}
   - component: {fileID: 7577261749635707859}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Red Eye light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +335,7 @@ GameObject:
   - component: {fileID: 6061646906125024020}
   - component: {fileID: 6506861414684594144}
   - component: {fileID: 8886906334985646227}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Clock Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

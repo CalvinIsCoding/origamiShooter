@@ -21,3 +21,4 @@ MonoBehaviour:
   multiplierMultiplier: 1
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   shop: {fileID: 0}
+  itemSprite: {fileID: -54896340, guid: adc689c23dee0d44698ac5b1b3653bfc, type: 3}

@@ -222,6 +222,8 @@ public class PlayerController : MonoBehaviour
 
          }*/
         //parry
+
+        /*
         timeSinceLastAirBurst += Time.deltaTime;
         if (Input.GetButtonDown("Fire2")  && timeSinceLastAirBurst >= airBurstCooldownPeriod)
         {
@@ -235,6 +237,7 @@ public class PlayerController : MonoBehaviour
             isBoost = true;
             StartCoroutine(boostIsActive());
         }
+        */
 
 
         CheckOverHeat();
@@ -499,7 +502,7 @@ public class PlayerController : MonoBehaviour
             playerInventory.lives--;
             StartCoroutine(TurnSpriteRed());
             StartCoroutine(screenEffects.ShakeJolt());
-            StartCoroutine(screenEffects.turnScreenBrieflyRed());
+            //StartCoroutine(screenEffects.turnScreenBrieflyRed());
         }
 
         if (playerInventory.lives <= 0)

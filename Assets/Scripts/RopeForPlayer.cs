@@ -59,6 +59,10 @@ public class RopeForPlayer : MonoBehaviour
         lineSize = Mathf.Clamp(0.1f - vectorBetweenPlayerAndAnchor.magnitude * 0.05f,0.03f,0.1f);
         lineRenderer.startWidth = lineSize;
         lineRenderer.endWidth = lineSize;
+        if(playerController.overHeatTime > 3)
+        {
+            playerController.overHeating = true;
+        }
 
         if (playerController.overHeating)
         {
@@ -69,7 +73,7 @@ public class RopeForPlayer : MonoBehaviour
     {
         vectorBetweenPlayerAndAnchor = anchor.transform.position - player.transform.position;
 
-        if (vectorBetweenPlayerAndAnchor.magnitude > 0.2f)
+        if (vectorBetweenPlayerAndAnchor.magnitude > 0.15f)
         {
             playerController.rb.AddForce(vectorBetweenPlayerAndAnchor * (vectorBetweenPlayerAndAnchor.magnitude) * 4f);
         }

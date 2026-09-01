@@ -414,7 +414,7 @@ public class FireMode : MonoBehaviour
             screenEffects.ShakeRampUp();
               
             
-            screenEffects.turnScreenRed(screenEffects.screenRed);
+            screenEffects.TurnScreenRed(screenEffects.screenRed);
         }
         else if (liveActivators == 0)
         {
@@ -422,7 +422,7 @@ public class FireMode : MonoBehaviour
             screenEffects.screenRed = false;
             shakingStarted = false;
            // screenEffects.ShakeRampUp(0f,5f,1f,2f);
-            screenEffects.turnScreenRed(screenEffects.screenRed);
+            screenEffects.TurnScreenRed(screenEffects.screenRed);
             
             
         }

@@ -17,11 +17,15 @@ public class Explosion : MonoBehaviour
     }
 
     
-    void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
 
         Enemy enemy = collision.GetComponent<Enemy>();
         PlayerController player = collision.GetComponent<PlayerController>();
+        Boss boss = collision.GetComponent<Boss>();
+        Boss boss2 = collision.GetComponentInParent<Boss>();
+        BorderBoss borderBoss2 = collision.GetComponent<BorderBoss>();
+        BorderBoss borderBoss = collision.GetComponentInParent<BorderBoss>();
 
         // Border border = collision.GetComponent<Border>();
         // Tilemap tilemap = GetComponent<Tilemap>();
@@ -38,6 +42,16 @@ public class Explosion : MonoBehaviour
         if (player != null)
         {
             player.PlayerDeath();
+        }
+
+        if(borderBoss != null)
+        {
+            borderBoss.TakeDamage(10);
+            
+        }
+        if(borderBoss2 != null)
+        {
+            borderBoss2.TakeDamage(10);
         }
         /*if (border != null)
         {

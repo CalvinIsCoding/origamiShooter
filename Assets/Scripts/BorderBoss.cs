@@ -40,16 +40,21 @@ public class BorderBoss : Boss
     public int angleToStartSweep;
     public int widthOfSweep;
     public int lastAttack;
-    public int numberOfAttacks = 4;
+    public int numberOfAttacks = 3;
     public int numberOfNonBombAttacksInARow;
-    
 
+    //public PlayerInventory playerInventory;
+
+    public PlayerController playerController;
+
+    public SpriteRenderer[] borderChildSprites = new SpriteRenderer[4];
 
 
     void Start()
     {
         setUpForStartOfAttack = false;
         enemySpawn = FindAnyObjectByType<EnemySpawn>();
+        playerController = FindAnyObjectByType<PlayerController>();
         //sweepShootingRate = 2f;
         tentatcleSpeed = 100f;
         tentacleRate = 10f;
@@ -65,6 +70,7 @@ public class BorderBoss : Boss
         
        // tentacleMotor.motorSpeed = 100f;
     }
+    
 
 
 
@@ -108,9 +114,9 @@ public class BorderBoss : Boss
                 numberOfNonBombAttacksInARow = 0;
             }
 
-            if(numberOfNonBombAttacksInARow > 4)
+            if(numberOfNonBombAttacksInARow > 3)
             {
-                attackType = 3;
+                attackType = 2;
             }
 
             switch (attackType)
@@ -121,16 +127,16 @@ public class BorderBoss : Boss
                     break;
 
                 case 2:
-                    StartCoroutine(SlowShooting());
+                    // StartCoroutine(SlowShooting());
+                    StartCoroutine(SpawnQueueBombs());
+
                     break;
 
                 case 3:
-                    StartCoroutine(SpawnQueueBombs());
-                    break;
-
-                case 4:
                     StartCoroutine(Bursts());
                     break;
+
+               
 
             }
 
@@ -593,16 +599,56 @@ public class BorderBoss : Boss
 
 
     }
-public void OnCollisionEnter2D(Collision2D collision)
-    {
-        Queue _queue = collision.gameObject.GetComponent<Queue>();
-        if (_queue != null) {
 
-            Debug.Log("collided");
-            TakeDamage(10);
-            Destroy(_queue.gameObject);
-        }
+    
+    public void OnDestroy()
+    {
+        playerInventory.lives = 0;
+        playerController.PlayerDeath();
         
+        
+    }
+    public new void TakeDamage(int damage)
+    {
+        health -= damage;
+        // otherSoundBoxFanAudioSource.PlayOneShot(injuryBoxFanAudio);
+        StartCoroutine(TurnSpriteRed());
+
+        if (health <= 0)
+        {
+
+            Die();
+        }
+    }
+
+    public new void Die()
+    {
+        BossObject.bossIsDead = true;
+        // playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
+        Destroy(this.gameObject);
+
+    }
+    IEnumerator TurnSpriteRed()
+    {
+        sprite.color = Color.red;
+
+        for (int i = 0; i < 4; i++)
+            {
+            borderChildSprites[i].color = Color.red;
+        }
+
+        //Time.timeScale = timeSlowDown;
+        //isRed = true;
+        //FanSoundFX.pitch = Random.Range(0.80f, 1.20f);
+
+       // FanSoundFX.PlayOneShot(injuryNoise, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        // Time.timeScale = 1f;
+        //isRed = false;
+        for (int i = 0; i < 4; i++)
+        {
+            borderChildSprites[i].color = Color.white;
+        }
     }
 
 }

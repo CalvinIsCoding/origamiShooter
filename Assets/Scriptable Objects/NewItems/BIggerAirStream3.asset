@@ -21,5 +21,6 @@ MonoBehaviour:
   multiplierMultiplier: 1
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   shop: {fileID: 0}
+  itemSprite: {fileID: -911205484, guid: fe4a5cc80a59e114eb982ef2ea8b7069, type: 3}
   airStreamSizeIncrement: 0.1
   threeStream: {fileID: 11400000, guid: 5bbe45b4be2fda64e8d839208282a712, type: 2}

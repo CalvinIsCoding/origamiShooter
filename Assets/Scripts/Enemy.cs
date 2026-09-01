@@ -194,8 +194,13 @@ public class Enemy : MonoBehaviour
             //this.rb.constraints = RigidbodyConstraints2D.FreezeAll;
             // this.enemyCollider.enabled = false;
             yield return new WaitForSeconds(gameTimers.enemyStunTime);
-            enemyAnimator.ResetTrigger("Stunned");
-            enemyAnimator.SetBool("Stun", false);
+			if (enemyAnimator.gameObject != null)
+			{
+                enemyAnimator.ResetTrigger("Stunned");
+                enemyAnimator.SetBool("Stun", false);
+            }
+
+            
             // this.rb.constraints = RigidbodyConstraints2D.None;
             //this.enemyCollider.enabled = true;
             isStunned = false;
@@ -307,6 +312,7 @@ public class Enemy : MonoBehaviour
     {
         maxScale = currentScale;
 		enemyHurtBox.enabled = false;
+		enemyPhysicalCollider.enabled = false;
 		
         for (int i = 0; i < growthFrames; i++)
 		{
@@ -317,7 +323,8 @@ public class Enemy : MonoBehaviour
 		}
 		isBlink = false;
 		enemyHurtBox.enabled = true;
-	}
+        enemyPhysicalCollider.enabled = true;
+    }
 	IEnumerator GrowIntoExistance()
 	{
 		Instantiate(spawnEffect,this.transform.position,Quaternion.identity);

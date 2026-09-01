@@ -6,6 +6,7 @@ using UnityEngine;
 
 
 
+
 //[CreateAssetMenu(fileName = this.GetType().Name, menuName = "Scriptable Objects/New Shop Item")]
 public class ShopItemSO : ScriptableObject
 {
@@ -19,6 +20,7 @@ public class ShopItemSO : ScriptableObject
     public float multiplierMultiplier = 1f;
     public PlayerInventory playerInventory;
     public McPickThreeShop shop;
+    public Sprite itemSprite;
   
     public virtual void resetToDefaults()
     {

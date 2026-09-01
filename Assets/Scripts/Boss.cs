@@ -84,7 +84,7 @@ public class Boss : MonoBehaviour
 		{
 
 			wavesSaved = wavesSaved + 1;
-			ColorTurn();
+			//ColorTurn();
 
 		}
 	}
@@ -92,7 +92,7 @@ public class Boss : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 		health -= damage;
-        otherSoundBoxFanAudioSource.PlayOneShot(injuryBoxFanAudio);
+       // otherSoundBoxFanAudioSource.PlayOneShot(injuryBoxFanAudio);
 
         if (health <= 0)
 		{
@@ -168,6 +168,7 @@ public class Boss : MonoBehaviour
 
 	}
 
+	/*
 	void ColorTurn()
 	{
 		switch (wavesSaved)
@@ -187,6 +188,7 @@ public class Boss : MonoBehaviour
 		}
 
 	}
+	*/
 	IEnumerator GrowIntoExistance()
 	{
 		for (int i = 0; i < growthFrames; i++)

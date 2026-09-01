@@ -43,7 +43,7 @@ public class FireActivator : MonoBehaviour
         colliderHit = false;
         // Debug.Log("damping" + rb.linearDamping);
         // Debug.Log("force" + activatorForce);
-        baseScale = new Vector3(0.1f, 0.1f, 0.1f);
+        baseScale = new Vector3(0.08f, 0.08f, 0.08f);
         lastPulse = 10;
     }
 
@@ -85,7 +85,7 @@ public class FireActivator : MonoBehaviour
             this.fireActivatorCollider.enabled = false;
 
 
-            Destroy(gameObject,0.550f);
+            Destroy(gameObject,0.50f);
             if (fireSwitchAirBurst.numberPurchased > 0)
             {
                 Instantiate(airBurst,this.transform.position,Quaternion.identity);

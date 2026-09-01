@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 733422184744434148}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 3.4, y: -0.021, z: 0}
+  m_LocalPosition: {x: 0.81, y: 0, z: 0}
   m_LocalScale: {x: 0.847386, y: 0.21303508, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -117,7 +117,7 @@ Transform:
   m_GameObject: {fileID: 3750711571599997893}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 3.91, y: 0.03, z: 0}
+  m_LocalPosition: {x: 0.91, y: 0.01, z: 0}
   m_LocalScale: {x: 0.847386, y: 0.21303508, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -193,7 +193,6 @@ GameObject:
   - component: {fileID: 8479038743680535768}
   - component: {fileID: 4818773142688947223}
   - component: {fileID: 5111203197565897907}
-  - component: {fileID: 7702285898374162200}
   - component: {fileID: 6947671265856895646}
   m_Layer: 0
   m_Name: fire grate 2
@@ -212,7 +211,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -0.31699994, y: 0, z: 0}
-  m_LocalScale: {x: 0.078755766, y: 0.54305923, z: 0.040000007}
+  m_LocalScale: {x: 0.18, y: 0.19725741, z: 0.19725741}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2718745920768635233}
@@ -267,7 +266,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -3106908819745715663, guid: c5c31548b05f9e0489e54307f327ced8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -311,45 +310,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.012835383, y: -0.011712551}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.61, y: 2.84}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5892626, y: 2.8271666}
   m_EdgeRadius: 0
---- !u!50 &7702285898374162200
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4546263141146576076}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &6947671265856895646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +345,6 @@ GameObject:
   - component: {fileID: 3262059913931611610}
   - component: {fileID: 2605232109159892729}
   - component: {fileID: 6015202386247994507}
-  - component: {fileID: 6159798458319427927}
   - component: {fileID: 6164933875213836316}
   m_Layer: 0
   m_Name: fire grate 4
@@ -392,7 +363,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0, w: -1}
   m_LocalPosition: {x: 0.31700012, y: -0.0019999743, z: 0}
-  m_LocalScale: {x: 0.078755766, y: 0.54305923, z: 0.040000007}
+  m_LocalScale: {x: 0.18, y: 0.1972574, z: 0.040000007}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8956225871630584879}
@@ -447,7 +418,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -3106908819745715663, guid: c5c31548b05f9e0489e54307f327ced8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -491,45 +462,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.006417811, y: -0.00000017881393}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.61, y: 2.84}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.65344036, y: 2.8271666}
   m_EdgeRadius: 0
---- !u!50 &6159798458319427927
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4589102974012821737}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &6164933875213836316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,7 +497,6 @@ GameObject:
   - component: {fileID: 2908329177804600163}
   - component: {fileID: 6610529450831023723}
   - component: {fileID: 2680422387964756827}
-  - component: {fileID: 7720481258868247061}
   - component: {fileID: 7082298204993866168}
   m_Layer: 0
   m_Name: fire grate 3
@@ -572,7 +515,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: -0.0059998333, y: -0.31200004, z: 0}
-  m_LocalScale: {x: 0.078755766, y: 0.54305923, z: 0.040000007}
+  m_LocalScale: {x: 0.18, y: 0.1972574, z: 0.040000007}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1161045490286629130}
@@ -627,7 +570,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -3106908819745715663, guid: c5c31548b05f9e0489e54307f327ced8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -671,45 +614,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00000017881393, y: 0.00000011920929}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.61, y: 2.84}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.61493385, y: 2.8037417}
   m_EdgeRadius: 0
---- !u!50 &7720481258868247061
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4593978556294403656}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &7082298204993866168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +649,7 @@ GameObject:
   - component: {fileID: 438327095233408}
   - component: {fileID: 2713705817665194070}
   - component: {fileID: 4188502255973728979}
+  - component: {fileID: 157529390770709758}
   m_Layer: 0
   m_Name: Border Boss
   m_TagString: Untagged
@@ -767,7 +684,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4788357060019944264}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b63c82f6338a3246bc0bc503f153d58, type: 3}
   m_Name: 
@@ -778,7 +695,7 @@ MonoBehaviour:
   rb: {fileID: 4188502255973728979}
   isBlown: 0
   travelDirection: {x: 0, y: 0}
-  sprite: {fileID: 0}
+  sprite: {fileID: 5645456497919476438}
   isBlink: 0
   isInvulnerable: 0
   invulnerabilityTimeAfterHit: 1.5
@@ -831,6 +748,13 @@ MonoBehaviour:
   widthOfSweep: 0
   lastAttack: 0
   numberOfAttacks: 4
+  numberOfNonBombAttacksInARow: 0
+  playerController: {fileID: 0}
+  borderChildSprites:
+  - {fileID: 5645456497919476438}
+  - {fileID: 4818773142688947223}
+  - {fileID: 6610529450831023723}
+  - {fileID: 2605232109159892729}
 --- !u!50 &4188502255973728979
 Rigidbody2D:
   serializedVersion: 5
@@ -839,7 +763,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4788357060019944264}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -856,8 +780,24 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &157529390770709758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788357060019944264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76facdcf7d4258d45acaf8103fa0cfc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BorderBossSpawnSequence
+  grates: {fileID: 0}
+  targetPosition: {x: 0, y: 0.75, z: 0}
+  borderBoss: {fileID: 2713705817665194070}
+  rb: {fileID: 4188502255973728979}
 --- !u!1 &5775708730263437262
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,7 +824,7 @@ Transform:
   m_GameObject: {fileID: 5775708730263437262}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 3.49, y: -0.03, z: 0}
+  m_LocalPosition: {x: 0.87, y: -0.01, z: 0}
   m_LocalScale: {x: 0.847386, y: 0.21303508, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -965,7 +905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1424496557058619043
 Transform:
   m_ObjectHideFlags: 0
@@ -1051,7 +991,6 @@ GameObject:
   - component: {fileID: 8246992540574869866}
   - component: {fileID: 5645456497919476438}
   - component: {fileID: 5355213038681137275}
-  - component: {fileID: 4067991096282636915}
   - component: {fileID: 1529094551726241600}
   m_Layer: 0
   m_Name: fire grate 1
@@ -1069,8 +1008,8 @@ Transform:
   m_GameObject: {fileID: 8199434287573194110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.007, y: 0.311, z: 0}
-  m_LocalScale: {x: 0.078755766, y: 0.54305923, z: 0.040000007}
+  m_LocalPosition: {x: -0.007, y: 0.335, z: 0}
+  m_LocalScale: {x: 0.18, y: 0.19725737, z: 0.95}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3944937679573975243}
@@ -1125,10 +1064,10 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -3106908819745715663, guid: c5c31548b05f9e0489e54307f327ced8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -1169,45 +1108,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00641793, y: 0.011712432}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.61, y: 2.84}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6020982, y: 2.8271668}
   m_EdgeRadius: 0
---- !u!50 &4067991096282636915
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8199434287573194110}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &1529094551726241600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,7 +1158,7 @@ Transform:
   m_GameObject: {fileID: 8293893453249020475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 3.83, y: -0.01, z: 0}
+  m_LocalPosition: {x: 0.86, y: 0.01, z: 0}
   m_LocalScale: {x: 0.847386, y: 0.21303508, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

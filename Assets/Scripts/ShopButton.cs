@@ -14,6 +14,7 @@ public class ShopButton : MonoBehaviour
     public Animator ShopButtonAnimator;
     public ShopItemSO shopItem;
     public Modifier modifier;
+    public TMP_Text DescriptionText;
 
    
     void Update()

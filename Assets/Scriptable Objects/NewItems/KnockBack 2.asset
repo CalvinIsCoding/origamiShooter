@@ -21,5 +21,6 @@ MonoBehaviour:
   multiplierMultiplier: 1
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   shop: {fileID: 0}
+  itemSprite: {fileID: 1996772295, guid: 739448b1e32d52a478b602894521bb49, type: 3}
   knockBackIncrement: 0
   knockback3: {fileID: 11400000, guid: 02e3a36cf14fa2340a6e31e663cdea47, type: 2}

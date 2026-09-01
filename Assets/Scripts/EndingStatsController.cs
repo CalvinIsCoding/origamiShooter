@@ -15,7 +15,7 @@ public class EndingStatsController : MonoBehaviour
     public TMP_Text enemiesKilledTitle;
     public TMP_Text wavesSurvivedTitle;
 
-    public TMP_Text[] endScreenTexts = new TMP_Text[3];
+    public TMP_Text[] endScreenTexts = new TMP_Text[2];
     public GameObject quitButton;
     public GameObject restartButton;
 
@@ -28,7 +28,7 @@ public class EndingStatsController : MonoBehaviour
     {
        
 
-        moneyEarnedText.SetText(gameStats.totalMoneyEarned.ToString());
+       // moneyEarnedText.SetText(gameStats.totalMoneyEarned.ToString());
        
         enemiesKilledText.SetText(gameStats.totalEnemiesKilled.ToString());
         wavesSurvivedText.SetText(gameStats.wavesSurvived.ToString());

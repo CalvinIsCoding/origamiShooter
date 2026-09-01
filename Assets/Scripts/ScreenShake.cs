@@ -98,7 +98,7 @@ public class ScreenShake : MonoBehaviour
     }
     
 
-    public void turnScreenRed(bool screenRed)
+    public IEnumerator TurnScreenRed(bool screenRed)
     {
         if (screenRed)
         {
@@ -116,9 +116,7 @@ public class ScreenShake : MonoBehaviour
         filterColor.a = redFilterOpacity;
         redFilter.color = filterColor;
         
-    }
-    public IEnumerator turnScreenBrieflyRed(float strength = 0.2f, float strengthVelocity = 1f, float smoothTime = 0.1f)
-    {
+    
         
         filterColor.a = strength;
         redFilter.color = filterColor;

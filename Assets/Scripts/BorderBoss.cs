@@ -608,6 +608,8 @@ public class BorderBoss : Boss
         
         
     }
+
+    //Used new keyword here instead of override because upon export, these functions did not work properly.
     public new void TakeDamage(int damage)
     {
         health -= damage;
@@ -628,7 +630,7 @@ public class BorderBoss : Boss
         Destroy(this.gameObject);
 
     }
-    IEnumerator TurnSpriteRed()
+    public new IEnumerator TurnSpriteRed()
     {
         sprite.color = Color.red;
 

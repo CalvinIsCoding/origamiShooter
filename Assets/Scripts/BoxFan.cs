@@ -66,10 +66,11 @@ public class BoxFan : MonoBehaviour
 
     //check if close to wall
     private float minimumDistanceFromFire;
+    public ContactFilter2D contactFilter = new ContactFilter2D();
     private int defaultLayer;
     // public FirePlace firePlace;
     FirePlace firePlace;
-    public ContactFilter2D contactFilter = new ContactFilter2D();
+    
     private bool angryFromHit;
 
 
@@ -235,26 +236,7 @@ private void FixedUpdate()
         overHeating = false;
 
     }
-   public  IEnumerator TurnSpriteRed()
-    {
-        boxFanSprite.color = Color.red;
-        Time.timeScale = timeSlowDown;
-        isRed = true;
-        //angryFromHit = true;
-        yield return new WaitForSeconds(hitTime * timeSlowDown);
-        Time.timeScale = 1f;
-        isRed = false;
-        if (boxFanSprite == null)
-        {
-            //do nothing
-        }
-        else
-        {
-            boxFanSprite.color = Color.white;
-        }
-        
-        
-    }
+  
     public IEnumerator GettingLessAngry()
     {
         float angerTime = 1.5f;

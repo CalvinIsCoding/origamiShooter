@@ -39,7 +39,7 @@ public class Boss : MonoBehaviour
 
 	public EnemySpawn enemySpawn;
 	private int waveSpawned;
-	private bool isRed;
+	public bool isRed;
 	public int wavesSaved;
 	//public ShopManager shopManager;
 	public PlayerInventory playerInventory;
@@ -53,6 +53,9 @@ public class Boss : MonoBehaviour
 
 	public AudioSource otherSoundBoxFanAudioSource;
     public AudioClip injuryBoxFanAudio;
+
+	public float hitTime;
+	public float timeSlowDown;
 
 
 
@@ -70,9 +73,11 @@ public class Boss : MonoBehaviour
 		spriteToggle = false;
 		waveSpawned = enemySpawn.waveNumber;
 		wavesSaved = 0;
+        hitTime = 0.15f;
+        timeSlowDown = 0.90f;
 
-		//StartCoroutine(Blink());
-		maxScale = this.transform.localScale.x;
+        //StartCoroutine(Blink());
+        maxScale = this.transform.localScale.x;
 		currentScale = 0;
 		
 		StartCoroutine(GrowIntoExistance());
@@ -92,20 +97,26 @@ public class Boss : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 		health -= damage;
-       // otherSoundBoxFanAudioSource.PlayOneShot(injuryBoxFanAudio);
-
+        // otherSoundBoxFanAudioSource.PlayOneShot(injuryBoxFanAudio);
+		
+        
         if (health <= 0)
 		{
 			
 			Die();
 		}
+		else
+		{
+            StartCoroutine(TurnSpriteRed());
+        }
 	}
 
 	public void Die()
 	{
 		BossObject.bossIsDead = true;
-       // playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
-		Destroy(this.gameObject);
+        // playerInventory.coinsBeforeMultiplier = playerInventory.coinsBeforeMultiplier + wavesSaved + 1;
+        
+        Destroy(this.gameObject,0.1f); //timer is here so that when turnspritered() is called, the timescale doesn't get stuck on 0.5f
 
 	}
 	public void Push(float knockBack, Rigidbody2D bullet, GameObject _bullet)
@@ -207,4 +218,24 @@ public class Boss : MonoBehaviour
 		yield return new WaitForSeconds(invulnerabilityTimeAfterHit);
 		isInvulnerable = false;
 	}
+    public virtual IEnumerator TurnSpriteRed()
+    {
+        sprite.color = Color.red;
+        Time.timeScale = 0.8f;
+        isRed = true;
+        //angryFromHit = true;
+        yield return new WaitForSeconds(0.05f);
+        Time.timeScale = 1f;
+        isRed = false;
+        if (sprite == null)
+        {
+            //do nothing
+        }
+        else
+        {
+            sprite.color = Color.white;
+        }
+
+
+    }
 }

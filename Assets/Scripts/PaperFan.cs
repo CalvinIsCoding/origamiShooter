@@ -23,6 +23,7 @@ public class PaperFan : Boss
     public Vector2 playerDirection;
     public float timeBetweenSlowBullets;
     public float timeBetweenFastBullets;
+    public Vector2 destinationPosition;
   //  public EnemySpawn enemySpawn;
 
 
@@ -37,9 +38,9 @@ public class PaperFan : Boss
 
         timeSinceLastShot = 0f;
         health = BossObject.health;
-        timeBetweenSlowBullets = 0.8f;
+        timeBetweenSlowBullets = 0.6f;
         timeBetweenFastBullets = 0.1f;
-        airPushBackForce = 0.2f;
+        airPushBackForce = 2.0f;
         numberOfAttacks = 3;
 
     }
@@ -61,9 +62,13 @@ public class PaperFan : Boss
                 attackType = (attackType % numberOfAttacks) + 1;
                 preventAttackRepeat = false;
             }
+            else if (lastAttack != 3)
+            {
+                attackType = 3;
+            }
             else
             {
-                attackType = UnityEngine.Random.Range(3, numberOfAttacks + 1);
+                attackType = UnityEngine.Random.Range(1, numberOfAttacks + 1);
             }
 
 
@@ -73,16 +78,17 @@ public class PaperFan : Boss
             switch (attackType)
             {
                 case 1:
-                    Debug.Log("bslow gust");
-                    StartCoroutine(SlowBigGustsAttack());
                     
+                    Debug.Log("fast gust");
+                    StartCoroutine(FastBigGustsAttack());
+
                     break;
 
                 case 2:
                     // StartCoroutine(SlowShooting());
-                    Debug.Log("fast gust");
-                    StartCoroutine(FastBigGustsAttack());
 
+                    Debug.Log("bslow gust");
+                    StartCoroutine(SlowBigGustsAttack());
                     break;
 
                 case 3:
@@ -106,41 +112,44 @@ public class PaperFan : Boss
     }
     public void PickDestination()
     {
-        Vector2 destinationPosition = new Vector2(Random.Range(enemySpawn.xMin, enemySpawn.xMax), Random.Range(enemySpawn.yMin, enemySpawn.yMax));
+        destinationPosition = new Vector2(Random.Range(enemySpawn.xMin + 0.2f, enemySpawn.xMax - 0.2f), Random.Range(enemySpawn.yMin + 0.2f, enemySpawn.yMax - 0.2f));
+        Debug.Log(destinationPosition);
         fanDirection = rb.position - destinationPosition;
+
     }
 
    
-    public void PushBack()
+    public void PushBack(float force)
     {
 
         //fanDirection = new Vector2(playerPosition.x, playerPosition.y);\
         //fanDirection = new Vector2(firePoint.position.x, firePoint.position.y);
-
-        rb.AddForce((-fanDirection + this.rb.position).normalized * airPushBackForce, ForceMode2D.Impulse);
+        
+        //rb.AddForce((-fanDirection + this.rb.position).normalized * airPushBackForce, ForceMode2D.Impulse);
+        rb.AddForce(-firePoint.localPosition.normalized * force, ForceMode2D.Impulse);
 
     }
 
     public void ShootSmallAirBullet()
     {
         Instantiate(smallAirBullet, firePoint.position, firePoint.rotation);
+        PushBack(airPushBackForce);
     }
     public void ShootBigAirBullet()
     {
         Instantiate(bigAirBullet, firePoint.position, firePoint.rotation);
+        PushBack(airPushBackForce/3f);
     }
     public IEnumerator SlowBigGustsAttack()
     {
         attackOccurring = true;
         for (int i = 0; i < 3; i++)
         {
-            float angleOfFirePoint = Mathf.Atan2(playerDirection.y, playerDirection.x);
-            firePoint.rotation = Quaternion.Euler(0, 0, angleOfFirePoint * Mathf.Rad2Deg) ;
-            firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfFirePoint) * 0.5f, Mathf.Sin(angleOfFirePoint) * 0.5f);
+            DetermineFirepointDirection(playerDirection);
             ShootBigAirBullet();
             yield return new WaitForSeconds(timeBetweenSlowBullets);
         }
-
+       /// yield return new WaitForSeconds(0.1f);
         attackOccurring = false;
 
 
@@ -151,12 +160,18 @@ public class PaperFan : Boss
         attackOccurring = true;
         for (int i = 0; i < 3; i++)
         {
-            float angleOfFirePoint = Mathf.Atan2(playerDirection.y, playerDirection.x);
-            firePoint.rotation = Quaternion.Euler(0, 0, angleOfFirePoint * Mathf.Rad2Deg);
-            firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfFirePoint) * 0.5f, Mathf.Sin(angleOfFirePoint) * 0.5f);
+            DetermineFirepointDirection(playerDirection);
             ShootBigAirBullet();
             yield return new WaitForSeconds(timeBetweenFastBullets);
         }
+        yield return new WaitForSeconds(0.2f);
+        for (int i = 0; i < 3; i++)
+        {
+            DetermineFirepointDirection(playerDirection);
+            ShootBigAirBullet();
+            yield return new WaitForSeconds(timeBetweenFastBullets);
+        }
+        yield return new WaitForSeconds(0.1f);
         attackOccurring = false;
     }
     public IEnumerator Swim()
@@ -166,11 +181,49 @@ public class PaperFan : Boss
         PickDestination();
         for(int i = 0;i < 10;i++)
         {
-            PushBack();
-            yield return new WaitForSeconds(0.2f);
+            Vector2 distanceFromDestination = rb.position - destinationPosition;
+            DetermineFirepointDirection(distanceFromDestination);
+            ShootSmallAirBullet();
+
+            if (distanceFromDestination.magnitude < 0.2f)
+            {
+                i = 10;
+                
+            }
+            
+            yield return new WaitForSeconds(0.1f);
         }
+        yield return new WaitForSeconds(0.2f);
         attackOccurring = false;
 
     }
+    public void DetermineFirepointDirection(Vector2 direction)
+    {
+        float angleOfFirePoint = Mathf.Atan2(direction.y, direction.x);
+        firePoint.rotation = Quaternion.Euler(0, 0, angleOfFirePoint * Mathf.Rad2Deg);
+        firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfFirePoint) * 0.5f, Mathf.Sin(angleOfFirePoint) * 0.5f);
+    }
+    //public override IEnumerator TurnSpriteRed()
+    //{
+    //    sprite.color = Color.red;
+    //    Time.timeScale = timeSlowDown;
+    //    isRed = true;
+    //    //angryFromHit = true;
+    //    Debug.Log("Sprite Red");
+    //    yield return new WaitForSeconds(1f);
+    //    Time.timeScale = 1f;
+    //    isRed = false;
+    //    if (sprite == null)
+    //    {
+    //        //do nothing
+    //    }
+    //    else
+    //    {
+    //        sprite.color = Color.white;
+    //    }
+
+
+    //}
+
 
 }

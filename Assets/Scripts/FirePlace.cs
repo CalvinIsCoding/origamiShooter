@@ -121,10 +121,10 @@ public class FirePlace : MonoBehaviour
 
             boss.TakeDamage(10);
             StartCoroutine(boss.bossBecomesVulnerable());
-            if (boss.health > 0)
-            {
-                StartCoroutine(boxfan.TurnSpriteRed());
-            }
+            //if (boss.health > 0)
+            //{
+            //    StartCoroutine(boss.TurnSpriteRed());
+            //}
             
         }
         if(player!= null)

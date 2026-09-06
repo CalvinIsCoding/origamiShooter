@@ -52,7 +52,7 @@ public class firePlaceTitleScreen : MonoBehaviour
             StartCoroutine(boss.bossBecomesVulnerable());
             if (boss.health > 0)
             {
-                StartCoroutine(boxfan.TurnSpriteRed());
+               // StartCoroutine(boxfan.TurnSpriteRed());
             }
 
         }

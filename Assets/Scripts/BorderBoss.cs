@@ -114,7 +114,7 @@ public class BorderBoss : Boss
                 numberOfNonBombAttacksInARow = 0;
             }
 
-            if(numberOfNonBombAttacksInARow > 3)
+            if(numberOfNonBombAttacksInARow > 2)
             {
                 attackType = 2;
             }

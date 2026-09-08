@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
@@ -5,6 +6,7 @@ public class WindMill : Boss
 {
     public Rigidbody2D windMillArmsRb;
     public GameObject loafOfBread;
+    public Rigidbody2D loafOfBreadRigidbody;
     public GameObject windMillArm;
     public Transform firePoint;
     public float lastRotation;
@@ -30,6 +32,8 @@ public class WindMill : Boss
         playerController = FindAnyObjectByType<PlayerController>();
         playerRb = playerController.GetComponent<Rigidbody2D>();
         millMovementForce = 17.75f;
+       //LayerMask mask = LayerMask.GetMask("FirePlace");
+        //contactFilter.SetLayerMask(mask);
     }
 
     // Update is called once per frame
@@ -61,10 +65,8 @@ public class WindMill : Boss
         {
             numberOfBreadLoavesInHolster++;
         }
-        else
-        {
-            lastRotation = windMillArm.transform.rotation.z;
-        }
+        
+        lastRotation = windMillArm.transform.rotation.z;
     }
 
     public void LoadBreadHolster()
@@ -78,21 +80,28 @@ public class WindMill : Boss
         DetermineFirepointDirection(playerDirection);
         numberOfBreadLoavesInHolster--;
         Instantiate(loafOfBread,firePoint.position,firePoint.rotation);
+        loafOfBreadRigidbody = loafOfBread.GetComponent<Rigidbody2D>();
+        loafOfBreadRigidbody.AddForceAtPosition(playerDirection * 10f, loafOfBreadRigidbody.position,ForceMode2D.Impulse);
     }
     public void DetermineFirepointDirection(Vector2 direction)
     {
         float angleOfFirePoint = Mathf.Atan2(direction.y, direction.x);
         firePoint.rotation = Quaternion.Euler(0, 0, angleOfFirePoint * Mathf.Rad2Deg);
-        firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfFirePoint) * 0.5f, Mathf.Sin(angleOfFirePoint) * 0.5f);
+        firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfFirePoint) * 1f, Mathf.Sin(angleOfFirePoint) * 1f);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(rb.position, minimumDistanceFromFire);
+    }
     public Vector2 DetermineDirection()
     {
         Collider2D[] nearEntity = new Collider2D[5];
-
+        
         int objectsDetected = Physics2D.OverlapCircle(rb.position, minimumDistanceFromFire, contactFilter, nearEntity);
 
-        Vector2 direction;
+        Vector2 direction = new Vector2(0,0);
 
         //The box fan should try to avoid the fire
         if (objectsDetected > 0)

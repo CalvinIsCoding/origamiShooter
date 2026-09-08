@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7844074221976619579}
   - component: {fileID: 5479032321414918213}
   - component: {fileID: 7505319827019380218}
+  - component: {fileID: 1965563823573923475}
   m_Layer: 8
   m_Name: Percent Circle
   m_TagString: Untagged
@@ -114,7 +115,8 @@ MonoBehaviour:
   deathEffect: {fileID: 0}
   spawnEffect: {fileID: 4670229829609038548, guid: 6babb3651b4881c4aba2f64f247d3bb8, type: 3}
   rb: {fileID: 8080343714661541394}
-  enemyCollider: {fileID: 7844074221976619579}
+  enemyPhysicalCollider: {fileID: 1965563823573923475}
+  enemyHurtBox: {fileID: 7844074221976619579}
   isBlown: 0
   isStunned: 0
   travelDirection: {x: 0, y: 0}
@@ -135,6 +137,7 @@ MonoBehaviour:
   fireMode: {fileID: 0}
   isTitleLetter: 0
   enemyAnimator: {fileID: 5479032321414918213}
+  speedModifier: 0
 --- !u!114 &989893970596775953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerRb: {fileID: 0}
-  bc: {fileID: 0}
+  bc: {fileID: 7844074221976619579}
   percentDotSprite: {fileID: 0}
   dotTransform1: {fileID: 0}
   dotTransform2: {fileID: 0}
@@ -219,12 +222,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.020112595, y: 0}
-  m_Radius: 1.0821323
+  m_Offset: {x: 0.020112595, y: -0.044372186}
+  m_Radius: 1.1265044
 --- !u!95 &5479032321414918213
 Animator:
   serializedVersion: 7
@@ -299,3 +302,39 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!58 &1965563823573923475
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155321135584268295}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 7486139d05ca33249bae11326b8e8c7c, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.020159038, y: -0.03909593}
+  m_Radius: 0.8123525

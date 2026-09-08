@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WindMillBossObject
   m_EditorClassIdentifier: 
   bossName: Wind Mill
-  health: 50
-  bossIsDead: 0
+  health: 100
+  bossIsDead: 1

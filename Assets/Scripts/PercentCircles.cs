@@ -6,7 +6,7 @@ public class PercentCircles : MonoBehaviour
 {
     public GameObject player;
     public Rigidbody2D playerRb;
-    public BoxCollider2D bc;
+    public Collider2D bc;
     public SpriteRenderer percentDotSprite;
     public Transform dotTransform1;
     public Transform dotTransform2;
@@ -50,8 +50,9 @@ public class PercentCircles : MonoBehaviour
         timer = 0;
 
         speed = 1f;
-
+        Vector2 direction = playerRb.position - rb.position;
         percentDotMovementForce = 0.8f;
+        //rb.AddForceAtPosition(direction.normalized * (3f), this.rb.position,ForceMode2D.Impulse);
     }
 
     // Update is called once per frame

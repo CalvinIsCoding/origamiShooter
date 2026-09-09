@@ -183,6 +183,7 @@ MonoBehaviour:
   isWet: 0
   wetPaper: {fileID: 0}
   enemySpawn: {fileID: 0}
+  isRed: 0
   wavesSaved: 0
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
   BossObject: {fileID: 11400000, guid: a9f6bf434e7b20f4180dc5369a8ce1fb, type: 2}
@@ -192,8 +193,10 @@ MonoBehaviour:
   bassDrum: {fileID: 0}
   otherSoundBoxFanAudioSource: {fileID: 0}
   injuryBoxFanAudio: {fileID: 0}
+  hitTime: 0
+  timeSlowDown: 0
   playerController: {fileID: 0}
-  bigAirBullet: {fileID: 4723579007483652302, guid: eb1dbcd2c8cb71d4a98d022ae853c561, type: 3}
+  bigAirBullet: {fileID: 3321720983056667723, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
   smallAirBullet: {fileID: 4723579007483652302, guid: eb1dbcd2c8cb71d4a98d022ae853c561, type: 3}
   setUpForStartOfAttack: 0
   timeSinceLastShot: 0

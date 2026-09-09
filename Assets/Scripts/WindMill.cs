@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
@@ -21,6 +22,12 @@ public class WindMill : Boss
     public ContactFilter2D contactFilter = new ContactFilter2D();
 
     public float millMovementForce;
+    public float dashSpeed;
+    public int numberOfDashes;
+
+    public bool attackOccurring;
+    public int attackType;
+    public Vector2 center;
 
 
     void Start()
@@ -31,7 +38,11 @@ public class WindMill : Boss
         enemySpawn = FindAnyObjectByType<EnemySpawn>();
         playerController = FindAnyObjectByType<PlayerController>();
         playerRb = playerController.GetComponent<Rigidbody2D>();
-        millMovementForce = 17.75f;
+        millMovementForce = 15.75f;
+        dashSpeed = 18f;
+        attackOccurring = false;
+        numberOfDashes = 3;
+        center = Vector2.zero;
        //LayerMask mask = LayerMask.GetMask("FirePlace");
         //contactFilter.SetLayerMask(mask);
     }
@@ -40,13 +51,38 @@ public class WindMill : Boss
     void FixedUpdate()
     {
         MillGrain();
+        /*
         shootingBreadCooldown += Time.fixedDeltaTime;
         if(numberOfBreadLoavesInHolster > 2 && shootingBreadCooldown > shootingBreadCooldownTotalTime)
         {
             ShootBread();
             shootingBreadCooldown = 0f;
         }
-        rb.AddForceAtPosition(DetermineDirection() * millMovementForce, rb.position);
+        */
+        
+
+
+        if (!attackOccurring )
+        {
+            
+            switch (attackType)
+            {
+                case 1:
+                    StartCoroutine(DashAttack());
+                    break;
+
+                case 2:
+                    StartCoroutine(ChaseOpponentAttack());
+                    break;
+
+                case 3:
+                    StartCoroutine(BreadAttack());
+                    break;
+
+            }
+            attackType = Random.Range(1, 4);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -63,7 +99,7 @@ public class WindMill : Boss
     {
         if (windMillArm.transform.rotation.z > 0 && lastRotation < 0)
         {
-            numberOfBreadLoavesInHolster++;
+            LoadBreadHolster();
         }
         
         lastRotation = windMillArm.transform.rotation.z;
@@ -71,7 +107,7 @@ public class WindMill : Boss
 
     public void LoadBreadHolster()
     {
-
+        numberOfBreadLoavesInHolster++;
     }
 
     public void ShootBread()
@@ -87,7 +123,7 @@ public class WindMill : Boss
     {
         float angleOfFirePoint = Mathf.Atan2(direction.y, direction.x);
         firePoint.rotation = Quaternion.Euler(0, 0, angleOfFirePoint * Mathf.Rad2Deg);
-        firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfFirePoint) * 1f, Mathf.Sin(angleOfFirePoint) * 1f);
+        firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfFirePoint) * 2f, Mathf.Sin(angleOfFirePoint) * 2f);
     }
 
     private void OnDrawGizmos()
@@ -143,5 +179,59 @@ public class WindMill : Boss
 
 
         return direction;
+    }
+    public void Dash(Vector2 dashDirection, float force)
+    {
+
+        rb.AddForce(dashDirection.normalized * force, ForceMode2D.Impulse);
+    }
+
+    IEnumerator DashAttack()
+    {
+        Debug.Log("Dash Attack");
+        attackOccurring = true;
+        for (int i = 0; i < numberOfDashes; i++)
+        {
+
+            
+            Dash(DetermineDirection(),dashSpeed + Random.Range(1,5));
+            yield return new WaitForSeconds(0.7f);
+            
+            Dash(center - this.rb.position, dashSpeed + Random.Range(1, 5));
+            yield return new WaitForSeconds(0.6f);
+
+
+
+
+        }
+        //Rest();
+        yield return new WaitForSeconds(1f);
+        attackOccurring = false;
+    }
+
+    IEnumerator ChaseOpponentAttack()
+    {
+        Debug.Log("Chase Opponents Attack");
+        attackOccurring = true;
+        for (int i = 0;i < 250;i++) 
+        {
+            rb.AddForceAtPosition(DetermineDirection() * millMovementForce, rb.position);
+            yield return new WaitForFixedUpdate();
+        }
+        attackOccurring = false;
+
+    }
+
+    IEnumerator BreadAttack()
+    {
+        Debug.Log("Bread Attack");
+        attackOccurring = true;
+        for (int i = 0; i < numberOfBreadLoavesInHolster;i++)
+        {
+            ShootBread();
+            yield return new WaitForSeconds(0.1f);
+        }
+        attackOccurring = false;
+
     }
 }

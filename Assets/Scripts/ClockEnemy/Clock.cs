@@ -177,7 +177,7 @@ public class Clock : MonoBehaviour
 
         if (playerController != null)
         {
-            playerController.PlayerDeath(false);
+            playerController.PlayerDeath(false,5);
                 
         }
         
@@ -188,7 +188,7 @@ public class Clock : MonoBehaviour
 
         if (playerController != null)
         {
-            playerController.PlayerDeath(false);
+            playerController.PlayerDeath(false,5);
 
         }
 

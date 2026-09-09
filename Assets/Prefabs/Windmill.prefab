@@ -308,7 +308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7046419356659749228}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.567, y: -0.042, z: 0}
   m_LocalScale: {x: 0.2, y: 0.162, z: 0.1}
   m_ConstrainProportionsScale: 1
@@ -523,7 +523,7 @@ MonoBehaviour:
   hitTime: 0
   timeSlowDown: 0
   windMillArmsRb: {fileID: 5038881528886480814}
-  loafOfBread: {fileID: 6423861451625452513, guid: 2b83a1c637fbc4748ade384b926c8829, type: 3}
+  loafOfBread: {fileID: 2789697411693779188, guid: 7e6c76ea889c225408134450ceae6148, type: 3}
   loafOfBreadRigidbody: {fileID: 0}
   windMillArm: {fileID: 2252937099475929007}
   firePoint: {fileID: 4309418171041659081}
@@ -549,3 +549,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   millMovementForce: 0
+  dashSpeed: 0
+  numberOfDashes: 0
+  attackOccurring: 0
+  attackType: 0
+  center: {x: 0, y: 0}

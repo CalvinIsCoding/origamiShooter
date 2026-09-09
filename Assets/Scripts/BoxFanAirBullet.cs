@@ -18,14 +18,14 @@ public class BoxFanAirBullet: MonoBehaviour
     //shrink bullets
     private int shrinkFrames = 30;
     private float currentScale;
-    private float shrinkTime;
+    public float shrinkTime = 1.5f;
     void Start()
     {
-        knockBack = 3f;
+       // knockBack = 3f;
         rb.linearVelocity = transform.right * speed;
         Destroy(boxFanAirBullet, 1.0f);
-        shrinkTime = 1.5f;
-        currentScale = 0.3f;
+       // shrinkTime = 1.5f;
+        currentScale = boxFanAirBullet.transform.localScale.x;
         StartCoroutine(ShrinkBullets());
     }
     private void Update()
@@ -44,9 +44,9 @@ public class BoxFanAirBullet: MonoBehaviour
 
         if (myWall != null)
         {
-            Instantiate(source, boxFanAirBullet.transform.position, boxFanAirBullet.transform.rotation);
+           // Instantiate(source, boxFanAirBullet.transform.position, boxFanAirBullet.transform.rotation);
             //Destroy(bullet);
-            boxFanAirBulletSprite.enabled = false;
+           // boxFanAirBulletSprite.enabled = false;
         }
 
         

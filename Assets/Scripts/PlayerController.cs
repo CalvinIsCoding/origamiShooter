@@ -480,7 +480,7 @@ public class PlayerController : MonoBehaviour
 
          }
      }*/
-    public void PlayerDeath(bool damageFromTimer = false)
+    public void PlayerDeath(bool damageFromTimer = false, int damage = 1)
     {
         //putting this check here so that if player death is called from anywhere, it won't happen unless player is vulnerable
         if (!playerInvulnerable && damageFromTimer == false)
@@ -499,7 +499,7 @@ public class PlayerController : MonoBehaviour
         }
         if (damageFromTimer == true)
         {
-            playerInventory.lives--;
+            playerInventory.lives = playerInventory.lives - damage;
             StartCoroutine(TurnSpriteRed());
             StartCoroutine(screenEffects.ShakeJolt());
             //StartCoroutine(screenEffects.turnScreenBrieflyRed());

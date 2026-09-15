@@ -485,9 +485,9 @@ public class PlayerController : MonoBehaviour
         //putting this check here so that if player death is called from anywhere, it won't happen unless player is vulnerable
         if (!playerInvulnerable && damageFromTimer == false)
         {
+            Debug.Log("player took damage");
 
-
-            playerInventory.lives--;
+            playerInventory.lives = playerInventory.lives - damage;
             StartCoroutine(TurnSpriteRed());
             StartCoroutine(screenEffects.ShakeJolt());
            

@@ -234,10 +234,12 @@ public class Enemy : MonoBehaviour
 		//Debug.Log("magnitude of position" + crossProductOfVelocityAndPosition.z);
         perpendicularToVelocity = Vector2.Perpendicular(airBulletVelocity);
 		positionComponentOfForce = perpendicularToVelocity.normalized * crossProductOfVelocityAndPosition.z;
-		
 
 
-        rb.AddForce((airBulletVelocity / (2 * velocityMagnitude))  * knockBack  , ForceMode2D.Force);
+
+		rb.AddForce((airBulletVelocity / (2 * velocityMagnitude))  * knockBack  , ForceMode2D.Force);
+
+		//rb.AddForce(airBulletVelocity.normalized * knockBack * 3, ForceMode2D.Force);
 		rb.AddForce(positionComponentOfForce, ForceMode2D.Force);
 		//Debug.Log("Position Vetcor: " + positionVector/positionMagnitude);
 		//Debug.Log("Velocity Vetcor: " + airBulletVelocity/ (2 * velocityMagnitude));

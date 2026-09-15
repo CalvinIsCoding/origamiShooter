@@ -34,10 +34,10 @@ public class Boss : MonoBehaviour
 	public bool isWet;
 	public GameObject wetPaper;
 
+    private Vector3 crossProductOfVelocityAndPosition;
 
 
-
-	public EnemySpawn enemySpawn;
+    public EnemySpawn enemySpawn;
 	private int waveSpawned;
 	public bool isRed;
 	public int wavesSaved;
@@ -105,9 +105,13 @@ public class Boss : MonoBehaviour
 			
 			Die();
 		}
-		else
+		else if (isInvulnerable == false)
 		{
             StartCoroutine(TurnSpriteRed());
+        }
+		else
+		{
+            
         }
 	}
 
@@ -121,7 +125,9 @@ public class Boss : MonoBehaviour
 	}
 	public void Push(float knockBack, Rigidbody2D bullet, GameObject _bullet)
 	{
-		positionVector = new Vector2(_bullet.transform.position.x - boss.transform.position.x, _bullet.transform.position.y - boss.transform.position.y);
+        Vector2 perpendicularToVelocity;
+        Vector2 positionComponentOfForce;
+        positionVector = new Vector2(_bullet.transform.position.x - boss.transform.position.x, _bullet.transform.position.y - boss.transform.position.y);
 		positionMagnitude = Mathf.Sqrt(Mathf.Pow(positionVector.x, 2) + Mathf.Pow(positionVector.y, 2));
 
 		velocityMagnitude = Mathf.Sqrt(Mathf.Pow(bullet.linearVelocity.x, 2) + Mathf.Pow(bullet.linearVelocity.y, 2));
@@ -131,12 +137,23 @@ public class Boss : MonoBehaviour
 		}
 
 
+        crossProductOfVelocityAndPosition = Vector3.Cross(positionVector, bullet.linearVelocity);
+
+        //clampedCrossProduct = Vector3.ClampMagnitude(crossProductOfVelocityAndPosition,knockBack);
+
+        //Debug.Log("magnitude of position" + crossProductOfVelocityAndPosition.z);
+        perpendicularToVelocity = Vector2.Perpendicular(bullet.linearVelocity);
+        positionComponentOfForce = perpendicularToVelocity.normalized * crossProductOfVelocityAndPosition.z;
 
 
+        //rb.AddForce(((bullet.linearVelocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack, ForceMode2D.Force);
 
-		rb.AddForce(((bullet.linearVelocity / (2 * velocityMagnitude)) + (-positionVector / positionMagnitude)) * knockBack, ForceMode2D.Force);
+        rb.AddForce(bullet.linearVelocity.normalized * knockBack, ForceMode2D.Force);
 
-		if (isBlown == false)
+        //rb.AddForce(airBulletVelocity.normalized * knockBack * 3, ForceMode2D.Force);
+        rb.AddForce(positionComponentOfForce, ForceMode2D.Force);
+
+        if (isBlown == false)
 		{
 			isBlown = true;
 			StartCoroutine(Blowing());
@@ -215,7 +232,8 @@ public class Boss : MonoBehaviour
 	}
 	public IEnumerator bossBecomesVulnerable()
 	{
-		yield return new WaitForSeconds(invulnerabilityTimeAfterHit);
+        isInvulnerable = true;
+        yield return new WaitForSeconds(invulnerabilityTimeAfterHit);
 		isInvulnerable = false;
 	}
     public virtual IEnumerator TurnSpriteRed()

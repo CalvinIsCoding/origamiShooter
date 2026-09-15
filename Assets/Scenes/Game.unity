@@ -366,6 +366,27 @@ MonoBehaviour:
   gameSettings: {fileID: 11400000, guid: f497adfa768a9b34fac320731cc1d9bc, type: 2}
   brokenBurners: {fileID: 0}
   playerInventory: {fileID: 11400000, guid: eabdbcf78547cb74a9f7a6f97205755a, type: 2}
+  bottomLeftCorner:
+  - {fileID: 2021113247}
+  - {fileID: 1566367037}
+  - {fileID: 2654224250026892694}
+  - {fileID: 1537583526}
+  bottomRightCorner:
+  - {fileID: 462456377}
+  - {fileID: 1979002790}
+  - {fileID: 136259254}
+  - {fileID: 2053635330}
+  topLeftCorner:
+  - {fileID: 2053635330}
+  - {fileID: 1191610305}
+  - {fileID: 1438001131}
+  - {fileID: 1835430849}
+  topRightCorner:
+  - {fileID: 2010749838}
+  - {fileID: 1723483871}
+  - {fileID: 1385847271}
+  - {fileID: 1435103805}
+  cornerLit: 0
 --- !u!82 &26477926
 AudioSource:
   m_ObjectHideFlags: 0
@@ -615,6 +636,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &31931218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1082,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 5
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &63293181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,6 +1875,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!4 &96496285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -2248,63 +2272,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 323595126}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &123215141
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3321720983056667703, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.1023017
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321720983056667703, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5048347
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321720983056667703, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321720983056667703, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321720983056667703, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321720983056667703, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321720983056667703, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321720983056667703, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321720983056667703, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321720983056667703, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3321720983056667723, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-      propertyPath: m_Name
-      value: HandFanBigGust
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
 --- !u!1 &126988446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,6 +2450,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &136259254 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 1694948828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &136462172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,6 +2523,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &138832761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,6 +2590,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &145872180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2684,6 +2658,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &156734550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,6 +2733,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!4 &160660712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -3101,6 +3077,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &196285096
 GameObject:
   m_ObjectHideFlags: 0
@@ -3342,6 +3319,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 1
+  fireOccasionallyOn: 0
 --- !u!1 &214142290
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,6 +3386,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &217389669
 GameObject:
   m_ObjectHideFlags: 0
@@ -3734,6 +3713,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!4 &231374974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -4072,6 +4052,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &248548570
 GameObject:
   m_ObjectHideFlags: 0
@@ -4141,6 +4122,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 2
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &250313423
 GameObject:
   m_ObjectHideFlags: 0
@@ -4209,6 +4191,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &253038097
 GameObject:
   m_ObjectHideFlags: 0
@@ -4465,6 +4448,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 2
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &271437801
 GameObject:
   m_ObjectHideFlags: 0
@@ -4531,6 +4515,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &272975458
 GameObject:
   m_ObjectHideFlags: 0
@@ -4892,6 +4877,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &286375022
 GameObject:
   m_ObjectHideFlags: 0
@@ -5565,6 +5551,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &329452729
 GameObject:
   m_ObjectHideFlags: 0
@@ -6260,6 +6247,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &350290295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6624,6 +6612,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &355621275
 GameObject:
   m_ObjectHideFlags: 3
@@ -8526,6 +8515,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!224 &457318085 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1322598160282421113, guid: cc483a25983515944b171c440ab1c83f, type: 3}
@@ -8546,6 +8536,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 257222935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &462456377 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 102449339}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &463045949
 GameObject:
@@ -8895,6 +8890,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &478146814
 GameObject:
   m_ObjectHideFlags: 0
@@ -10469,6 +10465,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &557265191
 GameObject:
   m_ObjectHideFlags: 0
@@ -10535,6 +10532,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &559186729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10678,6 +10676,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &565796043
 GameObject:
   m_ObjectHideFlags: 0
@@ -10744,6 +10743,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &572631785
 GameObject:
   m_ObjectHideFlags: 0
@@ -10851,6 +10851,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &582804519
 GameObject:
   m_ObjectHideFlags: 0
@@ -10992,6 +10993,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 2
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &584222421
 GameObject:
   m_ObjectHideFlags: 0
@@ -12174,6 +12176,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &628620411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12313,6 +12316,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 3
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &636191607
 GameObject:
   m_ObjectHideFlags: 0
@@ -12694,6 +12698,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &648498866
 GameObject:
   m_ObjectHideFlags: 0
@@ -12900,6 +12905,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &661782175
 GameObject:
   m_ObjectHideFlags: 0
@@ -12975,67 +12981,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661782175}
   m_CullTransparentMesh: 1
---- !u!1001 &665400551
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2501892297647250620, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_Name
-      value: Hand Fan
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160478121053782973, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.0684527
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160478121053782973, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.3637115
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160478121053782973, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160478121053782973, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160478121053782973, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160478121053782973, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160478121053782973, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160478121053782973, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160478121053782973, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160478121053782973, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6947560719165604378, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
-      propertyPath: smallAirBullet
-      value: 
-      objectReference: {fileID: 7687472228419871060, guid: 461c3afc9ca49b04b862b197380b8b07, type: 3}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ce04611e32b42d14f8f997b416a6f33d, type: 3}
 --- !u!1 &666718231
 GameObject:
   m_ObjectHideFlags: 0
@@ -13403,6 +13348,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &684878479
 GameObject:
   m_ObjectHideFlags: 0
@@ -13872,6 +13818,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &722742698
 GameObject:
   m_ObjectHideFlags: 0
@@ -14724,6 +14671,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!4 &740786590
 Transform:
   m_ObjectHideFlags: 0
@@ -15162,6 +15110,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &775502104
 GameObject:
   m_ObjectHideFlags: 0
@@ -15212,10 +15161,10 @@ MonoBehaviour:
   spawnEventChances: 0000000000000000000000000000000064000000
   spawnTypeRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   spawnEventRandomizer: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  bossWave: 0
+  bossWave: 1
   randomSpawnDisabled: 1
   endCriteria: 0
-  bossObject: {fileID: 0}
+  bossObject: {fileID: 11400000, guid: 37cfc8f3c72cc8a409b8a26f0e4bec77, type: 2}
   spawnRate: 0.5
   hasCustomSpawnActivatorFormation: 1
   activatorSpawnFormation: {fileID: 2648210873671690801, guid: c9869234948dff64eb395550a0861152, type: 3}
@@ -15230,6 +15179,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &783228222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15569,6 +15519,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1464672106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1001 &789140602
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2852395986926089972, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_Name
+      value: Ampersand
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.024644256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.50165826
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852395986926089978, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4b90f09ef9ec3f46bc89814c8abf246, type: 3}
 --- !u!1 &789317299
 GameObject:
   m_ObjectHideFlags: 0
@@ -17154,6 +17161,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &901514885
 GameObject:
   m_ObjectHideFlags: 0
@@ -17696,6 +17704,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &933409782
 GameObject:
   m_ObjectHideFlags: 0
@@ -17906,6 +17915,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &938299874
 GameObject:
   m_ObjectHideFlags: 0
@@ -18206,6 +18216,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!4 &955077744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -18900,6 +18911,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 4
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &997414096
 GameObject:
   m_ObjectHideFlags: 0
@@ -19165,6 +19177,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 2
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1029105653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19461,6 +19474,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1037097486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19469,17 +19483,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 682851267543899168, guid: 609232cf403cf704caba6915e9d80c4e, type: 3}
-      propertyPath: m_Mass
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 7046419356659749228, guid: 609232cf403cf704caba6915e9d80c4e, type: 3}
       propertyPath: m_Name
       value: Windmill
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046419356659749228, guid: 609232cf403cf704caba6915e9d80c4e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8576783740132123660, guid: 609232cf403cf704caba6915e9d80c4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19896,6 +19902,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1059533072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20356,6 +20363,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1098478255
 GameObject:
   m_ObjectHideFlags: 0
@@ -20615,6 +20623,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 7
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1141801738
 GameObject:
   m_ObjectHideFlags: 0
@@ -21070,6 +21079,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1171342755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21483,6 +21493,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 366631074}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1191610305 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 366631074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1205071093
 GameObject:
   m_ObjectHideFlags: 0
@@ -21551,6 +21566,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!4 &1206371839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -21873,6 +21889,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1253400556
 GameObject:
   m_ObjectHideFlags: 0
@@ -22522,6 +22539,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1277621230
 GameObject:
   m_ObjectHideFlags: 0
@@ -22959,6 +22977,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1320372443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24086,6 +24105,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1381147989}
   m_CullTransparentMesh: 1
+--- !u!212 &1385847271 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 1616822171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1390667148
 GameObject:
   m_ObjectHideFlags: 0
@@ -25589,6 +25613,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1409198372
 GameObject:
   m_ObjectHideFlags: 0
@@ -25922,6 +25947,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1419854316
 GameObject:
   m_ObjectHideFlags: 0
@@ -26063,6 +26089,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1420803118
 GameObject:
   m_ObjectHideFlags: 0
@@ -26343,6 +26370,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1431735996
 GameObject:
   m_ObjectHideFlags: 0
@@ -26414,6 +26442,11 @@ Transform:
 --- !u!4 &1435103803 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 1673723875}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1435103805 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 1673723875}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1435345968
@@ -26647,6 +26680,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 1956454072}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1438001131 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 1956454072}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1439789690
 GameObject:
   m_ObjectHideFlags: 0
@@ -26713,6 +26751,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1444070923
 GameObject:
   m_ObjectHideFlags: 0
@@ -26819,6 +26858,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!4 &1458459288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
@@ -26876,6 +26916,27 @@ MonoBehaviour:
   gameSettings: {fileID: 11400000, guid: f497adfa768a9b34fac320731cc1d9bc, type: 2}
   brokenBurners: {fileID: 0}
   playerInventory: {fileID: 0}
+  bottomLeftCorner:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bottomRightCorner:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  topLeftCorner:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  topRightCorner:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  cornerLit: 0
 --- !u!70 &1464672104
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -27259,6 +27320,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 1
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1489466515
 GameObject:
   m_ObjectHideFlags: 0
@@ -27573,6 +27635,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!50 &1534905610 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4358313080623924034, guid: 03e1cc6d7e563d94da60ce4e0cab1fd3, type: 3}
@@ -27658,6 +27721,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536204728}
   m_CullTransparentMesh: 1
+--- !u!212 &1537583526 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 641653171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1547681330
 GameObject:
   m_ObjectHideFlags: 0
@@ -28029,6 +28097,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1561822513
 GameObject:
   m_ObjectHideFlags: 0
@@ -28097,6 +28166,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1564843653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28241,6 +28311,11 @@ PrefabInstance:
 --- !u!4 &1566367035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 1886276668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1566367037 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 1886276668}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1580176727
@@ -29028,6 +29103,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1624773159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30445,6 +30521,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1700158924
 GameObject:
   m_ObjectHideFlags: 0
@@ -30799,6 +30876,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+--- !u!212 &1723483871 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 1039066786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1730509021
 GameObject:
   m_ObjectHideFlags: 0
@@ -30865,6 +30947,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1738826258
 GameObject:
   m_ObjectHideFlags: 0
@@ -30932,6 +31015,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1750847677
 GameObject:
   m_ObjectHideFlags: 0
@@ -31226,6 +31310,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1769426689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31626,6 +31711,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1796032893
 GameObject:
   m_ObjectHideFlags: 0
@@ -31838,6 +31924,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1808937410
 GameObject:
   m_ObjectHideFlags: 0
@@ -32043,6 +32130,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1819527818
 GameObject:
   m_ObjectHideFlags: 0
@@ -32109,6 +32197,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1820404624
 GameObject:
   m_ObjectHideFlags: 0
@@ -32177,6 +32266,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1821895255
 GameObject:
   m_ObjectHideFlags: 0
@@ -32471,6 +32561,12 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
+--- !u!212 &1835430849 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 257222935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1844830857 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2057858560503527002, guid: cc483a25983515944b171c440ab1c83f, type: 3}
@@ -32631,7 +32727,8 @@ MonoBehaviour:
   testNumber: 0
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
-  fireOn: 1
+  fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1855323090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32771,6 +32868,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1870259654
 GameObject:
   m_ObjectHideFlags: 0
@@ -32837,6 +32935,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1870473487
 GameObject:
   m_ObjectHideFlags: 0
@@ -33173,6 +33272,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 2
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1886276668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34487,6 +34587,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &1948236161
 GameObject:
   m_ObjectHideFlags: 0
@@ -34596,6 +34697,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1956454072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34842,6 +34944,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &1961656705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35239,9 +35342,15 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!4 &1979002788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 1686531441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1979002790 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 1686531441}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1981901406
@@ -35685,6 +35794,11 @@ RectTransform:
   m_AnchoredPosition: {x: 1.1, y: -88.6}
   m_SizeDelta: {x: 202.5295, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!212 &2010749838 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 559186729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2014359482
 GameObject:
   m_ObjectHideFlags: 0
@@ -35893,6 +36007,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &2018863739
 GameObject:
   m_ObjectHideFlags: 0
@@ -36030,6 +36145,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018863739}
   m_CullTransparentMesh: 1
+--- !u!212 &2021113247 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 670718740}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2026354269
 GameObject:
   m_ObjectHideFlags: 0
@@ -36530,6 +36650,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &2037040371
 GameObject:
   m_ObjectHideFlags: 0
@@ -37036,6 +37157,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 1344735327}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &2053635330 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 1344735327}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2053780862
 GameObject:
   m_ObjectHideFlags: 0
@@ -37232,6 +37358,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1001 &2055417768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37371,6 +37498,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 5
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &2066263348
 GameObject:
   m_ObjectHideFlags: 0
@@ -38772,6 +38900,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &2119865514
 GameObject:
   m_ObjectHideFlags: 0
@@ -39095,6 +39224,7 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!1 &2139209075
 GameObject:
   m_ObjectHideFlags: 0
@@ -39535,9 +39665,15 @@ MonoBehaviour:
   maxEnemiesSpawnedRandomly: 999
   enemiesSpawnedThisWave: 0
   fireOn: 0
+  fireOccasionallyOn: 0
 --- !u!4 &2654224250026892692 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2654224251267558031, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
+  m_PrefabInstance: {fileID: 1059533072}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2654224250026892694 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600028539877016056, guid: 507dea9cc2723204a9abf9cc58b36536, type: 3}
   m_PrefabInstance: {fileID: 1059533072}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2654224251649643011 stripped
@@ -39591,5 +39727,4 @@ SceneRoots:
   - {fileID: 1050548326}
   - {fileID: 1823239894}
   - {fileID: 1037097486}
-  - {fileID: 123215141}
-  - {fileID: 665400551}
+  - {fileID: 789140602}

@@ -30,6 +30,7 @@ public class Wave : MonoBehaviour
     public int enemiesSpawnedThisWave = 0;
 
     public bool fireOn;
+    public bool fireOccasionallyOn = false;
     private void Awake()
     {
         if (spawnRate <= 0)

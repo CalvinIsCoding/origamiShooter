@@ -29,17 +29,26 @@ public class WindMill : Boss
     public int attackType;
     public Vector2 center;
 
+    public FirePlace firePlace;
+    public float delayTillCornerLight;
+
+    public bool invulernable;
+    public bool dashAttackOccurring;
+
 
     void Start()
     {
-        minimumDistanceFromFire = 0.45f;
+        dashAttackOccurring = false;
+        minimumDistanceFromFire = 0.4f;
         shootingBreadCooldownTotalTime = 0.5f;
+
+        firePlace = FindAnyObjectByType<FirePlace>();
 
         enemySpawn = FindAnyObjectByType<EnemySpawn>();
         playerController = FindAnyObjectByType<PlayerController>();
         playerRb = playerController.GetComponent<Rigidbody2D>();
-        millMovementForce = 15.75f;
-        dashSpeed = 18f;
+        millMovementForce = 2.75f;
+        dashSpeed = 6.5f;
         attackOccurring = false;
         numberOfDashes = 3;
         center = Vector2.zero;
@@ -67,34 +76,51 @@ public class WindMill : Boss
             
             switch (attackType)
             {
-                case 1:
-                    StartCoroutine(DashAttack());
-                    break;
+                
 
-                case 2:
+                case 1:
                     StartCoroutine(ChaseOpponentAttack());
                     break;
 
-                case 3:
+                case 2:
                     StartCoroutine(BreadAttack());
                     break;
 
             }
-            attackType = Random.Range(1, 4);
+            attackType = Random.Range(1, 3);
         }
+
+        if (firePlace.cornerLit == false && delayTillCornerLight >= 1f)
+        {
+            StartCoroutine(firePlace.LightCorner());
+            delayTillCornerLight = 0;
+        }
+        delayTillCornerLight += Time.fixedDeltaTime;
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         AirBullet bullet = collision.GetComponent<AirBullet>();
+        FirePlace fireplaceCollider = collision.GetComponentInParent<FirePlace>();
 
+        Debug.Log("collision " + collision);
         if (bullet != null)
         {
             windMillArmsRb.AddTorque(0.8f);
         }
 
+        if (fireplaceCollider != null)
+        {
+            StopCoroutine(BreadAttack());
+            StopCoroutine(ChaseOpponentAttack());
+            StartCoroutine(DashAttack());
+        }
+
+
     }
+
+    
     public void MillGrain()
     {
         if (windMillArm.transform.rotation.z > 0 && lastRotation < 0)
@@ -190,15 +216,20 @@ public class WindMill : Boss
     {
         Debug.Log("Dash Attack");
         attackOccurring = true;
+        dashAttackOccurring = true;
+        yield return new WaitForSeconds(0.25f);
+        Dash(playerRb.position - rb.position, dashSpeed);
+        yield return new WaitForSeconds(0.7f);
+
         for (int i = 0; i < numberOfDashes; i++)
         {
 
-            
-            Dash(DetermineDirection(),dashSpeed + Random.Range(1,5));
+            Dash(rb.position - playerRb.position, dashSpeed);
+            yield return new WaitForSeconds(0.6f);
+            Dash(DetermineDirection(),dashSpeed);
             yield return new WaitForSeconds(0.7f);
             
-            Dash(center - this.rb.position, dashSpeed + Random.Range(1, 5));
-            yield return new WaitForSeconds(0.6f);
+            
 
 
 
@@ -207,6 +238,7 @@ public class WindMill : Boss
         //Rest();
         yield return new WaitForSeconds(1f);
         attackOccurring = false;
+        dashAttackOccurring = false;
     }
 
     IEnumerator ChaseOpponentAttack()
@@ -234,4 +266,23 @@ public class WindMill : Boss
         attackOccurring = false;
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("collided " + collision);
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+
+        if (player != null) 
+        {
+            player.PlayerDeath(false, 2);
+            Vector2 oppositeDirectionOfPlayer =  rb.position - playerRb.position;
+            if(dashAttackOccurring == false)
+            {
+                Dash(oppositeDirectionOfPlayer, collision.relativeVelocity.magnitude + 1);
+            }
+            
+        }
+        
+    }
+
 }

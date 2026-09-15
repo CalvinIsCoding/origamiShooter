@@ -424,7 +424,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 7
+  m_Mass: 2
   m_LinearDamping: 2
   m_AngularDamping: 1
   m_GravityScale: 0
@@ -523,7 +523,7 @@ MonoBehaviour:
   hitTime: 0
   timeSlowDown: 0
   windMillArmsRb: {fileID: 5038881528886480814}
-  loafOfBread: {fileID: 2789697411693779188, guid: 7e6c76ea889c225408134450ceae6148, type: 3}
+  loafOfBread: {fileID: 2398761349801235334, guid: 138c2dc5584f36c46820a90013f8c1b5, type: 3}
   loafOfBreadRigidbody: {fileID: 0}
   windMillArm: {fileID: 2252937099475929007}
   firePoint: {fileID: 4309418171041659081}
@@ -538,7 +538,7 @@ MonoBehaviour:
     useTriggers: 1
     useLayerMask: 1
     useDepth: 0
-    useOutsideDepth: 0
+    useOutsideDepth: 1
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
@@ -554,3 +554,6 @@ MonoBehaviour:
   attackOccurring: 0
   attackType: 0
   center: {x: 0, y: 0}
+  firePlace: {fileID: 0}
+  delayTillCornerLight: 0
+  invulernable: 0

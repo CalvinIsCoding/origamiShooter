@@ -32,6 +32,16 @@ public class FirePlace : MonoBehaviour
     public ShopItemSO brokenBurners;
     public PlayerInventory playerInventory;
 
+    public SpriteRenderer[] bottomLeftCorner = new SpriteRenderer[4];
+    public SpriteRenderer[] bottomRightCorner = new SpriteRenderer[4];
+    public SpriteRenderer[] topLeftCorner = new SpriteRenderer[4];
+    public SpriteRenderer[] topRightCorner = new SpriteRenderer[4];
+
+
+    public SpriteRenderer[][] flameCorners = new SpriteRenderer[4][];
+
+    public bool cornerLit;
+
 
     // public PlayerInventory playerInventory;
 
@@ -39,6 +49,13 @@ public class FirePlace : MonoBehaviour
     {
         //Destroy(firePlace, explosionTime);
         //Border.instance.DestroyBorder(transform.position, radius);
+        cornerLit = false;
+        flameCorners[0] = topRightCorner;
+        flameCorners[1] = bottomLeftCorner;
+        flameCorners[2] = bottomRightCorner;
+        flameCorners[3] = topLeftCorner;
+        
+
         fireCollider.enabled = true;
         flameAnimations.SetActive(true);
         soundWaitTime = 0.01f;
@@ -207,6 +224,27 @@ public class FirePlace : MonoBehaviour
             flameAnimation.gameObject.SetActive(false);
             yield return new WaitForSeconds(0.045f);
         }
+    }
+
+    public IEnumerator LightCorner()
+    {
+        Debug.Log("corner lit");
+        cornerLit = true;
+        int corner = Random.Range(0, 4);
+        foreach (SpriteRenderer flameAnimation in flameCorners[corner])
+        {
+            flameAnimation.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.045f);
+        }
+        yield return new WaitForSeconds(3f);
+        foreach (SpriteRenderer flameAnimation in flameCorners[corner])
+        {
+            flameAnimation.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.045f);
+        }
+        yield return new WaitForSeconds(3f);
+        cornerLit = false;
+
     }
 
 

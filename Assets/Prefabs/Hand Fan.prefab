@@ -197,7 +197,7 @@ MonoBehaviour:
   timeSlowDown: 0
   playerController: {fileID: 0}
   bigAirBullet: {fileID: 3321720983056667723, guid: 300b6a12dca7f8b4c893415e1faefa7c, type: 3}
-  smallAirBullet: {fileID: 4723579007483652302, guid: eb1dbcd2c8cb71d4a98d022ae853c561, type: 3}
+  smallAirBullet: {fileID: 7687472228419871060, guid: 461c3afc9ca49b04b862b197380b8b07, type: 3}
   setUpForStartOfAttack: 0
   timeSinceLastShot: 0
   attackOccurring: 0

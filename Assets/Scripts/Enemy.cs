@@ -104,12 +104,16 @@ public class Enemy : MonoBehaviour
             
             StartCoroutine(SlamIntoExistance());
         }
-		else
+		else if(spawnEffect != null) 
 		{
             maxScale = this.transform.localScale.x;
             currentScale = 0;
             
             StartCoroutine(GrowIntoExistance());
+		}
+		else
+		{
+			isBlink = false;
 		}
 
 		

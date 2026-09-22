@@ -104,7 +104,7 @@ public class WindMill : Boss
         AirBullet bullet = collision.GetComponent<AirBullet>();
         FirePlace fireplaceCollider = collision.GetComponentInParent<FirePlace>();
 
-        Debug.Log("collision " + collision);
+       // Debug.Log("collision " + collision);
         if (bullet != null)
         {
             windMillArmsRb.AddTorque(0.8f);
@@ -141,15 +141,15 @@ public class WindMill : Boss
         playerDirection = playerRb.position - rb.position;
         DetermineFirepointDirection(playerDirection);
         numberOfBreadLoavesInHolster--;
-        Instantiate(loafOfBread,firePoint.position,firePoint.rotation);
-        loafOfBreadRigidbody = loafOfBread.GetComponent<Rigidbody2D>();
-        loafOfBreadRigidbody.AddForceAtPosition(playerDirection * 10f, loafOfBreadRigidbody.position,ForceMode2D.Impulse);
+        var breadLoadInstance = Instantiate(loafOfBread,firePoint.position,firePoint.rotation);
+        loafOfBreadRigidbody = breadLoadInstance.GetComponent<Rigidbody2D>();
+        loafOfBreadRigidbody.AddForce(playerDirection * 1f, ForceMode2D.Impulse);
     }
     public void DetermineFirepointDirection(Vector2 direction)
     {
         float angleOfFirePoint = Mathf.Atan2(direction.y, direction.x);
         firePoint.rotation = Quaternion.Euler(0, 0, angleOfFirePoint * Mathf.Rad2Deg);
-        firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfFirePoint) * 2f, Mathf.Sin(angleOfFirePoint) * 2f);
+        firePoint.transform.localPosition = new Vector2(Mathf.Cos(angleOfFirePoint) * 1f, Mathf.Sin(angleOfFirePoint) * 1f);
     }
 
     private void OnDrawGizmos()
@@ -261,7 +261,7 @@ public class WindMill : Boss
         for (int i = 0; i < numberOfBreadLoavesInHolster;i++)
         {
             ShootBread();
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.3f);
         }
         attackOccurring = false;
 

@@ -41,6 +41,7 @@ public class FirePlace : MonoBehaviour
     public SpriteRenderer[][] flameCorners = new SpriteRenderer[4][];
 
     public bool cornerLit;
+    public Animation[] flameFrameAnimations;
 
 
     // public PlayerInventory playerInventory;
@@ -68,8 +69,11 @@ public class FirePlace : MonoBehaviour
         foreach (SpriteRenderer flameAnimation in flameAnimationSprites)
         {
             flameAnimation.gameObject.SetActive(false);
+
             
         }
+        
+
 
         //StartCoroutine(EnableFireMode());
     }
@@ -88,19 +92,29 @@ public class FirePlace : MonoBehaviour
             flameLighting = false;
         }
        
-        if (enemySpawn.wave[enemySpawn.waveNumber].bossWave == true)
+        if (enemySpawn.wave[enemySpawn.waveNumber].bossWave == true && fireMode.waveHasStarted == true && flameLighting == true)
         {
             int i = 0;
             foreach (SpriteRenderer child in flameAnimationSprites)
             {
                 
-                flameAnimationSprites[i].color = new Color(0f, 0.9f, 0.9f,1f);
+                flameAnimationSprites[i].color = new Color(0.8f, 0.02f, 0.27f,1f);
                 i++;
             }
             
         }
-       
+        else
+        {
+            int i = 0;
+            foreach (SpriteRenderer child in flameAnimationSprites)
+            {
 
+                flameAnimationSprites[i].color = new Color(1f, 1f, 1f, 1f);
+                i++;
+            }
+        }
+       
+        
         timeSinceLastSound = timeSinceLastSound + Time.deltaTime;
 
         flameAudio.volume = gameSettings.sfxVolume;

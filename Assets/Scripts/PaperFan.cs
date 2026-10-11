@@ -34,6 +34,7 @@ public class PaperFan : Boss
         enemySpawn = FindAnyObjectByType<EnemySpawn>();
         playerController = FindAnyObjectByType<PlayerController>();
         playerRb = playerController.GetComponent<Rigidbody2D>();
+        screenEffects = FindAnyObjectByType<ScreenShake>();
         //sweepShootingRate = 2f;
 
         timeSinceLastShot = 0f;

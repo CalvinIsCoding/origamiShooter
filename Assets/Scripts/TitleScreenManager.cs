@@ -83,7 +83,7 @@ public class TitleScreenManager : MonoBehaviour
         
         //Setting overheat time here so that player experiences overheating fan for a few seconds after title sequence and use WASD to move around.
         playerController.overHeatTime = overheatTimeAfterRopeBreak;
-        virtualCamera.Follow = playerController.gameObject.transform;
+       // virtualCamera.Follow = playerController.gameObject.transform;
         PlayerPrefs.SetInt("TitleScreenWithoutRope", 1);
         
 

@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.764, y: -1.167, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1.6666666}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -178,6 +178,7 @@ MonoBehaviour:
   bulletDamage: 100
   knockBack: 2
   boxFanAirBulletSprite: {fileID: 4723579007483652275}
+  shrinkTime: 1
 --- !u!95 &-6943132843107462430
 Animator:
   serializedVersion: 7

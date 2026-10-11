@@ -73,6 +73,8 @@ public class BoxFan : MonoBehaviour
     
     private bool angryFromHit;
 
+    //public Boss boss;
+
 
     //Animation
     public Animator animator;
@@ -264,7 +266,7 @@ private void FixedUpdate()
         Vector2 direction;
 
         //The box fan should try to avoid the fire
-        if (objectsDetected > 0)
+        if (objectsDetected > 0 || overHeating)
         { 
             direction = new Vector2(0, 0) - rb.position;
 

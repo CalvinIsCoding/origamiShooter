@@ -46,7 +46,7 @@ public class Boss : MonoBehaviour
 	public BossObject BossObject;
 
 	//Audio handling
-	public AudioSource source;
+	public AudioSource soundSource;
 	public AudioClip closedHiHat;
 	public AudioClip snare;
 	public AudioClip bassDrum;
@@ -62,9 +62,11 @@ public class Boss : MonoBehaviour
     private int growthFrames = 15;
 	private float currentScale;
 	private float maxScale;
+	public ScreenShake screenEffects;
 	void Start()
 	{
 		enemySpawn = FindAnyObjectByType<EnemySpawn>();
+		screenEffects = FindAnyObjectByType<ScreenShake>();
 		BossObject.bossIsDead = false;
 		//shopManager = FindObjectOfType<ShopManager>();
 		isRed = false;
@@ -233,14 +235,21 @@ public class Boss : MonoBehaviour
 	public IEnumerator bossBecomesVulnerable()
 	{
         isInvulnerable = true;
+       
         yield return new WaitForSeconds(invulnerabilityTimeAfterHit);
 		isInvulnerable = false;
-	}
+        sprite.color = Color.white;
+    }
     public virtual IEnumerator TurnSpriteRed()
     {
         sprite.color = Color.red;
         Time.timeScale = 0.8f;
+        Time.timeScale = timeSlowDown;
         isRed = true;
+        soundSource.pitch = Random.Range(0.80f, 1.20f);
+
+        soundSource.PlayOneShot(injuryBoxFanAudio, 0.5f);
+        StartCoroutine(screenEffects.ShakeJolt());
         //angryFromHit = true;
         yield return new WaitForSeconds(0.05f);
         Time.timeScale = 1f;
@@ -251,7 +260,7 @@ public class Boss : MonoBehaviour
         }
         else
         {
-            sprite.color = Color.white;
+			sprite.color = new Color(1f, 1f, 1f, 0.5f);
         }
 
 

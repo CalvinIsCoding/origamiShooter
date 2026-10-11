@@ -43,12 +43,13 @@ public class WindMill : Boss
         shootingBreadCooldownTotalTime = 0.5f;
 
         firePlace = FindAnyObjectByType<FirePlace>();
+        screenEffects = FindAnyObjectByType<ScreenShake>();
 
         enemySpawn = FindAnyObjectByType<EnemySpawn>();
         playerController = FindAnyObjectByType<PlayerController>();
         playerRb = playerController.GetComponent<Rigidbody2D>();
         millMovementForce = 2.75f;
-        dashSpeed = 6.5f;
+        dashSpeed = 4.5f;
         attackOccurring = false;
         numberOfDashes = 3;
         center = Vector2.zero;
@@ -86,6 +87,8 @@ public class WindMill : Boss
                     StartCoroutine(BreadAttack());
                     break;
 
+               
+
             }
             attackType = Random.Range(1, 3);
         }
@@ -110,7 +113,7 @@ public class WindMill : Boss
             windMillArmsRb.AddTorque(0.8f);
         }
 
-        if (fireplaceCollider != null)
+        if (fireplaceCollider != null && dashAttackOccurring == false)
         {
             StopCoroutine(BreadAttack());
             StopCoroutine(ChaseOpponentAttack());
@@ -168,14 +171,14 @@ public class WindMill : Boss
         //The box fan should try to avoid the fire
         if (objectsDetected > 0)
         {
-            direction = new Vector2(0, 0) - rb.position;
+            direction = (new Vector2(0, 0) - rb.position).normalized;
 
            // angleOfFirePoint = Mathf.PI + Mathf.Atan2(direction.y, direction.x);
             //rb.rotation = angleOfFirePoint * (180 / Mathf.PI);
         }
         else
         {
-            direction = playerRb.position - rb.position;
+            direction = (playerRb.position - rb.position).normalized;
         }
          /*
         if (direction.magnitude > farFromPlayerDistance)
@@ -275,9 +278,10 @@ public class WindMill : Boss
         if (player != null) 
         {
             player.PlayerDeath(false, 2);
-            Vector2 oppositeDirectionOfPlayer =  rb.position - playerRb.position;
+            Vector2 oppositeDirectionOfPlayer =  (rb.position - playerRb.position).normalized;
             if(dashAttackOccurring == false)
             {
+                
                 Dash(oppositeDirectionOfPlayer, collision.relativeVelocity.magnitude + 1);
             }
             
